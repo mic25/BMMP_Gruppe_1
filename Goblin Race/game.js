@@ -22,7 +22,7 @@ Game.prototype.handleTick = function () {
 		this.ground.x = 0;
 	}
 
-    /*if (Key.isDown(Key.UP)) {
+    if (Key.isDown(Key.UP)) {
         char.jump();
         }
     if (Key.isDown(Key.DOWN)) {
@@ -33,7 +33,7 @@ Game.prototype.handleTick = function () {
         }
     if (Key.isDown(Key.SPACE)) {
          char.special()
-        }*/
+        }
 
 }
 
