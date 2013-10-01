@@ -1,12 +1,12 @@
 function Char() {
 //Startposition
 var startX = 50;
-var startY = 700;
+var startY = 550;
 
 //Grafik laden
 this.image = new createjs.Bitmap(queue.getResult("figure"));
-this.image.regX = 30;
-this.image.rexY = 30;
+this.image.regX = 100;
+this.image.rexY = 100;
 this.image.x = startX;
 this.image.y = startY;
 
