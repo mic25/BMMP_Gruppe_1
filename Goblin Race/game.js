@@ -15,6 +15,20 @@ Game.prototype.handleTick = function () {
 	this.bg.x += this.bg_speed1;
 	this.ground.x += this.ground_speed;
 
+
+    if (Key.isDown(Key.UP)) {
+        char.jump();
+        }
+    if (Key.isDown(Key.DOWN)) {
+        char.crouch();
+        }
+   if (Key.isDown(Key.RIGHT)) {
+        char.run();
+        }
+    if (Key.isDown(Key.SPACE)) {
+         char.special()
+        }
+
 }
 
 Game.prototype.start = function(){
