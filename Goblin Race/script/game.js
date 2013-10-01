@@ -77,6 +77,6 @@ Game.prototype.setupPhysics = function () {
 
 Game.prototype.generateLevel = function () {
 
-    this.platforms.push(new Platform(300, 300, 5));
+    this.platforms.push(new Platform(300/SCALE, 300/SCALE, 5));
 
 }

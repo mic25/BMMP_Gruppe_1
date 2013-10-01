@@ -23,7 +23,7 @@ function Platform(xPos,yPos,tiles){
 	this.body.CreateFixture(fixDef);
 	this.body.bitmaps = [];
 
-	for(var i=0;i<tiles;i++){
+	/*for(var i=0;i<tiles;i++){
 		var random = Math.random();
 		if(random>0.66)
 			pic = 3;
@@ -36,6 +36,13 @@ function Platform(xPos,yPos,tiles){
 		this.body.bitmaps.push(visuals);	
 		stage.addChild(visuals);
 		visuals.y = yPos*SCALE-50;
+	}*/
+
+	for (var i = 0; i < tiles; i++) {
+	    var visuals = new createjs.Bitmap(queue.getResult("platform1"));
+	    this.body.bitmaps.push(visuals);
+	    stage.addChild(visuals);
+	    visuals.y = yPos * SCALE - 50;
 	}
 	
 	this.body.SetUserData("ground");
