@@ -4,12 +4,12 @@
     <meta charset="utf-8" />
     <title>Lepprechaun's Race</title>
     <script src="http://code.createjs.com/createjs-2013.09.25.min.js"></script>
-    <script scr="preload.js"></script>
-    <script scr="char.js"></script>
-    <script scr="key.js"></script>
-    <script scr="menu.js"></script>
-    <script scr="controller.js"></script>
-    <script scr="game.js"></script>
+    <script src="preload.js"></script>
+    <script src="char.js"></script>
+    <script src="key.js"></script>
+    <script src="menu.js"></script>
+    <script src="controller.js"></script>
+    <script src="game.js"></script>
     <link href="http://fonts.googleapis.com/css?family=Voltaire" rel="stylesheet" type="text/css">
     
     <!--
@@ -55,19 +55,7 @@
             stage.update();
         }
 
-        function checkKeys() {
-            if (Key.isDown(Key.UP)) {
-                char.jump();
-            }
-            if (Key.isDown(Key.DOWN)) {
-                char.crouch();
-            }
-            if (Key.isDown(Key.RIGHT)) {
-                char.run();
-            }
-            if (Key.isDown(Key.SPACE)) {
-                char.special()
-            }
+
         }      
     </script>
 </head>
