@@ -1,6 +1,7 @@
 ﻿function preload() {
     var manifest = [
-        //TOFill
+        {id:"bg", src:"img/Himmel.png"},
+        {id:"ground", src:"img/Wiese.png"},
     ];
     queue = new createjs.LoadQueue(false);
     queue.installPlugin(createjs.Sound);
