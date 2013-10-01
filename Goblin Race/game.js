@@ -6,24 +6,35 @@
 
 	this.bg = new createjs.Bitmap(queue.getResult("bg"));
 	this.ground = new createjs.Bitmap(queue.getResult("ground"));
-    this.figure = new Char(); 
+
+    //Character
+	this.figure = new Char();
+
+    //Platforms
+	this.platforms = new Array();
 }
 
 Game.prototype.handleTick = function () {
 
+    //Background
 	this.bg.x += this.bg_speed1;
 	this.ground.x += this.ground_speed;
-
-    this.figure.image.x +=2;
-    
-
 	if(this.bg.x+this.bg.image.width < stage.canvas.width){
 		this.bg.x = 0;
 	}
-
 	if(this.ground.x+this.ground.image.width < stage.canvas.width){
 		this.ground.x = 0;
 	}
+
+    //Platforms
+	for (var i = 0; i <= this.platforms.lenth; i++) {
+	    var platform = platforms.pop(i);
+	    platform.move();
+	}
+
+    //Character
+	this.figure.image.x += 2;
+
 
   /*  if (Key.isDown(Key.UP)) {
         console.log("pressed");
@@ -47,5 +58,11 @@ Game.prototype.start = function(){
 	stage.addChild(this.ground);
     stage.addChild(this.figure.image);
 	stage.update();
+
+}
+
+Game.prototype.generateLevel = function () {
+
+    this.platforms.push(new Platform(300, 300, 500));
 
 }
