@@ -3,7 +3,7 @@ function Platform(xPos,yPos,tiles){
 	this.x = xPos;
 	this.y = yPos;
 	this.tiles = tiles;
-	this.speed = -3;
+	this.speed = -12;
 	this.segmentSize = 88; //Breite des Bildes
 	this.segmentHeight = 44;
 

@@ -32,8 +32,16 @@ Game.prototype.handleTick = function () {
 
     //Platforms
 	for (var i = 0; i < this.platforms.length; i++) {
-	    //this.platforms[i].update();
+	    
+	    this.platforms[i].update();
+
+	    if(this.platforms[i].body.bitmaps[0].x*SCALE < -this.platforms[i].tiles * this.platforms[i].segmentHeight){
+	    	stage.removeChild(this.platforms[i]);
+	    	this.platforms.splice(i,1);
+	    }
 	}
+	console.log(this.platforms.length);
+	game.generateLevel();
 
 
   /*  if (Key.isDown(Key.UP)) {
@@ -86,12 +94,18 @@ Game.prototype.setupPhysics = function () {
 Game.prototype.generateLevel = function () {
 
     while (this.platforms.length < 15) {
+    	var randomSign = Math.random();
         //console.log(this.plat.x);
         console.log(this.platforms.length);
         var lastX = this.plat.body.GetPosition().x * SCALE + (this.plat.body.bitmaps.length * this.plat.segmentSize);
         var lastY = this.plat.body.GetPosition().y * SCALE;
         var newX = lastX + Math.floor(Math.random() * (this.HORIZONTAL_MAX - this.HORIZONTAL_MIN + 1)) + this.HORIZONTAL_MIN;
-        var newY = lastY - Math.random() * 0.5 * this.VERTICAL + Math.random() * 2 * this.VERTICAL;
+        if(randomSign <0.5){
+        	var newY = lastY -  Math.random() * 2 * this.VERTICAL;
+        }
+        else{
+        	var newY = lastY + Math.random() * 2 * this.VERTICAL;
+        }	
         if (newY > stage.canvas.height - this.plat.segmentHeight) {
             newY -= this.VERTICAL;
         }
@@ -104,6 +118,7 @@ Game.prototype.generateLevel = function () {
         this.platforms.push(this.plat);
 
     }
+
 
 
 
