@@ -3,15 +3,17 @@ function Platform(xPos,yPos,tiles){
 	this.x = xPos;
 	this.y = yPos;
 	this.tiles = tiles;
-	this.speed = -10;
+	this.speed = -3;
+	this.segmentSize = 88; //Breite des Bildes
+	this.segmentHeight = 44;
 
 	var bodyDef = new b2d.b2BodyDef();
 	bodyDef.position.Set(xPos,yPos);
 	bodyDef.type = b2d.b2Body.b2_kinematicBody;
 
 	var shape = new b2d.b2PolygonShape();
-	this.boxWidth = (50.0*this.tiles)/SCALE;
-	this.boxHeight = 50.0/SCALE;
+	this.boxWidth = (this.segmentSize*this.tiles)/SCALE;
+	this.boxHeight = this.segmentHeight/SCALE;
 	shape.SetAsBox(this.boxWidth,this.boxHeight);
 
 	var fixDef = new b2d.b2FixtureDef();
@@ -39,11 +41,12 @@ function Platform(xPos,yPos,tiles){
 		visuals.y = yPos*SCALE-50;
 	}*/
 
-	for (var i = 0; i < tiles; i++) {
+	for (var i = 0; i < this.tiles; i++) {
 	    var visuals = new createjs.Bitmap(queue.getResult("platform1"));
 	    this.body.bitmaps.push(visuals);
 	    stage.addChild(visuals);
-	    visuals.y = yPos * SCALE - 50;
+	    visuals.y = yPos * SCALE - this.segmentHeight;
+	    visuals.x = xPos * SCALE + (this.segmentSize * i); // FAktor für die Tile-Länge
 	}
 	
 	this.body.SetUserData("ground");
@@ -56,5 +59,5 @@ Platform.prototype.update = function(){
 		this.body.bitmaps[i].x += this.speed;
 	}
 
-	//this.body.SetPosition(new b2d.b2Vec2(this.x-cameraOffsetX*2,this.y));
+	this.body.SetPosition(new b2d.b2Vec2(this.x,this.y)); // Könnte falsch sein
 }

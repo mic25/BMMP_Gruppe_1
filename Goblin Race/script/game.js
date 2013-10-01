@@ -2,18 +2,20 @@
     //
 
 	this.bg_speed1 = -5;
-	this.ground_speed = -25;
+	this.ground_speed = -7;
 
 	this.bg = new createjs.Bitmap(queue.getResult("bg"));
 	this.ground = new createjs.Bitmap(queue.getResult("ground"));
 
     //Platforms
 	this.platforms = new Array();
-	this.VERTICAL = 150;
-	this.HORIZONTAL_MAX = 200;
+	this.VERTICAL = 50;
+	this.HORIZONTAL_MAX = 300;
 	this.HORIZONTAL_MIN = 50;
-	this.TILES_MIN = 2;
-	this.TILES_MAX = 10;
+	this.TILES_MIN = 1;
+	this.TILES_MAX = 5;
+
+	this.plat;
 }
 
 Game.prototype.handleTick = function () {
@@ -56,6 +58,8 @@ Game.prototype.start = function(){
 	stage.addChild(this.ground);
 
 	game.setupPhysics();
+    this.plat= new Platform(0 / SCALE, 400 / SCALE, 8); //Startplatform
+	this.platforms.push(this.plat);
 	game.generateLevel();
 
 	stage.update();
@@ -81,16 +85,23 @@ Game.prototype.setupPhysics = function () {
 
 Game.prototype.generateLevel = function () {
 
-    this.platforms.push(new Platform(0 / SCALE, 0 / SCALE, 5));
-
     while (this.platforms.length < 15) {
-        var lastX = this.platforms[this.platforms.length-1].x;
-        var lastY = this.platforms[this.platforms.length-1].y;
+        //console.log(this.plat.x);
+        console.log(this.platforms.length);
+        var lastX = this.plat.body.GetPosition().x * SCALE + (this.plat.body.bitmaps.length * this.plat.segmentSize);
+        var lastY = this.plat.body.GetPosition().y * SCALE;
         var newX = lastX + Math.floor(Math.random() * (this.HORIZONTAL_MAX - this.HORIZONTAL_MIN + 1)) + this.HORIZONTAL_MIN;
-        var newY = lastY - this.VERTICAL + Math.random() * 2 * this.VERTICAL;
+        var newY = lastY - Math.random() * 0.5 * this.VERTICAL + Math.random() * 2 * this.VERTICAL;
+        if (newY > stage.canvas.height - this.plat.segmentHeight) {
+            newY -= this.VERTICAL;
+        }
+        else if (newY < this.plat.segmentHeight + 2*this.VERTICAL) {
+            newY += 2*this.VERTICAL;
+        }
         var tiles = Math.floor(Math.random() * (this.TILES_MAX - this.TILES_MIN + 1) + this.TILES_MIN);
-        console.log(lastX + " : " + lastY + " : " + newX);
-        this.platforms.push(new Platform(newX / SCALE, newY / SCALE, tiles));
+        console.log(lastX + " : " + lastY + " : " + newX + " : " + newY);
+        this.plat = new Platform(Math.floor(newX / SCALE), Math.floor(newY / SCALE), tiles)
+        this.platforms.push(this.plat);
 
     }
 
