@@ -7,9 +7,6 @@
 	this.bg = new createjs.Bitmap(queue.getResult("bg"));
 	this.ground = new createjs.Bitmap(queue.getResult("ground"));
 
-    //Character
-	this.figure = new Char();
-
     //Platforms
 	this.platforms = new Array();
 }
@@ -32,9 +29,6 @@ Game.prototype.handleTick = function () {
 	    platform.move();
 	}
 
-    //Character
-	this.figure.image.x += 2;
-
 
   /*  if (Key.isDown(Key.UP)) {
         console.log("pressed");
@@ -56,7 +50,6 @@ Game.prototype.start = function(){
 
 	stage.addChild(this.bg);
 	stage.addChild(this.ground);
-    stage.addChild(this.figure.image);
 	stage.update();
 
 }
