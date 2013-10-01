@@ -33,7 +33,7 @@ Game.prototype.handleTick = function () {
 
 Game.prototype.start = function(){
 
-	stage.addChild(this.bg);
-	stage.addChild(this.ground);
+	stage.add(this.bg);
+	stage.add(this.ground);
 
 }
