@@ -5,13 +5,14 @@
 
 	this.bg = new createjs.Bitmap(queue.getResult("bg"));
 	this.ground = new createjs.Bitmap(queue.getResult("ground"));
+    this.c = new Char(); 
 }
 
 Game.prototype.handleTick = function () {
 
     this.bg.x += this.bg_speed1;
 	this.ground.x += this.ground_speed;
-
+   
 
     /*if (Key.isDown(Key.UP)) {
         char.jump();
@@ -32,6 +33,7 @@ Game.prototype.start = function(){
 
 	stage.addChild(this.bg);
 	stage.addChild(this.ground);
+    stage.addChild(this.c.image);
 	stage.update();
 
 }
