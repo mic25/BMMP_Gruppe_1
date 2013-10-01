@@ -3,6 +3,7 @@ function Platform(xPos,yPos,tiles){
 	this.x = xPos;
 	this.y = yPos;
 	this.tiles = tiles;
+	this.speed = -10;
 
 	var bodyDef = new b2d.b2BodyDef();
 	bodyDef.position.Set(xPos,yPos);
@@ -52,8 +53,8 @@ function Platform(xPos,yPos,tiles){
 
 Platform.prototype.update = function(){
 	for(var i=0;i<this.body.bitmaps.length;i++){		
-		this.body.bitmaps[i].x = ((this.body.GetPosition().x-this.boxWidth)*SCALE)+i*this.boxWidth/this.tiles*2*SCALE;
+		this.body.bitmaps[i].x += this.speed;
 	}
 
-	this.body.SetPosition(new b2d.b2Vec2(this.x-cameraOffsetX*2,this.y));
+	//this.body.SetPosition(new b2d.b2Vec2(this.x-cameraOffsetX*2,this.y));
 }

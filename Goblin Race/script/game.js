@@ -9,6 +9,11 @@
 
     //Platforms
 	this.platforms = new Array();
+	this.VERTICAL = 150;
+	this.HORIZONTAL_MAX = 200;
+	this.HORIZONTAL_MIN = 50;
+	this.TILES_MIN = 2;
+	this.TILES_MAX = 10;
 }
 
 Game.prototype.handleTick = function () {
@@ -24,9 +29,8 @@ Game.prototype.handleTick = function () {
 	}
 
     //Platforms
-	for (var i = 0; i <= this.platforms.lenth; i++) {
-	    var platform = platforms.pop(i);
-	    platform.move();
+	for (var i = 0; i < this.platforms.length; i++) {
+	    //this.platforms[i].update();
 	}
 
 
@@ -77,6 +81,19 @@ Game.prototype.setupPhysics = function () {
 
 Game.prototype.generateLevel = function () {
 
-    this.platforms.push(new Platform(300/SCALE, 300/SCALE, 5));
+    this.platforms.push(new Platform(0 / SCALE, 0 / SCALE, 5));
+
+    while (this.platforms.length < 15) {
+        var lastX = this.platforms[this.platforms.length-1].x;
+        var lastY = this.platforms[this.platforms.length-1].y;
+        var newX = lastX + Math.floor(Math.random() * (this.HORIZONTAL_MAX - this.HORIZONTAL_MIN + 1)) + this.HORIZONTAL_MIN;
+        var newY = lastY - this.VERTICAL + Math.random() * 2 * this.VERTICAL;
+        var tiles = Math.floor(Math.random() * (this.TILES_MAX - this.TILES_MIN + 1) + this.TILES_MIN);
+        console.log(lastX + " : " + lastY + " : " + newX);
+        this.platforms.push(new Platform(newX / SCALE, newY / SCALE, tiles));
+
+    }
+
+
 
 }
