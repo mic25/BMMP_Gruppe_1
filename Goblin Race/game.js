@@ -1,4 +1,5 @@
 ﻿function Game() {
+    //
 
 	this.bg_speed1 = -5;
 	this.ground_speed = -25;
