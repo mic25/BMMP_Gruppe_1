@@ -5,7 +5,7 @@
 
 	this.bg = new createjs.Bitmap(queue.getResult("bg"));
 	this.ground = new createjs.Bitmap(queue.getResult("ground"));
-    this.c = new Char(); 
+    this.figure = new Char(); 
 }
 
 Game.prototype.handleTick = function () {
@@ -13,6 +13,8 @@ Game.prototype.handleTick = function () {
 	this.bg.x += this.bg_speed1;
 	this.ground.x += this.ground_speed;
 
+    this.figure.image.x +=2;
+    
 
 	if(this.bg.x+this.bg.image.width < stage.canvas.width){
 		this.bg.x = 0;
@@ -22,18 +24,19 @@ Game.prototype.handleTick = function () {
 		this.ground.x = 0;
 	}
 
-    if (Key.isDown(Key.UP)) {
-        char.jump();
+  /*  if (Key.isDown(Key.UP)) {
+        console.log("pressed");
+        figure.jump();
         }
     if (Key.isDown(Key.DOWN)) {
-        char.crouch();
+        figure.crouch();
         }
    if (Key.isDown(Key.RIGHT)) {
-        char.run();
+        figure.run();
         }
     if (Key.isDown(Key.SPACE)) {
-         char.special()
-        }
+         figure.special();
+        }*/
 
 }
 
@@ -41,7 +44,7 @@ Game.prototype.start = function(){
 
 	stage.addChild(this.bg);
 	stage.addChild(this.ground);
-    stage.addChild(this.c.image);
+    stage.addChild(this.figure.image);
 	stage.update();
 
 }
