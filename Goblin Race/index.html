@@ -1,0 +1,74 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Lepprechaun's Race</title>
+    <script src="http://code.createjs.com/createjs-2013.09.25.min.js"></script>
+    <link href="http://fonts.googleapis.com/css?family=Voltaire" rel="stylesheet" type="text/css">
+    
+    <!--
+        Skripts : 
+        - preload
+        - menu
+         -->
+
+    <style>
+        h1{
+            text-align:center;
+        }
+        canvas {
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
+            border-color: lightgray #898888;
+            border-width: 8px;
+            border-style: solid;
+        }
+        body{
+            font-family: 'Voltaire', sans-serif;
+            background-color:black;
+            color:lime;
+        }
+    </style>
+
+    <script>
+        var stage, queue, ticker, controller, menu, game, controller;
+        var inGame = false;
+
+        function init() {
+            stage = new createjs.Stage("canvas");
+            menu = new Menu();
+            preload();
+        }
+
+        function tick() {
+            
+            if(state == "inGame"){
+                game.handletick();
+            }
+            stage.update();
+        }
+
+        function checkKeys() {
+            if (Key.isDown(Key.UP)) {
+                char.jump();
+            }
+            if (Key.isDown(Key.DOWN)) {
+                char.crouch();
+            }
+            if (Key.isDown(Key.RIGHT)) {
+                char.run();
+            }
+            if (Key.isDown(Key.SPACE)) {
+                char.special()
+            }
+        }      
+    </script>
+</head>
+
+<body onload="init()">
+    <h1> Lepprechaun's Race </h1>
+    <canvas width="1366" height="768" id="canvas">You no have canvas</canvas>
+
+</body>
+</html>
