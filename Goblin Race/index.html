@@ -11,6 +11,7 @@
     <script src="script/controller.js"></script>
     <script src="script/game.js"></script>
     <script src ="script/platform.js"></script>
+    <script src ="script/contactListener.js"></script>
     <script src ="script/Box2dWeb-2.1.a.3.min.js"></script>
     <link href="http://fonts.googleapis.com/css?family=Voltaire" rel="stylesheet" type="text/css">
     
@@ -37,6 +38,22 @@
     <script>
         var stage, queue, ticker, controller, menu, game, controller;
         var inGame = false;
+
+        var SCALE = 100.0;
+
+        var b2d = {
+            b2Vec2: Box2D.Common.Math.b2Vec2,
+            b2BodyDef: Box2D.Dynamics.b2BodyDef,
+            b2Body: Box2D.Dynamics.b2Body,
+            b2FixtureDef: Box2D.Dynamics.b2FixtureDef,
+            b2Fixture: Box2D.Dynamics.b2Fixture,
+            b2World: Box2D.Dynamics.b2World,
+            b2MassData: Box2D.Collision.Shapes.b2MassData,
+            b2PolygonShape: Box2D.Collision.Shapes.b2PolygonShape,
+            b2CircleShape: Box2D.Collision.Shapes.b2CircleShape,
+            b2DebugDraw: Box2D.Dynamics.b2DebugDraw,
+            b2ContactListener: Box2D.Dynamics.b2ContactListener,
+        };
         
 
         function init() {

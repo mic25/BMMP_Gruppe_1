@@ -50,12 +50,33 @@ Game.prototype.start = function(){
 
 	stage.addChild(this.bg);
 	stage.addChild(this.ground);
+
+	game.setupPhysics();
+	game.generateLevel();
+
 	stage.update();
 
 }
 
+Game.prototype.setupPhysics = function () {
+
+    world = new b2d.b2World(new b2d.b2Vec2(0, 10), true);
+
+    // debug draw:
+    var debugDraw = new b2d.b2DebugDraw();
+    debugDraw.SetSprite(stage.canvas.getContext("2d"));
+    debugDraw.SetDrawScale(SCALE);
+    debugDraw.SetFlags(b2d.b2DebugDraw.e_shapeBit | b2d.b2DebugDraw.e_jointBit);
+    debugDraw.SetFillAlpha(0.3);
+    debugDraw.SetLineThickness(1.0);
+    world.SetDebugDraw(debugDraw);
+
+    var listener = new ContactListener();
+    world.SetContactListener(listener);
+}
+
 Game.prototype.generateLevel = function () {
 
-    this.platforms.push(new Platform(300, 300, 500));
+    this.platforms.push(new Platform(300, 300, 5));
 
 }
