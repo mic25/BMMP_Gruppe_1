@@ -13,7 +13,7 @@
 Game.prototype.handleTick = function () {
 
 	this.bg.x += this.bg_speed1;
-	this.ground += this.ground_speed;
+	this.ground.x += this.ground_speed;
 
 }
 
