@@ -1,2 +1,7 @@
 test
+<<<<<<< HEAD
 sdafijo
+=======
+
+konflikt test
+>>>>>>> 4f463c2eaa3eedc0992f69110fc14ad1b396c792
