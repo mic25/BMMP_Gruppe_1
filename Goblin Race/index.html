@@ -39,13 +39,14 @@
         function init() {
             stage = new createjs.Stage("canvas");
             menu = new Menu();
+            ticker = createjs.Ticker.setFPS(30);
+            createjs.Ticker.addEventListener("tick", tick);
             preload();
         }
 
         function tick() {
-            
-            if(state == "inGame"){
-                game.handletick();
+            if(inGame){
+                game.handleTick();
             }
             stage.update();
         }   
