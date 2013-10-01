@@ -35,8 +35,10 @@
     <script>
         var stage, queue, ticker, controller, menu, game, controller;
         var inGame = false;
+        
 
         function init() {
+          
             stage = new createjs.Stage("canvas");
             menu = new Menu();
             ticker = createjs.Ticker.setFPS(30);
