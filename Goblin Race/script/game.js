@@ -6,7 +6,7 @@
 
 	this.bg = new createjs.Bitmap(queue.getResult("bg"));
 	this.ground = new createjs.Bitmap(queue.getResult("ground"));
-    var player;
+    this.player;
 
 
     //Platforms
@@ -81,7 +81,6 @@ Game.prototype.start = function(){
 	this.platforms.push(this.plat);
 
     this.player = new Player();
-    stage.addChild(this.player);
 
 	game.generateLevel();
 
