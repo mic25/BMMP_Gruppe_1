@@ -10,13 +10,12 @@
 
     //Platforms
 	this.platforms = new Array();
-	this.VERTICAL = 50;
+	this.VERTICAL = 100;
 	this.HORIZONTAL_MAX = 200;
 	this.HORIZONTAL_MIN = 70;
 	this.TILES_MIN = 1;
 	this.TILES_MAX = 5;
 	this.platformSpeed = -10;
-
 	this.plat;
 }
 
