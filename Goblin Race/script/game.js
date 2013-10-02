@@ -6,6 +6,8 @@
 
 	this.bg = new createjs.Bitmap(queue.getResult("bg"));
 	this.ground = new createjs.Bitmap(queue.getResult("ground"));
+    var player;
+
 
     //Platforms
 	this.platforms = new Array();
@@ -44,19 +46,28 @@ Game.prototype.handleTick = function () {
 	game.generateLevel();
 
 
-  /*  if (Key.isDown(Key.UP)) {
+    if (Key.isDown(Key.UP)) {
         console.log("pressed");
-        figure.jump();
+        this.player.jump();
         }
     if (Key.isDown(Key.DOWN)) {
-        figure.crouch();
+        this.player.moveDown();
         }
    if (Key.isDown(Key.RIGHT)) {
-        figure.run();
+        this.player.moveRight();
         }
     if (Key.isDown(Key.SPACE)) {
-         figure.special();
-        }*/
+        // figure.special();
+        }
+
+    //kopiert aus Blatt05 was auch immer das hier macht..
+    world.Step(1 / 60,  10,  10);
+    world.DrawDebugData();
+    world.ClearForces();
+
+    //Player
+    this.player.update();
+    this.player.draw();
 
 }
 
@@ -68,6 +79,10 @@ Game.prototype.start = function(){
 	game.setupPhysics();
     this.plat= new Platform(0 / SCALE, 400 / SCALE, 8); //Startplatform
 	this.platforms.push(this.plat);
+
+    this.player = new Player();
+    stage.addChild(this.player);
+
 	game.generateLevel();
 
 	stage.update();

@@ -43,6 +43,7 @@ Player.prototype.draw = function(){
 }
 
 Player.prototype.jump = function(){
+	console.log("jump");
 	this.body.SetAwake(true);
 	if(this.onGround && this.jumpTimeout<=0){
 		    this.body.ApplyImpulse( new b2d.b2Vec2(0,-this.mass*10), this.body.GetWorldCenter() );
