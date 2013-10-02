@@ -3,7 +3,7 @@ function Player() {
 	this.x = 5;
 	this.y = 3;
 	this.onGround = false;
-	this.maxSpeed = 4;
+	this.maxSpeed =100;
 	this.numFootContacts = 0;
 	this.jumpTimeout = 0;
 
@@ -75,10 +75,10 @@ Player.prototype.update = function() {
 		this.onGround = true;
 	}
 
-  	if (Key.isDown(Key.UP)) this.jump();
-  	if (Key.isDown(Key.DOWN)) this.moveDown();
-  	if (Key.isDown(Key.LEFT)) this.moveLeft();
-  	if (Key.isDown(Key.RIGHT)) this.moveRight();
+	if (Key.isDown(Key.UP)) player.jump();
+	if (Key.isDown(Key.DOWN)) player.moveDown();
+	if (Key.isDown(Key.LEFT)) player.moveLeft();
+	if (Key.isDown(Key.RIGHT)) player.moveRight();
 	if (Key.isEmpty() && !this.onGround) {
 	}
 

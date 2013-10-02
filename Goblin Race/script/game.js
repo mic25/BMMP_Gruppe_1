@@ -6,7 +6,6 @@
 
 	this.bg = new createjs.Bitmap(queue.getResult("bg"));
 	this.ground = new createjs.Bitmap(queue.getResult("ground"));
-    this.player;
 
 
     //Platforms
@@ -37,7 +36,7 @@ Game.prototype.handleTick = function () {
 	    
 	    this.platforms[i].update();
 
-	    if(this.platforms[i].body.bitmaps[0].x*SCALE < -this.platforms[i].tiles * this.platforms[i].segmentSize){
+	    if(this.platforms[i].body.bitmaps[0].x*SCALE < -this.platforms[i].tiles * this.platforms[i].segmentSize - 500){
 	    	stage.removeChild(this.platforms[i]);
 	    	this.platforms.splice(i,1);
 	    }
@@ -45,29 +44,17 @@ Game.prototype.handleTick = function () {
 	console.log(this.platforms.length);
 	game.generateLevel();
 
-
-    if (Key.isDown(Key.UP)) {
-        console.log("pressed");
-        this.player.jump();
-        }
-    if (Key.isDown(Key.DOWN)) {
-        this.player.moveDown();
-        }
-   if (Key.isDown(Key.RIGHT)) {
-        this.player.moveRight();
-        }
-    if (Key.isDown(Key.SPACE)) {
-        // figure.special();
-        }
-
     //kopiert aus Blatt05 was auch immer das hier macht..
     world.Step(1 / 60,  10,  10);
     world.DrawDebugData();
     world.ClearForces();
 
     //Player
-    this.player.update();
-    this.player.draw();
+    if (player != undefined) {
+        player.update();
+        player.draw();
+    }
+    
 
 }
 
@@ -80,7 +67,9 @@ Game.prototype.start = function(){
     this.plat= new Platform(0 / SCALE, 400 / SCALE, 8); //Startplatform
 	this.platforms.push(this.plat);
 
-    this.player = new Player();
+	player = new Player();
+	var listener = new ContactListener();
+	world.SetContactListener(listener);
 
 	game.generateLevel();
 
@@ -90,7 +79,7 @@ Game.prototype.start = function(){
 
 Game.prototype.setupPhysics = function () {
 
-    world = new b2d.b2World(new b2d.b2Vec2(0, 10), true);
+    world = new b2d.b2World(new b2d.b2Vec2(0, 1000), true);
 
     // debug draw:
     var debugDraw = new b2d.b2DebugDraw();
@@ -101,8 +90,7 @@ Game.prototype.setupPhysics = function () {
     debugDraw.SetLineThickness(1.0);
     world.SetDebugDraw(debugDraw);
 
-    var listener = new ContactListener();
-    world.SetContactListener(listener);
+    
 }
 
 Game.prototype.generateLevel = function () {
@@ -110,7 +98,7 @@ Game.prototype.generateLevel = function () {
     while (this.platforms.length < 15) {
     	var randomSign = Math.random();
         //console.log(this.plat.x);
-        console.log(this.platforms.length);
+        //console.log(this.platforms.length);
         var lastX = this.plat.body.GetPosition().x * SCALE + (this.plat.body.bitmaps.length * this.plat.segmentSize);
         var lastY = this.plat.body.GetPosition().y * SCALE;
         var newX = lastX + Math.floor(Math.random() * (this.HORIZONTAL_MAX - this.HORIZONTAL_MIN + 1)) + this.HORIZONTAL_MIN;
@@ -127,7 +115,7 @@ Game.prototype.generateLevel = function () {
             newY += 2*this.VERTICAL;
         }
         var tiles = Math.floor(Math.random() * (this.TILES_MAX - this.TILES_MIN + 1) + this.TILES_MIN);
-        console.log(lastX + " : " + lastY + " : " + newX + " : " + newY);
+        //console.log(lastX + " : " + lastY + " : " + newX + " : " + newY);
         this.plat = new Platform(Math.floor(newX / SCALE), Math.floor(newY / SCALE), tiles)
         this.platforms.push(this.plat);
 

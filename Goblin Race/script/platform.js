@@ -46,10 +46,10 @@ function Platform(xPos,yPos,tiles){
 	    this.body.bitmaps.push(visuals);
 	    stage.addChild(visuals);
 	    visuals.y = yPos * SCALE - this.segmentHeight;
-	    visuals.x = xPos * SCALE + (this.segmentSize * i); // FAktor für die Tile-Länge
+	    visuals.x = xPos * SCALE + (this.segmentSize * i); // Faktor für die Tile-Länge
 	}
-	
-	this.body.SetUserData("ground");
+
+	//this.body.SetUserData("ground");
 }
 
 
