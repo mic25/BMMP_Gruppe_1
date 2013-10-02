@@ -16,6 +16,7 @@
 	this.TILES_MIN = 1;
 	this.TILES_MAX = 5;
 	this.platformSpeed = -10;
+
 	this.plat;
 }
 
@@ -112,7 +113,7 @@ Game.prototype.generateLevel = function () {
         }
         else{
         	var newY = lastY + Math.random() * this.VERTICAL;
-        }	
+        }
 
         if (newY > stage.canvas.height - this.plat.segmentHeight) {
             newY -= this.VERTICAL;
