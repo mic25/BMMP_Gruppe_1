@@ -48,6 +48,7 @@ Game.prototype.handleTick = function () {
     //kopiert aus Blatt05 was auch immer das hier macht..
     world.Step(1 / 60,  10,  10);
     world.DrawDebugData();
+    stage.autoClear = false;
     world.ClearForces();
 
     //Player
@@ -61,8 +62,8 @@ Game.prototype.handleTick = function () {
 
 Game.prototype.start = function(){
 
-	stage.addChild(this.bg);
-	stage.addChild(this.ground);
+	//stage.addChild(this.bg);
+	//stage.addChild(this.ground);
 
 	game.setupPhysics();
     this.plat= new Platform(0 / SCALE, 400 / SCALE, 15); //Startplatform
