@@ -15,6 +15,7 @@
 	this.HORIZONTAL_MIN = 50;
 	this.TILES_MIN = 1;
 	this.TILES_MAX = 5;
+	this.platformSpeed = -10;
 
 	this.plat;
 }
@@ -36,12 +37,12 @@ Game.prototype.handleTick = function () {
 	    
 	    this.platforms[i].update();
 
-	    if(this.platforms[i].body.bitmaps[0].x*SCALE < -this.platforms[i].tiles * this.platforms[i].segmentSize - 500){
+	    if(this.platforms[i].body.bitmaps[0].x < -stage.canvas.width){
 	    	stage.removeChild(this.platforms[i]);
-	    	this.platforms.splice(i,1);
+	    	this.platforms.splice(i, 1);
 	    }
 	}
-	console.log(this.platforms.length);
+	//console.log(this.platforms.length);
 	game.generateLevel();
 
     //kopiert aus Blatt05 was auch immer das hier macht..
@@ -64,7 +65,7 @@ Game.prototype.start = function(){
 	stage.addChild(this.ground);
 
 	game.setupPhysics();
-    this.plat= new Platform(0 / SCALE, 400 / SCALE, 8); //Startplatform
+    this.plat= new Platform(0 / SCALE, 400 / SCALE, 15); //Startplatform
 	this.platforms.push(this.plat);
 
 	player = new Player();
@@ -79,7 +80,7 @@ Game.prototype.start = function(){
 
 Game.prototype.setupPhysics = function () {
 
-    world = new b2d.b2World(new b2d.b2Vec2(0, 1000), true);
+    world = new b2d.b2World(new b2d.b2Vec2(0, 10), true);
 
     // debug draw:
     var debugDraw = new b2d.b2DebugDraw();
@@ -98,7 +99,8 @@ Game.prototype.generateLevel = function () {
     while (this.platforms.length < 15) {
     	var randomSign = Math.random();
         //console.log(this.plat.x);
-        //console.log(this.platforms.length);
+        console.log(this.platforms.length);
+    	//console.log(this.plat.body.GetPosition().y);
         var lastX = this.plat.body.GetPosition().x * SCALE + (this.plat.body.bitmaps.length * this.plat.segmentSize);
         var lastY = this.plat.body.GetPosition().y * SCALE;
         var newX = lastX + Math.floor(Math.random() * (this.HORIZONTAL_MAX - this.HORIZONTAL_MIN + 1)) + this.HORIZONTAL_MIN;

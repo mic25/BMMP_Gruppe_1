@@ -3,7 +3,6 @@ function Platform(xPos,yPos,tiles){
 	this.x = xPos;
 	this.y = yPos;
 	this.tiles = tiles;
-	this.speed = -12;
 	this.segmentSize = 88; //Breite des Bildes
 	this.segmentHeight = 44;
 
@@ -49,16 +48,16 @@ function Platform(xPos,yPos,tiles){
 	    visuals.x = xPos * SCALE + (this.segmentSize * i); // Faktor für die Tile-Länge
 	}
 
-	//this.body.SetUserData("ground");
+	this.body.SetUserData("platform");
 }
 
 
 
 Platform.prototype.update = function(){
 	for(var i=0;i<this.body.bitmaps.length;i++){		
-		this.body.bitmaps[i].x += this.speed;
+	    this.body.bitmaps[i].x += game.platformSpeed;
 	}
 
-	this.body.SetPosition(new b2d.b2Vec2(this.body.GetPosition().x+this.speed,this.body.GetPosition().y)); // Könnte falsch sein
+	this.body.SetPosition(new b2d.b2Vec2(this.body.GetPosition().x+game.platformSpeed,this.body.GetPosition().y)); 
 	//console.log(this.body.GetPosition().x + " : " + this.body.GetPosition().y));
 }

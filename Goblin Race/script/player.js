@@ -34,6 +34,8 @@ function Player() {
 	this.body.SetUserData("player");
 	this.body.SetBullet(true);
 	this.mass = this.body.GetMass();
+
+	this.body.SetUserData("player");
 }
 
 
@@ -43,20 +45,19 @@ Player.prototype.draw = function(){
 }
 
 Player.prototype.jump = function(){
-	console.log("jump");
-	this.body.SetAwake(true);
-	if(this.onGround && this.jumpTimeout<=0){
-		    this.body.ApplyImpulse( new b2d.b2Vec2(0,-this.mass*10), this.body.GetWorldCenter() );
+	player.body.SetAwake(true);
+	//if(this.onGround && this.jumpTimeout<=0){
+		    player.body.ApplyImpulse( new b2d.b2Vec2(0,-this.mass*10), this.body.GetWorldCenter() );
 		    this.jumpTimeout = 15;		    	
-	}	
+	//}	
 }
 
 Player.prototype.moveLeft = function(){
-	this.body.ApplyForce( new b2d.b2Vec2(-40,0), this.body.GetWorldCenter() );
+	player.body.ApplyForce( new b2d.b2Vec2(-100,0), this.body.GetWorldCenter() );
 }
 
 Player.prototype.moveRight = function(){
-	this.body.ApplyForce( new b2d.b2Vec2(40,0), this.body.GetWorldCenter() );		
+	player.body.ApplyForce( new b2d.b2Vec2(100,0), this.body.GetWorldCenter() );		
 }
 
 Player.prototype.moveDown = function(){
@@ -83,7 +84,10 @@ Player.prototype.update = function() {
 	}
 
   	this.x = this.body.GetPosition().x;
-	this.y = this.body.GetPosition().y;
+  	this.y = this.body.GetPosition().y;
+
+  	this.image.x = this.body.GetPosition().x;
+  	this.image.y = this.body.GetPosition().y;
 
 };
 
