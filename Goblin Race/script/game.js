@@ -11,8 +11,8 @@
     //Platforms
 	this.platforms = new Array();
 	this.VERTICAL = 50;
-	this.HORIZONTAL_MAX = 300;
-	this.HORIZONTAL_MIN = 50;
+	this.HORIZONTAL_MAX = 200;
+	this.HORIZONTAL_MIN = 70;
 	this.TILES_MIN = 1;
 	this.TILES_MAX = 5;
 	this.platformSpeed = -10;
@@ -66,7 +66,7 @@ Game.prototype.start = function(){
 	//stage.addChild(this.ground);
 
 	game.setupPhysics();
-    this.plat= new Platform(0 / SCALE, 400 / SCALE, 15); //Startplatform
+    this.plat= new Platform(352 / SCALE, 500 / SCALE, 10); //Startplatform
 	this.platforms.push(this.plat);
 
 	player = new Player();
@@ -102,22 +102,26 @@ Game.prototype.generateLevel = function () {
         //console.log(this.plat.x);
         //console.log(this.platforms.length);
     	//console.log(this.plat.body.GetPosition().y);
-        var lastX = this.plat.body.GetPosition().x * SCALE + (this.plat.body.bitmaps.length * this.plat.segmentSize);
+        var lastX = this.plat.body.GetPosition().x * SCALE ;
         var lastY = this.plat.body.GetPosition().y * SCALE;
-        var newX = lastX + Math.floor(Math.random() * (this.HORIZONTAL_MAX - this.HORIZONTAL_MIN + 1)) + this.HORIZONTAL_MIN;
-        if(randomSign <0.5){
-        	var newY = lastY -  Math.random() * 2 * this.VERTICAL;
+        var tiles = Math.floor(Math.random() * (this.TILES_MAX - this.TILES_MIN + 1) + this.TILES_MIN);
+        var newX = lastX + Math.floor(Math.random() * (this.HORIZONTAL_MAX - this.HORIZONTAL_MIN + 1)) + this.HORIZONTAL_MIN
+            + (this.plat.tiles * this.plat.segmentSize) / 2 + (tiles * this.plat.segmentSize) / 2;
+
+        if(randomSign < lastY/stage.canvas.height){
+        	var newY = lastY -  Math.random() * this.VERTICAL;
         }
         else{
-        	var newY = lastY + Math.random() * 2 * this.VERTICAL;
-        }	
+        	var newY = lastY + Math.random() * this.VERTICAL;
+        }
+
         if (newY > stage.canvas.height - this.plat.segmentHeight) {
             newY -= this.VERTICAL;
         }
         else if (newY < this.plat.segmentHeight + 2*this.VERTICAL) {
             newY += 2*this.VERTICAL;
         }
-        var tiles = Math.floor(Math.random() * (this.TILES_MAX - this.TILES_MIN + 1) + this.TILES_MIN);
+        
         //console.log(lastX + " : " + lastY + " : " + newX + " : " + newY);
         this.plat = new Platform(Math.floor(newX / SCALE), Math.floor(newY / SCALE), tiles)
         this.platforms.push(this.plat);

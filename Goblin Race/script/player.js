@@ -47,7 +47,7 @@ Player.prototype.draw = function(){
 Player.prototype.jump = function(){
 	player.body.SetAwake(true);
 	if(this.onGround && this.jumpTimeout<=0){
-		    player.body.ApplyImpulse( new b2d.b2Vec2(0,-this.mass*5), this.body.GetWorldCenter() );
+		    player.body.ApplyImpulse( new b2d.b2Vec2(0,-this.mass*10), this.body.GetWorldCenter() );
 		    this.jumpTimeout = 15;		    	
 	}	
 }
@@ -62,7 +62,7 @@ Player.prototype.moveRight = function(){
 
 Player.prototype.moveDown = function(){
 	if(!this.onGround)
-	this.body.ApplyForce( new b2d.b2Vec2(0,200), this.body.GetWorldCenter() );		
+	this.body.ApplyForce( new b2d.b2Vec2(0,300), this.body.GetWorldCenter() );		
 }
 
 
