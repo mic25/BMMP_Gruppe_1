@@ -30,7 +30,6 @@ function Player() {
 	this.image = new createjs.Bitmap(queue.getResult("figure"));
 	this.image.scaleX = 0.5;
 	this.image.scaleY = 0.5;
-	this.image.y -= 30;
 	//this.image.graphics.beginFill("#0ff").rect(0,0,this.boxWidth*2*SCALE,this.boxHeight*2*SCALE);
 	stage.addChild(this.image);
 
@@ -43,7 +42,7 @@ function Player() {
 
 
 Player.prototype.draw = function(){
-	this.image.x = (this.x-this.boxWidth)*SCALE;
+	this.image.x = (this.x-this.boxWidth)*SCALE - this.image.image.width/8;
 	this.image.y = (this.y-this.boxHeight)*SCALE;
 }
 
