@@ -46,10 +46,10 @@ Player.prototype.draw = function(){
 
 Player.prototype.jump = function(){
 	player.body.SetAwake(true);
-	//if(this.onGround && this.jumpTimeout<=0){
+	if(this.onGround && this.jumpTimeout<=0){
 		    player.body.ApplyImpulse( new b2d.b2Vec2(0,-this.mass*5), this.body.GetWorldCenter() );
 		    this.jumpTimeout = 15;		    	
-	//}	
+	}	
 }
 
 Player.prototype.moveLeft = function(){
