@@ -47,20 +47,22 @@ function Platform(xPos,yPos,tiles){
 	    visuals.y = yPos * SCALE - this.segmentHeight;
 	    visuals.x = xPos * SCALE + (this.segmentSize * i); // Faktor für die Tile-Länge
 	}
-
+    
 	this.body.SetUserData("platform");
 }
 
 
 
-Platform.prototype.update = function(){
+Platform.prototype.update = function () {
+    this.body.SetAwake(true);
+    this.body.SetPosition(new b2d.b2Vec2(this.body.GetPosition().x + game.platformSpeed / SCALE , this.body.GetPosition().y));
 	for(var i=0;i<this.body.bitmaps.length;i++){		
-	    this.body.bitmaps[i].x += game.platformSpeed;
+	    this.body.bitmaps[i].x = this.body.GetPosition().x * SCALE + (this.segmentSize * i);
 	}
 
 	//this.body.ApplyForce(new b2d.b2Vec2(game.platformSpeed, 0), this.body.GetWorldCenter());
 	
 
-	this.body.SetPosition(new b2d.b2Vec2(this.body.GetPosition().x+game.platformSpeed/SCALE,this.body.GetPosition().y)); 
+	 
 	//console.log(this.body.GetPosition().x + " : " + this.body.GetPosition().y));
 }
