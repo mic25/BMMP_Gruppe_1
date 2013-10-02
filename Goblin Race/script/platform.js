@@ -58,6 +58,8 @@ Platform.prototype.update = function(){
 	    this.body.bitmaps[i].x += game.platformSpeed;
 	}
 
-	this.body.SetPosition(new b2d.b2Vec2(this.body.GetPosition().x+game.platformSpeed,this.body.GetPosition().y)); 
+	this.body.ApplyForce(new b2d.b2Vec2(game.platformSpeed, 0), this.body.GetWorldCenter());
+
+	//this.body.SetPosition(new b2d.b2Vec2(this.body.GetPosition().x+game.platformSpeed,this.body.GetPosition().y)); 
 	//console.log(this.body.GetPosition().x + " : " + this.body.GetPosition().y));
 }

@@ -99,7 +99,7 @@ Game.prototype.generateLevel = function () {
     while (this.platforms.length < 15) {
     	var randomSign = Math.random();
         //console.log(this.plat.x);
-        console.log(this.platforms.length);
+        //console.log(this.platforms.length);
     	//console.log(this.plat.body.GetPosition().y);
         var lastX = this.plat.body.GetPosition().x * SCALE + (this.plat.body.bitmaps.length * this.plat.segmentSize);
         var lastY = this.plat.body.GetPosition().y * SCALE;
