@@ -79,8 +79,9 @@ Player.prototype.update = function() {
 	}
 
 	if (Key.isDown(Key.UP)) player.jump();
+	if (Key.isDown(Key.SPACE)) player.jump();
 	if (Key.isDown(Key.DOWN)) player.moveDown();
-	if (Key.isDown(Key.LEFT)) player.moveLeft();
+	if (Key.isDown(Key.LEFT)) player.moveLeft();	
 	if (Key.isDown(Key.RIGHT)) player.moveRight();
 	if (Key.isEmpty() && !this.onGround) {
 	}

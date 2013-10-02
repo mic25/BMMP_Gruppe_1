@@ -1,11 +1,12 @@
 ﻿function Game() {
     //
 
-	this.bg_speed1 = -5;
-	this.ground_speed = -7;
+    this.bg_speed = -5;
+    this.mg_speed = -6;
+	this.fg_speed = -7;
 
 	this.bg = new createjs.Bitmap(queue.getResult("bg"));
-	this.ground = new createjs.Bitmap(queue.getResult("ground"));
+	this.fg = new createjs.Bitmap(queue.getResult("ground"));
 
 
     //Platforms
@@ -17,19 +18,33 @@
 	this.TILES_MAX = 5;
 	this.platformSpeed = -10;
 
+    //Startspeeds
+	this.BG_SPEED = -5;
+	this.MG_SPEED = -6;
+	this.FG_SPEED = -7;
+	this.PL_SPEED = -10;
+
 	this.plat;
+
+	this.score = 1;
+	this.speedControl = 1;
+
+    //Score
+	this.score_text = new createjs.Text("Score : " + this.score, "40px Arial", "#000");
+	this.score_text.x = 1150; this.score_text.y = 50;
+	
 }
 
 Game.prototype.handleTick = function () {
 
     //Background
-	this.bg.x += this.bg_speed1;
-	this.ground.x += this.ground_speed;
+	this.bg.x += this.bg_speed;
+	this.fg.x += this.fg_speed;
 	if(this.bg.x+this.bg.image.width < stage.canvas.width){
 		this.bg.x = 0;
 	}
-	if(this.ground.x+this.ground.image.width < stage.canvas.width){
-		this.ground.x = 0;
+	if(this.fg.x+this.fg.image.width < stage.canvas.width){
+		this.fg.x = 0;
 	}
 
     //Platforms
@@ -42,6 +57,16 @@ Game.prototype.handleTick = function () {
 	    	this.platforms.splice(i, 1);
 	    }
 	}
+
+    //Lets mak this stuff hard to do :D
+	this.score += -this.platformSpeed / SCALE;
+	this.speedcontrol = Math.min(Math.floor(this.score/20),30);
+	this.platformSpeed = this.PL_SPEED - this.speedControl;
+	this.bg_speed = this.BG_SPEED - 0.5 * this.speedControl;
+	this.mg_speed = this.MG_SPEED - 0.7 * this.speedControl;
+	this.fg_speed = this.FG_SPEED - 0.9 * this.speedControl;
+	this.score_text.text = "Score : " + Math.floor(this.score);
+
 	//console.log(this.platforms.length);
 	game.generateLevel();
 
@@ -64,7 +89,8 @@ Game.prototype.handleTick = function () {
 Game.prototype.start = function(){
 
 	stage.addChild(this.bg);
-	stage.addChild(this.ground);
+	stage.addChild(this.fg);
+	stage.addChild(this.score_text);
 
 	game.setupPhysics();
     this.plat= new Platform(352 / SCALE, 500 / SCALE, 10); //Startplatform
