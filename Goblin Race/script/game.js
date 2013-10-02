@@ -113,7 +113,7 @@ Game.prototype.generateLevel = function () {
         }
         else{
         	var newY = lastY + Math.random() * this.VERTICAL;
-        }
+        }	
 
         if (newY > stage.canvas.height - this.plat.segmentHeight) {
             newY -= this.VERTICAL;
