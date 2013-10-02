@@ -10,13 +10,12 @@
 
     //Platforms
 	this.platforms = new Array();
-	this.VERTICAL = 50;
+	this.VERTICAL = 100;
 	this.HORIZONTAL_MAX = 200;
 	this.HORIZONTAL_MIN = 70;
 	this.TILES_MIN = 1;
 	this.TILES_MAX = 5;
 	this.platformSpeed = -10;
-
 	this.plat;
 }
 
@@ -48,7 +47,7 @@ Game.prototype.handleTick = function () {
     //kopiert aus Blatt05 was auch immer das hier macht..
     world.Step(1 / 60,  10,  10);
     world.DrawDebugData();
-    stage.autoClear = false;
+    //stage.autoClear = false;
     world.ClearForces();
 
     //Player
@@ -62,8 +61,8 @@ Game.prototype.handleTick = function () {
 
 Game.prototype.start = function(){
 
-	//stage.addChild(this.bg);
-	//stage.addChild(this.ground);
+	stage.addChild(this.bg);
+	stage.addChild(this.ground);
 
 	game.setupPhysics();
     this.plat= new Platform(352 / SCALE, 500 / SCALE, 10); //Startplatform
@@ -102,7 +101,7 @@ Game.prototype.generateLevel = function () {
         //console.log(this.plat.x);
         //console.log(this.platforms.length);
     	//console.log(this.plat.body.GetPosition().y);
-        var lastX = this.plat.body.GetPosition().x * SCALE ;
+        var lastX = this.plat.body.GetPosition().x * SCALE;
         var lastY = this.plat.body.GetPosition().y * SCALE;
         var tiles = Math.floor(Math.random() * (this.TILES_MAX - this.TILES_MIN + 1) + this.TILES_MIN);
         var newX = lastX + Math.floor(Math.random() * (this.HORIZONTAL_MAX - this.HORIZONTAL_MIN + 1)) + this.HORIZONTAL_MIN
@@ -118,12 +117,12 @@ Game.prototype.generateLevel = function () {
         if (newY > stage.canvas.height - this.plat.segmentHeight) {
             newY -= this.VERTICAL;
         }
-        else if (newY < this.plat.segmentHeight + 2*this.VERTICAL) {
+        else if (newY < this.plat.segmentHeight + 4*this.VERTICAL) {
             newY += 2*this.VERTICAL;
         }
         
         //console.log(lastX + " : " + lastY + " : " + newX + " : " + newY);
-        this.plat = new Platform(Math.floor(newX / SCALE), Math.floor(newY / SCALE), tiles)
+        this.plat = new Platform(newX / SCALE, newY / SCALE, tiles)
         this.platforms.push(this.plat);
 
     }

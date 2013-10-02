@@ -27,8 +27,11 @@ function Player() {
 	this.fixture = this.body.CreateFixture(this.fixDef);
 
  	//setup the graphics
-	this.image = new createjs.Shape();
-	this.image.graphics.beginFill("#0ff").rect(0,0,this.boxWidth*2*SCALE,this.boxHeight*2*SCALE);
+	this.image = new createjs.Bitmap(queue.getResult("figure"));
+	this.image.scaleX = 0.5;
+	this.image.scaleY = 0.5;
+	this.image.y -= 30;
+	//this.image.graphics.beginFill("#0ff").rect(0,0,this.boxWidth*2*SCALE,this.boxHeight*2*SCALE);
 	stage.addChild(this.image);
 
 	this.body.SetUserData("player");
