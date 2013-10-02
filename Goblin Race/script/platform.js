@@ -11,8 +11,8 @@ function Platform(xPos,yPos,tiles){
 	bodyDef.type = b2d.b2Body.b2_kinematicBody;
 
 	var shape = new b2d.b2PolygonShape();
-	this.boxWidth = (this.segmentSize*this.tiles)/SCALE;
-	this.boxHeight = this.segmentHeight/SCALE;
+	this.boxWidth = (this.segmentSize*this.tiles)/SCALE/2;
+	this.boxHeight = this.segmentHeight/SCALE/2;
 	shape.SetAsBox(this.boxWidth,this.boxHeight);
 
 	var fixDef = new b2d.b2FixtureDef();
@@ -43,9 +43,10 @@ function Platform(xPos,yPos,tiles){
 	for (var i = 0; i < this.tiles; i++) {
 	    var visuals = new createjs.Bitmap(queue.getResult("platform1"));
 	    this.body.bitmaps.push(visuals);
+	    
+	    visuals.y = yPos * SCALE - 0.5*this.segmentHeight;
+	    visuals.x = xPos * SCALE + (this.segmentSize * i) - this.tiles*this.segmentSize/2; // Faktor für die Tile-Länge
 	    stage.addChild(visuals);
-	    visuals.y = yPos * SCALE - this.segmentHeight;
-	    visuals.x = xPos * SCALE + (this.segmentSize * i); // Faktor für die Tile-Länge
 	}
     
 	this.body.SetUserData("platform");
@@ -57,7 +58,7 @@ Platform.prototype.update = function () {
     this.body.SetAwake(true);
     this.body.SetPosition(new b2d.b2Vec2(this.body.GetPosition().x + game.platformSpeed / SCALE , this.body.GetPosition().y));
 	for(var i=0;i<this.body.bitmaps.length;i++){		
-	    this.body.bitmaps[i].x = this.body.GetPosition().x * SCALE + (this.segmentSize * i);
+	    this.body.bitmaps[i].x = this.body.GetPosition().x * SCALE + (this.segmentSize * i) - (this.tiles * this.segmentSize/2);
 	}
 
 	//this.body.ApplyForce(new b2d.b2Vec2(game.platformSpeed, 0), this.body.GetWorldCenter());
