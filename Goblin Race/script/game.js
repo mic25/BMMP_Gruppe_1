@@ -36,12 +36,15 @@ Game.prototype.handleTick = function () {
 	    
 	    this.platforms[i].update();
 
+
 	    if(this.platforms[i].body.bitmaps[0].x*SCALE < -this.platforms[i].tiles * this.platforms[i].segmentSize - 500){
-	    	stage.removeChild(this.platforms[i]);
+	    	var disObj = new createjs.DisplayObject(this.platforms[i]);
+	    	stage.removeChild(disObj);
 	    	this.platforms.splice(i,1);
+	    	//console.log(disObj);
 	    }
 	}
-	console.log(this.platforms.length);
+	//console.log(this.platforms.length);
 	game.generateLevel();
 
     //kopiert aus Blatt05 was auch immer das hier macht..
