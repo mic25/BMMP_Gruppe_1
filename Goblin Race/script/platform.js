@@ -57,7 +57,8 @@ function Platform(xPos,yPos,tiles){
 Platform.prototype.update = function(){
 	for(var i=0;i<this.body.bitmaps.length;i++){		
 		this.body.bitmaps[i].x += this.speed;
+		//this.body.SetPosition(this.body.GetPosition().x+this.speed,this.body.GetPosition().y)
 	}
 
-	this.body.SetPosition(new b2d.b2Vec2(this.x,this.y)); // Könnte falsch sein
+	this.body.SetPosition(new b2d.b2Vec2(this.body.GetPosition().x+this.speed,this.body.GetPosition().y)); // Könnte falsch sein
 }

@@ -37,7 +37,7 @@ Game.prototype.handleTick = function () {
 	    
 	    this.platforms[i].update();
 
-	    if(this.platforms[i].body.bitmaps[0].x*SCALE < -this.platforms[i].tiles * this.platforms[i].segmentHeight){
+	    if(this.platforms[i].body.bitmaps[0].x*SCALE < -this.platforms[i].tiles * this.platforms[i].segmentSize){
 	    	stage.removeChild(this.platforms[i]);
 	    	this.platforms.splice(i,1);
 	    }
