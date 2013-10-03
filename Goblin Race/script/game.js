@@ -40,11 +40,13 @@
 Game.prototype.handleTick = function () {
 
     //Background
+    level.generateBackground();
     level.updateBackground();
 
     //Platforms
-    level.updatePlatforms();
     level.generateLevel();
+    level.updatePlatforms();
+
 
     //Lets mak this stuff hard to do :D
 	this.distance += -this.platformSpeed / SCALE;

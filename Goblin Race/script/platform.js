@@ -26,21 +26,6 @@ function Platform(xPos,yPos,tiles,type){
 	this.body.CreateFixture(fixDef);
 	this.body.bitmaps = [];
 
-	/*for(var i=0;i<tiles;i++){
-		var random = Math.random();
-		if(random>0.66)
-			pic = 3;
-		else if(random >0.33)
-			pic = 2;
-		else pic = 1;	
-		var url = queue.getResult("ground"+pic);
-
-		var visuals = new createjs.Bitmap(url);
-		this.body.bitmaps.push(visuals);	
-		stage.addChild(visuals);
-		visuals.y = yPos*SCALE-50;
-	}*/
-
 	for (var i = 0; i < this.tiles; i++) {
 	    var visuals = new createjs.Bitmap(queue.getResult("platform1"));
 	    this.body.bitmaps.push(visuals);
