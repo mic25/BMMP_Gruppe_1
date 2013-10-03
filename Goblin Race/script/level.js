@@ -1,9 +1,9 @@
 ﻿function Level() {
 
-    this.style = "rainbow"; // options : sky, green,cave, rainbow 
-    this.last_bg = 2; //last added imagepart
-    this.last_mg = 2; // 0 = start, 1 = middle, 2 = end
-    this.last_fg = 2;
+    this.style = "rainbow"; // options : sky, cave, rainbow 
+    this.last_bg = 3; //last added image-part
+    this.last_mg = 3; // 0 = start, 1 = middle, 2 = end, 3 = green
+    this.last_fg = 3;
     this.bg_im; //last added image
     this.mg_im;
     this.fg_im;
@@ -18,8 +18,8 @@
     //this.mg = new Array();
     this.fg = new Array();
 
-    this.BG_ELEMENTS = 3;
-    this.PL_ELEMENTS = 15;
+    this.BG_ELEMENTS = 2;
+    this.PL_ELEMENTS = 10;
    
     this.platforms = new Array();
     this.plat;
@@ -29,7 +29,7 @@
 Level.prototype.initialize = function () {
 
     //setup Background
-    this.bg_im = new createjs.Bitmap(queue.getResult("bg_rainbow_2"));
+    this.bg_im = new createjs.Bitmap(queue.getResult("bg_green"));
     this.bg[0] = this.bg_im;
     this.fg_im = new createjs.Bitmap(queue.getResult("fg"));
     this.fg[0] = this.fg_im;
@@ -91,10 +91,10 @@ Level.prototype.generateBackground = function () {
     //add new Background
     while (this.bg.length < this.BG_ELEMENTS) {
         var newX = this.bg_im.x + this.bg_im.image.width - 1;
-        if (this.last_bg == 1) {
-            this.last_bg = Math.floor(this.lst_bg + Math.random() + 0.5);
+        if (this.last_bg == 1 || this.last_bg == 3) {
+            this.last_bg = Math.floor(this.last_bg + Math.random() + 0.5)%4;
         }
-        else this.last_bg = (this.last_bg + 1) % 3 ;
+        else this.last_bg = (this.last_bg + 1)%4 ;
         var url;
         if (this.last_bg == 1) {
             var pic;
@@ -110,12 +110,15 @@ Level.prototype.generateBackground = function () {
         else if (this.last_bg == 0) {
             var random = Math.random();
             /* Sobald alle stile verfügbar !
-            if (random > 0.75) this.style = "green";
-            else if (random > 0.5) this.style = "sky";
-            else if (random > 0.25) this.style = "rainbow";
+            if (random > 0.66) this.style = "sky";
+            else if (random > 0.33) this.style = "rainbow";
             else this.style = "cave"; */
             url = queue.getResult("bg_" + this.style + "_start");
             console.log("bg_" + this.style + "_start");
+        }
+        else if (this.last_bg == 3) {
+            url = queue.getResult("bg_green");
+            console.log("bg_green");
         }
         else {
             url = queue.getResult("bg_" + this.style + "_end");
