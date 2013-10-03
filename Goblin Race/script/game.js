@@ -24,16 +24,16 @@
 	this.speedControl = 1;
 
     //Score Output
-	this.distance_text = new createjs.Text("Score : " + this.distance, "40px Arial", "#000");
-	this.distance_text.x = 1050; this.distance_text.y = 50;
+	this.distance_text = new createjs.Text("Score : " + this.distance, "40px  'Voltaire', sans-serif", "#000");
+	this.distance_text.x = 1100; this.distance_text.y = 50;
 
     //Game Over
-    this.gameOver_text = new createjs.Text("You lost!", "150px Arial", "#DF0101");
+	this.gameOver_text = new createjs.Text("You lost!", "150px Arial", "#DF0101");
     this.gameOver_text.x = 400;
     this.gameOver_text.y = 250;
 
-    this.reached_text = new createjs.Text("Your score: " + this.distance, "60px Arial", "#DF0101");
-    this.reached_text.x = 500;
+    this.reached_text = new createjs.Text("Your score: " + this.distance, "60px  'Voltaire', sans-serif", "#DF0101");
+    this.reached_text.x = 520;
     this.reached_text.y = 450;	
 }
 
