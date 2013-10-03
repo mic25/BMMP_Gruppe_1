@@ -32,6 +32,15 @@
     //Score
 	this.score_text = new createjs.Text("Score : " + this.score, "40px Arial", "#000");
 	this.score_text.x = 1150; this.score_text.y = 50;
+
+    //Game Over
+    this.gameOver_text = new createjs.Text("You lost!", "150px Arial", "#DF0101");
+    this.gameOver_text.x = 400;
+    this.gameOver_text.y = 250;
+
+    this.reached_text = new createjs.Text("Your score: " + this.score, "60px Arial", "#DF0101");
+    this.reached_text.x = 500;
+    this.reached_text.y = 450;
 	
 }
 
@@ -81,7 +90,16 @@ Game.prototype.handleTick = function () {
     if (player != undefined) {
         player.update();
         player.draw();
+
+        if(player.isOutOfBounds){
+            inGame = false;
+            this.reached_text.text = "Your score: " + Math.floor(this.score);
+            stage.addChild(this.gameOver_text);
+            stage.addChild(this.reached_text);
+        }
     }
+
+    
     
 
 }

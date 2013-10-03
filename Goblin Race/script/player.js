@@ -6,6 +6,7 @@ function Player() {
 	this.maxSpeed =100;
 	this.numFootContacts = 0;
 	this.jumpTimeout = 0;
+	this.isOutOfBounds = false;
 
 	//Create the physical player body
 	var bodyDef = new b2d.b2BodyDef();
@@ -68,9 +69,16 @@ Player.prototype.moveDown = function(){
 }
 
 
+
 Player.prototype.update = function() {
 	this.moveDown();
 	this.jumpTimeout --;
+
+	if(this.body.GetPosition().y*SCALE > stage.canvas.height + this.image.image.height/2){
+		this.isOutOfBounds =  true;
+	}else{
+		this.isOutOfBounds = false;
+	}
 
 	if(this.numFootContacts<1){
 		this.onGround = false;
