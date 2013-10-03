@@ -1,9 +1,9 @@
 ﻿function Level() {
 
     this.style = "rainbow"; // options : sky, green,cave, rainbow 
-    this.last_bg = "0"; //last added imagepart
-    this.last_mg = "0"; // 0 = start, 1 = middle, 2 = end
-    this.last_fg = "0";
+    this.last_bg = 2; //last added imagepart
+    this.last_mg = 2; // 0 = start, 1 = middle, 2 = end
+    this.last_fg = 2;
     this.bg_im; //last added image
     this.mg_im;
     this.fg_im;
@@ -34,7 +34,7 @@ Level.prototype.initialize = function () {
     this.fg_im = new createjs.Bitmap(queue.getResult("fg"));
     this.fg[0] = this.fg_im;
     stage.addChildAt(this.bg[0],0);
-    stage.addChildAt(this.fg[0],2);
+    stage.addChildAt(this.fg[0],1);
 
     //Startplatform
     this.plat = new Platform(352 / SCALE, 500 / SCALE, 10); 
@@ -94,7 +94,7 @@ Level.prototype.generateBackground = function () {
         if (this.last_bg == 1) {
             this.last_bg = Math.floor(this.lst_bg + Math.random() + 0.5);
         }
-        else this.last_bg = (this.last_bg + 1) % 3;
+        else this.last_bg = (this.last_bg + 1) % 3 ;
         var url;
         if (this.last_bg == 1) {
             var pic;
@@ -104,7 +104,8 @@ Level.prototype.generateBackground = function () {
             else if (random > 0.33)
                 pic = 2;
             else pic = 1;	
-            url = queue.getResult("bg_" + this.style +"_"+ pic);
+            url = queue.getResult("bg_" + this.style + "_" + pic);
+            console.log("bg_" + this.style + "_" + pic);
         }
         else if (this.last_bg == 0) {
             var random = Math.random();
@@ -114,39 +115,43 @@ Level.prototype.generateBackground = function () {
             else if (random > 0.25) this.style = "rainbow";
             else this.style = "cave"; */
             url = queue.getResult("bg_" + this.style + "_start");
+            console.log("bg_" + this.style + "_start");
         }
         else {
-            url = queue.getResult("bg_" + this.style+"_end");
-        }        
+            url = queue.getResult("bg_" + this.style + "_end");
+            console.log("bg_" + this.style + "_end");
+        }
         this.bg_im = new createjs.Bitmap(url);
         this.bg.push(this.bg_im);
         stage.addChildAt(this.bg_im,0);
         this.bg_im.x = newX;
     }
 
-    while (this.fg.length < 3) {
+    //add new forground
+    while (this.fg.length < this.BG_ELEMENTS) {
+        var newX = this.fg_im.x + this.fg_im.image.width - 1;
         this.fg_im = new createjs.Bitmap(queue.getResult("fg"));
         this.fg.push(this.fg_im);
-        stage.addChildAt(this.bg_im, 2);
-        this.bg_im.x = newX;
+        stage.addChildAt(this.fg_im, 3); //Later push it to 6
+        this.fg_im.x = newX;
     }
 
-    //setup correct order!!!
+    //setup correct order!!! -> DONE :D
 
 }
 
 Level.prototype.updateBackground = function () {
 
     //move images
-    for (i = 0; i < this.BG_ELEMENTS; i++) {
+    for (var i = 0; i < this.BG_ELEMENTS; i++) {
         this.bg[i].x += game.bg_speed;
         //this.mg[i].image.x += game.mg_speed;
         this.fg[i].x += game.fg_speed;
     }
 
     //remove images out of bounds
-    for (i = 0; i < this.BG_ELEMENTS; i++) {
-        if (this.bg[i].x <-4000 ){// -this.bg[i].image.width) {
+    for (var i = 0; i < this.BG_ELEMENTS ; i++) {
+        if (this.bg[i].x < -(this.bg[i].image.width)) {
             stage.removeChild(this.bg[i]);
             this.bg.splice(i, 1);
         }
@@ -154,7 +159,7 @@ Level.prototype.updateBackground = function () {
             stage.removeChild(this.mg[i]);
             this.mg.splice(i, 1);
         }*/
-        if (this.fg[i].x < -this.fg[i].image.width) {
+        if (this.fg[i].x < -(this.fg[i].image.width)) {
             stage.removeChild(this.fg[i]);
             this.fg.splice(i, 1);
         }
