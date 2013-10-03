@@ -15,9 +15,9 @@ Menu.prototype.showMenu = function () {
 Menu.prototype.startGame = function () {
 
     game = new Game();
-    controller = new Controller();
-    inGame = true;
+    controller = new Controller();  
     game.start();
+    inGame = true;
 
 }
 

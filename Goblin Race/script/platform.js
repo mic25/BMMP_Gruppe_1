@@ -1,10 +1,11 @@
-function Platform(xPos,yPos,tiles){
+function Platform(xPos,yPos,tiles,type){
 	
 	this.x = xPos;
 	this.y = yPos;
 	this.tiles = tiles;
 	this.segmentSize = 88; //Breite des Bildes
 	this.segmentHeight = 44;
+	this.type = type;
 
 	var bodyDef = new b2d.b2BodyDef();
 	bodyDef.position.Set(xPos,yPos);
@@ -59,11 +60,5 @@ Platform.prototype.update = function () {
     this.body.SetPosition(new b2d.b2Vec2(this.body.GetPosition().x + game.platformSpeed / SCALE , this.body.GetPosition().y));
 	for(var i=0;i<this.body.bitmaps.length;i++){		
 	    this.body.bitmaps[i].x = this.body.GetPosition().x * SCALE + (this.segmentSize * i) - (this.tiles * this.segmentSize/2);
-	}
-
-	//this.body.ApplyForce(new b2d.b2Vec2(game.platformSpeed, 0), this.body.GetWorldCenter());
-	
-
-	 
-	//console.log(this.body.GetPosition().x + " : " + this.body.GetPosition().y));
+	};
 }
