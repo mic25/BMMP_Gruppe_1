@@ -55,7 +55,6 @@ function Coin(xPos,yPos,tiles,type){
 
 Coin.prototype.update = function () {
     this.body.SetAwake(true);
-    console.log("update");
     this.body.SetPosition(new b2d.b2Vec2(this.body.GetPosition().x + game.platformSpeed / SCALE , this.body.GetPosition().y));	
 	this.body.bitmap.x = this.body.GetPosition().x * SCALE - 0.5*this.segmentSize;
 }

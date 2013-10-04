@@ -115,7 +115,6 @@ Level.prototype.generateCoins = function() {
 */      
 
         newYCoin = this.lastYPlat - 200;
-        console.log(newYCoin);
         //console.log(lastX + " : " + lastY + " : " + newX + " : " + newY);
         var randomCoins = Math.floor(Math.random() * 6)+1;
         var newXCoinRand = newXCoin;
@@ -141,7 +140,6 @@ Level.prototype.updatePlatforms = function () {
 
 Level.prototype.updateCoins = function () {
     for (var i = 0; i < this.coins.length; i++) {
-        console.log(this.coins.length);
         this.coins[i].update();
         if (this.coins[i].body.bitmap.x < -stage.canvas.width) {
             stage.removeChild(this.coins[i]);

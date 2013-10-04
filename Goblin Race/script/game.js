@@ -62,7 +62,6 @@ Game.prototype.handleTick = function () {
 
     //Coins
     level.updateCoins();
-    console.log(cCounter);
     this.counter_text.text ="Score :" + cCounter;
 
 
