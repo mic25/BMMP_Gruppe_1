@@ -41,7 +41,7 @@ function Player() {
             [1271, 2, 718, 876]
         ],
         "animations": {
-            "Run": [0, 3, true, 0.2],
+            "Run": [0, 3, true, 0.3],
             "Jump" : [4],
             "KoboldTopf":[0], 
             "Laufen1":[1], 

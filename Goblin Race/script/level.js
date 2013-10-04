@@ -135,7 +135,7 @@ Level.prototype.generateBackground = function () {
         var newX = this.fg_im.x + this.fg_im.image.width - 1;
         this.fg_im = new createjs.Bitmap(queue.getResult("fg"));
         this.fg.push(this.fg_im);
-        stage.addChildAt(this.fg_im, 4); 
+        stage.addChildAt(this.fg_im, 2); 
         this.fg_im.x = newX;
     }
 
