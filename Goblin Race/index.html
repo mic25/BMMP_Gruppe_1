@@ -12,6 +12,7 @@
     <script src="script/game.js"></script>
     <script src="script/level.js"></script>
     <script src ="script/platform.js"></script>
+    <script src ="script/event.js"></script>
     <script src ="script/contactListener.js"></script>
     <script src ="script/Box2dWeb-2.1.a.3.min.js"></script>
     <link href="http://fonts.googleapis.com/css?family=Voltaire" rel="stylesheet" type="text/css">
@@ -37,7 +38,7 @@
     </style>
 
     <script>
-        var stage, queue, ticker, controller, menu, game, controller,world,player, level;
+        var stage, queue, ticker, controller, menu, game, controller,world,player, level,overlay;
         var inGame = false;
 
         var SCALE = 88.0;
@@ -71,9 +72,11 @@
         }
 
         function tick() {
-            if(inGame){
+            if (inGame) {
                 game.handleTick();
             }
+            else
+                menu.handleTick();
             stage.update();
         }   
     </script>

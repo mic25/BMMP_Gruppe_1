@@ -37,13 +37,26 @@
 	this.distance_text.x = 1100; this.distance_text.y = 50;
 
     //Game Over
-	this.gameOver_text = new createjs.Text("You lost!", "150px Arial", "#DF0101");
+	this.gameOver_text = new createjs.Text("You lost!", "150px Arial", "#FB5519");
     this.gameOver_text.x = 400;
     this.gameOver_text.y = 250;
 
-    this.reached_text = new createjs.Text("Your score: " + this.distance, "60px  'Voltaire', sans-serif", "#DF0101");
+    this.reached_text = new createjs.Text("Your score: " + this.distance, "60px  'Voltaire', sans-serif", "#FB5519");
     this.reached_text.x = 520;
-    this.reached_text.y = 450;	
+    this.reached_text.y = 450;
+
+    //Pause
+    this.overlay = new createjs.Bitmap(queue.getResult("overlay"));
+
+    this.pause_text = new createjs.Text("Some breath you must take ?", "80px 'Voltaire', sans-serif", "#F7F8E0");
+    this.pause_text.x = 250;
+    this.pause_text.y = 150;
+
+    this.pauseExplanation_text = new createjs.Text
+        ("<p> to resume your quest  ~  <r> to begin a new journey  ~  <esc> to flee like a coward",
+        "40px 'Voltaire', sans-serif", "#F7F8E0");
+    this.pauseExplanation_text.x = 73;
+    this.pauseExplanation_text.y = 700;
 }
 
 Game.prototype.handleTick = function () {
@@ -78,7 +91,24 @@ Game.prototype.handleTick = function () {
     world.DrawDebugData();
     //+++++++++++++Debug!!!+++++++++++++++++++++
     //stage.autoClear = false;
-    world.ClearForces();   
+    world.ClearForces();
+
+    //Pause
+    if (Key.isDown(Key.P)) {
+        pPressed = true;
+        if (pPressed != pPressedCheck) {
+            inGame = false;
+            player.image.stop();
+            stage.addChild(this.overlay);
+            stage.addChild(this.pause_text);
+            stage.addChild(this.pauseExplanation_text);
+            if (player != undefined && player.isOutOfBounds) inGame = false;
+            pPressedCheck = pPressed;
+        }
+    }
+    else {
+        pPressed = false; pPressedCheck = false;
+    }
 
     //Player
     if (player != undefined) {
@@ -88,6 +118,7 @@ Game.prototype.handleTick = function () {
         if(player.isOutOfBounds){
             inGame = false;
             this.reached_text.text = "Your score: " + Math.floor(this.distance);
+            stage.addChild(this.overlay);
             stage.addChild(this.gameOver_text);
             stage.addChild(this.reached_text);
         }

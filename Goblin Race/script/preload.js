@@ -11,7 +11,9 @@
         { id: "bg_rainbow_end", src: "img/bg_rainbow_end.png" },
         { id: "bg_rainbow_1", src: "img/bg_rainbow1.png" },
         { id: "bg_rainbow_2", src: "img/bg_rainbow2.png" },
-        { id: "bg_rainbow_3", src: "img/bg_rainbow3.png" }
+        { id: "bg_rainbow_3", src: "img/bg_rainbow3.png" },
+
+        { id: "overlay", src: "img/overlay.png" }
     ];
     queue = new createjs.LoadQueue(false);
     queue.installPlugin(createjs.Sound);
