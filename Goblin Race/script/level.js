@@ -50,22 +50,22 @@ Level.prototype.generateLevel = function () {
         //console.log(this.plat.body.GetPosition().y);
         var lastX = this.plat.body.GetPosition().x * SCALE;
         var lastY = this.plat.body.GetPosition().y * SCALE;
-        var tiles = Math.floor(Math.random() * (game.TILES_MAX - game.TILES_MIN + 1) + game.TILES_MIN);
-        var newX = lastX + Math.floor(Math.random() * (game.HORIZONTAL_MAX - game.HORIZONTAL_MIN + 1)) + game.HORIZONTAL_MIN
+        var tiles = Math.floor(Math.random() * (game.tiles_max - game.tiles_min + 1) + game.tiles_min);
+        var newX = lastX + Math.floor(Math.random() * (game.horizontal_max - game.horizontal_min + 1)) + game.horizontal_min
             + (this.plat.tiles * this.plat.segmentSize) / 2 + (tiles * this.plat.segmentSize) / 2;
 
         if (randomSign < lastY / stage.canvas.height) {
-            var newY = lastY - Math.random() * game.VERTICAL;
+            var newY = lastY - Math.random() * game.vertical;
         }
         else {
-            var newY = lastY + Math.random() * game.VERTICAL;
+            var newY = lastY + Math.random() * game.vertical;
         }
 
         if (newY > stage.canvas.height - this.plat.segmentHeight) {
-            newY -= game.VERTICAL;
+            newY -= game.vertical;
         }
-        else if (newY < this.plat.segmentHeight + 4 * game.VERTICAL) {
-            newY += 2 * game.VERTICAL;
+        else if (newY < this.plat.segmentHeight + 4 * game.vertical) {
+            newY += 2 * game.vertical;
         }
 
         //console.log(lastX + " : " + lastY + " : " + newX + " : " + newY);
@@ -154,15 +154,15 @@ Level.prototype.updateBackground = function () {
 
     //remove images out of bounds
     for (var i = 0; i < this.BG_ELEMENTS ; i++) {
-        if (this.bg[i].x < -(this.bg[i].image.width)) {
+        if (this.bg[i] != undefined && this.bg[i].x < -(this.bg[i].image.width)) {
             stage.removeChild(this.bg[i]);
             this.bg.splice(i, 1);
         }
-        /*if (this.mg[i].x < -this.mg[i].image.width) {
+        /*if (this.mg[i] != undefined && this.mg[i].x < -this.mg[i].image.width) {
             stage.removeChild(this.mg[i]);
             this.mg.splice(i, 1);
         }*/
-        if (this.fg[i].x < -(this.fg[i].image.width)) {
+        if (this.fg[i] != undefined && this.fg[i].x < -(this.fg[i].image.width)) {
             stage.removeChild(this.fg[i]);
             this.fg.splice(i, 1);
         }

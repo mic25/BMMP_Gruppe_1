@@ -4,6 +4,7 @@
     this.bg_speed = -5;
     this.mg_speed = -6;
     this.fg_speed = -7;
+    this.platformSpeed = -10;
 
     //Startspeeds
     this.BG_SPEED = -5;
@@ -11,17 +12,25 @@
     this.FG_SPEED = -7;
     this.PL_SPEED = -10;
 
-    //Platforms
+    //PLatforms
+    this.vertical = 100;
+    this.horizontal_max = 200;
+    this.horizontal_min = 70;
+    this.tiles_min = 4;
+    this.tiles_max = 8;
+
+    //Platforms starters
 	this.VERTICAL = 100;
 	this.HORIZONTAL_MAX = 200;
-	this.HORIZONTAL_MIN = 70;
-	this.TILES_MIN = 1;
-	this.TILES_MAX = 5;
-	this.platformSpeed = -10;	
-    
+	this.HORIZONTAL_MIN = 50;
+	this.TILES_MIN = 4;
+	this.TILES_MAX = 8;
+	
     //Score
 	this.distance = 1;
 	this.speedControl = 1;
+	this.tileControl = 1;
+	this.distanceControl = 1;
 
     //Score Output
 	this.distance_text = new createjs.Text("Score : " + this.distance, "40px  'Voltaire', sans-serif", "#000");
@@ -50,12 +59,18 @@ Game.prototype.handleTick = function () {
 
     //Lets mak this stuff hard to do :D
 	this.distance += -this.platformSpeed / SCALE;
-	this.speedcontrol = Math.min(Math.floor(this.distance / 20), 30);
+	this.speedControl = Math.min(Math.floor(this.distance / 100), 30);
+	this.tileControl = Math.min(Math.floor(this.distance / 1000), 3);
+	this.distanceControl = Math.min(Math.floor(this.distance / 10),100);
 	this.platformSpeed = this.PL_SPEED - this.speedControl;
-	this.bg_speed = this.BG_SPEED - 0.5 * this.speedControl;
+	this.bg_speed = this.BG_SPEED - 0.3 * this.speedControl;
 	this.mg_speed = this.MG_SPEED - 0.7 * this.speedControl;
 	this.fg_speed = this.FG_SPEED - 0.9 * this.speedControl;
 	this.distance_text.text = "Distance : " + Math.floor(this.distance);
+	this.tiles_max = this.TILES_MAX - 2 * this.tileControl;
+	this.tiles_min = this.TILES_MIN - this.tileControl;
+	this.horizontal_min = this.HORIZONTAL_MIN + this.distanceControl;
+	this.horizontal_max = this.HORIZONTAL_MAX + this.distanceControl;
 
     //kopiert aus Blatt05 was auch immer das hier macht..
     world.Step(1 / 60,  10,  10);
