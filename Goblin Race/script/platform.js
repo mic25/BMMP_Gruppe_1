@@ -33,8 +33,7 @@ function Platform(xPos,yPos,tiles,type){
 	    visuals.y = yPos * SCALE - 0.5*this.segmentHeight;
 	    visuals.x = xPos * SCALE + (this.segmentSize * i) - this.tiles*this.segmentSize/2; // Faktor für die Tile-Länge
 	    stage.addChild(visuals);
-	}
-    
+	}   
 	this.body.SetUserData("platform");
 }
 

@@ -3,6 +3,7 @@ function Player() {
 	this.x = 5;
 	this.y = 3;
 	this.onGround = false;
+	this.groundCheck = false;
 	this.maxSpeed =100;
 	this.numFootContacts = 0;
 	this.jumpTimeout = 0;
@@ -19,7 +20,7 @@ function Player() {
 	this.fixDef = new b2d.b2FixtureDef();
 	this.boxWidth = 30.0/SCALE;
 	this.boxHeight = 62.0/SCALE;
-	this.fixDef.density = 10;
+	this.fixDef.density = 20;
 	this.fixDef.friction = 0.2;
 	this.fixDef.restitution = 0.0;
 	this.fixDef.shape = shape;
@@ -51,7 +52,7 @@ function Player() {
 	}
 
 	var spritesheet = new createjs.SpriteSheet(this.data);
-	this.image = new createjs.Sprite(spritesheet, "Run");
+	this.image = new createjs.Sprite(spritesheet, "Jump");
 	this.image.scaleX = 0.2;
 	this.image.scaleY = 0.15;
 	this.image.y = 300;
@@ -99,7 +100,7 @@ Player.prototype.moveRight = function () {
 
 Player.prototype.moveDown = function(){
 	if(!this.onGround)
-	this.body.ApplyForce( new b2d.b2Vec2(0,300), this.body.GetWorldCenter() );		
+	this.body.ApplyForce( new b2d.b2Vec2(0,500), this.body.GetWorldCenter() );		
 }
 
 
@@ -115,6 +116,13 @@ Player.prototype.update = function() {
 		this.onGround = false;
 	}else{
 		this.onGround = true;
+	}
+	if (this.onGround != this.groundCheck) {
+	    if (this.onGround)
+	        this.image.gotoAndPlay("Run");
+	    else
+	        this.image.gotoAndPlay("Jump");
+	    this.groundCheck = this.onGround;
 	}
 
 	if (Key.isDown(Key.UP)) player.jump();
