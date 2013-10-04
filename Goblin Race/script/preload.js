@@ -2,7 +2,7 @@
     var manifest = [
         {id:"bg", src:"img/Himmel.png"},
         {id:"fg", src:"img/Wiese.png"},
-        { id: "figure", src: "img/schneemann.png" },
+        { id: "player", src: "img/player/data.png" },
         { id: "platform1", src: "img/platform.png" },
 
         { id: "bg_green", src: "img/bg_green.png" },

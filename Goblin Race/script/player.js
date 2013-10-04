@@ -18,7 +18,7 @@ function Player() {
 	var shape = new b2d.b2PolygonShape();
 	this.fixDef = new b2d.b2FixtureDef();
 	this.boxWidth = 30.0/SCALE;
-	this.boxHeight = 50.0/SCALE;
+	this.boxHeight = 62.0/SCALE;
 	this.fixDef.density = 10;
 	this.fixDef.friction = 0.2;
 	this.fixDef.restitution = 0.0;
@@ -27,12 +27,44 @@ function Player() {
 	shape.SetAsBox(this.boxWidth,this.boxHeight);
 	this.fixture = this.body.CreateFixture(this.fixDef);
 
- 	//setup the graphics
-	this.image = new createjs.Bitmap(queue.getResult("figure"));
-	this.image.scaleX = 0.5;
-	this.image.scaleY = 0.5;
-	//this.image.graphics.beginFill("#0ff").rect(0,0,this.boxWidth*2*SCALE,this.boxHeight*2*SCALE);
+    //setup the graphics
+
+	this.data = {
+	    "images": [queue.getResult("player")],
+        "frames": [
+
+            [2, 996, 633, 985], 
+            [591, 2, 678, 969], 
+            [2, 2, 587, 992], 
+            [1271, 880, 670, 961], 
+            [1271, 2, 718, 876]
+        ],
+        "animations": {
+            "Run": [0, 3, true, 0.2],
+            "Jump" : [4],
+            "KoboldTopf":[0], 
+            "Laufen1":[1], 
+            "Laufen2":[2], 
+            "Laufen3":[3], 
+            "Springen":[4]
+        },
+	}
+
+	var spritesheet = new createjs.SpriteSheet(this.data);
+	this.image = new createjs.Sprite(spritesheet, "Run");
+	this.image.scaleX = 0.2;
+	this.image.scaleY = 0.15;
+	this.image.y = 300;
+	this.image.play();
 	stage.addChild(this.image);
+	this.imagewidth = 450;
+	this.imageheight = 220;
+
+	/*this.image = new createjs.Bitmap(queue.getResult("figure"));
+	this.image.scaleX = 0.5;
+	this.image.scaleY = 0.5;*/
+	//this.image.graphics.beginFill("#0ff").rect(0,0,this.boxWidth*2*SCALE,this.boxHeight*2*SCALE);
+	//stage.addChild(this.image);
 
 	this.body.SetUserData("player");
 	this.body.SetBullet(true);
@@ -43,7 +75,7 @@ function Player() {
 
 
 Player.prototype.draw = function(){
-	this.image.x = (this.x-this.boxWidth)*SCALE - this.image.image.width/8;
+    this.image.x = (this.x - this.boxWidth) * SCALE - this.imagewidth / 8;
 	this.image.y = (this.y-this.boxHeight)*SCALE;
 }
 
@@ -60,9 +92,9 @@ Player.prototype.moveLeft = function(){
 }
 
 Player.prototype.moveRight = function () {
-    if (this.body.GetPosition().x * SCALE < stage.canvas.width - this.image.image.width / 2) {
-        player.body.ApplyForce(new b2d.b2Vec2(100, 0), this.body.GetWorldCenter());
-    }
+    
+    player.body.ApplyForce(new b2d.b2Vec2(100, 0), this.body.GetWorldCenter());
+
 }
 
 Player.prototype.moveDown = function(){
@@ -71,21 +103,12 @@ Player.prototype.moveDown = function(){
 }
 
 
-
 Player.prototype.update = function() {
 	this.moveDown();
 	this.jumpTimeout --;
 
-	if(this.body.GetPosition().y*SCALE > stage.canvas.height + this.image.image.height/2){
+	if (this.body.GetPosition().y * SCALE > stage.canvas.height + this.imageheight / 2 || this.body.GetPosition().x * SCALE < -this.imagewidth / 2) {
 		this.isOutOfBounds =  true;
-	}else{
-		this.isOutOfBounds = false;
-	}
-
-	if (this.body.GetPosition().x * SCALE <  -this.image.image.width / 2) {
-	    this.isOutOfBounds = true;
-	} else {
-	    this.isOutOfBounds = false;
 	}
 
 	if(this.numFootContacts<1){
@@ -102,8 +125,14 @@ Player.prototype.update = function() {
 	if (Key.isEmpty() && !this.onGround) {
 	}
 
+	if (this.body.GetPosition().x * SCALE > stage.canvas.width - this.imagewidth / 4) {
+	    var posY = this.body.GetPosition().y;
+	    var posX = stage.canvas.width - this.imagewidth / 4;
+	    this.body.SetPosition(new b2d.b2Vec2(posX/SCALE, posY));
+	}
+
   	this.x = this.body.GetPosition().x;
-  	this.y = this.body.GetPosition().y;
+    this.y = this.body.GetPosition().y;
 
   	this.image.x = this.body.GetPosition().x;
   	this.image.y = this.body.GetPosition().y;

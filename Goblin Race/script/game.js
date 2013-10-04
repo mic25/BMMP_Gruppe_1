@@ -60,14 +60,15 @@ Game.prototype.handleTick = function () {
     //Lets mak this stuff hard to do :D
 	this.distance += -this.platformSpeed / SCALE;
 	this.speedControl = Math.min(Math.floor(this.distance / 100), 30);
-	this.tileControl = Math.min(Math.floor(this.distance / 1000), 3);
+	this.tileControl = Math.min(Math.floor(this.distance / 250), 7);
+	this.tileControl_min = Math.min(Math.floor(this.distance / 500), 3);
 	this.distanceControl = Math.min(Math.floor(this.distance / 10),100);
 	this.platformSpeed = this.PL_SPEED - this.speedControl;
 	this.bg_speed = this.BG_SPEED - 0.3 * this.speedControl;
 	this.mg_speed = this.MG_SPEED - 0.7 * this.speedControl;
 	this.fg_speed = this.FG_SPEED - 0.9 * this.speedControl;
 	this.distance_text.text = "Distance : " + Math.floor(this.distance);
-	this.tiles_max = this.TILES_MAX - 2 * this.tileControl;
+	this.tiles_max = this.TILES_MAX - this.tileControl;
 	this.tiles_min = this.TILES_MIN - this.tileControl;
 	this.horizontal_min = this.HORIZONTAL_MIN + this.distanceControl;
 	this.horizontal_max = this.HORIZONTAL_MAX + this.distanceControl;
@@ -100,13 +101,15 @@ Game.prototype.start = function(){
     var listener = new ContactListener();
     world.SetContactListener(listener);
 
+    player = new Player();
+
     //Setup level
     level = new Level();
     level.generateLevel();
 
     //Setup the rest ;)
 	stage.addChild(this.distance_text);
-	player = new Player();
+	
 	
 	stage.update();
 }
