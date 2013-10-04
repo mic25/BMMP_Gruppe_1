@@ -154,7 +154,6 @@ Game.prototype.start = function(){
     //Setup the rest ;)
 	stage.addChild(this.distance_text);
     stage.addChild(this.counter_text);
-	player = new Player();
 	
 	stage.update();
 }
