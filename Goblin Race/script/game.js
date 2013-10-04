@@ -49,12 +49,15 @@
 Game.prototype.handleTick = function () {
 
     //Background
-    level.generateBackground();
-    level.updateBackground();
+    //level.generateBackground();
+    //level.updateBackground();
 
     //Platforms
     level.generateLevel();
     level.updatePlatforms();
+
+    //Coins
+    level.updateCoins();
 
 
     //Lets mak this stuff hard to do :D
@@ -90,6 +93,11 @@ Game.prototype.handleTick = function () {
             stage.addChild(this.gameOver_text);
             stage.addChild(this.reached_text);
         }
+    }
+
+    //deleteArray
+    for(var i =0; i<deleteArray.length; i++){
+        world.DestroyBody(deleteArray[i]);
     }
 }
 

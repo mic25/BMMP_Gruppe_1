@@ -4,6 +4,7 @@
         {id:"fg", src:"img/Wiese.png"},
         { id: "figure", src: "img/schneemann.png" },
         { id: "platform1", src: "img/platform.png" },
+        { id: "coin", src: "img/coin.png" },
 
         { id: "bg_green", src: "img/bg_green.png" },
 
