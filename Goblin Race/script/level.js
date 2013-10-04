@@ -88,6 +88,7 @@ Level.prototype.generateLevel = function () {
 }
 
 Level.prototype.generateCoins = function() {
+    while(this.coins.length < 15){
         var randomSign = Math.random();
         //console.log(this.plat.x);
         //console.log(this.platforms.length);
@@ -118,6 +119,7 @@ Level.prototype.generateCoins = function() {
         //console.log(lastX + " : " + lastY + " : " + newX + " : " + newY);
         this.coin = new Coin(newXCoin / SCALE, newYCoin / SCALE, tiles)
         this.coins.push(this.coin);
+    }
 
 }
 
@@ -135,7 +137,7 @@ Level.prototype.updatePlatforms = function () {
 
 Level.prototype.updateCoins = function () {
     for (var i = 0; i < this.coins.length; i++) {
-
+        console.log(this.coins.length);
         this.coins[i].update();
         if (this.coins[i].body.bitmap.x < -stage.canvas.width) {
             stage.removeChild(this.coins[i]);
