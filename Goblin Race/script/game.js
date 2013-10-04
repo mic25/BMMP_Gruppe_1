@@ -31,10 +31,14 @@
 	this.speedControl = 1;
 	this.tileControl = 1;
 	this.distanceControl = 1;
+    this.counter = 0;
 
     //Score Output
 	this.distance_text = new createjs.Text("Score : " + this.distance, "40px  'Voltaire', sans-serif", "#000");
 	this.distance_text.x = 1100; this.distance_text.y = 50;
+
+    this.counter_text = new createjs.Text("Score : " + this.counter, "40px  'Voltaire', sans-serif", "#000");
+    this.counter_text.x = 1100; this.counter_text.y = 150;
 
     //Game Over
 	this.gameOver_text = new createjs.Text("You lost!", "150px Arial", "#DF0101");
@@ -49,8 +53,8 @@
 Game.prototype.handleTick = function () {
 
     //Background
-    //level.generateBackground();
-    //level.updateBackground();
+    level.generateBackground();
+    level.updateBackground();
 
     //Platforms
     level.generateLevel();
@@ -58,6 +62,8 @@ Game.prototype.handleTick = function () {
 
     //Coins
     level.updateCoins();
+    console.log(cCounter);
+    this.counter_text.text ="Score :" + cCounter;
 
 
     //Lets mak this stuff hard to do :D
@@ -114,6 +120,7 @@ Game.prototype.start = function(){
 
     //Setup the rest ;)
 	stage.addChild(this.distance_text);
+    stage.addChild(this.counter_text);
 	player = new Player();
 	
 	stage.update();

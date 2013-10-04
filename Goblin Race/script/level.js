@@ -117,10 +117,14 @@ Level.prototype.generateCoins = function() {
         newYCoin = this.lastYPlat - 200;
         console.log(newYCoin);
         //console.log(lastX + " : " + lastY + " : " + newX + " : " + newY);
-        this.coin = new Coin(newXCoin / SCALE, newYCoin / SCALE, tiles)
+        var randomCoins = Math.floor(Math.random() * 6)+1;
+        var newXCoinRand = newXCoin;
+        for(var i = 0; i<randomCoins; i++){
+        newXCoinRand +=80;
+        this.coin = new Coin(newXCoinRand / SCALE, newYCoin / SCALE, tiles)
         this.coins.push(this.coin);
     }
-
+}
 }
 
 Level.prototype.updatePlatforms = function () {
