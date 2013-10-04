@@ -7,12 +7,22 @@ function ContactListener(){
         var shape1 = contact.GetFixtureA();
 		var shape2 = contact.GetFixtureB();
 
-		if(shape1.GetBody().GetUserData() == "player"){
+		
+		if(shape1.GetBody().GetUserData() =="coin"){
+			deleteArray.push(shape1.GetBody());
+			stage.removeChild(shape1.GetBody().bitmap);
+			cCounter++;
+		}
+		else if(shape2.GetBody().GetUserData() == "coin"){
+			deleteArray.push(shape2.GetBody());
+			stage.removeChild(shape2.GetBody().bitmap);
+			cCounter++;
+		}
+		else if(shape1.GetBody().GetUserData() == "platform"){
 			player.numFootContacts++;	
-		}else if(shape2.GetBody().GetUserData() == "player"){
+		}else if(shape2.GetBody().GetUserData() == "platform"){
 			player.numFootContacts++;
 		}
-		
 
     }
 
@@ -20,9 +30,9 @@ function ContactListener(){
         var shape1 = contact.GetFixtureA();
 		var shape2 = contact.GetFixtureB();
 
-		if(shape1.GetBody().GetUserData() == "player"){
+		if(shape1.GetBody().GetUserData() == "platform"){
 			player.numFootContacts--;
-		}else if(shape2.GetBody().GetUserData() == "player"){
+		}else if(shape2.GetBody().GetUserData() == "platform"){
 			player.numFootContacts--;
 		}
 

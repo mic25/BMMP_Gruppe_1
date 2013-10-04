@@ -14,6 +14,7 @@
     <script src ="script/platform.js"></script>
     <script src ="script/event.js"></script>
     <script src ="script/contactListener.js"></script>
+    <script src ="script/coins.js"></script>
     <script src ="script/Box2dWeb-2.1.a.3.min.js"></script>
     <link href="http://fonts.googleapis.com/css?family=Voltaire" rel="stylesheet" type="text/css">
     
@@ -40,6 +41,9 @@
     <script>
         var stage, queue, ticker, controller, menu, game, controller,world,player, level,overlay;
         var inGame = false;
+        var cCounter = 0;
+
+        var deleteArray = [];
 
         var SCALE = 88.0;
 

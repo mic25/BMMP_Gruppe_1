@@ -23,6 +23,11 @@
    
     this.platforms = new Array();
     this.plat;
+    this.lastYPlat;
+
+    this.coins = new Array();
+    this.coin;
+
     this.initialize();
 }
 
@@ -39,6 +44,10 @@ Level.prototype.initialize = function () {
     //Startplatform
     this.plat = new Platform(352 / SCALE, 500 / SCALE, 10); 
     this.platforms.push(this.plat);
+
+    //StartCoin
+    this.coin = new Coin(352 / SCALE, 500 / SCALE); 
+    this.coins.push(this.coin);
 }
 
 Level.prototype.generateLevel = function () {
@@ -48,30 +57,57 @@ Level.prototype.generateLevel = function () {
         //console.log(this.plat.x);
         //console.log(this.platforms.length);
         //console.log(this.plat.body.GetPosition().y);
-        var lastX = this.plat.body.GetPosition().x * SCALE;
-        var lastY = this.plat.body.GetPosition().y * SCALE;
+        var lastXPlat = this.plat.body.GetPosition().x * SCALE;
+        this.lastYPlat = this.plat.body.GetPosition().y * SCALE;
         var tiles = Math.floor(Math.random() * (game.tiles_max - game.tiles_min + 1) + game.tiles_min);
-        var newX = lastX + Math.floor(Math.random() * (game.horizontal_max - game.horizontal_min + 1)) + game.horizontal_min
+        var newXPlat = lastXPlat + Math.floor(Math.random() * (game.horizontal_max - game.horizontal_min + 1)) + game.horizontal_min
             + (this.plat.tiles * this.plat.segmentSize) / 2 + (tiles * this.plat.segmentSize) / 2;
 
-        if (randomSign < lastY / stage.canvas.height) {
-            var newY = lastY - Math.random() * game.vertical;
+        if (randomSign < this.lastYPlat / stage.canvas.height) {
+            var newYPlat = this.lastYPlat - Math.random() * game.vertical;
         }
         else {
-            var newY = lastY + Math.random() * game.vertical;
+            var newYPlat = this.lastYPlat + Math.random() * game.vertical;
         }
 
-        if (newY > stage.canvas.height - this.plat.segmentHeight) {
-            newY -= game.vertical;
+        if (newYPlat > stage.canvas.height - this.plat.segmentHeight) {
+            newYPlat -= game.vertical;
         }
-        else if (newY < this.plat.segmentHeight + 4 * game.vertical) {
-            newY += 2 * game.vertical;
+        else if (newYPlat < this.plat.segmentHeight + 4 * game.vertical) {
+            newYPlat += 2 * game.vertical;
         }
 
         //console.log(lastX + " : " + lastY + " : " + newX + " : " + newY);
-        this.plat = new Platform(newX / SCALE, newY / SCALE, tiles)
+        this.plat = new Platform(newXPlat / SCALE, newYPlat / SCALE, tiles)
         this.platforms.push(this.plat);
     }
+
+        //Coins
+        this.generateCoins();
+     
+}
+
+Level.prototype.generateCoins = function() {
+    while(this.coins.length < 20){
+        var randomSign = Math.random();
+
+        var lastXCoin = this.coin.body.GetPosition().x * SCALE;
+        var lastYCoin = this.coin.body.GetPosition().y * SCALE;
+        var newXCoin = lastXCoin + Math.floor(Math.random() * (game.HORIZONTAL_MAX - game.HORIZONTAL_MIN + 1)) + game.HORIZONTAL_MIN
+            + (this.coin.segmentSize) / 2 + (this.coin.segmentSize) / 2;
+
+     
+
+        newYCoin = this.lastYPlat - 200;
+
+        var randomCoins = Math.floor(Math.random() * 6)+1;
+        var newXCoinRand = newXCoin;
+        for(var i = 0; i<randomCoins; i++){
+        newXCoinRand +=80;
+        this.coin = new Coin(newXCoinRand / SCALE, newYCoin / SCALE);
+        this.coins.push(this.coin);
+    }
+}
 }
 
 Level.prototype.updatePlatforms = function () {
@@ -82,6 +118,16 @@ Level.prototype.updatePlatforms = function () {
         if (this.platforms[i].body.bitmaps[0].x < -stage.canvas.width) {
             stage.removeChild(this.platforms[i]);
             this.platforms.splice(i, 1);
+        }
+    }
+}
+
+Level.prototype.updateCoins = function () {
+    for (var i = 0; i < this.coins.length; i++) {
+        this.coins[i].update();
+        if (this.coins[i].body.bitmap.x < -stage.canvas.width) {
+            stage.removeChild(this.coins[i]);
+            this.coins.splice(i, 1);
         }
     }
 }

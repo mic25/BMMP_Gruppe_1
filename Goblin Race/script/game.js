@@ -31,10 +31,14 @@
 	this.speedControl = 1;
 	this.tileControl = 1;
 	this.distanceControl = 1;
+    this.counter = 0;
 
     //Score Output
 	this.distance_text = new createjs.Text("Score : " + this.distance, "40px  'Voltaire', sans-serif", "#000");
 	this.distance_text.x = 1100; this.distance_text.y = 50;
+
+    this.counter_text = new createjs.Text("Score : " + this.counter, "40px  'Voltaire', sans-serif", "#000");
+    this.counter_text.x = 1100; this.counter_text.y = 150;
 
     //Game Over
 	this.gameOver_text = new createjs.Text("You lost!", "150px Arial", "#FB5519");
@@ -43,7 +47,7 @@
 
     this.reached_text = new createjs.Text("Your score: " + this.distance, "60px  'Voltaire', sans-serif", "#FB5519");
     this.reached_text.x = 520;
-    this.reached_text.y = 450;
+    this.reached_text.y = 450;	
 
     //Pause
     this.overlay = new createjs.Bitmap(queue.getResult("overlay"));
@@ -69,6 +73,10 @@ Game.prototype.handleTick = function () {
     level.generateLevel();
     level.updatePlatforms();
 
+    //Coins
+    level.updateCoins();
+    this.counter_text.text ="Score :" + cCounter;
+
 
     //Lets mak this stuff hard to do :D
 	this.distance += -this.platformSpeed / SCALE;
@@ -91,7 +99,7 @@ Game.prototype.handleTick = function () {
     world.DrawDebugData();
     //+++++++++++++Debug!!!+++++++++++++++++++++
     //stage.autoClear = false;
-    world.ClearForces();
+    world.ClearForces();   
 
     //Pause
     if (Key.isDown(Key.P)) {
@@ -123,6 +131,11 @@ Game.prototype.handleTick = function () {
             stage.addChild(this.reached_text);
         }
     }
+
+    //deleteArray
+    for(var i =0; i<deleteArray.length; i++){
+        world.DestroyBody(deleteArray[i]);
+    }
 }
 
 Game.prototype.start = function(){
@@ -140,7 +153,8 @@ Game.prototype.start = function(){
 
     //Setup the rest ;)
 	stage.addChild(this.distance_text);
-	
+    stage.addChild(this.counter_text);
+	player = new Player();
 	
 	stage.update();
 }
