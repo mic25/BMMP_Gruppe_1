@@ -46,7 +46,7 @@ Level.prototype.initialize = function () {
     this.platforms.push(this.plat);
 
     //StartCoin
-    this.coin = new Coin(352 / SCALE, 500 / SCALE, 10); 
+    this.coin = new Coin(352 / SCALE, 500 / SCALE); 
     this.coins.push(this.coin);
 }
 
@@ -88,39 +88,23 @@ Level.prototype.generateLevel = function () {
 }
 
 Level.prototype.generateCoins = function() {
-    while(this.coins.length < 15){
+    while(this.coins.length < 20){
         var randomSign = Math.random();
-        //console.log(this.plat.x);
-        //console.log(this.platforms.length);
-        //console.log(this.plat.body.GetPosition().y);
+
         var lastXCoin = this.coin.body.GetPosition().x * SCALE;
         var lastYCoin = this.coin.body.GetPosition().y * SCALE;
-        var tiles = Math.floor(Math.random() * (game.TILES_MAX - game.TILES_MIN + 1) + game.TILES_MIN);
         var newXCoin = lastXCoin + Math.floor(Math.random() * (game.HORIZONTAL_MAX - game.HORIZONTAL_MIN + 1)) + game.HORIZONTAL_MIN
-            + (this.coin.tiles * this.coin.segmentSize) / 2 + (tiles * this.coin.segmentSize) / 2;
+            + (this.coin.segmentSize) / 2 + (this.coin.segmentSize) / 2;
 
-        /*if (randomSign < lastYCoin / stage.canvas.height) {
-            var newYCoin = lastYCoin - Math.random() * game.VERTICAL;
-        }
-        else {
-            var newYCoin = lastYCoin + Math.random() * game.VERTICAL;
-        }
-
-        if (newYCoin > stage.canvas.height - this.coin.segmentHeight) {
-            newYCoin -= game.VERTICAL;
-        }
-        else if (newYCoin < this.coin.segmentHeight + 4 * game.VERTICAL) {
-            newYCoin += 2 * game.VERTICAL;
-        }
-*/      
+     
 
         newYCoin = this.lastYPlat - 200;
-        //console.log(lastX + " : " + lastY + " : " + newX + " : " + newY);
+
         var randomCoins = Math.floor(Math.random() * 6)+1;
         var newXCoinRand = newXCoin;
         for(var i = 0; i<randomCoins; i++){
         newXCoinRand +=80;
-        this.coin = new Coin(newXCoinRand / SCALE, newYCoin / SCALE, tiles)
+        this.coin = new Coin(newXCoinRand / SCALE, newYCoin / SCALE);
         this.coins.push(this.coin);
     }
 }
