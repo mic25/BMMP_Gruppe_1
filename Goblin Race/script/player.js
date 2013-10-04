@@ -33,23 +33,43 @@ function Player() {
 	this.data = {
 	    "images": [queue.getResult("player")],
         "frames": [
+            
 
-            [2, 996, 633, 985], 
-            [591, 2, 678, 969], 
-            [2, 2, 587, 992], 
-            [1271, 880, 670, 961], 
-            [1271, 2, 718, 876]
+            [819, 1408, 587, 992], //3 Laufen
+            [1408, 996, 596, 992], //5
+            [2, 3074, 678, 969], //2
+            [1408, 2, 604, 992], //6
+                      
+            [1408, 996, 596, 992], //4
+
+            [2, 3074, 678, 969], //1 
+                       
+            [2, 1408, 815, 786], //7 Rutschen
+
+            [2, 2196, 718, 876], //8 Springen
+            [682, 3074, 716, 802], //9
+
+            [2, 2, 1404, 1404] //0 Fliegen
         ],
         "animations": {
-            "Run": [0, 3, true, 0.3],
-            "Jump" : [4],
-            "KoboldTopf":[0], 
-            "Laufen1":[1], 
-            "Laufen2":[2], 
-            "Laufen3":[3], 
-            "Springen":[4]
+    
+            "Run": [0, 4, true, 0.2],
+            "Jump": [8],
+            "Jump2": [7],
+
+            "FliegenBlase":[0], 
+            "Laufen1(2)":[1], 
+            "Laufen1":[2], 
+            "Laufen2":[3], 
+            "Laufen3(2)":[4], 
+            "Laufen3":[5], 
+            "Laufen4":[6], 
+            "Rutschen":[7], 
+            "Springen":[8], 
+            "Springen1":[9]
         },
 	}
+
 
 	var spritesheet = new createjs.SpriteSheet(this.data);
 	this.image = new createjs.Sprite(spritesheet, "Jump");
@@ -120,8 +140,11 @@ Player.prototype.update = function() {
 	if (this.onGround != this.groundCheck) {
 	    if (this.onGround)
 	        this.image.gotoAndPlay("Run");
-	    else
-	        this.image.gotoAndPlay("Jump");
+	    else {
+	        if (Math.random() > 0.5) this.image.gotoAndPlay("Jump");
+	        else this.image.gotoAndPlay("Jump2");
+	        
+	    }
 	    this.groundCheck = this.onGround;
 	}
 

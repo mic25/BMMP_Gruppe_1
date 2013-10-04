@@ -1,0 +1,33 @@
+{
+"images": ["player.png"],
+"frames": [
+
+    [2, 2, 1404, 1404], 
+    [2, 3074, 678, 969], 
+    [2, 3074, 678, 969], 
+    [819, 1408, 587, 992], 
+    [1408, 996, 596, 992], 
+    [1408, 996, 596, 992], 
+    [1408, 2, 604, 992], 
+    [2, 1408, 815, 786], 
+    [2, 2196, 718, 876], 
+    [682, 3074, 716, 802]
+],
+"animations": {
+    
+        "FliegenBlase":[0], 
+        "Laufen1(2)":[1], 
+        "Laufen1":[2], 
+        "Laufen2":[3], 
+        "Laufen3(2)":[4], 
+        "Laufen3":[5], 
+        "Laufen4":[6], 
+        "Rutschen":[7], 
+        "Springen":[8], 
+        "Springen1":[9]
+},
+"texturepacker": [
+        "SmartUpdateHash: $TexturePacker:SmartUpdate:1e624cf12d8fb5ab11a912f84cdbe466:1/1$",
+        "Created with TexturePacker (http://www.texturepacker.com) for EaselJS"
+]
+}
