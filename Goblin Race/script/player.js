@@ -59,8 +59,10 @@ Player.prototype.moveLeft = function(){
 	player.body.ApplyForce( new b2d.b2Vec2(-100,0), this.body.GetWorldCenter() );
 }
 
-Player.prototype.moveRight = function(){
-	player.body.ApplyForce( new b2d.b2Vec2(100,0), this.body.GetWorldCenter() );		
+Player.prototype.moveRight = function () {
+    if (this.body.GetPosition().x * SCALE < stage.canvas.width - this.image.image.width / 2) {
+        player.body.ApplyForce(new b2d.b2Vec2(100, 0), this.body.GetWorldCenter());
+    }
 }
 
 Player.prototype.moveDown = function(){
@@ -78,6 +80,12 @@ Player.prototype.update = function() {
 		this.isOutOfBounds =  true;
 	}else{
 		this.isOutOfBounds = false;
+	}
+
+	if (this.body.GetPosition().x * SCALE <  -this.image.image.width / 2) {
+	    this.isOutOfBounds = true;
+	} else {
+	    this.isOutOfBounds = false;
 	}
 
 	if(this.numFootContacts<1){
