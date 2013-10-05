@@ -42,6 +42,10 @@
 	this.moveLeft_text.x = 90;
 	this.moveLeft_text.y = 475;
 
+	this.explanation_text = new createjs.Text("Run the goblin across the platforms, collect coins & sweets to stay alive!", "50px 'Voltaire', sans-serif", "#F7F8E0");
+	this.explanation_text.x = 25;
+	this.explanation_text.y = 70;
+
 	this.menu_text = new createjs.Text("Menu", "150px 'Voltaire', sans-serif", "#F7F8E0");
     this.menu_text.x = 500;
     this.menu_text.y = 250;
@@ -123,6 +127,7 @@ Menu.prototype.handleTick = function () {
     	stage.removeAllChildren;
     	stage.update();
     	stage.addChild(this.menuBg);
+    	stage.addChild(this.explanation_text);
     	stage.addChild(this.space);
     	stage.addChild(this.upArrow);
     	stage.addChild(this.leftArrow);
