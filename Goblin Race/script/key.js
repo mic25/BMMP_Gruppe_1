@@ -7,6 +7,7 @@ var Key = {
   	DOWN: 40,
   	SPACE: 32,
   	P: 80,
+  	R: 82,
   	ENTER: 13,
     ESCAPE: 27,
   

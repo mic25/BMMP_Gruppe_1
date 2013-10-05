@@ -49,6 +49,12 @@
     this.reached_text.x = 520;
     this.reached_text.y = 450;	
 
+    this.gameOverExplanation_text = new createjs.Text
+        ("<r> to begin a new journey  ~  <esc> to flee like a coward",
+        "40px 'Voltaire', sans-serif", "#F7F8E0");
+    this.gameOverExplanation_text.x = 273;
+    this.gameOverExplanation_text.y = 700;
+
     //Pause
     this.overlay = new createjs.Bitmap(queue.getResult("overlay"));
 
@@ -118,6 +124,12 @@ Game.prototype.handleTick = function () {
         pPressed = false; pPressedCheck = false;
     }
 
+    //Escape
+    if (Key.isDown(Key.ESCAPE)){
+        console.log("escape");
+        menu.showMenu();
+    }
+
     //Player
     if (player != undefined) {
         player.update();
@@ -129,6 +141,7 @@ Game.prototype.handleTick = function () {
             stage.addChild(this.overlay);
             stage.addChild(this.gameOver_text);
             stage.addChild(this.reached_text);
+            stage.addChild(this.gameOverExplanation_text);
         }
     }
 
