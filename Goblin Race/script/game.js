@@ -38,8 +38,11 @@
 	this.distance_text = new createjs.Text("Score : " + this.distance, "40px  'Voltaire', sans-serif", "#000");
 	this.distance_text.x = 1100; this.distance_text.y = 50;
 
-    this.counter_text = new createjs.Text("Score : " + this.counter, "40px  'Voltaire', sans-serif", "#000");
-    this.counter_text.x = 1100; this.counter_text.y = 150;
+	this.counter_icon = new createjs.Bitmap(queue.getResult("goldPot"));
+	this.counter_icon.x = 50; this.counter_icon.y = 20;
+	this.counter_icon.scaleX = 0.25; this.counter_icon.scaleY = 0.25;
+    this.counter_text = new createjs.Text(this.counter, "40px  'Voltaire', sans-serif", "#000");
+    this.counter_text.x = 150; this.counter_text.y = 50;
 
     //Game Over
 	this.gameOver_text = new createjs.Text("You lost!", "150px Arial", "#FB5519");
@@ -82,7 +85,7 @@ Game.prototype.handleTick = function () {
 
     //Coins
     level.updateCoins();
-    this.counter_text.text ="Score :" + cCounter;
+    this.counter_text.text = cCounter;
 
 
     //Lets mak this stuff hard to do :D
@@ -168,7 +171,8 @@ Game.prototype.start = function(){
 
     //Setup the rest ;)
 	stage.addChild(this.distance_text);
-    stage.addChild(this.counter_text);
+	stage.addChild(this.counter_text);
+	stage.addChild(this.counter_icon);
 	
 	stage.update();
 }

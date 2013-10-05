@@ -1,6 +1,6 @@
 ﻿function Level() {
 
-    this.style = "rainbow"; // options : sky, cave, rainbow 
+    this.style = "cloud"; // options : cloud, cave, rainbow 
     this.last_bg = 3; //last added image-part  0 = start, 1 = middle, 2 = end, 3 = wiese
     this.last_mg = 2; // 0 = start, 1 = middle, 2 = end
     this.last_fg = 2; // 0 = start, 1 = middle, 2 = end
@@ -122,7 +122,7 @@ Level.prototype.updatePlatforms = function () {
 
         this.platforms[i].update();
 
-        if (this.platforms[i].body.bitmaps[0].x < -stage.canvas.width) {
+        if (this.platforms[i].body.bitmaps[0].x < -this.plat.segmentSize * (game.tiles_max+5) ) {
             stage.removeChild(this.platforms[i]);
             this.platforms.splice(i, 1);
         }
@@ -154,10 +154,10 @@ Level.prototype.generateBackground = function () {
         }
         else if (this.last_bg == 0) {
             var random = Math.random();
-            /* Sobald alle stile verfügbar !
-            if (random > 0.66) this.style = "sky";
-            else if (random > 0.33) this.style = "rainbow";
-            else this.style = "cave"; */
+            //Sobald alle stile verfügbar !
+            if (random > 0.5) this.style = "cloud";
+            else if (random > 0) this.style = "rainbow";
+            //else this.style = "cave"; 
             url = "bg_" + this.style + "_start";
         }
         else if (this.last_bg == 3) {
@@ -178,9 +178,13 @@ Level.prototype.generateBackground = function () {
     while (this.mg.length < this.BG_ELEMENTS) {
         var newX = this.mg_im.x + this.mg_im.image.width - 9;
         var lastStyle;
-        if (this.mg_im.name.indexOf("rainbow") != -1)
+        if (this.mg_im.name.indexOf("end") != -1)
+            lastStyle = "wiese";
+        else if (this.mg_im.name.indexOf("rainbow") != -1)
             lastStyle = "rainbow";
-        else
+        else if (this.mg_im.name.indexOf("cloud") != -1)
+            lastStyle = "cloud";
+        else 
             lastStyle = "wiese"; //more to come
         var url;
         if (lastStyle != this.getStyleAt(newX)) {
@@ -189,9 +193,9 @@ Level.prototype.generateBackground = function () {
                 this.last_mg = 0;
             }
             else {
-                if (this.last_mg = 0) {
-                    url = "mg_" + lastStyle + "_end";
-                    this.last_mg = 2;
+                if (this.last_mg == 0) {
+                    url = "mg_" + this.getStyleAt(newX) + "_start"; //Cahnged
+                    this.last_mg = 0;
                 }
                 else {
                     if (this.getStyleAt(newX) == "wiese") {
@@ -222,8 +226,12 @@ Level.prototype.generateBackground = function () {
     while (this.fg.length < this.BG_ELEMENTS) {
         var newX = this.fg_im.x + this.fg_im.image.width - 1;
         var lastStyle;
-        if (this.fg_im.name.indexOf("rainbow") != -1)
+        if (this.fg_im.name.indexOf("end") != -1)
+            lastStyle = "wiese";
+        else if (this.fg_im.name.indexOf("rainbow") != -1)
             lastStyle = "rainbow";
+        else if (this.fg_im.name.indexOf("cloud") != -1)
+            lastStyle = "cloud";
         else
             lastStyle = "wiese"; //more to come
         var url;
@@ -233,7 +241,7 @@ Level.prototype.generateBackground = function () {
                 this.last_fg = 0;
             }
             else {
-                if (this.last_fg = 0) {
+                if (this.last_fg == 0) {
                     url = "fg_" + lastStyle + "_end";
                     this.last_fg = 2;
                 }
@@ -301,7 +309,12 @@ Level.prototype.getStyleAt = function (pos) {
             else return "wiese";
         }
     }*/
-    if (this.bg_im.image.src.split("/")[this.bg_im.image.src.split("/").length - 1].indexOf("rainbow") != -1)
+    var str = this.bg_im.image.src.split("/")[this.bg_im.image.src.split("/").length - 1]
+    if (str.indexOf("rainbow") != -1)
         return "rainbow";
+    else if(str.indexOf("cloud") != -1)
+        return "cloud";
+    else if(str.indexOf("cave") != -1)
+        return "cave";
     else return "wiese";
 }
