@@ -6,6 +6,7 @@ var Key = {
   	RIGHT: 39,
   	DOWN: 40,
   	SPACE: 32,
+  	H: 72,
   	P: 80,
   	R: 82,
   	ENTER: 13,

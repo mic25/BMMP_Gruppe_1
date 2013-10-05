@@ -28,6 +28,7 @@
 	
     //Score
 	this.distance = 1;
+    this.distanceScore = 0;
 	this.speedControl = 1;
 	this.tileControl = 1;
 	this.distanceControl = 1;
@@ -127,7 +128,7 @@ Game.prototype.handleTick = function () {
     //Escape
     if (Key.isDown(Key.ESCAPE)){
         console.log("escape");
-        menu.showMenu();
+        menu.showMenuBetween();
     }
 
     //Player
@@ -137,7 +138,8 @@ Game.prototype.handleTick = function () {
 
         if(player.isOutOfBounds){
             inGame = false;
-            this.reached_text.text = "Your score: " + Math.floor(this.distance);
+            this.distanceScore = Math.floor(this.distance)
+            this.reached_text.text = "Your score: " + this.distanceScore;
             stage.addChild(this.overlay);
             stage.addChild(this.gameOver_text);
             stage.addChild(this.reached_text);
