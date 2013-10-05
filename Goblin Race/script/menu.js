@@ -136,6 +136,9 @@ Menu.prototype.handleTick = function () {
     	stage.addChild(this.slash_text);
     	stage.addChild(this.moveRight_text);
     	stage.addChild(this.moveLeft_text);
+    	this.newGame_text.x = 520;
+    	this.newGame_text.y = 650;
+    	stage.addChild(this.newGame_text);
     }
     if (Key.isDown(Key.ENTER)){
     	console.log("new Game");
