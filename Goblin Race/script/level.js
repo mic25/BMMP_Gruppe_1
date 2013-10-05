@@ -1,9 +1,9 @@
 ﻿function Level() {
 
     this.style = "rainbow"; // options : sky, cave, rainbow 
-    this.last_bg = 3; //last added image-part
-    this.last_mg = 3; // 0 = start, 1 = middle, 2 = end, 3 = green
-    this.last_fg = 3;
+    this.last_bg = 3; //last added image-part  0 = start, 1 = middle, 2 = end, 3 = wiese
+    this.last_mg = 2; // 0 = start, 1 = middle, 2 = end
+    this.last_fg = 2; // 0 = start, 1 = middle, 2 = end
     this.bg_im; //last added image
     this.mg_im;
     this.fg_im;
@@ -15,7 +15,7 @@
     */
 
     this.bg = new Array();
-    //this.mg = new Array();
+    this.mg = new Array();
     this.fg = new Array();
 
     this.BG_ELEMENTS = 2;
@@ -34,12 +34,19 @@
 Level.prototype.initialize = function () {
 
     //setup Background
-    this.bg_im = new createjs.Bitmap(queue.getResult("bg_green"));
+    this.bg_im = new createjs.Bitmap(queue.getResult("bg_wiese"));
     this.bg[0] = this.bg_im;
-    this.fg_im = new createjs.Bitmap(queue.getResult("fg"));
+    this.bg_im.name = "bg_wiese";
+    this.mg_im = new createjs.Bitmap(queue.getResult("mg_wiese"));
+    this.mg[0] = this.mg_im;
+    this.mg_im.name = "mg_wiese";
+    this.fg_im = new createjs.Bitmap(queue.getResult("fg_wiese"));
+    this.fg_im.name = "fg_wiese";
     this.fg[0] = this.fg_im;
-    stage.addChildAt(this.bg[0],0);
-    stage.addChildAt(this.fg[0],1);
+    stage.addChildAt(this.bg[0], 0);
+    stage.addChildAt(this.mg[0], 1)
+    stage.addChildAt(this.fg[0],2);
+    
 
     //Startplatform
     this.plat = new Platform(352 / SCALE, 500 / SCALE, 10); 
@@ -125,7 +132,7 @@ Level.prototype.updatePlatforms = function () {
 Level.prototype.updateCoins = function () {
     for (var i = 0; i < this.coins.length; i++) {
         this.coins[i].update();
-        if (this.coins[i].body.bitmap.x < -stage.canvas.width) {
+        if (this.coins[i].body.bitmap.x < -50) {
             stage.removeChild(this.coins[i]);
             this.coins.splice(i, 1);
         }
@@ -135,23 +142,15 @@ Level.prototype.updateCoins = function () {
 Level.prototype.generateBackground = function () {
 
     //add new Background
-    while (this.bg.length < this.BG_ELEMENTS) {
+    while (this.bg.length < this.BG_ELEMENTS) { // one more to assure there is always a background to check for the style
         var newX = this.bg_im.x + this.bg_im.image.width - 1;
         if (this.last_bg == 1 || this.last_bg == 3) {
             this.last_bg = Math.floor(this.last_bg + Math.random() + 0.5)%4;
         }
         else this.last_bg = (this.last_bg + 1)%4 ;
         var url;
-        if (this.last_bg == 1) {
-            var pic;
-            var random = Math.random();
-            if (random > 0.66)
-                pic = 3;
-            else if (random > 0.33)
-                pic = 2;
-            else pic = 1;	
-            url = queue.getResult("bg_" + this.style + "_" + pic);
-            console.log("bg_" + this.style + "_" + pic);
+        if (this.last_bg == 1) {	
+            url = "bg_" + this.style;
         }
         else if (this.last_bg == 0) {
             var random = Math.random();
@@ -159,29 +158,106 @@ Level.prototype.generateBackground = function () {
             if (random > 0.66) this.style = "sky";
             else if (random > 0.33) this.style = "rainbow";
             else this.style = "cave"; */
-            url = queue.getResult("bg_" + this.style + "_start");
-            console.log("bg_" + this.style + "_start");
+            url = "bg_" + this.style + "_start";
         }
         else if (this.last_bg == 3) {
-            url = queue.getResult("bg_green");
-            console.log("bg_green");
+            url = "bg_wiese";
         }
         else {
-            url = queue.getResult("bg_" + this.style + "_end");
-            console.log("bg_" + this.style + "_end");
+            url = "bg_" + this.style + "_end";
         }
-        this.bg_im = new createjs.Bitmap(url);
+        this.bg_im = new createjs.Bitmap(queue.getResult(url));
+        this.bg_im.name = url;
+        console.log(url);
         this.bg.push(this.bg_im);
         stage.addChildAt(this.bg_im,0);
         this.bg_im.x = newX;
     }
 
+    //add new midground
+    while (this.mg.length < this.BG_ELEMENTS) {
+        var newX = this.mg_im.x + this.mg_im.image.width - 9;
+        var lastStyle;
+        if (this.mg_im.name.indexOf("rainbow") != -1)
+            lastStyle = "rainbow";
+        else
+            lastStyle = "wiese"; //more to come
+        var url;
+        if (lastStyle != this.getStyleAt(newX)) {
+            if (lastStyle == "wiese") {
+                url = "mg_" + this.getStyleAt(newX) + "_start";
+                this.last_mg = 0;
+            }
+            else {
+                if (this.last_mg = 0) {
+                    url = "mg_" + lastStyle + "_end";
+                    this.last_mg = 2;
+                }
+                else {
+                    if (this.getStyleAt(newX) == "wiese") {
+                        url = "mg_" + lastStyle + "_end";
+                        this.last_mg = 2
+                    }
+                    else {
+                        url = "mg_" + this.getStyleAt(newX) + "_start";
+                        this.last_mg = 0;
+                    }
+                }
+            }
+        }
+        else {
+            url = "mg_" + lastStyle;
+            this.last_mg = 1;
+        }
+        console.log(url);
+        this.mg_im = new createjs.Bitmap(queue.getResult(url));
+        this.mg_im.name = url;
+        this.mg.push(this.mg_im);
+        stage.addChildAt(this.mg_im, 2);
+        this.mg_im.x = newX;
+    }
+
+
     //add new forground
     while (this.fg.length < this.BG_ELEMENTS) {
         var newX = this.fg_im.x + this.fg_im.image.width - 1;
-        this.fg_im = new createjs.Bitmap(queue.getResult("fg"));
+        var lastStyle;
+        if (this.fg_im.name.indexOf("rainbow") != -1)
+            lastStyle = "rainbow";
+        else
+            lastStyle = "wiese"; //more to come
+        var url;
+        if (lastStyle != this.getStyleAt(newX)) {
+            if (lastStyle == "wiese") {
+                url = "fg_" + this.getStyleAt(newX) + "_start";
+                this.last_fg = 0;
+            }
+            else {
+                if (this.last_fg = 0) {
+                    url = "fg_" + lastStyle + "_end";
+                    this.last_fg = 2;
+                }
+                else {
+                    if (this.getStyleAt(newX) == "wiese") {
+                        url = "fg_" + lastStyle + "_end";
+                        this.last_fg = 2
+                    }
+                    else {
+                        url = "fg_" + this.getStyleAt(newX) + "_start";
+                        this.last_fg = 0;
+                    }
+                }
+            }
+        }
+        else {
+            url = "fg_" + lastStyle;
+            this.last_fg = 1;
+        }
+        console.log(url);
+        this.fg_im = new createjs.Bitmap(queue.getResult(url));
+        this.fg_im.name = url;
         this.fg.push(this.fg_im);
-        stage.addChildAt(this.fg_im, 2); 
+        stage.addChildAt(this.fg_im, 4); 
         this.fg_im.x = newX;
     }
 
@@ -194,24 +270,38 @@ Level.prototype.updateBackground = function () {
     //move images
     for (var i = 0; i < this.BG_ELEMENTS; i++) {
         this.bg[i].x += game.bg_speed;
-        //this.mg[i].image.x += game.mg_speed;
+        this.mg[i].x += game.mg_speed;
         this.fg[i].x += game.fg_speed;
     }
 
     //remove images out of bounds
     for (var i = 0; i < this.BG_ELEMENTS ; i++) {
-        if (this.bg[i] != undefined && this.bg[i].x < -(this.bg[i].image.width)) {
+        if (this.bg[i] != undefined && this.bg[i].x < -(this.bg[0].image.width)) {
             stage.removeChild(this.bg[i]);
             this.bg.splice(i, 1);
         }
-        /*if (this.mg[i] != undefined && this.mg[i].x < -this.mg[i].image.width) {
+        if (this.mg[i] != undefined && this.mg[i].x < -this.bg[0].image.width) {
             stage.removeChild(this.mg[i]);
             this.mg.splice(i, 1);
-        }*/
-        if (this.fg[i] != undefined && this.fg[i].x < -(this.fg[i].image.width)) {
+        }
+        if (this.fg[i] != undefined && this.fg[i].x < -(this.bg[0].image.width)) {
             stage.removeChild(this.fg[i]);
             this.fg.splice(i, 1);
         }
     }
 
+}
+
+Level.prototype.getStyleAt = function (pos) {
+    var offset = 100;
+    /*for (var i = 0; i < this.BG_ELEMENTS ; i++) {
+        if (this.bg[i].x < pos + offset && this.bg[i].x + this.bg[i].image.width >= pos + offset) {
+            if (this.bg[i].image.src.split("/")[this.bg[i].image.src.split("/").length-1].indexOf("rainbow") != -1)
+                return "rainbow";
+            else return "wiese";
+        }
+    }*/
+    if (this.bg_im.image.src.split("/")[this.bg_im.image.src.split("/").length - 1].indexOf("rainbow") != -1)
+        return "rainbow";
+    else return "wiese";
 }

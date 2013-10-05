@@ -6,13 +6,19 @@
         { id: "platform1", src: "img/platform.png" },
         { id: "coin", src: "img/coin.png" },
 
-        { id: "bg_green", src: "img/bg_green.png" },
+        { id: "bg_wiese", src: "img/bg/bg_wiese.png" },
+        { id: "mg_wiese", src: "img/bg/mg_wiese.png" },
+        { id: "fg_wiese", src: "img/bg/fg_wiese.png" },
 
-        { id: "bg_rainbow_start", src: "img/bg_rainbow_start.png" },
-        { id: "bg_rainbow_end", src: "img/bg_rainbow_end.png" },
-        { id: "bg_rainbow_1", src: "img/bg_rainbow1.png" },
-        { id: "bg_rainbow_2", src: "img/bg_rainbow2.png" },
-        { id: "bg_rainbow_3", src: "img/bg_rainbow3.png" },
+        { id: "bg_rainbow_start", src: "img/bg/bg_rainbow_start.png" },
+        { id: "bg_rainbow_end", src: "img/bg/bg_rainbow_end.png" },
+        { id: "bg_rainbow", src: "img/bg/bg_rainbow.png" },
+        { id: "mg_rainbow", src: "img/bg/mg_rainbow.png" },
+        { id: "mg_rainbow_start", src: "img/bg/mg_rainbow_start.png" },
+        { id: "mg_rainbow_end", src: "img/bg/mg_rainbow_end.png" },
+        { id: "fg_rainbow", src: "img/bg/fg_rainbow.png" },
+        { id: "fg_rainbow_start", src: "img/bg/fg_rainbow_start.png" },
+        { id: "fg_rainbow_end", src: "img/bg/fg_rainbow_end.png" },
 
         { id: "overlay", src: "img/overlay.png" }
     ];

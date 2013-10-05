@@ -1,16 +1,16 @@
 ﻿function Game() {
     
     //Speeds
-    this.bg_speed = -5;
-    this.mg_speed = -6;
-    this.fg_speed = -7;
-    this.platformSpeed = -10;
+    this.bg_speed = -8;
+    this.mg_speed = -10;
+    this.fg_speed = -12;
+    this.platformSpeed = -14;
 
     //Startspeeds
-    this.BG_SPEED = -5;
-    this.MG_SPEED = -6;
-    this.FG_SPEED = -7;
-    this.PL_SPEED = -10;
+    this.BG_SPEED = -8;
+    this.MG_SPEED = -10;
+    this.FG_SPEED = -12;
+    this.PL_SPEED = -14;
 
     //PLatforms
     this.vertical = 100;
