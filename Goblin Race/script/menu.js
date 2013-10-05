@@ -1,5 +1,24 @@
 ﻿function Menu() {    
 
+	this.menu_text = new createjs.Text("Menu", "150px 'Voltaire', sans-serif", "#F7F8E0");
+    this.menu_text.x = 650;
+    this.menu_text.y = 250;
+
+    this.lastScore_text = new createjs.Text("Your last score: ", "60px 'Voltaire', sans-serif", "#F7F8E0");
+    this.lastScore_text.x = 650;
+    this.lastScore_text.y = 150;
+
+    this.bestScore_text = new createjs.Text("Your best score: ", "60px 'Voltaire', sans-serif", "#F7F8E0");
+    this.bestScore_text.x = 650;
+    this.bestScore_text.y = 80;
+
+    this.help_text = new createjs.Text("<h> Tutorial", "60px 'Voltaire', sans-serif", "#F7F8E0");
+    this.help_text.x = 150;
+    this.help_text.y = 650;
+
+    this.newGame_text = new createjs.Text("<enter> Start", "60px 'Voltaire', sans-serif", "#F7F8E0");
+    this.newGame_text.x = 1050;
+    this.newGame_text.y = 650;
 
 
 }
