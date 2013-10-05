@@ -97,9 +97,9 @@ Menu.prototype.handleTick = function () {
 Menu.prototype.showMenuBetween = function(){
 	inGame = false;
 	console.log(this.menuBg);
-    stage.addChild(this.menuBg);
     stage.removeAllChildren();
     stage.update();
+    stage.addChild(this.menuBg);
     this.lastScore_text.text = "Your last score: " + game.distanceScore;
     stage.addChild(this.menu_text);
     stage.addChild(this.lastScore_text);
