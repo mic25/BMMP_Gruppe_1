@@ -2,6 +2,46 @@
 
 	this.menuBg =  new createjs.Bitmap("img/menuBg.png");
 
+	this.rightArrow =  new createjs.Bitmap("img/right_arrow.png");
+	this.rightArrow.scaleX = 0.5;
+	this.rightArrow.scaleY = 0.5;
+	this.rightArrow.x = 710;
+	this.rightArrow.y = 400;
+
+	this.moveRight_text = new createjs.Text("Move right", "80px 'Voltaire', sans-serif", "#F7F8E0");
+	this.moveRight_text.x = 960;
+	this.moveRight_text.y = 475;
+
+	this.upArrow =  new createjs.Bitmap("img/up_arrow.png");
+	this.upArrow.scaleX = 0.5;
+	this.upArrow.scaleY = 0.5;
+	this.upArrow.x = 605;
+	this.upArrow.y = 150;
+
+	this.slash_text = new createjs.Text("/", "120px 'Voltaire', sans-serif", "#F7F8E0");
+	this.slash_text.x = 625;
+	this.slash_text.y = 200;
+
+	this.space =  new createjs.Bitmap("img/space.png");
+	this.space.scaleX = 0.5;
+	this.space.scaleY = 0.5;
+	this.space.x = 415;
+	this.space.y = 150;
+
+	this.jump_text = new createjs.Text("Jump", "80px 'Voltaire', sans-serif", "#F7F8E0");
+	this.jump_text.x = 835;
+	this.jump_text.y = 220;
+
+	this.leftArrow =  new createjs.Bitmap("img/left_arrow.png");
+	this.leftArrow.scaleX = 0.5;
+	this.leftArrow.scaleY = 0.5;
+	this.leftArrow.x = 320;
+	this.leftArrow.y = 400;
+
+	this.moveLeft_text = new createjs.Text("Move left", "80px 'Voltaire', sans-serif", "#F7F8E0");
+	this.moveLeft_text.x = 90;
+	this.moveLeft_text.y = 475;
+
 	this.menu_text = new createjs.Text("Menu", "150px 'Voltaire', sans-serif", "#F7F8E0");
     this.menu_text.x = 500;
     this.menu_text.y = 250;
@@ -80,6 +120,17 @@ Menu.prototype.handleTick = function () {
     }
     if (Key.isDown(Key.H)){
     	console.log("help");
+    	stage.removeAllChildren;
+    	stage.update();
+    	stage.addChild(this.menuBg);
+    	stage.addChild(this.space);
+    	stage.addChild(this.upArrow);
+    	stage.addChild(this.leftArrow);
+    	stage.addChild(this.rightArrow);
+    	stage.addChild(this.jump_text);
+    	stage.addChild(this.slash_text);
+    	stage.addChild(this.moveRight_text);
+    	stage.addChild(this.moveLeft_text);
     }
     if (Key.isDown(Key.ENTER)){
     	console.log("new Game");
@@ -93,6 +144,7 @@ Menu.prototype.handleTick = function () {
     	
     	menu.startGame();
     }
+
 
 Menu.prototype.showMenuBetween = function(){
 	inGame = false;
