@@ -31,10 +31,35 @@
         { id: "fg_cloud_start", src: "img/bg/fg_cloud_start.png" },
         { id: "fg_cloud_end", src: "img/bg/fg_cloud_end.png" },
 
+        { id: "bg_cave_start", src: "img/bg/bg_cave_start.png" },
+        { id: "bg_cave_end", src: "img/bg/bg_cave_end.png" },
+        { id: "bg_cave", src: "img/bg/bg_cave.png" },
+        { id: "mg_cave", src: "img/bg/mg_cave.png" },
+        { id: "mg_cave_start", src: "img/bg/mg_cave_start.png" },
+        { id: "mg_cave_end", src: "img/bg/mg_cave_end.png" },
+        { id: "fg_cave", src: "img/bg/fg_cave.png" },
+        { id: "fg_cave_start", src: "img/bg/fg_cave_start.png" },
+        { id: "fg_cave_end", src: "img/bg/fg_cave_end.png" },
+
         { id: "plat_wiese_single", src: "img/plat/plat_wiese_single.png" },
         { id: "plat_wiese_l", src: "img/plat/plat_wiese_l.png" },
         { id: "plat_wiese_r", src: "img/plat/plat_wiese_r.png" },
         { id: "plat_wiese_m", src: "img/plat/plat_wiese_m.png" },
+
+        { id: "plat_cloud_single", src: "img/plat/plat_cloud_single.png" },
+        { id: "plat_cloud_l", src: "img/plat/plat_cloud_l.png" },
+        { id: "plat_cloud_r", src: "img/plat/plat_cloud_r.png" },
+        { id: "plat_cloud_m", src: "img/plat/plat_cloud_m.png" },
+
+        { id: "plat_rainbow_single", src: "img/plat/plat_rainbow_single.png" },
+        { id: "plat_rainbow_l", src: "img/plat/plat_rainbow_l.png" },
+        { id: "plat_rainbow_r", src: "img/plat/plat_rainbow_r.png" },
+        { id: "plat_rainbow_m", src: "img/plat/plat_rainbow_m.png" },
+
+        { id: "plat_cave_single", src: "img/plat/plat_cave_single.png" },
+        { id: "plat_cave_l", src: "img/plat/plat_cave_l.png" },
+        { id: "plat_cave_r", src: "img/plat/plat_cave_r.png" },
+        { id: "plat_cave_m", src: "img/plat/plat_cave_m.png" },
 
         { id: "overlay", src: "img/overlay.png" }
     ];

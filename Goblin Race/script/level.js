@@ -61,9 +61,6 @@ Level.prototype.generateLevel = function () {
 
     while (this.platforms.length <= this.PL_ELEMENTS) {
         var randomSign = Math.random();
-        //console.log(this.plat.x);
-        //console.log(this.platforms.length);
-        //console.log(this.plat.body.GetPosition().y);
         var lastXPlat = this.plat.body.GetPosition().x * SCALE;
         this.lastYPlat = this.plat.body.GetPosition().y * SCALE;
         var tiles = Math.floor(Math.random() * (game.tiles_max - game.tiles_min + 1) + game.tiles_min);
@@ -83,9 +80,7 @@ Level.prototype.generateLevel = function () {
         else if (newYPlat < this.plat.segmentHeight + 4 * game.vertical) {
             newYPlat += 2 * game.vertical;
         }
-
-        //console.log(lastX + " : " + lastY + " : " + newX + " : " + newY);
-        this.plat = new Platform(newXPlat / SCALE, newYPlat / SCALE, tiles)
+        this.plat = new Platform(newXPlat / SCALE, newYPlat / SCALE, tiles, this.getStyleAt(newXPlat));
         this.platforms.push(this.plat);
     }
 
@@ -101,9 +96,7 @@ Level.prototype.generateCoins = function() {
         var lastXCoin = this.coin.body.GetPosition().x * SCALE;
         var lastYCoin = this.coin.body.GetPosition().y * SCALE;
         var newXCoin = lastXCoin + Math.floor(Math.random() * (game.HORIZONTAL_MAX - game.HORIZONTAL_MIN + 1)) + game.HORIZONTAL_MIN
-            + (this.coin.segmentSize) / 2 + (this.coin.segmentSize) / 2;
-
-     
+            + (this.coin.segmentSize) / 2 + (this.coin.segmentSize) / 2;     
 
         newYCoin = this.lastYPlat - 200;
 
@@ -119,10 +112,8 @@ Level.prototype.generateCoins = function() {
 
 Level.prototype.updatePlatforms = function () {
     for (var i = 0; i < this.platforms.length; i++) {
-
         this.platforms[i].update();
-
-        if (this.platforms[i].body.bitmaps[0].x < -this.plat.segmentSize * (game.tiles_max+5) ) {
+        if (this.platforms[i].body.bitmaps[0].x < -this.plat.segmentSize * (game.tiles_max+3) ) {
             stage.removeChild(this.platforms[i]);
             this.platforms.splice(i, 1);
             deleteArray.push(this.platforms[i]);
@@ -157,9 +148,9 @@ Level.prototype.generateBackground = function () {
         else if (this.last_bg == 0) {
             var random = Math.random();
             //Sobald alle stile verfügbar !
-            if (random > 0.5) this.style = "cloud";
-            else if (random > 0) this.style = "rainbow";
-            //else this.style = "cave"; 
+            if (random > 0.66) this.style = "cloud";
+            else if (random > 0.33) this.style = "rainbow";
+            else this.style = "cave"; 
             url = "bg_" + this.style + "_start";
         }
         else if (this.last_bg == 3) {
@@ -186,6 +177,8 @@ Level.prototype.generateBackground = function () {
             lastStyle = "rainbow";
         else if (this.mg_im.name.indexOf("cloud") != -1)
             lastStyle = "cloud";
+        else if (this.mg_im.name.indexOf("cave") != -1)
+            lastStyle = "cave";
         else 
             lastStyle = "wiese"; //more to come
         var url;
@@ -234,6 +227,8 @@ Level.prototype.generateBackground = function () {
             lastStyle = "rainbow";
         else if (this.fg_im.name.indexOf("cloud") != -1)
             lastStyle = "cloud";
+        else if (this.mg_im.name.indexOf("cave") != -1)
+            lastStyle = "cave";
         else
             lastStyle = "wiese"; //more to come
         var url;
@@ -307,14 +302,14 @@ Level.prototype.updateBackground = function () {
 
 Level.prototype.getStyleAt = function (pos) {
     var offset = 100;
-    /*for (var i = 0; i < this.BG_ELEMENTS ; i++) {
+    for (var i = 0; i < this.BG_ELEMENTS ; i++) {
         if (this.bg[i].x < pos + offset && this.bg[i].x + this.bg[i].image.width >= pos + offset) {
-            if (this.bg[i].image.src.split("/")[this.bg[i].image.src.split("/").length-1].indexOf("rainbow") != -1)
-                return "rainbow";
-            else return "wiese";
+            var str = this.bg[i].image.src.split("/")[this.bg[i].image.src.split("/").length - 1]
         }
-    }*/
+    }
     var str = this.bg_im.image.src.split("/")[this.bg_im.image.src.split("/").length - 1]
+    if (str.indexOf("end") != -1)
+        return "wiese";
     if (str.indexOf("rainbow") != -1)
         return "rainbow";
     else if(str.indexOf("cloud") != -1)

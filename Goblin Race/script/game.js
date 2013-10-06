@@ -155,6 +155,7 @@ Game.prototype.start = function(){
 
     //Setup level
     level = new Level();
+    level.generateBackground();
     level.generateLevel();
 
     //Setup the rest ;)
