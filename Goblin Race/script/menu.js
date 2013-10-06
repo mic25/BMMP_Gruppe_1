@@ -6,41 +6,51 @@
 	this.rightArrow.scaleX = 0.5;
 	this.rightArrow.scaleY = 0.5;
 	this.rightArrow.x = 710;
-	this.rightArrow.y = 400;
+	this.rightArrow.y = 300;
 
 	this.moveRight_text = new createjs.Text("Move right", "80px 'Voltaire', sans-serif", "#F7F8E0");
 	this.moveRight_text.x = 960;
-	this.moveRight_text.y = 475;
+	this.moveRight_text.y = 375;
 
 	this.upArrow =  new createjs.Bitmap("img/up_arrow.png");
 	this.upArrow.scaleX = 0.5;
 	this.upArrow.scaleY = 0.5;
 	this.upArrow.x = 605;
-	this.upArrow.y = 150;
+	this.upArrow.y = 120;
 
 	this.slash_text = new createjs.Text("/", "120px 'Voltaire', sans-serif", "#F7F8E0");
 	this.slash_text.x = 625;
-	this.slash_text.y = 200;
+	this.slash_text.y = 170;
 
 	this.space =  new createjs.Bitmap("img/space.png");
 	this.space.scaleX = 0.5;
 	this.space.scaleY = 0.5;
 	this.space.x = 415;
-	this.space.y = 150;
+	this.space.y = 120;
 
 	this.jump_text = new createjs.Text("Jump", "80px 'Voltaire', sans-serif", "#F7F8E0");
 	this.jump_text.x = 835;
-	this.jump_text.y = 220;
+	this.jump_text.y = 190;
 
 	this.leftArrow =  new createjs.Bitmap("img/left_arrow.png");
 	this.leftArrow.scaleX = 0.5;
 	this.leftArrow.scaleY = 0.5;
 	this.leftArrow.x = 320;
-	this.leftArrow.y = 400;
+	this.leftArrow.y = 300;
 
 	this.moveLeft_text = new createjs.Text("Move left", "80px 'Voltaire', sans-serif", "#F7F8E0");
 	this.moveLeft_text.x = 90;
-	this.moveLeft_text.y = 475;
+	this.moveLeft_text.y = 375;
+
+	this.pKey =  new createjs.Bitmap("img/p.png");
+	this.pKey.scaleX = 0.5;
+	this.pKey.scaleY = 0.5;
+	this.pKey.x = 520;
+	this.pKey.y = 450;
+
+	this.pause_text = new createjs.Text("Have a break", "80px 'Voltaire', sans-serif", "#F7F8E0");
+	this.pause_text.x = 760;
+	this.pause_text.y = 525;
 
 	this.explanation_text = new createjs.Text("Run the goblin across the platforms, collect coins & sweets to stay alive!", "50px 'Voltaire', sans-serif", "#F7F8E0");
 	this.explanation_text.x = 25;
@@ -136,6 +146,8 @@ Menu.prototype.handleTick = function () {
     	stage.addChild(this.slash_text);
     	stage.addChild(this.moveRight_text);
     	stage.addChild(this.moveLeft_text);
+    	stage.addChild(this.pKey);
+    	stage.addChild(this.pause_text);
     	this.newGame_text.x = 520;
     	this.newGame_text.y = 650;
     	stage.addChild(this.newGame_text);
