@@ -76,6 +76,10 @@
     this.newGame_text.x = 950;
     this.newGame_text.y = 650;
 
+    this.escape_text = new createjs.Text("<esc> Back to Menu", "60px 'Voltaire', sans-serif", "#F7F8E0");
+    this.escape_text.x = 70;
+    this.escape_text.y = 650;
+
 
 }
 
@@ -148,9 +152,9 @@ Menu.prototype.handleTick = function () {
     	stage.addChild(this.moveLeft_text);
     	stage.addChild(this.pKey);
     	stage.addChild(this.pause_text);
-    	this.newGame_text.x = 520;
-    	this.newGame_text.y = 650;
+    	this.newGame_text.x = 1000;
     	stage.addChild(this.newGame_text);
+    	stage.addChild(this.escape_text);
     }
     if (Key.isDown(Key.ENTER)){
     	console.log("new Game");
