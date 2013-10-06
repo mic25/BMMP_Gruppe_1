@@ -125,6 +125,7 @@ Level.prototype.updatePlatforms = function () {
         if (this.platforms[i].body.bitmaps[0].x < -this.plat.segmentSize * (game.tiles_max+5) ) {
             stage.removeChild(this.platforms[i]);
             this.platforms.splice(i, 1);
+            deleteArray.push(this.platforms[i]);
         }
     }
 }
@@ -135,6 +136,7 @@ Level.prototype.updateCoins = function () {
         if (this.coins[i].body.bitmap.x < -50) {
             stage.removeChild(this.coins[i]);
             this.coins.splice(i, 1);
+            deleteArray.push(this.coins[i]);
         }
     }
 }
@@ -287,14 +289,17 @@ Level.prototype.updateBackground = function () {
         if (this.bg[i] != undefined && this.bg[i].x < -(this.bg[0].image.width)) {
             stage.removeChild(this.bg[i]);
             this.bg.splice(i, 1);
+            deleteArray.push(this.bg[i]);
         }
         if (this.mg[i] != undefined && this.mg[i].x < -this.bg[0].image.width) {
             stage.removeChild(this.mg[i]);
             this.mg.splice(i, 1);
+            deleteArray.push(this.mg[i]);
         }
         if (this.fg[i] != undefined && this.fg[i].x < -(this.bg[0].image.width)) {
             stage.removeChild(this.fg[i]);
             this.fg.splice(i, 1);
+            deleteArray.push(this.fg[i]);
         }
     }
 
