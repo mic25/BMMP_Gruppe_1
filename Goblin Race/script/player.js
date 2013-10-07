@@ -8,6 +8,7 @@ function Player() {
 	this.numFootContacts = 0;
 	this.jumpTimeout = 0;
 	this.isOutOfBounds = false;
+	this.tick = 0;
 
 	//Create the physical player body
 	var bodyDef = new b2d.b2BodyDef();
@@ -173,7 +174,7 @@ Player.prototype.setRunning = function(){
 }
 
 Player.prototype.setFly = function(){
-	player.body.ApplyImpulse(new b2d.b2Vec2(0, -10), this.body.GetWorldCenter());
+	player.body.ApplyImpulse(new b2d.b2Vec2(0, -20), this.body.GetWorldCenter());
 	world.SetGravity(new b2d.b2Vec2(0,4));
 	this.fixDef.density = 2;
 	this.fixDef.friction = 0.2;
@@ -238,6 +239,7 @@ Player.prototype.update = function() {
 	}}
 
 	else if(isFlying){
+	this.tick ++;
 	this.image.gotoAndPlay("Fliegen");
 	if (Key.isDown(Key.UP)) player.flyUp();
 	if (Key.isDown(Key.SPACE)) player.flyUp();
@@ -247,10 +249,11 @@ Player.prototype.update = function() {
 	if (Key.isEmpty() && !this.onGround) {
 	}
 	
-	if(createjs.Ticker.getTicks()%300==0){
+	if(this.tick == 200){
 	isFlying = false;
 	this.image.gotoAndPlay("Jump");
 		this.setRunning();
+	this.tick = 0;
 	}}
 
 
