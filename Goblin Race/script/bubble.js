@@ -29,7 +29,6 @@ function Bubble(xPos,yPos,type){
 	this.body.bitmap.y = yPos * SCALE - 0.5*this.segmentSize;
 	this.body.bitmap.x = xPos * SCALE - 0.5*this.segmentSize;
 	stage.addChild(this.body.bitmap);
-	//console.log("machst du bubble????");
 	this.body.SetUserData("bubble");
 }
 

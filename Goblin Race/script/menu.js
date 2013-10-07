@@ -112,7 +112,6 @@ Menu.prototype.showMenu = function () {
 
     // show the Menu
     inGame = false;
-    console.log(menu.menuBg);
     stage.removeAllChildren();
     stage.update();
     stage.addChild(menu.menuBg);
@@ -138,7 +137,6 @@ Menu.prototype.showMenu = function () {
 Menu.prototype.startGame = function () {
 
     game = new Game();
-    controller = new Controller(); 
 
     stage.removeAllChildren();
     stage.update();
@@ -172,20 +170,16 @@ Menu.prototype.handleTick = function () {
     else {pPressed = false; pPressedCheck = false;}
 
     if (Key.isDown(Key.R)) {
-    	console.log("restart");
     	//menu.generateNew();
     	menu.startGame();
     }
     if (Key.isDown(Key.ESCAPE)){
-    	console.log("escape");
     	menu.showMenu();
     }
     if (Key.isDown(Key.H)){
-    	console.log("help");
     	menu.getHelp();
     }
     if (Key.isDown(Key.ENTER)){
-    	console.log("new Game");
     	//menu.generateNew();
     	menu.startGame();
     }
@@ -228,18 +222,15 @@ Menu.prototype.getHelp = function (){
 
 
 Menu.prototype.handleClick = function (evt){
-    console.log(evt.target);
+    
     if(evt.target.text == "<h> Tutorial"){
-        console.log("help");
         menu.getHelp();
     }
     else if(evt.target.text == "<enter> Start"){
-        console.log("new Game");
         //menu.generateNew();
         menu.startGame();
     }
     else if(evt.target.text == "<esc> Back to Menu"){
-        console.log("back");
         menu.showMenu();
     }
 }

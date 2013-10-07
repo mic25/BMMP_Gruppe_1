@@ -115,7 +115,7 @@ Level.prototype.generateBubble = function() {
         
         this.bubble = new Bubble(9000 / SCALE, 500 / SCALE);
         this.bubbles.push(this.bubble);
-        console.log("Gibst du aus?!-----" + this.bubbles.length);
+     
     }
 }
 
@@ -161,20 +161,16 @@ Level.prototype.updateCoins = function () {
 }
 
 Level.prototype.updateBubbles = function () {
-    console.log("updateBubbles");
+
     for (var i = 0; i < this.bubbles.length; i++) {
         this.bubbles[i].update();
-        if (this.bubbles[i].body.bitmap.x < -50) {
-            console.log(this.bubbles.length);
-            //this.bubbles.pop();
-            console.log("after pop" + this.bubbles.length);
+        if (this.bubbles[i].body.bitmap.x < -50) {        
             stage.removeChild(this.bubbles[i]);            
             deleteArray.push(this.bubbles[i]);
             this.bubbles.splice(i,1);
             
         }
     }
-    console.log("ende update");
 }
 
 Level.prototype.generateBackground = function () {
@@ -277,7 +273,7 @@ Level.prototype.generateBackground = function () {
         else
             lastStyle = "wiese"; //more to come
         var url;
-        console.log("old : " + lastStyle + "new : " + this.getStyleAt(newX));
+      
         if (lastStyle != this.getStyleAt(newX)) {
             if (lastStyle == "wiese") {
                 url = "fg_" + this.getStyleAt(newX) + "_start";
