@@ -143,7 +143,7 @@ Menu.prototype.handleTick = function () {
     }
     if (Key.isDown(Key.H)){
     	console.log("help");
-    	menu.getHelp;
+    	menu.getHelp();
     }
     if (Key.isDown(Key.ENTER)){
     	console.log("new Game");
@@ -195,7 +195,22 @@ Menu.prototype.showMenuBetween = function(){
     stage.addChild(this.lastScore_text);
     stage.addChild(this.bestScore_text);
     stage.addChild(this.help_text);
+    //this.help_text.addEventListener("click", menu.handleClick("help"));
     stage.addChild(this.newGame_text);
-}    
+    //this.newGame_text.addEventListener("click", menu.handleClick("newGame"));
+} 
+
+Menu.prototype.handleClick = function (ev){
+    if(ev == "help"){
+        console.log("help");
+        menu.getHelp();
+    }
+    else if(ev == "newGame"){
+        console.log("new Game");
+        menu.generateNew();
+        menu.startGame();
+    }
+}
+
 }
 
