@@ -225,11 +225,12 @@ Level.prototype.generateBackground = function () {
             lastStyle = "rainbow";
         else if (this.fg_im.name.indexOf("cloud") != -1)
             lastStyle = "cloud";
-        else if (this.mg_im.name.indexOf("cave") != -1)
+        else if (this.fg_im.name.indexOf("cave") != -1)
             lastStyle = "cave";
         else
             lastStyle = "wiese"; //more to come
         var url;
+        console.log("old : " + lastStyle + "new : " + this.getStyleAt(newX));
         if (lastStyle != this.getStyleAt(newX)) {
             if (lastStyle == "wiese") {
                 url = "fg_" + this.getStyleAt(newX) + "_start";
@@ -237,13 +238,13 @@ Level.prototype.generateBackground = function () {
             }
             else {
                 if (this.last_fg == 0) {
-                    url = "mg_" + this.getStyleAt(newX) + "_start";
+                    url = "fg_" + this.getStyleAt(newX) + "_start";
                     this.last_fg = 0;
                 }
                 else {
                     if (this.getStyleAt(newX) == "wiese") {
                         url = "fg_" + lastStyle + "_end";
-                        this.last_fg = 2
+                        this.last_fg = 2;
                     }
                     else {
                         url = "fg_" + this.getStyleAt(newX) + "_start";
@@ -295,16 +296,15 @@ Level.prototype.updateBackground = function () {
             deleteArray.push(this.fg[i]);
         }
     }
-
 }
 
 Level.prototype.getStyleAt = function (pos) {
     var offset = 100;
-    for (var i = 0; i < this.BG_ELEMENTS ; i++) {
+    /*for (var i = 0; i < this.BG_ELEMENTS ; i++) {
         if (this.bg[i].x < pos + offset && this.bg[i].x + this.bg[i].image.width >= pos + offset) {
             var str = this.bg[i].image.src.split("/")[this.bg[i].image.src.split("/").length - 1]
         }
-    }
+    }*/
     var str = this.bg_im.image.src.split("/")[this.bg_im.image.src.split("/").length - 1]
     if (str.indexOf("end") != -1)
         return "wiese";
