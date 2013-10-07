@@ -28,6 +28,7 @@
 	
     //Score
 	this.distance = 1;
+	this.distanceCheck = 1;
     this.distanceScore = 0;
 	this.speedControl = 1;
 	this.tileControl = 1;
@@ -85,11 +86,15 @@ Game.prototype.handleTick = function () {
 
     //Coins
     level.updateCoins();
-    this.counter_text.text = counter;
+    if (Math.floor(this.distance) != Math.floor(this.distanceCheck)) {
+        counter -= 0.5;
+        this.distanceCheck = this.distance;
+    }
+    this.counter_text.text = Math.floor(counter);
 
 
     //Lets mak this stuff hard to do :D
-	game.setControls();
+    this.setControls();
 
     //kopiert aus Blatt05 was auch immer das hier macht..
     world.Step(1 / 60,  10,  10);
@@ -133,7 +138,7 @@ Game.prototype.handleTick = function () {
         player.update();
         player.draw();
 
-        if(player.isOutOfBounds){
+        if(player.isOutOfBounds || counter <= 0){
             inGame = false;
             this.distanceScore = Math.floor(this.distance)
             this.reached_text.text = "Your score: " + this.distanceScore;

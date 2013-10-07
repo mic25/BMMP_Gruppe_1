@@ -312,18 +312,18 @@ Level.prototype.getStyleAt = function (pos) {
 }
 
 Level.prototype.getPlatStyleAt = function (pos) {
-    var offset = 100; var bg = this.bg_im;
+    var offset = 100; var mg = this.mg_im;
     for (var i = 0; i < this.BG_ELEMENTS ; i++) {
-        if (this.bg[i].x < pos && this.bg[i].x + this.bg[i].image.width >= pos) {
-            bg = this.bg[i];
+        if (this.mg[i].x < pos && this.mg[i].x + this.mg[i].image.width >= pos) {
+            mg = this.mg[i];
         }
     }
-    var str = bg.image.src.split("/")[bg.image.src.split("/").length - 1]
-    if (pos < bg.x + bg.image.width / 1.5) {
+    var str = mg.image.src.split("/")[mg.image.src.split("/").length - 1]
+    if (pos < mg.x + mg.image.width / 2) {
         if (str.indexOf("start") != -1)
             return "wiese";
     }
-    else if (pos > bg.x + bg.image.width / 3) {
+    else if (pos > mg.x + mg.image.width / 2) {
         if (str.indexOf("end") != -1)
             return "wiese";
     }
