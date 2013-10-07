@@ -123,7 +123,7 @@ Game.prototype.handleTick = function () {
     //Escape
     if (Key.isDown(Key.ESCAPE)){
         console.log("escape");
-        menu.showMenuBetween();
+        menu.showMenu();
     }
 
     if (Key.isDown(Key.R)){
@@ -141,7 +141,8 @@ Game.prototype.handleTick = function () {
 
         if(player.isOutOfBounds || counter <= 0){
             inGame = false;
-            this.distanceScore = Math.floor(this.distance)
+            this.distanceScore = Math.floor(this.distance);
+            localStorage.setItem("lastScore", this.distanceScore);
             this.reached_text.text = "Your score: " + this.distanceScore;
             stage.addChild(this.overlay);
             stage.addChild(this.gameOver_text);
