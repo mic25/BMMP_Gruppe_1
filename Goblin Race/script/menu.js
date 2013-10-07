@@ -73,25 +73,37 @@
     this.lastScore_text = new createjs.Text("Your last score: 0", "60px 'Voltaire', sans-serif", "#F7F8E0");
     this.lastScore_text.x = 500;
     this.lastScore_text.y = 150;
+    //localStorage.setItem("lastScore", 0);
 
     this.bestScore_text = new createjs.Text("Your best score: 0", "60px 'Voltaire', sans-serif", "#F7F8E0");
     this.bestScore_text.x = 500;
     this.bestScore_text.y = 80;
+    //localStorage.setItem("bestScore", 0);
 
     //Help
     this.help_text = new createjs.Text("<h> Tutorial", "60px 'Voltaire', sans-serif", "#F7F8E0");
     this.help_text.x = 100;
     this.help_text.y = 650;
+    this.hitHelp = new createjs.Shape();
+    this.hitHelp.graphics.beginFill("#000").drawRect(0, 0, this.help_text.getMeasuredWidth(), this.help_text.getMeasuredHeight());
+    this.help_text.hitArea = this.hitHelp;
+
 
     //Start
     this.newGame_text = new createjs.Text("<enter> Start", "60px 'Voltaire', sans-serif", "#F7F8E0");
     this.newGame_text.x = 950;
     this.newGame_text.y = 650;
+    this.hitNew = new createjs.Shape();
+    this.hitNew.graphics.beginFill("#000").drawRect(0, 0, this.newGame_text.getMeasuredWidth(), this.newGame_text.getMeasuredHeight());
+    this.newGame_text.hitArea = this.hitNew;
 
     //Escape back to menu
     this.escape_text = new createjs.Text("<esc> Back to Menu", "60px 'Voltaire', sans-serif", "#F7F8E0");
     this.escape_text.x = 70;
     this.escape_text.y = 650;
+    this.hitEsc = new createjs.Shape();
+    this.hitEsc.graphics.beginFill("#000").drawRect(0, 0, this.escape_text.getMeasuredWidth(), this.escape_text.getMeasuredHeight());
+    this.escape_text.hitArea = this.hitEsc;
 
 
 }
@@ -99,20 +111,47 @@
 Menu.prototype.showMenu = function () {
 
     // show the Menu
+    inGame = false;
+    console.log(menu.menuBg);
+    stage.removeAllChildren();
+    stage.update();
+    stage.addChild(menu.menuBg);
+    menu.setScores();
+    stage.addChild(menu.menu_text);
+    stage.addChild(menu.lastScore_text);
+    stage.addChild(menu.bestScore_text);
+    stage.addChild(menu.help_text);
+    
+    menu.help_text.addEventListener("click", menu.handleClick);
+    stage.addChild(menu.newGame_text);
+    
+    menu.newGame_text.addEventListener("click", menu.handleClick);
 
 
 
     //For test purposes
  	/*stage.removeAllChildren();
     stage.update();*/
-    menu.startGame();
+    //menu.startGame();
 }
 
 Menu.prototype.startGame = function () {
 
     game = new Game();
-    controller = new Controller();  
+    controller = new Controller(); 
+
+    stage.removeAllChildren();
+    stage.update();
+
+    /*level.coins.length = 0;
+    level.platforms.length = 0;
+    level.bg.length = 0;
+    level.fg.length = 0;*/
+
+    game.counter = 0;
+
     game.start();
+
     inGame = true;
 
 }
@@ -134,12 +173,12 @@ Menu.prototype.handleTick = function () {
 
     if (Key.isDown(Key.R)) {
     	console.log("restart");
-    	menu.generateNew();
+    	//menu.generateNew();
     	menu.startGame();
     }
     if (Key.isDown(Key.ESCAPE)){
     	console.log("escape");
-    	menu.showMenuBetween();
+    	menu.showMenu();
     }
     if (Key.isDown(Key.H)){
     	console.log("help");
@@ -147,7 +186,7 @@ Menu.prototype.handleTick = function () {
     }
     if (Key.isDown(Key.ENTER)){
     	console.log("new Game");
-    	menu.generateNew();
+    	//menu.generateNew();
     	menu.startGame();
     }
 
@@ -180,71 +219,41 @@ Menu.prototype.getHelp = function (){
     stage.addChild(this.pause_text);
     this.newGame_text.x = 1000;
     stage.addChild(this.newGame_text);
-    var hitNew = new createjs.Shape();
-    hitNew.graphics.beginFill("#000").drawRect(0, 0, this.newGame_text.getMeasuredWidth(), this.newGame_text.getMeasuredHeight());
-    this.newGame_text.hitArea = hitNew;
-    this.newGame_text.addEventListener("click", menu.handleClickNew);
+    
+    this.newGame_text.addEventListener("click", menu.handleClick);
     stage.addChild(this.escape_text);
-    var hitEsc = new createjs.Shape();
-    hitEsc.graphics.beginFill("#000").drawRect(0, 0, this.escape_text.getMeasuredWidth(), this.escape_text.getMeasuredHeight());
-    this.escape_text.hitArea = hitEsc;
-    this.escape_text.addEventListener("click", menu.handleClickEsc);
+    
+    this.escape_text.addEventListener("click", menu.handleClick);
 }    
 
 
-Menu.prototype.showMenuBetween = function(){
-	inGame = false;
-	console.log(this.menuBg);
-    stage.removeAllChildren();
-    stage.update();
-    stage.addChild(this.menuBg);
-    this.lastScore_text.text = "Your last score: " + game.distanceScore;
-    stage.addChild(this.menu_text);
-    stage.addChild(this.lastScore_text);
-    stage.addChild(this.bestScore_text);
-    stage.addChild(this.help_text);
-    var hitHelp = new createjs.Shape();
-    hitHelp.graphics.beginFill("#000").drawRect(0, 0, this.help_text.getMeasuredWidth(), this.help_text.getMeasuredHeight());
-    this.help_text.hitArea = hitHelp;
-    this.help_text.addEventListener("click", menu.handleClickHelp);
-    stage.addChild(this.newGame_text);
-    var hitNew = new createjs.Shape();
-    hitNew.graphics.beginFill("#000").drawRect(0, 0, this.newGame_text.getMeasuredWidth(), this.newGame_text.getMeasuredHeight());
-    this.newGame_text.hitArea = hitNew;
-    this.newGame_text.addEventListener("click", menu.handleClickNew);
-} 
-
-/*Menu.prototype.handleClick = function (ev){
-    if(ev == "help"){
+Menu.prototype.handleClick = function (evt){
+    console.log(evt.target);
+    if(evt.target.text == "<h> Tutorial"){
         console.log("help");
         menu.getHelp();
     }
-    else if(ev == "newGame"){
+    else if(evt.target.text == "<enter> Start"){
         console.log("new Game");
-        menu.generateNew();
+        //menu.generateNew();
         menu.startGame();
     }
-    else if(ev == "jump"){
-        console.log("clicked jump");
-    }else{
-        console.log("click");
+    else if(evt.target.text == "<esc> Back to Menu"){
+        console.log("back");
+        menu.showMenu();
     }
-}*/
-
-Menu.prototype.handleClickHelp = function(){
-    console.log("help");
-    menu.getHelp();
 }
 
-Menu.prototype.handleClickNew = function(){
-    console.log("new Game");
-    menu.generateNew();
-    menu.startGame();
-}
 
-Menu.prototype.handleClickEsc = function(){
-    console.log("back to menu");
-    menu.showMenuBetween();
+Menu.prototype.setScores = function(){
+    this.lastScore_text.text = "Your last score: " + localStorage.getItem("lastScore");
+    if(localStorage.getItem("lastScore") > localStorage.getItem("bestScore")){
+        var newScore = localStorage.getItem("lastScore");
+        localStorage.setItem("bestScore", newScore);
+    }else{
+        //localStorage.setItem("bestScore", localStorage.getItem("bestScore"));
+    }
+    this.bestScore_text.text = "Your best score: " + localStorage.getItem("bestScore");
 }
 
 }
