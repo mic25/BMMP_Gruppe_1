@@ -92,6 +92,8 @@ Game.prototype.handleTick = function () {
     }
     this.counter_text.text = Math.floor(counter);
 
+    //Bubbles
+    level.updateBubbles();
 
     //Lets mak this stuff hard to do :D
     this.setControls();

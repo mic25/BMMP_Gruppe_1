@@ -28,6 +28,10 @@
     this.coins = new Array();
     this.coin;
 
+    this.bubbles = new Array();
+    this.bubble;
+
+
     this.initialize();
 }
 
@@ -55,6 +59,9 @@ Level.prototype.initialize = function () {
     //StartCoin
     this.coin = new Coin(700 / SCALE, 300 / SCALE); 
     this.coins.push(this.coin);
+
+    //this.bubble = new Bubble(352 / SCALE, 500 / SCALE); 
+    //this.bubbles.push(this.bubble);
 }
 
 Level.prototype.generateLevel = function () {
@@ -87,6 +94,29 @@ Level.prototype.generateLevel = function () {
         //Coins
         this.generateCoins();
      
+        //Bubbles
+
+        this.generateBubble();
+
+     
+}
+
+Level.prototype.generateBubble = function() {
+            /*
+        var randomSign = Math.random();
+
+        var lastXBubble = this.bubble.body.GetPosition().x * SCALE;
+        var lastYBubble = this.bubble.body.GetPosition().y * SCALE;
+        var newXBubble = lastXBubble + Math.floor(Math.random() * (game.HORIZONTAL_MAX - game.HORIZONTAL_MIN + 1)) + game.HORIZONTAL_MIN
+            + (this.bubble.segmentSize) / 2 + (this.bubble.segmentSize) / 2;     
+
+        var newYBubble = lastYBubble; */
+        while(this.bubbles.length <= 1){        
+        
+        this.bubble = new Bubble(9000 / SCALE, 500 / SCALE);
+        this.bubbles.push(this.bubble);
+        console.log("Gibst du aus?!-----" + this.bubbles.length);
+    }
 }
 
 Level.prototype.generateCoins = function() {
@@ -116,7 +146,7 @@ Level.prototype.updatePlatforms = function () {
         if (this.platforms[i].body.bitmaps[0].x < -this.plat.segmentSize * (game.tiles_max+3) ) {
             this.platforms[i].remove();        
             this.platforms.splice(i, 1);
-        }           
+        }
     }
 }
 
@@ -128,6 +158,23 @@ Level.prototype.updateCoins = function () {
             this.coins[i].remove();
         }
     }
+}
+
+Level.prototype.updateBubbles = function () {
+    console.log("updateBubbles");
+    for (var i = 0; i < this.bubbles.length; i++) {
+        this.bubbles[i].update();
+        if (this.bubbles[i].body.bitmap.x < -50) {
+            console.log(this.bubbles.length);
+            //this.bubbles.pop();
+            console.log("after pop" + this.bubbles.length);
+            stage.removeChild(this.bubbles[i]);            
+            deleteArray.push(this.bubbles[i]);
+            this.bubbles.splice(i,1);
+            
+        }
+    }
+    console.log("ende update");
 }
 
 Level.prototype.generateBackground = function () {
@@ -314,15 +361,15 @@ Level.prototype.getPlatStyleAt = function (pos) {
         if (this.mg[i].x < pos && this.mg[i].x + this.mg[i].image.width >= pos) {
             mg = this.mg[i];
         }
-    }
+        }
     var str = mg.image.src.split("/")[mg.image.src.split("/").length - 1]
     if (pos < mg.x + mg.image.width / 3) {
         if (str.indexOf("start") != -1)
             return "wiese";
     }
     else if (pos > mg.x + mg.image.width / 2) {
-        if (str.indexOf("end") != -1)
-            return "wiese";
+    if (str.indexOf("end") != -1)
+        return "wiese";
     }
     if (str.indexOf("rainbow") != -1)
         return "rainbow";
