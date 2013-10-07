@@ -66,7 +66,7 @@
 
     //Menu Header
 	this.menu_text = new createjs.Text("Menu", "150px 'Voltaire', sans-serif", "#F7F8E0");
-    this.menu_text.x = 500;
+    this.menu_text.x = 550;
     this.menu_text.y = 250;
 
     //Scores
@@ -195,12 +195,18 @@ Menu.prototype.showMenuBetween = function(){
     stage.addChild(this.lastScore_text);
     stage.addChild(this.bestScore_text);
     stage.addChild(this.help_text);
-    //this.help_text.addEventListener("click", menu.handleClick("help"));
+    var hitHelp = new createjs.Shape();
+    hitHelp.graphics.beginFill("#000").drawRect(0, 0, this.help_text.getMeasuredWidth(), this.help_text.getMeasuredHeight());
+    this.help_text.hitArea = hitHelp;
+    this.help_text.addEventListener("click", menu.handleClickHelp);
     stage.addChild(this.newGame_text);
-    //this.newGame_text.addEventListener("click", menu.handleClick("newGame"));
+    var hitNew = new createjs.Shape();
+    hitNew.graphics.beginFill("#000").drawRect(0, 0, this.newGame_text.getMeasuredWidth(), this.newGame_text.getMeasuredHeight());
+    this.newGame_text.hitArea = hitNew;
+    this.newGame_text.addEventListener("click", menu.handleClickNew);
 } 
 
-Menu.prototype.handleClick = function (ev){
+/*Menu.prototype.handleClick = function (ev){
     if(ev == "help"){
         console.log("help");
         menu.getHelp();
@@ -210,6 +216,22 @@ Menu.prototype.handleClick = function (ev){
         menu.generateNew();
         menu.startGame();
     }
+    else if(ev == "jump"){
+        console.log("clicked jump");
+    }else{
+        console.log("click");
+    }
+}*/
+
+Menu.prototype.handleClickHelp = function(){
+    console.log("help");
+    menu.getHelp();
+}
+
+Menu.prototype.handleClickNew = function(){
+    console.log("new Game");
+    menu.generateNew();
+    menu.startGame();
 }
 
 }
