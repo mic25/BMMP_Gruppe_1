@@ -5,7 +5,7 @@ function Platform(xPos,yPos,tiles,style){
 	this.tiles = tiles;
 	this.segmentSize = 188 //Breite des Bildes
 	this.segmentHeight = 88;
-	this.style = "wiese";
+	this.style = style;
     
 	var bodyDef = new b2d.b2BodyDef();
 	bodyDef.position.Set(xPos,yPos);

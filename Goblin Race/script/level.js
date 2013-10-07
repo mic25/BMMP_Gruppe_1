@@ -19,7 +19,7 @@
     this.fg = new Array();
 
     this.BG_ELEMENTS = 2;
-    this.PL_ELEMENTS = 10;
+    this.PL_ELEMENTS = 7;
    
     this.platforms = new Array();
     this.plat;
@@ -49,7 +49,7 @@ Level.prototype.initialize = function () {
     
 
     //Startplatform
-    this.plat = new Platform(352 / SCALE, 500 / SCALE, 10); 
+    this.plat = new Platform(352 / SCALE, 500 / SCALE, 10,"wiese"); 
     this.platforms.push(this.plat);
 
     //StartCoin
@@ -80,7 +80,7 @@ Level.prototype.generateLevel = function () {
         else if (newYPlat < this.plat.segmentHeight + 4 * game.vertical) {
             newYPlat += 2 * game.vertical;
         }
-        this.plat = new Platform(newXPlat / SCALE, newYPlat / SCALE, tiles, this.getStyleAt(newXPlat));
+        this.plat = new Platform(newXPlat / SCALE, newYPlat / SCALE, tiles, this.getPlatStyleAt(newXPlat));
         this.platforms.push(this.plat);
     }
 
@@ -299,12 +299,6 @@ Level.prototype.updateBackground = function () {
 }
 
 Level.prototype.getStyleAt = function (pos) {
-    var offset = 100;
-    /*for (var i = 0; i < this.BG_ELEMENTS ; i++) {
-        if (this.bg[i].x < pos + offset && this.bg[i].x + this.bg[i].image.width >= pos + offset) {
-            var str = this.bg[i].image.src.split("/")[this.bg[i].image.src.split("/").length - 1]
-        }
-    }*/
     var str = this.bg_im.image.src.split("/")[this.bg_im.image.src.split("/").length - 1]
     if (str.indexOf("end") != -1)
         return "wiese";
@@ -315,4 +309,30 @@ Level.prototype.getStyleAt = function (pos) {
     else if(str.indexOf("cave") != -1)
         return "cave";
     else return "wiese";
+}
+
+Level.prototype.getPlatStyleAt = function (pos) {
+    var offset = 100; var bg = this.bg_im;
+    for (var i = 0; i < this.BG_ELEMENTS ; i++) {
+        if (this.bg[i].x < pos && this.bg[i].x + this.bg[i].image.width >= pos) {
+            bg = this.bg[i];
+        }
+    }
+    var str = bg.image.src.split("/")[bg.image.src.split("/").length - 1]
+    if (pos < bg.x + bg.image.width / 2) {
+        if (str.indexOf("start") != -1)
+            return "wiese";
+    }
+    else if (pos > bg.x + bg.image.width / 2) {
+        if (str.indexOf("end") != -1)
+            return "wiese";
+    }
+    if (str.indexOf("rainbow") != -1)
+        return "rainbow";
+    else if (str.indexOf("cloud") != -1)
+        return "cloud";
+    else if (str.indexOf("cave") != -1)
+        return "cave";
+    else return "wiese";
+    
 }
