@@ -123,7 +123,7 @@ Level.prototype.updatePlatforms = function () {
 Level.prototype.updateCoins = function () {
     for (var i = 0; i < this.coins.length; i++) {
         this.coins[i].update();
-        if (this.coins[i].body.bitmap.x < -50) {
+        if (this.coins[i].body.bitmap.x < -100) {
             this.coins.splice(i, 1);
             this.coins[i].remove();
         }
@@ -319,11 +319,11 @@ Level.prototype.getPlatStyleAt = function (pos) {
         }
     }
     var str = bg.image.src.split("/")[bg.image.src.split("/").length - 1]
-    if (pos < bg.x + bg.image.width / 2) {
+    if (pos < bg.x + bg.image.width / 1.5) {
         if (str.indexOf("start") != -1)
             return "wiese";
     }
-    else if (pos > bg.x + bg.image.width / 2) {
+    else if (pos > bg.x + bg.image.width / 3) {
         if (str.indexOf("end") != -1)
             return "wiese";
     }

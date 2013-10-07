@@ -32,7 +32,7 @@
 	this.speedControl = 1;
 	this.tileControl = 1;
 	this.distanceControl = 1;
-    this.counter = 0;
+    counter = 100;
 
     //Score Output
 	this.distance_text = new createjs.Text("Score : " + this.distance, "40px  'Voltaire', sans-serif", "#000");
@@ -85,7 +85,7 @@ Game.prototype.handleTick = function () {
 
     //Coins
     level.updateCoins();
-    this.counter_text.text = cCounter;
+    this.counter_text.text = counter;
 
 
     //Lets mak this stuff hard to do :D

@@ -1,6 +1,5 @@
 function ContactListener(){
 	
-
 	this.listener = new b2d.b2ContactListener;
     
     this.listener.BeginContact = function(contact) {
@@ -11,12 +10,12 @@ function ContactListener(){
 		if(shape1.GetBody().GetUserData() =="coin"){
 			deleteArray.push(shape1.GetBody());
 			stage.removeChild(shape1.GetBody().bitmap);
-			cCounter++;
+			counter++;
 		}
 		else if(shape2.GetBody().GetUserData() == "coin"){
 			deleteArray.push(shape2.GetBody());
 			stage.removeChild(shape2.GetBody().bitmap);
-			cCounter++;
+			counter++;
 		}
 		else if(shape1.GetBody().GetUserData() == "platform"){
 			player.numFootContacts++;	
