@@ -133,7 +133,7 @@ Level.prototype.updateCoins = function () {
 Level.prototype.generateBackground = function () {
 
     //add new Background
-    while (this.bg.length < this.BG_ELEMENTS) { // one more to assure there is always a background to check for the style
+    while (this.bg.length < this.BG_ELEMENTS) { 
         var newX = this.bg_im.x + this.bg_im.image.width - 1;
         if (this.last_bg == 1 || this.last_bg == 3) {
             this.last_bg = Math.floor(this.last_bg + Math.random() + 0.5)%4;
@@ -264,9 +264,6 @@ Level.prototype.generateBackground = function () {
         stage.addChildAt(this.fg_im, 4); 
         this.fg_im.x = newX;
     }
-
-    //setup correct order!!! -> DONE :D
-
 }
 
 Level.prototype.updateBackground = function () {
@@ -319,7 +316,7 @@ Level.prototype.getPlatStyleAt = function (pos) {
         }
     }
     var str = mg.image.src.split("/")[mg.image.src.split("/").length - 1]
-    if (pos < mg.x + mg.image.width / 2) {
+    if (pos < mg.x + mg.image.width / 3) {
         if (str.indexOf("start") != -1)
             return "wiese";
     }

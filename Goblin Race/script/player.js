@@ -94,6 +94,41 @@ function Player() {
 	this.body.SetUserData("player");
 }
 
+Player.prototype.handleParticles = function () {
+    if(createjs.Ticker.getTicks()% 4 == 0)
+        this.createParticle();
+    var now = Date.now();
+    var elapsed = now - time;
+    time = now;
+    for (var i = 0; i < stage.getNumChildren() ; i++) {
+        var particle = stage.getChildAt(i);
+        if (particle.alpha != 0.9)
+            continue;
+        particle.time += elapsed / 1000;
+        particle.x += particle.speedX * 1 / (particle.time + 1);
+        particle.y += (particle.speedY * 1 / (particle.time + 1)) + 1;
+        if (particle.time > Math.random() * 8) {
+            stage.removeChildAt(i);
+            i--;
+        }
+    }
+}
+
+Player.prototype.createParticle= function () {
+    var particle = new createjs.Shape();
+    if (Math.random() > 0.5)
+        particle.graphics.beginFill("#DCBC1C").drawCircle(0, 0, 7);
+    else
+        particle.graphics.beginFill("#FCDF06").drawCircle(0, 0, 10);
+    particle.x = this.x *SCALE - 50;
+    particle.y = this.y * SCALE + 50;
+    particle.speedX = -10 + Math.random() * 5;
+    particle.speedY = -4 + Math.random() * 8;
+    particle.time = 0;
+    particle.alpha = 0.9;
+    stage.addChild(particle);
+}
+
 
 Player.prototype.draw = function(){
     this.image.x = (this.x - this.boxWidth) * SCALE - this.imagewidth / 8;

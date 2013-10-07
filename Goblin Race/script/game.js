@@ -33,7 +33,7 @@
 	this.speedControl = 1;
 	this.tileControl = 1;
 	this.distanceControl = 1;
-    counter = 100;
+	counter = 10;
 
     //Score Output
 	this.distance_text = new createjs.Text("Score : " + this.distance, "40px  'Voltaire', sans-serif", "#000");
@@ -134,6 +134,7 @@ Game.prototype.handleTick = function () {
     }
 
     //Player
+    player.handleParticles();
     if (player != undefined) {
         player.update();
         player.draw();
