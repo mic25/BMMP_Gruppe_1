@@ -180,7 +180,15 @@ Menu.prototype.getHelp = function (){
     stage.addChild(this.pause_text);
     this.newGame_text.x = 1000;
     stage.addChild(this.newGame_text);
+    var hitNew = new createjs.Shape();
+    hitNew.graphics.beginFill("#000").drawRect(0, 0, this.newGame_text.getMeasuredWidth(), this.newGame_text.getMeasuredHeight());
+    this.newGame_text.hitArea = hitNew;
+    this.newGame_text.addEventListener("click", menu.handleClickNew);
     stage.addChild(this.escape_text);
+    var hitEsc = new createjs.Shape();
+    hitEsc.graphics.beginFill("#000").drawRect(0, 0, this.escape_text.getMeasuredWidth(), this.escape_text.getMeasuredHeight());
+    this.escape_text.hitArea = hitEsc;
+    this.escape_text.addEventListener("click", menu.handleClickEsc);
 }    
 
 
@@ -232,6 +240,11 @@ Menu.prototype.handleClickNew = function(){
     console.log("new Game");
     menu.generateNew();
     menu.startGame();
+}
+
+Menu.prototype.handleClickEsc = function(){
+    console.log("back to menu");
+    menu.showMenuBetween();
 }
 
 }
