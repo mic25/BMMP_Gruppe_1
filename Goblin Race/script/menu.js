@@ -246,10 +246,10 @@ Menu.prototype.handleClick = function (evt){
 
 
 Menu.prototype.setScores = function(){
-    if(localStorage.getItem("lastScore") == undefined){
+    if(localStorage.getItem("lastScore") == null){
         localStorage.setItem("lastScore", 0);
     }
-    else if(localStorage.getItem("bestScore") == undefined){
+    else if(localStorage.getItem("bestScore") == null){
         localStorage.setItem("bestScore", 0);
     }else{
         this.lastScore_text.text = "Your last score: " + localStorage.getItem("lastScore");
