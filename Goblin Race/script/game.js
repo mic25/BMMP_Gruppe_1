@@ -121,6 +121,13 @@ Game.prototype.handleTick = function () {
         menu.showMenuBetween();
     }
 
+    if (Key.isDown(Key.R)){
+        console.log("restart");
+        inGame = false;
+        menu.generateNew();
+        menu.startGame();
+    }
+
     //Player
     if (player != undefined) {
         player.update();
