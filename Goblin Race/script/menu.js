@@ -250,15 +250,17 @@ Menu.prototype.setScores = function(){
         localStorage.setItem("lastScore", 0);
         localStorage.setItem("bestScore", 0);
     }else{
-        this.lastScore_text.text = "Your last score: " + localStorage.getItem("lastScore");
+        
         if(localStorage.getItem("lastScore") > localStorage.getItem("bestScore")){
             var newScore = localStorage.getItem("lastScore");
             localStorage.setItem("bestScore", newScore);
         }else{
             //localStorage.setItem("bestScore", localStorage.getItem("bestScore"));
         }
-        this.bestScore_text.text = "Your best score: " + localStorage.getItem("bestScore");
+        
     }
+    this.lastScore_text.text = "Your last score: " + localStorage.getItem("lastScore");
+    this.bestScore_text.text = "Your best score: " + localStorage.getItem("bestScore");
 }
 
 }
