@@ -23,7 +23,7 @@ function Platform(xPos,yPos,tiles,style){
 	fixDef.shape = shape;
 	
 	this.body = world.CreateBody(bodyDef);
-	this.body.CreateFixture(fixDef);
+	this.fixture = this.body.CreateFixture(fixDef);
 	this.body.bitmaps = [];
 
 	for (var i = 0; i < this.tiles; i++) {
@@ -52,4 +52,11 @@ Platform.prototype.update = function () {
 	for(var i=0;i<this.body.bitmaps.length;i++){		
 	    this.body.bitmaps[i].x = this.body.GetPosition().x * SCALE + (this.segmentSize * i) - (this.tiles * this.segmentSize/2) - 6;
 	};
+}
+
+Platform.prototype.remove = function () {
+    for (var i = 0; i < this.body.bitmaps.length; i++) {
+        stage.removeChild(this.body.bitmaps[i]);
+    }
+    deleteArray.push(this.fixture.GetBody());
 }

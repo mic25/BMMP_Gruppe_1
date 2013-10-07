@@ -53,7 +53,7 @@ Level.prototype.initialize = function () {
     this.platforms.push(this.plat);
 
     //StartCoin
-    this.coin = new Coin(352 / SCALE, 500 / SCALE); 
+    this.coin = new Coin(700 / SCALE, 300 / SCALE); 
     this.coins.push(this.coin);
 }
 
@@ -114,10 +114,9 @@ Level.prototype.updatePlatforms = function () {
     for (var i = 0; i < this.platforms.length; i++) {
         this.platforms[i].update();
         if (this.platforms[i].body.bitmaps[0].x < -this.plat.segmentSize * (game.tiles_max+3) ) {
-            stage.removeChild(this.platforms[i]);
+            this.platforms[i].remove();        
             this.platforms.splice(i, 1);
-            deleteArray.push(this.platforms[i]);
-        }
+        }           
     }
 }
 
@@ -125,9 +124,8 @@ Level.prototype.updateCoins = function () {
     for (var i = 0; i < this.coins.length; i++) {
         this.coins[i].update();
         if (this.coins[i].body.bitmap.x < -50) {
-            stage.removeChild(this.coins[i]);
             this.coins.splice(i, 1);
-            deleteArray.push(this.coins[i]);
+            this.coins[i].remove();
         }
     }
 }
@@ -239,8 +237,8 @@ Level.prototype.generateBackground = function () {
             }
             else {
                 if (this.last_fg == 0) {
-                    url = "fg_" + lastStyle + "_end";
-                    this.last_fg = 2;
+                    url = "mg_" + this.getStyleAt(newX) + "_start";
+                    this.last_fg = 0;
                 }
                 else {
                     if (this.getStyleAt(newX) == "wiese") {

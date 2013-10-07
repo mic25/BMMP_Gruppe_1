@@ -39,3 +39,8 @@ Coin.prototype.update = function () {
     this.body.SetPosition(new b2d.b2Vec2(this.body.GetPosition().x + game.platformSpeed / SCALE , this.body.GetPosition().y));	
 	this.body.bitmap.x = this.body.GetPosition().x * SCALE - 0.5*this.segmentSize;
 }
+
+Coin.prototype.remove = function () {
+    stage.removeChild(this.body.bitmap);
+    deleteArray.push(this.fix.GetBody());
+}
