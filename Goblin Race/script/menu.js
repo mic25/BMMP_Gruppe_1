@@ -246,14 +246,21 @@ Menu.prototype.handleClick = function (evt){
 
 
 Menu.prototype.setScores = function(){
-    this.lastScore_text.text = "Your last score: " + localStorage.getItem("lastScore");
-    if(localStorage.getItem("lastScore") > localStorage.getItem("bestScore")){
-        var newScore = localStorage.getItem("lastScore");
-        localStorage.setItem("bestScore", newScore);
-    }else{
-        //localStorage.setItem("bestScore", localStorage.getItem("bestScore"));
+    if(localStorage.getItem("lastScore") == undefined){
+        localStorage.setItem("lastScore", 0);
     }
-    this.bestScore_text.text = "Your best score: " + localStorage.getItem("bestScore");
+    else if(localStorage.getItem("bestScore") == undefined){
+        localStorage.setItem("bestScore", 0);
+    }else{
+        this.lastScore_text.text = "Your last score: " + localStorage.getItem("lastScore");
+        if(localStorage.getItem("lastScore") > localStorage.getItem("bestScore")){
+            var newScore = localStorage.getItem("lastScore");
+            localStorage.setItem("bestScore", newScore);
+        }else{
+            //localStorage.setItem("bestScore", localStorage.getItem("bestScore"));
+        }
+        this.bestScore_text.text = "Your best score: " + localStorage.getItem("bestScore");
+    }
 }
 
 }
