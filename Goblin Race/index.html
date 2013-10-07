@@ -3,7 +3,8 @@
 <head>
     <meta charset="utf-8" />
     <title>Goblin Race</title>
-    <script src="script/createjs-2013.09.25.min.js"></script>
+    <script src="http://code.createjs.com/createjs-2013.09.25.min.js"></script>
+    
     <script src="script/preload.js"></script>
     <script src="script/key.js"></script>
     <script src="script/player.js"></script>
@@ -15,6 +16,7 @@
     <script src ="script/event.js"></script>
     <script src ="script/contactListener.js"></script>
     <script src ="script/coins.js"></script>
+    <script src ="script/bubble.js"></script>
     <script src ="script/Box2dWeb-2.1.a.3.min.js"></script>
     
 
@@ -45,8 +47,10 @@
 
     <script>
         var stage, queue, ticker, controller, menu, game, controller,world,player, level,overlay;
+        var isFlying = false;
         var inGame = false;
         var cCounter = 0;
+      
 
         var deleteArray = [];
 
@@ -83,6 +87,8 @@
         function tick() {
             if (inGame) {
                 game.handleTick();
+
+
             }
             else
                 menu.handleTick();

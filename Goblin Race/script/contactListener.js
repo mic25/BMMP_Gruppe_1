@@ -18,6 +18,35 @@ function ContactListener(){
 			stage.removeChild(shape2.GetBody().bitmap);
 			cCounter++;
 		}
+
+		else if(shape1.GetBody().GetUserData() =="bubble"){
+			deleteArray.push(shape1.GetBody());
+			stage.removeChild(shape1.GetBody().bitmap);
+			isFlying = true;
+			player.setFly();
+			console.log(isFlying);
+		}
+		else if(shape2.GetBody().GetUserData() == "bubble"){
+			deleteArray.push(shape2.GetBody());
+			stage.removeChild(shape2.GetBody().bitmap);
+			isFlying = true;
+			player.setFly();
+			console.log(isFlying);
+		}
+
+		else if(isFlying && shape1.GetBody().GetUserData() == "platform"){
+			player.setRunning();
+			isFlying = false;
+			player.numFootContacts++;
+			console.log(isFlying + "plattform");
+		}
+		else if(isFlying && shape2.GetBody().GetUserData() == "platform"){
+			player.setRunning();
+			isFlying = false;
+			player.numFootContacts++;
+			console.log(isFlying + "plattform");
+		}
+
 		else if(shape1.GetBody().GetUserData() == "platform"){
 			player.numFootContacts++;	
 		}else if(shape2.GetBody().GetUserData() == "platform"){

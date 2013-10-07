@@ -87,6 +87,8 @@ Game.prototype.handleTick = function () {
     level.updateCoins();
     this.counter_text.text = cCounter;
 
+    //Bubbles
+    level.updateBubbles();
 
     //Lets mak this stuff hard to do :D
 	game.setControls();

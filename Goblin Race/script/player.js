@@ -56,6 +56,7 @@ function Player() {
             "Run": [0, 4, true, 0.2],
             "Jump": [8],
             "Jump2": [7],
+            "Fliegen": [9],
 
             "FliegenBlase":[0], 
             "Laufen1(2)":[1], 
@@ -106,6 +107,7 @@ Player.prototype.jump = function(){
 		    player.body.ApplyImpulse( new b2d.b2Vec2(0,-this.mass*10), this.body.GetWorldCenter() );
 		    this.jumpTimeout = 15;		    	
 	}	
+	console.log("jump");
 }
 
 Player.prototype.moveLeft = function(){
@@ -123,16 +125,67 @@ Player.prototype.moveDown = function(){
 	this.body.ApplyForce( new b2d.b2Vec2(0,500), this.body.GetWorldCenter() );		
 }
 
+Player.prototype.setRunning = function(){
+	this.onGround = false;
+	this.groundCheck = false;
+	this.numFootContacts = 0;
+	this.jumpTimeout = 0;
+	this.isOutOfBounds = false;
+
+	world.SetGravity(new b2d.b2Vec2(0,10));
+	this.fixDef.density = 20;
+	this.fixDef.friction = 0.2;
+	this.fixDef.restitution = 0.0;
+}
+
+Player.prototype.setFly = function(){
+	player.body.ApplyImpulse(new b2d.b2Vec2(0, -50), this.body.GetWorldCenter());
+	world.SetGravity(new b2d.b2Vec2(0,2));
+	this.fixDef.density = 2;
+	this.fixDef.friction = 0.2;
+	this.fixDef.restitution = 0.0;
+}
+
+Player.prototype.flyUp = function(){
+	
+	//player.body.SetAwake(true);
+	//if(this.onGround && this.jumpTimeout<=0){
+		console.log("flyUp");
+		    player.body.ApplyForce( new b2d.b2Vec2(0,-150), this.body.GetWorldCenter() );
+		   // this.jumpTimeout = 15;		    	
+	//}	
+}
+
+Player.prototype.flyLeft = function(){
+	player.body.ApplyForce( new b2d.b2Vec2(-50,0), this.body.GetWorldCenter() );
+}
+
+Player.prototype.flyRight = function () {
+    
+    player.body.ApplyForce(new b2d.b2Vec2(50, 0), this.body.GetWorldCenter());
+
+}
+
+Player.prototype.flyDown = function(){
+	if(!this.onGround)
+	this.body.ApplyForce( new b2d.b2Vec2(0,50), this.body.GetWorldCenter() );		
+}
+
 
 Player.prototype.update = function() {
-	this.moveDown();
+	
 	this.jumpTimeout --;
 
 	if (this.body.GetPosition().y * SCALE > stage.canvas.height + this.imageheight / 2 || this.body.GetPosition().x * SCALE < -this.imagewidth / 2) {
 		this.isOutOfBounds =  true;
 	}
 
-	if(this.numFootContacts<1){
+
+	if(!isFlying){
+
+	this.moveDown();
+			
+		if(this.numFootContacts<1){
 		this.onGround = false;
 	}else{
 		this.onGround = true;
@@ -154,7 +207,25 @@ Player.prototype.update = function() {
 	if (Key.isDown(Key.LEFT)) player.moveLeft();	
 	if (Key.isDown(Key.RIGHT)) player.moveRight();
 	if (Key.isEmpty() && !this.onGround) {
+	}}
+
+	else if(isFlying){
+	this.image.gotoAndPlay("Fliegen");
+	if (Key.isDown(Key.UP)) player.flyUp();
+	if (Key.isDown(Key.SPACE)) player.flyUp();
+	if (Key.isDown(Key.DOWN)) player.flyDown();
+	if (Key.isDown(Key.LEFT)) player.flyLeft();	
+	if (Key.isDown(Key.RIGHT)) player.flyRight();
+	if (Key.isEmpty() && !this.onGround) {
 	}
+	
+	if(createjs.Ticker.getTicks()%300==0){
+	isFlying = false;
+	this.image.gotoAndPlay("Jump");
+		this.setRunning();
+	}}
+
+
 
 	if (this.body.GetPosition().x * SCALE > stage.canvas.width - this.imagewidth / 4) {
 	    var posY = this.body.GetPosition().y;

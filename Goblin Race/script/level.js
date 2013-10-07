@@ -28,6 +28,10 @@
     this.coins = new Array();
     this.coin;
 
+    this.bubbles = new Array();
+    this.bubble;
+
+
     this.initialize();
 }
 
@@ -53,8 +57,11 @@ Level.prototype.initialize = function () {
     this.platforms.push(this.plat);
 
     //StartCoin
-    this.coin = new Coin(352 / SCALE, 500 / SCALE); 
+    this.coin = new Coin(380/ SCALE, 500 / SCALE); 
     this.coins.push(this.coin);
+
+    //this.bubble = new Bubble(352 / SCALE, 500 / SCALE); 
+    //this.bubbles.push(this.bubble);
 }
 
 Level.prototype.generateLevel = function () {
@@ -86,7 +93,30 @@ Level.prototype.generateLevel = function () {
 
         //Coins
         this.generateCoins();
+
+        //Bubbles
+
+        this.generateBubble();
+
      
+}
+
+Level.prototype.generateBubble = function() {
+            /*
+        var randomSign = Math.random();
+
+        var lastXBubble = this.bubble.body.GetPosition().x * SCALE;
+        var lastYBubble = this.bubble.body.GetPosition().y * SCALE;
+        var newXBubble = lastXBubble + Math.floor(Math.random() * (game.HORIZONTAL_MAX - game.HORIZONTAL_MIN + 1)) + game.HORIZONTAL_MIN
+            + (this.bubble.segmentSize) / 2 + (this.bubble.segmentSize) / 2;     
+
+        var newYBubble = lastYBubble; */
+        while(this.bubbles.length <= 1){        
+        
+        this.bubble = new Bubble(9000 / SCALE, 500 / SCALE);
+        this.bubbles.push(this.bubble);
+        console.log("Gibst du aus?!-----" + this.bubbles.length);
+    }
 }
 
 Level.prototype.generateCoins = function() {
@@ -130,6 +160,23 @@ Level.prototype.updateCoins = function () {
             deleteArray.push(this.coins[i]);
         }
     }
+}
+
+Level.prototype.updateBubbles = function () {
+    console.log("updateBubbles");
+    for (var i = 0; i < this.bubbles.length; i++) {
+        this.bubbles[i].update();
+        if (this.bubbles[i].body.bitmap.x < -50) {
+            console.log(this.bubbles.length);
+            //this.bubbles.pop();
+            console.log("after pop" + this.bubbles.length);
+            stage.removeChild(this.bubbles[i]);            
+            deleteArray.push(this.bubbles[i]);
+            this.bubbles.splice(i,1);
+            
+        }
+    }
+    console.log("ende update");
 }
 
 Level.prototype.generateBackground = function () {
