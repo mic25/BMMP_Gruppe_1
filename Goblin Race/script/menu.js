@@ -1,7 +1,11 @@
 ﻿function Menu() {  
 
+    // Menu Background
 	this.menuBg =  new createjs.Bitmap("img/menuBg.png");
 
+    //Help elements
+
+    //Move right
 	this.rightArrow =  new createjs.Bitmap("img/right_arrow.png");
 	this.rightArrow.scaleX = 0.5;
 	this.rightArrow.scaleY = 0.5;
@@ -12,6 +16,7 @@
 	this.moveRight_text.x = 960;
 	this.moveRight_text.y = 375;
 
+    //Jump
 	this.upArrow =  new createjs.Bitmap("img/up_arrow.png");
 	this.upArrow.scaleX = 0.5;
 	this.upArrow.scaleY = 0.5;
@@ -32,6 +37,7 @@
 	this.jump_text.x = 835;
 	this.jump_text.y = 190;
 
+    //Move left
 	this.leftArrow =  new createjs.Bitmap("img/left_arrow.png");
 	this.leftArrow.scaleX = 0.5;
 	this.leftArrow.scaleY = 0.5;
@@ -42,6 +48,7 @@
 	this.moveLeft_text.x = 90;
 	this.moveLeft_text.y = 375;
 
+    //Pause
 	this.pKey =  new createjs.Bitmap("img/p.png");
 	this.pKey.scaleX = 0.5;
 	this.pKey.scaleY = 0.5;
@@ -52,14 +59,17 @@
 	this.pause_text.x = 760;
 	this.pause_text.y = 525;
 
+    //Game-Task
 	this.explanation_text = new createjs.Text("Run the goblin across the platforms, collect coins & sweets to stay alive!", "50px 'Voltaire', sans-serif", "#F7F8E0");
 	this.explanation_text.x = 25;
 	this.explanation_text.y = 70;
 
+    //Menu Header
 	this.menu_text = new createjs.Text("Menu", "150px 'Voltaire', sans-serif", "#F7F8E0");
     this.menu_text.x = 500;
     this.menu_text.y = 250;
 
+    //Scores
     this.lastScore_text = new createjs.Text("Your last score: 0", "60px 'Voltaire', sans-serif", "#F7F8E0");
     this.lastScore_text.x = 500;
     this.lastScore_text.y = 150;
@@ -68,14 +78,17 @@
     this.bestScore_text.x = 500;
     this.bestScore_text.y = 80;
 
+    //Help
     this.help_text = new createjs.Text("<h> Tutorial", "60px 'Voltaire', sans-serif", "#F7F8E0");
     this.help_text.x = 100;
     this.help_text.y = 650;
 
+    //Start
     this.newGame_text = new createjs.Text("<enter> Start", "60px 'Voltaire', sans-serif", "#F7F8E0");
     this.newGame_text.x = 950;
     this.newGame_text.y = 650;
 
+    //Escape back to menu
     this.escape_text = new createjs.Text("<esc> Back to Menu", "60px 'Voltaire', sans-serif", "#F7F8E0");
     this.escape_text.x = 70;
     this.escape_text.y = 650;
@@ -121,15 +134,7 @@ Menu.prototype.handleTick = function () {
 
     if (Key.isDown(Key.R)) {
     	console.log("restart");
-    	
-    	stage.removeAllChildren();
-    	stage.update();
-
-    	level.coins.length = 0;
-    	level.platforms.length = 0;
-    	level.bg.length = 0;
-    	level.fg.length = 0;
-    	
+    	menu.generateNew();
     	menu.startGame();
     }
     if (Key.isDown(Key.ESCAPE)){
@@ -138,36 +143,45 @@ Menu.prototype.handleTick = function () {
     }
     if (Key.isDown(Key.H)){
     	console.log("help");
-    	stage.removeAllChildren;
-    	stage.update();
-    	stage.addChild(this.menuBg);
-    	stage.addChild(this.explanation_text);
-    	stage.addChild(this.space);
-    	stage.addChild(this.upArrow);
-    	stage.addChild(this.leftArrow);
-    	stage.addChild(this.rightArrow);
-    	stage.addChild(this.jump_text);
-    	stage.addChild(this.slash_text);
-    	stage.addChild(this.moveRight_text);
-    	stage.addChild(this.moveLeft_text);
-    	stage.addChild(this.pKey);
-    	stage.addChild(this.pause_text);
-    	this.newGame_text.x = 1000;
-    	stage.addChild(this.newGame_text);
-    	stage.addChild(this.escape_text);
+    	menu.getHelp;
     }
     if (Key.isDown(Key.ENTER)){
     	console.log("new Game");
-    	stage.removeAllChildren();
-    	stage.update();
-
-    	level.coins.length = 0;
-    	level.platforms.length = 0;
-    	level.bg.length = 0;
-    	level.fg.length = 0;
-    	
+    	menu.generateNew();
     	menu.startGame();
     }
+
+Menu.prototype.generateNew = function (){
+    stage.removeAllChildren();
+    stage.update();
+
+    level.coins.length = 0;
+    level.platforms.length = 0;
+    level.bg.length = 0;
+    level.fg.length = 0;
+
+    game.counter = 0;
+}    
+
+Menu.prototype.getHelp = function (){
+    stage.removeAllChildren;
+    stage.update();
+    stage.addChild(this.menuBg);
+    stage.addChild(this.explanation_text);
+    stage.addChild(this.space);
+    stage.addChild(this.upArrow);
+    stage.addChild(this.leftArrow);
+    stage.addChild(this.rightArrow);
+    stage.addChild(this.jump_text);
+    stage.addChild(this.slash_text);
+    stage.addChild(this.moveRight_text);
+    stage.addChild(this.moveLeft_text);
+    stage.addChild(this.pKey);
+    stage.addChild(this.pause_text);
+    this.newGame_text.x = 1000;
+    stage.addChild(this.newGame_text);
+    stage.addChild(this.escape_text);
+}    
 
 
 Menu.prototype.showMenuBetween = function(){
