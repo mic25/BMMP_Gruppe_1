@@ -150,6 +150,8 @@ Game.prototype.handleTick = function () {
 
         if(player.isOutOfBounds || counter <= 0){
             inGame = false;
+            isFlying = false;
+            isCandy = false;
             player.image.stop();
             this.distanceScore = Math.floor(this.distance);
             localStorage.setItem("lastScore", this.distanceScore);
