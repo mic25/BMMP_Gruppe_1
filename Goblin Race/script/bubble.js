@@ -2,8 +2,8 @@ function Bubble(xPos,yPos,type){
 	
 	this.x = xPos;
 	this.y = yPos;
-	this.segmentSize = 50; 
-	this.segmentHeight = 50;
+	this.segmentSize = 60; 
+	this.segmentHeight = 60;
 	this.type = type;
 
 	var bodyDef = new b2d.b2BodyDef();
