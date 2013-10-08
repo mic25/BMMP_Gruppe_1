@@ -1,0 +1,261 @@
+[14:03:44.013] file:///C:/Users/Kathi_Laptop/Documents/GitHub/BMMP_Gruppe_1/Goblin%20Race/script/preload.js
+[14:03:44.014] file:///C:/Users/Kathi_Laptop/Documents/GitHub/BMMP_Gruppe_1/Goblin%20Race/script/key.js
+[14:03:44.014] file:///C:/Users/Kathi_Laptop/Documents/GitHub/BMMP_Gruppe_1/Goblin%20Race/script/player.js
+[14:03:44.015] file:///C:/Users/Kathi_Laptop/Documents/GitHub/BMMP_Gruppe_1/Goblin%20Race/script/menu.js
+[14:03:44.015] file:///C:/Users/Kathi_Laptop/Documents/GitHub/BMMP_Gruppe_1/Goblin%20Race/script/game.js
+[14:03:44.016] file:///C:/Users/Kathi_Laptop/Documents/GitHub/BMMP_Gruppe_1/Goblin%20Race/script/level.js
+[14:03:44.016] file:///C:/Users/Kathi_Laptop/Documents/GitHub/BMMP_Gruppe_1/Goblin%20Race/script/platform.js
+[14:03:44.017] file:///C:/Users/Kathi_Laptop/Documents/GitHub/BMMP_Gruppe_1/Goblin%20Race/script/event.js
+[14:03:44.017] file:///C:/Users/Kathi_Laptop/Documents/GitHub/BMMP_Gruppe_1/Goblin%20Race/script/contactListener.js
+[14:03:44.018] file:///C:/Users/Kathi_Laptop/Documents/GitHub/BMMP_Gruppe_1/Goblin%20Race/script/coins.js
+[14:03:44.019] file:///C:/Users/Kathi_Laptop/Documents/GitHub/BMMP_Gruppe_1/Goblin%20Race/script/bubble.js
+[14:03:44.019] file:///C:/Users/Kathi_Laptop/Documents/GitHub/BMMP_Gruppe_1/Goblin%20Race/script/candyCane.js
+[14:03:44.019] file:///C:/Users/Kathi_Laptop/Documents/GitHub/BMMP_Gruppe_1/Goblin%20Race/script/Box2dWeb-2.1.a.3.min.js
+[14:03:44.116] file:///C:/Users/Kathi_Laptop/Documents/GitHub/BMMP_Gruppe_1/Goblin%20Race/style.css
+[14:03:44.117] GET http://code.createjs.com/createjs-2013.09.25.min.js [HTTP/1.1 304 Not Modified 16ms]
+[14:03:44.238] file:///C:/Users/Kathi_Laptop/Documents/GitHub/BMMP_Gruppe_1/Goblin%20Race/img/menuBg.png
+[14:03:44.238] file:///C:/Users/Kathi_Laptop/Documents/GitHub/BMMP_Gruppe_1/Goblin%20Race/img/right_arrow.png
+[14:03:44.239] file:///C:/Users/Kathi_Laptop/Documents/GitHub/BMMP_Gruppe_1/Goblin%20Race/img/up_arrow.png
+[14:03:44.239] file:///C:/Users/Kathi_Laptop/Documents/GitHub/BMMP_Gruppe_1/Goblin%20Race/img/space.png
+[14:03:44.240] file:///C:/Users/Kathi_Laptop/Documents/GitHub/BMMP_Gruppe_1/Goblin%20Race/img/left_arrow.png
+[14:03:44.240] file:///C:/Users/Kathi_Laptop/Documents/GitHub/BMMP_Gruppe_1/Goblin%20Race/img/p.png
+[14:03:44.240] file:///C:/Users/Kathi_Laptop/Documents/GitHub/BMMP_Gruppe_1/Goblin%20Race/img/soundOn.png
+[14:03:44.241] file:///C:/Users/Kathi_Laptop/Documents/GitHub/BMMP_Gruppe_1/Goblin%20Race/img/soundOff.png
+[14:03:44.434] file:///C:/Users/Kathi_Laptop/Documents/GitHub/BMMP_Gruppe_1/Goblin%20Race/sound/ssen1.wav
+[14:03:44.434] file:///C:/Users/Kathi_Laptop/Documents/GitHub/BMMP_Gruppe_1/Goblin%20Race/img/soundOn.png
+[14:03:44.488] file:///C:/Users/Kathi_Laptop/Documents/GitHub/BMMP_Gruppe_1/Goblin%20Race/img/soundOff.png
+[14:03:44.488] file:///C:/Users/Kathi_Laptop/Documents/GitHub/BMMP_Gruppe_1/Goblin%20Race/img/Wiese.png
+[14:03:44.489] file:///C:/Users/Kathi_Laptop/Documents/GitHub/BMMP_Gruppe_1/Goblin%20Race/img/player/player.png
+[14:03:44.489] file:///C:/Users/Kathi_Laptop/Documents/GitHub/BMMP_Gruppe_1/Goblin%20Race/img/platform.png
+[14:03:44.490] file:///C:/Users/Kathi_Laptop/Documents/GitHub/BMMP_Gruppe_1/Goblin%20Race/img/coin.png
+[14:03:44.490] file:///C:/Users/Kathi_Laptop/Documents/GitHub/BMMP_Gruppe_1/Goblin%20Race/img/goldPot.png
+[14:03:44.490] file:///C:/Users/Kathi_Laptop/Documents/GitHub/BMMP_Gruppe_1/Goblin%20Race/img/bubble.png
+[14:03:44.491] file:///C:/Users/Kathi_Laptop/Documents/GitHub/BMMP_Gruppe_1/Goblin%20Race/img/candyCane.png
+[14:03:44.491] file:///C:/Users/Kathi_Laptop/Documents/GitHub/BMMP_Gruppe_1/Goblin%20Race/img/bg/bg_wiese.png
+[14:03:44.492] file:///C:/Users/Kathi_Laptop/Documents/GitHub/BMMP_Gruppe_1/Goblin%20Race/img/bg/mg_wiese.png
+[14:03:44.492] file:///C:/Users/Kathi_Laptop/Documents/GitHub/BMMP_Gruppe_1/Goblin%20Race/img/bg/fg_wiese.png
+[14:03:44.492] file:///C:/Users/Kathi_Laptop/Documents/GitHub/BMMP_Gruppe_1/Goblin%20Race/img/bg/bg_rainbow_start.png
+[14:03:44.493] file:///C:/Users/Kathi_Laptop/Documents/GitHub/BMMP_Gruppe_1/Goblin%20Race/img/bg/bg_rainbow_end.png
+[14:03:44.493] file:///C:/Users/Kathi_Laptop/Documents/GitHub/BMMP_Gruppe_1/Goblin%20Race/img/bg/bg_rainbow.png
+[14:03:44.591] file:///C:/Users/Kathi_Laptop/Documents/GitHub/BMMP_Gruppe_1/Goblin%20Race/img/bg/mg_rainbow.png
+[14:03:44.591] file:///C:/Users/Kathi_Laptop/Documents/GitHub/BMMP_Gruppe_1/Goblin%20Race/img/bg/mg_rainbow_start.png
+[14:03:44.592] file:///C:/Users/Kathi_Laptop/Documents/GitHub/BMMP_Gruppe_1/Goblin%20Race/img/bg/mg_rainbow_end.png
+[14:03:44.592] file:///C:/Users/Kathi_Laptop/Documents/GitHub/BMMP_Gruppe_1/Goblin%20Race/img/bg/fg_rainbow.png
+[14:03:44.592] file:///C:/Users/Kathi_Laptop/Documents/GitHub/BMMP_Gruppe_1/Goblin%20Race/img/bg/fg_rainbow_start.png
+[14:03:44.593] file:///C:/Users/Kathi_Laptop/Documents/GitHub/BMMP_Gruppe_1/Goblin%20Race/img/bg/fg_rainbow_end.png
+[14:03:44.593] file:///C:/Users/Kathi_Laptop/Documents/GitHub/BMMP_Gruppe_1/Goblin%20Race/img/bg/bg_cloud_start.png
+[14:03:44.593] file:///C:/Users/Kathi_Laptop/Documents/GitHub/BMMP_Gruppe_1/Goblin%20Race/img/bg/bg_cloud_end.png
+[14:03:44.594] file:///C:/Users/Kathi_Laptop/Documents/GitHub/BMMP_Gruppe_1/Goblin%20Race/img/bg/bg_cloud.png
+[14:03:44.594] file:///C:/Users/Kathi_Laptop/Documents/GitHub/BMMP_Gruppe_1/Goblin%20Race/img/bg/mg_cloud.png
+[14:03:44.595] file:///C:/Users/Kathi_Laptop/Documents/GitHub/BMMP_Gruppe_1/Goblin%20Race/img/bg/mg_cloud_start.png
+[14:03:44.595] file:///C:/Users/Kathi_Laptop/Documents/GitHub/BMMP_Gruppe_1/Goblin%20Race/img/bg/mg_cloud_end.png
+[14:03:44.596] file:///C:/Users/Kathi_Laptop/Documents/GitHub/BMMP_Gruppe_1/Goblin%20Race/img/bg/fg_cloud.png
+[14:03:44.596] file:///C:/Users/Kathi_Laptop/Documents/GitHub/BMMP_Gruppe_1/Goblin%20Race/img/bg/fg_cloud_start.png
+[14:03:44.596] file:///C:/Users/Kathi_Laptop/Documents/GitHub/BMMP_Gruppe_1/Goblin%20Race/img/bg/fg_cloud_end.png
+[14:03:44.597] file:///C:/Users/Kathi_Laptop/Documents/GitHub/BMMP_Gruppe_1/Goblin%20Race/img/bg/bg_cave_start.png
+[14:03:44.681] file:///C:/Users/Kathi_Laptop/Documents/GitHub/BMMP_Gruppe_1/Goblin%20Race/img/bg/bg_cave_end.png
+[14:03:44.682] file:///C:/Users/Kathi_Laptop/Documents/GitHub/BMMP_Gruppe_1/Goblin%20Race/img/bg/bg_cave.png
+[14:03:44.682] file:///C:/Users/Kathi_Laptop/Documents/GitHub/BMMP_Gruppe_1/Goblin%20Race/img/bg/mg_cave.png
+[14:03:44.683] file:///C:/Users/Kathi_Laptop/Documents/GitHub/BMMP_Gruppe_1/Goblin%20Race/img/bg/mg_cave_start.png
+[14:03:44.683] file:///C:/Users/Kathi_Laptop/Documents/GitHub/BMMP_Gruppe_1/Goblin%20Race/img/bg/mg_cave_end.png
+[14:03:44.684] file:///C:/Users/Kathi_Laptop/Documents/GitHub/BMMP_Gruppe_1/Goblin%20Race/img/bg/fg_cave.png
+[14:03:44.684] file:///C:/Users/Kathi_Laptop/Documents/GitHub/BMMP_Gruppe_1/Goblin%20Race/img/bg/fg_cave_start.png
+[14:03:44.684] file:///C:/Users/Kathi_Laptop/Documents/GitHub/BMMP_Gruppe_1/Goblin%20Race/img/bg/fg_cave_end.png
+[14:03:44.685] file:///C:/Users/Kathi_Laptop/Documents/GitHub/BMMP_Gruppe_1/Goblin%20Race/img/plat/plat_wiese_single.png
+[14:03:44.685] file:///C:/Users/Kathi_Laptop/Documents/GitHub/BMMP_Gruppe_1/Goblin%20Race/img/plat/plat_wiese_l.png
+[14:03:44.686] file:///C:/Users/Kathi_Laptop/Documents/GitHub/BMMP_Gruppe_1/Goblin%20Race/img/plat/plat_wiese_r.png
+[14:03:44.686] file:///C:/Users/Kathi_Laptop/Documents/GitHub/BMMP_Gruppe_1/Goblin%20Race/img/plat/plat_wiese_m.png
+[14:03:44.686] file:///C:/Users/Kathi_Laptop/Documents/GitHub/BMMP_Gruppe_1/Goblin%20Race/img/plat/plat_cloud_single.png
+[14:03:44.687] file:///C:/Users/Kathi_Laptop/Documents/GitHub/BMMP_Gruppe_1/Goblin%20Race/img/plat/plat_cloud_l.png
+[14:03:44.687] file:///C:/Users/Kathi_Laptop/Documents/GitHub/BMMP_Gruppe_1/Goblin%20Race/img/plat/plat_cloud_r.png
+[14:03:44.687] file:///C:/Users/Kathi_Laptop/Documents/GitHub/BMMP_Gruppe_1/Goblin%20Race/img/plat/plat_cloud_m.png
+[14:03:44.784] file:///C:/Users/Kathi_Laptop/Documents/GitHub/BMMP_Gruppe_1/Goblin%20Race/img/plat/plat_rainbow_single.png
+[14:03:44.785] file:///C:/Users/Kathi_Laptop/Documents/GitHub/BMMP_Gruppe_1/Goblin%20Race/img/plat/plat_rainbow_l.png
+[14:03:44.785] file:///C:/Users/Kathi_Laptop/Documents/GitHub/BMMP_Gruppe_1/Goblin%20Race/img/plat/plat_rainbow_r.png
+[14:03:44.786] file:///C:/Users/Kathi_Laptop/Documents/GitHub/BMMP_Gruppe_1/Goblin%20Race/img/plat/plat_rainbow_m.png
+[14:03:44.786] file:///C:/Users/Kathi_Laptop/Documents/GitHub/BMMP_Gruppe_1/Goblin%20Race/img/plat/plat_cave_single.png
+[14:03:44.787] file:///C:/Users/Kathi_Laptop/Documents/GitHub/BMMP_Gruppe_1/Goblin%20Race/img/plat/plat_cave_l.png
+[14:03:44.787] file:///C:/Users/Kathi_Laptop/Documents/GitHub/BMMP_Gruppe_1/Goblin%20Race/img/plat/plat_cave_r.png
+[14:03:44.787] file:///C:/Users/Kathi_Laptop/Documents/GitHub/BMMP_Gruppe_1/Goblin%20Race/img/plat/plat_cave_m.png
+[14:03:44.788] file:///C:/Users/Kathi_Laptop/Documents/GitHub/BMMP_Gruppe_1/Goblin%20Race/img/overlay.png
+[14:03:44.796] "1"
+[14:03:46.369] "bg_wiese"
+[14:03:46.370] "mg_wiese"
+[14:03:46.370] "fg_wiese"
+--
+[14:03:56.305] "mg_wiese"
+[14:03:58.582] "bg_wiese"
+[14:04:02.381] "fg_wiese"
+[14:04:05.370] "mg_wiese"
+[14:04:07.430] "falseplattform"
+[14:04:09.952] "bg_wiese"
+[14:04:09.952] "fg_wiese"
+--
+[14:04:17.709] "bg_wiese"
+[14:04:17.709] "mg_wiese"
+[14:04:17.710] "fg_wiese"
+[14:04:17.762] "restart"
+[14:04:17.765] "bg_wiese"
+[14:04:17.765] "mg_wiese"
+[14:04:17.766] "fg_wiese"
+--
+[14:04:26.950] "mg_wiese"
+[14:04:29.214] "bg_rainbow_start"
+[14:04:33.126] "fg_rainbow_start"
+[14:04:36.174] "mg_rainbow_start"
+[14:04:40.837] "bg_rainbow"
+[14:04:40.837] "fg_rainbow"
+[14:04:45.265] "mg_rainbow"
+[14:04:48.192] "fg_rainbow"
+[14:04:52.039] "bg_rainbow_end"
+[14:04:53.917] "mg_rainbow_end"
+[14:04:55.395] "fg_rainbow_end"
+--
+[14:05:02.510] "mg_wiese"
+[14:05:02.511] "fg_wiese"
+[14:05:03.411] "bg_wiese"
+--
+[14:05:09.477] "fg_wiese"
+[14:05:10.808] "mg_wiese"
+[14:05:14.099] "bg_cloud_start"
+[14:05:16.171] "fg_cloud_start"
+[14:05:18.936] "mg_cloud_start"
+[14:05:22.882] "fg_cloud"
+[14:05:25.000] "bg_cloud"
+[14:05:27.053] "mg_cloud"
+[14:05:29.436] "fg_cloud"
+--
+[14:05:34.588] "mg_cloud"
+[14:05:35.356] "bg_cloud"
+[14:05:35.620] "fg_cloud"
+--
+[14:05:41.837] "falseplattform"
+[14:05:42.073] "mg_cloud"
+[14:05:45.572] "bg_cloud_end"
+[14:05:47.993] "fg_cloud_end"
+[14:05:49.542] "mg_cloud_end"
+[14:05:53.943] "fg_wiese"
+[14:05:55.817] "bg_wiese"
+[14:05:56.861] "mg_wiese"
+[14:06:00.012] "fg_wiese"
+[14:06:03.994] "mg_wiese"
+[14:06:05.761] "fg_wiese"
+[14:06:05.795] "bg_cave_start"
+--
+[14:06:10.842] "mg_cave_start"
+[14:06:11.425] "falseplattform"
+[14:06:11.490] "fg_cave_start"
+[14:06:15.659] "bg_cave"
+[14:06:17.116] "fg_cave"
+[14:06:17.847] "mg_cave"
+[14:06:22.737] "fg_cave"
+[14:06:24.534] "mg_cave"
+[14:06:25.296] "bg_cave"
+[14:06:27.957] "fg_cave"
+[14:06:30.886] TypeError: this.mg[i] is undefined @ file:///C:/Users/Kathi_Laptop/Documents/GitHub/BMMP_Gruppe_1/Goblin%20Race/script/level.js:371
+[14:06:30.919] "mg_cave"
+[14:06:33.185] "fg_cave"
+[14:06:34.583] "bg_cave_end"
+[14:06:37.383] "mg_cave_end"
+[14:06:38.596] "fg_cave_end"
+--
+[14:06:43.657] "fg_wiese"
+[14:06:43.782] "mg_wiese"
+[14:06:44.109] "bg_wiese"
+[14:06:48.843] "fg_wiese"
+[14:06:50.008] "mg_wiese"
+[14:06:52.452] TypeError: this.runningSound is undefined @ file:///C:/Users/Kathi_Laptop/Documents/GitHub/BMMP_Gruppe_1/Goblin%20Race/script/game.js:246
+[14:06:53.219] "bg_wiese"
+[14:06:53.848] "fg_wiese"
+[14:06:56.074] "mg_wiese"
+[14:06:58.633] "fg_wiese"
+[14:07:01.889] "mg_wiese"
+[14:07:01.989] "bg_wiese"
+[14:07:03.350] "fg_wiese"
+[14:07:07.667] "mg_wiese"
+[14:07:08.100] "fg_wiese"
+[14:07:10.735] "bg_cave_start"
+[14:07:12.833] "fg_cave_start"
+[14:07:13.563] "mg_cave_start"
+[14:07:17.598] "fg_cave"
+[14:07:19.328] "mg_cave"
+[14:07:19.698] "bg_cave"
+[14:07:22.277] "fg_cave"
+[14:07:25.022] "mg_cave"
+[14:07:26.788] "fg_cave"
+[14:07:28.184] "bg_cave"
+[14:07:28.355] TypeError: this.platforms[i].body.bitmaps[0] is undefined @ file:///C:/Users/Kathi_Laptop/Documents/GitHub/BMMP_Gruppe_1/Goblin%20Race/script/level.js:145
+[14:07:30.551] "mg_cave"
+[14:07:30.586] TypeError: this.platforms[i].body.bitmaps[0] is undefined @ file:///C:/Users/Kathi_Laptop/Documents/GitHub/BMMP_Gruppe_1/Goblin%20Race/script/level.js:145
+[14:07:31.330] "fg_cave"
+[14:07:31.364] TypeError: this.platforms[i].body.bitmaps[0] is undefined @ file:///C:/Users/Kathi_Laptop/Documents/GitHub/BMMP_Gruppe_1/Goblin%20Race/script/level.js:145
+[14:07:35.821] "fg_cave"
+[14:07:35.855] TypeError: this.platforms[i].body.bitmaps[0] is undefined @ file:///C:/Users/Kathi_Laptop/Documents/GitHub/BMMP_Gruppe_1/Goblin%20Race/script/level.js:145
+[14:07:36.114] "mg_cave"
+[14:07:36.148] TypeError: this.platforms[i].body.bitmaps[0] is undefined @ file:///C:/Users/Kathi_Laptop/Documents/GitHub/BMMP_Gruppe_1/Goblin%20Race/script/level.js:145
+[14:07:36.879] "bg_cave_end"
+[14:07:36.914] TypeError: this.platforms[i].body.bitmaps[0] is undefined @ file:///C:/Users/Kathi_Laptop/Documents/GitHub/BMMP_Gruppe_1/Goblin%20Race/script/level.js:145
+[14:07:40.277] "fg_cave_end"
+[14:07:40.312] TypeError: this.platforms[i].body.bitmaps[0] is undefined @ file:///C:/Users/Kathi_Laptop/Documents/GitHub/BMMP_Gruppe_1/Goblin%20Race/script/level.js:145
+[14:07:41.564] "mg_cave_end"
+[14:07:41.598] TypeError: this.platforms[i].body.bitmaps[0] is undefined @ file:///C:/Users/Kathi_Laptop/Documents/GitHub/BMMP_Gruppe_1/Goblin%20Race/script/level.js:145
+[14:07:44.664] "fg_wiese"
+[14:07:44.698] TypeError: this.platforms[i].body.bitmaps[0] is undefined @ file:///C:/Users/Kathi_Laptop/Documents/GitHub/BMMP_Gruppe_1/Goblin%20Race/script/level.js:145
+[14:07:45.309] "bg_wiese"
+[14:07:45.344] TypeError: this.platforms[i].body.bitmaps[0] is undefined @ file:///C:/Users/Kathi_Laptop/Documents/GitHub/BMMP_Gruppe_1/Goblin%20Race/script/level.js:145
+[14:07:47.017] "mg_wiese"
+[14:07:47.052] TypeError: this.platforms[i].body.bitmaps[0] is undefined @ file:///C:/Users/Kathi_Laptop/Documents/GitHub/BMMP_Gruppe_1/Goblin%20Race/script/level.js:145
+[14:07:49.108] "fg_wiese"
+[14:07:49.142] TypeError: this.platforms[i].body.bitmaps[0] is undefined @ file:///C:/Users/Kathi_Laptop/Documents/GitHub/BMMP_Gruppe_1/Goblin%20Race/script/level.js:145
+[14:07:52.456] "mg_wiese"
+[14:07:52.494] TypeError: this.platforms[i].body.bitmaps[0] is undefined @ file:///C:/Users/Kathi_Laptop/Documents/GitHub/BMMP_Gruppe_1/Goblin%20Race/script/level.js:145
+[14:07:53.522] "fg_wiese"
+[14:07:53.555] TypeError: this.platforms[i].body.bitmaps[0] is undefined @ file:///C:/Users/Kathi_Laptop/Documents/GitHub/BMMP_Gruppe_1/Goblin%20Race/script/level.js:145
+[14:07:53.790] "bg_rainbow_start"
+[14:07:53.824] TypeError: this.platforms[i].body.bitmaps[0] is undefined @ file:///C:/Users/Kathi_Laptop/Documents/GitHub/BMMP_Gruppe_1/Goblin%20Race/script/level.js:145
+[14:07:58.015] "mg_rainbow_start"
+[14:07:58.051] TypeError: this.platforms[i].body.bitmaps[0] is undefined @ file:///C:/Users/Kathi_Laptop/Documents/GitHub/BMMP_Gruppe_1/Goblin%20Race/script/level.js:145
+[14:07:58.049] "fg_rainbow_start"
+[14:07:58.099] TypeError: this.platforms[i].body.bitmaps[0] is undefined @ file:///C:/Users/Kathi_Laptop/Documents/GitHub/BMMP_Gruppe_1/Goblin%20Race/script/level.js:145
+[14:08:02.380] "bg_rainbow"
+[14:08:02.415] TypeError: this.platforms[i].body.bitmaps[0] is undefined @ file:///C:/Users/Kathi_Laptop/Documents/GitHub/BMMP_Gruppe_1/Goblin%20Race/script/level.js:145
+[14:08:02.566] "fg_rainbow"
+[14:08:02.601] TypeError: this.platforms[i].body.bitmaps[0] is undefined @ file:///C:/Users/Kathi_Laptop/Documents/GitHub/BMMP_Gruppe_1/Goblin%20Race/script/level.js:145
+[14:08:03.582] "mg_rainbow"
+[14:08:03.617] TypeError: this.platforms[i].body.bitmaps[0] is undefined @ file:///C:/Users/Kathi_Laptop/Documents/GitHub/BMMP_Gruppe_1/Goblin%20Race/script/level.js:145
+[14:08:07.012] "fg_rainbow"
+[14:08:07.057] TypeError: this.platforms[i].body.bitmaps[0] is undefined @ file:///C:/Users/Kathi_Laptop/Documents/GitHub/BMMP_Gruppe_1/Goblin%20Race/script/level.js:145
+[14:08:09.907] "mg_rainbow"
+[14:08:09.942] TypeError: this.platforms[i].body.bitmaps[0] is undefined @ file:///C:/Users/Kathi_Laptop/Documents/GitHub/BMMP_Gruppe_1/Goblin%20Race/script/level.js:145
+[14:08:11.723] "bg_rainbow"
+[14:08:11.757] TypeError: this.platforms[i].body.bitmaps[0] is undefined @ file:///C:/Users/Kathi_Laptop/Documents/GitHub/BMMP_Gruppe_1/Goblin%20Race/script/level.js:145
+[14:08:12.300] "fg_rainbow"
+[14:08:12.349] TypeError: this.platforms[i].body.bitmaps[0] is undefined @ file:///C:/Users/Kathi_Laptop/Documents/GitHub/BMMP_Gruppe_1/Goblin%20Race/script/level.js:145
+[14:08:15.382] "mg_rainbow"
+[14:08:15.416] TypeError: this.platforms[i].body.bitmaps[0] is undefined @ file:///C:/Users/Kathi_Laptop/Documents/GitHub/BMMP_Gruppe_1/Goblin%20Race/script/level.js:145
+[14:08:16.758] "fg_rainbow"
+[14:08:16.793] TypeError: this.platforms[i].body.bitmaps[0] is undefined @ file:///C:/Users/Kathi_Laptop/Documents/GitHub/BMMP_Gruppe_1/Goblin%20Race/script/level.js:145
+[14:08:20.307] "bg_rainbow"
+[14:08:20.341] TypeError: this.platforms[i].body.bitmaps[0] is undefined @ file:///C:/Users/Kathi_Laptop/Documents/GitHub/BMMP_Gruppe_1/Goblin%20Race/script/level.js:145
+[14:08:20.929] "mg_rainbow"
+[14:08:20.963] TypeError: this.platforms[i].body.bitmaps[0] is undefined @ file:///C:/Users/Kathi_Laptop/Documents/GitHub/BMMP_Gruppe_1/Goblin%20Race/script/level.js:145
+[14:08:21.287] "fg_rainbow"
+[14:08:21.321] TypeError: this.platforms[i].body.bitmaps[0] is undefined @ file:///C:/Users/Kathi_Laptop/Documents/GitHub/BMMP_Gruppe_1/Goblin%20Race/script/level.js:145
+[14:08:25.793] "fg_rainbow"
+[14:08:25.827] TypeError: this.platforms[i].body.bitmaps[0] is undefined @ file:///C:/Users/Kathi_Laptop/Documents/GitHub/BMMP_Gruppe_1/Goblin%20Race/script/level.js:145
+[14:08:26.507] "mg_rainbow"
+[14:08:26.541] TypeError: this.platforms[i].body.bitmaps[0] is undefined @ file:///C:/Users/Kathi_Laptop/Documents/GitHub/BMMP_Gruppe_1/Goblin%20Race/script/level.js:145
+[14:08:28.885] "bg_rainbow_end"
+[14:08:28.919] TypeError: this.platforms[i].body.bitmaps[0] is undefined @ file:///C:/Users/Kathi_Laptop/Documents/GitHub/BMMP_Gruppe_1/Goblin%20Race/script/level.js:145
+[14:08:30.260] "fg_rainbow_end"
+[14:08:30.294] TypeError: this.platforms[i].body.bitmaps[0] is undefined @ file:///C:/Users/Kathi_Laptop/Documents/GitHub/BMMP_Gruppe_1/Goblin%20Race/script/level.js:145
+[14:08:32.033] "mg_rainbow_end"
+[14:08:32.068] TypeError: this.platforms[i].body.bitmaps[0] is undefined @ file:///C:/Users/Kathi_Laptop/Documents/GitHub/BMMP_Gruppe_1/Goblin%20Race/script/level.js:145
+[14:08:34.821] "fg_wiese"
+[14:08:34.857] TypeError: this.platforms[i].body.bitmaps[0] is undefined @ file:///C:/Users/Kathi_Laptop/Documents/GitHub/BMMP_Gruppe_1/Goblin%20Race/script/level.js:145
+[14:08:37.707] "bg_wiese"
+[14:08:37.742] TypeError: this.platforms[i].body.bitmaps[0] is undefined @ file:///C:/Users/Kathi_Laptop/Documents/GitHub/BMMP_Gruppe_1/Goblin%20Race/script/level.js:145
+[14:08:37.778] "mg_wiese"
+[14:08:37.817] TypeError: this.platforms[i].body.bitmaps[0] is undefined @ file:///C:/Users/Kathi_Laptop/Documents/GitHub/BMMP_Gruppe_1/Goblin%20Race/script/level.js:145
+[14:08:39.613] "fg_wiese"
+[14:08:39.648] TypeError: this.platforms[i].body.bitmaps[0] is undefined @ file:///C:/Users/Kathi_Laptop/Documents/GitHub/BMMP_Gruppe_1/Goblin%20Race/script/level.js:145
