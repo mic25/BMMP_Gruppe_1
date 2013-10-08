@@ -110,7 +110,7 @@ Level.prototype.generateLevel = function () {
         this.platforms.push(this.plat);
     }
 
-     if(this.platformCounterBubble > this.randomB){
+     if(this.platformCounterBubble > this.randomB && this.bubble == null){
         var newBubbleY = newYPlat - 200;
         this.bubble = new Bubble(newXPlat / SCALE, newBubbleY / SCALE);
         this.bubble.update();
