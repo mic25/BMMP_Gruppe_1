@@ -70,11 +70,13 @@ function ContactListener(){
 			deleteArray.push(shape1.GetBody());
 			stage.removeChild(shape1.GetBody().bitmap);
 			isCandy = true;
+			console.log("candy!!");
 		}
 		else if(shape2.GetBody().GetUserData() == "candy"){
 			deleteArray.push(shape2.GetBody());
 			stage.removeChild(shape2.GetBody().bitmap);
 			isCandy = true;
+			console.log("candy!!");
 		}
 
 		else if(isFlying && shape1.GetBody().GetUserData() == "platform"){

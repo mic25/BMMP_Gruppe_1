@@ -33,8 +33,15 @@
     this.candyCane = null;
     this.candyTick = 0;
 
+    this.randomC = this.random();
+    console.log("randomC" + this.randomC);
+    this.randomB = this.random();
+    console.log("randomB" + this.randomB);
 
     this.initialize();
+}
+Level.prototype.random = function (){
+    return Math.floor(Math.random() * (15 - 5 + 1)) + 5;
 }
 
 Level.prototype.initialize = function () {
@@ -57,6 +64,8 @@ Level.prototype.initialize = function () {
     //Startplatform
     this.plat = new Platform(352 / SCALE, 500 / SCALE, 10,"wiese"); 
     this.platforms.push(this.plat);
+    this.platformCounterBubble = 0;
+    this.platformCounterCandy = 0;
 
     //StartCoin
     this.coin = new Coin(700 / SCALE, 300 / SCALE); 
@@ -69,20 +78,26 @@ Level.prototype.initialize = function () {
 }
 
 Level.prototype.generateLevel = function () {
+    var newXPlat;
+    var newYPlat;
+
 
     while (this.platforms.length <= this.PL_ELEMENTS) {
+        this.platformCounterBubble ++;
+        this.platformCounterCandy ++;
+
         var randomSign = Math.random();
         var lastXPlat = this.plat.body.GetPosition().x * SCALE;
         this.lastYPlat = this.plat.body.GetPosition().y * SCALE;
         var tiles = Math.floor(Math.random() * (game.tiles_max - game.tiles_min + 1) + game.tiles_min);
-        var newXPlat = lastXPlat + Math.floor(Math.random() * (game.horizontal_max - game.horizontal_min + 1)) + game.horizontal_min
+        newXPlat = lastXPlat + Math.floor(Math.random() * (game.horizontal_max - game.horizontal_min + 1)) + game.horizontal_min
             + (this.plat.tiles * this.plat.segmentSize) / 2 + (tiles * this.plat.segmentSize) / 2;
 
         if (randomSign < this.lastYPlat / stage.canvas.height) {
-            var newYPlat = this.lastYPlat - Math.random() * game.vertical;
+            newYPlat = this.lastYPlat - Math.random() * game.vertical;
         }
         else {
-            var newYPlat = this.lastYPlat + Math.random() * game.vertical;
+            newYPlat = this.lastYPlat + Math.random() * game.vertical;
         }
 
         if (newYPlat > stage.canvas.height - this.plat.segmentHeight) {
@@ -95,18 +110,40 @@ Level.prototype.generateLevel = function () {
         this.platforms.push(this.plat);
     }
 
+     if(this.platformCounterBubble > this.randomB){
+        var newBubbleY = newYPlat - 200;
+        this.bubble = new Bubble(newXPlat / SCALE, newBubbleY / SCALE);
+        this.bubble.update();
+        this.platformCounterBubble = 0;
+        this.randomB = this.random();
+        console.log(this.randomB);
+        console.log("newBubble " + newYPlat);
+        }
+
+    if(this.platformCounterCandy > this.randomC){
+        var newCandyY = newYPlat - 200;
+        this.candyCane = new CandyCane(newXPlat / SCALE, newCandyY / SCALE);
+        this.candyCane.update();
+        this.platformCounterCandy = 0;
+        this.randomC = this.random();
+        console.log(this.randomC);
+        console.log("newCandy " + newYPlat);
+        }
+
         //Coins
         this.generateCoins();
      
-        //Bubbles
+    /*    //Bubbles
         if(this.bubble == null){
         this.generateBubble();
         }
+        
 
         //CandyCane
         if(this.candyCane == null){
         this.generateCandyCane();
         }
+        */
      
 }
 
