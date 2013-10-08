@@ -78,7 +78,40 @@
 
     this.runningSound = createjs.Sound.createInstance("running");
     this.runningSound.addEventListener("complete", this.playAgain);
-    this.runningSound.setVolume(1.5);
+    this.runningSound.setVolume(1.2);
+
+    this.coinSound = createjs.Sound.createInstance("coin3");
+    this.coinSound.setVolume(0.7);
+
+    this.jumpSound = createjs.Sound.createInstance("jump2");
+    this.jumpSound.setVolume(0.8);
+
+    this.floorSound = createjs.Sound.createInstance("floor");
+    this.floorSound.setVolume(0.7);
+
+    this.flySound = createjs.Sound.createInstance("fly1");
+    this.flySound.setVolume(1.2);
+
+    this.candySound1 = createjs.Sound.createInstance("essen1");
+    this.candySound1.setVolume(0.8);
+
+    this.candySound2 = createjs.Sound.createInstance("essen1");
+    this.candySound2.setVolume(0.8);
+
+    this.pauseSound = createjs.Sound.createInstance("pause");
+    this.pauseSound.setVolume(1.2);
+
+    this.resumeSound = createjs.Sound.createInstance("continue");
+    this.resumeSound.setVolume(1.2);
+
+    this.laughingSound = createjs.Sound.createInstance("laughing");
+    this.laughingSound.setVolume(3.0);
+
+    this.speedSound = createjs.Sound.createInstance("speed");
+    this.speedSound.setVolume(1.2);
+
+    this.distanceSound = createjs.Sound.createInstance("distance");
+    this.distanceSound.setVolume(1.2);
 
 }
 
@@ -122,7 +155,7 @@ Game.prototype.handleTick = function () {
             inGame = false;
             player.image.stop();
             this.runningSound.pause();
-            game.playSound("pause");
+            this.pauseSound.play();
             stage.addChild(this.overlay);
             stage.addChild(this.pause_text);
             stage.addChild(this.pauseExplanation_text);

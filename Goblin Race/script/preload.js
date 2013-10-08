@@ -30,7 +30,7 @@
         { id: "escape2", src: "sound/escape2.wav" },
         { id: "escape3", src: "sound/escape3.wav" },
 
-        { id: "essen1", src: "sound/ssen1.wav" },
+        { id: "essen1", src: "sound/essen1.wav" },
         { id: "essen2", src: "sound/essen2.wav" },
         { id: "essen3", src: "sound/essen3.wav" },
 

@@ -241,22 +241,28 @@ Player.prototype.update = function() {
 		this.onGround = true;
 	}
 	if (this.onGround != this.groundCheck) {
-	    if (this.onGround)
+	    if (this.onGround){
 	        this.image.gotoAndPlay("Run");
+	    	game.floorSound.play();;
+	    }	
 	    else {
-	        if (Math.random() > 0.5) this.image.gotoAndPlay("Jump");
-	        else this.image.gotoAndPlay("Jump2");
+	        if (Math.random() > 0.5){
+	        	this.image.gotoAndPlay("Jump");
+	        	game.jumpSound.play();
+	        } 
+	        else{
+	        	this.image.gotoAndPlay("Jump2");
+	        	game.jumpSound.play();
+	        } 
 	        
 	    }
 	    this.groundCheck = this.onGround;
 	}
 
 	if (Key.isDown(Key.UP)){
-		game.playSound("jump1");
 		player.jump();
 	} 
 	if (Key.isDown(Key.SPACE)){
-		game.playSound("jump1");
 		player.jump();
 	}
 	if (Key.isDown(Key.DOWN)) player.moveDown();
@@ -268,6 +274,7 @@ Player.prototype.update = function() {
 	else if(isFlying){
 	this.tick ++;
 	this.image.gotoAndPlay("Fliegen");
+	game.flySound.play();
 	if (Key.isDown(Key.UP)){
 		player.flyUp();
 	} 

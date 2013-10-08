@@ -191,7 +191,7 @@ Menu.prototype.handleTick = function () {
             stage.removeChild(game.overlay);
             stage.removeChild(game.pause_text);
             stage.removeChild(game.pauseExplanation_text);
-            game.playSound("continue");
+            game.resumeSound.play();
             player.image.play();
             if (player != undefined && player.isOutOfBounds) inGame = false;
             pPressedCheck = pPressed;
@@ -266,7 +266,7 @@ Menu.prototype.handleClick = function (evt){
     }
     else if(evt.target.text == "Failed you have!"){
         //Bild noch einbinden
-        game.playSound("laughing");
+        game.laughingSound.play();
     }
     //soundOn-Image
     else if(evt.target.image.alpha == 0.95){
