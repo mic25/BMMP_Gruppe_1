@@ -217,3 +217,7 @@ Game.prototype.setupPhysics = function () {
     world.SetDebugDraw(debugDraw);   
 }
 
+Game.prototype.playSound = function(id){
+    return createjs.Sound.play(id);
+}
+

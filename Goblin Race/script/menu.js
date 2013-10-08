@@ -235,14 +235,9 @@ Menu.prototype.handleClick = function (evt){
     }
     else if(evt.target.text == "You lost!"){
         console.log("click");
-        menu.playSound("laughing");
+        game.playSound("laughing");
     }
 }
-
-Menu.prototype.playSound = function(id){
-    return createjs.Sound.play(id);
-}
-
 
 Menu.prototype.setScores = function(){
     if(localStorage == null){
