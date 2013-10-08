@@ -114,6 +114,7 @@ Game.prototype.handleTick = function () {
         if (pPressed != pPressedCheck) {
             inGame = false;
             player.image.stop();
+
             stage.addChild(this.overlay);
             stage.addChild(this.pause_text);
             stage.addChild(this.pauseExplanation_text);
@@ -146,6 +147,7 @@ Game.prototype.handleTick = function () {
 
         if(player.isOutOfBounds || counter <= 0){
             inGame = false;
+            player.image.stop();
             this.distanceScore = Math.floor(this.distance);
             localStorage.setItem("lastScore", this.distanceScore);
             this.reached_text.text = "Your score: " + this.distanceScore;
