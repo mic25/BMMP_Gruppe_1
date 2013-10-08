@@ -46,21 +46,21 @@
     this.counter_text.x = 150; this.counter_text.y = 50;
 
     //Game Over
-	this.gameOver_text = new createjs.Text("You lost!", "150px Arial", "#FB5519");
-    this.gameOver_text.x = 400;
+    this.gameOver_text = new createjs.Text("Failed you have!", "120px 'Voltaire', sans-serif", "#F7F8E0");
+    this.gameOver_text.x = 335;
     this.gameOver_text.y = 250;
     this.hitGameOver = new createjs.Shape();
     this.hitGameOver.graphics.beginFill("#000").drawRect(0, 0, this.gameOver_text.getMeasuredWidth(), this.gameOver_text.getMeasuredHeight());
     this.gameOver_text.hitArea = this.hitGameOver;
 
-    this.reached_text = new createjs.Text("Your score: " + this.distance, "60px  'Voltaire', sans-serif", "#FB5519");
+    this.reached_text = new createjs.Text("Your score: " + this.distance, "60px  'Voltaire', sans-serif", "#F7F8E0");
     this.reached_text.x = 520;
     this.reached_text.y = 450;	
 
     this.gameOverExplanation_text = new createjs.Text
-        ("<r> to begin a new journey  ~  <esc> to flee like a coward",
+        ("<r> to begin a new journey                                                   <esc> to abandon your quest",
         "40px 'Voltaire', sans-serif", "#F7F8E0");
-    this.gameOverExplanation_text.x = 273;
+    this.gameOverExplanation_text.x = 100;
     this.gameOverExplanation_text.y = 700;
 
     //Pause
@@ -71,7 +71,7 @@
     this.pause_text.y = 150;
 
     this.pauseExplanation_text = new createjs.Text
-        ("<p> to resume your quest  ~  <r> to begin a new journey  ~  <esc> to flee like a coward",
+        ("<p> to resume your quest  ~  <r> to begin a new journey  ~  <esc> to abandon your quest",
         "40px 'Voltaire', sans-serif", "#F7F8E0");
     this.pauseExplanation_text.x = 73;
     this.pauseExplanation_text.y = 700;
