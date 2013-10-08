@@ -155,10 +155,23 @@ Game.prototype.handleTick = function () {
             inGame = false;
             player.image.stop();
             this.runningSound.pause();
-            this.pauseSound.play();
+            if(localStorage.getItem("sound"){
+                this.pauseSound.play();
+            }
+            
             stage.addChild(this.overlay);
             stage.addChild(this.pause_text);
             stage.addChild(this.pauseExplanation_text);
+            menu.soundOn.addEventListener("click", menu.handleClick);
+            menu.soundOff.addEventListener("click", menu.handleClick);
+            if(localStorage.getItem("sound") == 1){
+                stage.addChild(menu.soundOn);
+            }else if(localStorage.getItem("sound") == 0){
+                stage.addChild(menu.soundOff);
+            }else{
+                localStorage.setItem("sound", 1);
+                stage.addChild(menu.soundOn);
+            }
             if (player != undefined && player.isOutOfBounds) inGame = false;
             pPressedCheck = pPressed;
         }
@@ -233,7 +246,9 @@ Game.prototype.start = function(){
 	
 	stage.update();
 
-    this.runningSound.play();
+    if(localStorage.getItem("sound") == 1){
+        this.runningSound.play();
+    }
 
 }
 

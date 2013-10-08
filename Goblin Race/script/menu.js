@@ -187,12 +187,25 @@ Menu.prototype.handleTick = function () {
         pPressed = true;
         if (pPressed != pPressedCheck) {
             inGame = true;
-            game.runningSound.resume();
+            if(localStorage.getItem("sound") == 1){
+                game.runningSound.resume();
+            }
             stage.removeChild(game.overlay);
             stage.removeChild(game.pause_text);
             stage.removeChild(game.pauseExplanation_text);
-            game.resumeSound.play();
+            if(localStorage.getItem("sound"){
+                game.resumeSound.play();
+            }
+            
             player.image.play();
+            if(localStorage.getItem("sound") == 1){
+                stage.removeChild(menu.soundOn);
+            }else if(localStorage.getItem("sound") == 0){
+                stage.removeChild(menu.soundOff);
+            }else{
+                localStorage.setItem("sound", 1);
+                stage.removeChild(menu.soundOn);
+            }
             if (player != undefined && player.isOutOfBounds) inGame = false;
             pPressedCheck = pPressed;
         }
@@ -266,7 +279,10 @@ Menu.prototype.handleClick = function (evt){
     }
     else if(evt.target.text == "Failed you have!"){
         //Bild noch einbinden
-        game.laughingSound.play();
+        if(localStorage.getItem("sound"){
+            game.laughingSound.play();
+        }
+        
     }
     //soundOn-Image
     else if(evt.target.image.alpha == 0.95){

@@ -9,14 +9,20 @@ function ContactListener(){
 
 		
 		if(shape1.GetBody().GetUserData() =="coin"){
-			game.coinSound.play();
+			if(localStorage.getItem("sound"){
+				game.coinSound.play();
+			}
+			
 			deleteArray.push(shape1.GetBody());
 			stage.removeChild(shape1.GetBody().bitmap);
 			player.createCountParticle();
 			level.count();
 		}
 		else if(shape2.GetBody().GetUserData() == "coin"){
-			game.coinSound.play();
+			if(localStorage.getItem("sound"){
+				game.coinSound.play();
+			}
+			
 			deleteArray.push(shape2.GetBody());
 			stage.removeChild(shape2.GetBody().bitmap);
 			player.createCountParticle();
@@ -65,22 +71,28 @@ function ContactListener(){
 		}
 
 		else if(shape1.GetBody().GetUserData() =="candy"){
-			if(Math.random() > 0.5){
-				game.candySound1.play();
-			}else{
-				game.candySound2.play();
+			if(localStorage.getItem("sound"){
+				if(Math.random() > 0.5){
+					game.candySound1.play();
+				}else{
+					game.candySound2.play();
+				}
 			}
+			
 			deleteArray.push(shape1.GetBody());
 			stage.removeChild(shape1.GetBody().bitmap);
 			isCandy = true;
 			console.log("candy!!");
 		}
 		else if(shape2.GetBody().GetUserData() == "candy"){
-			if(Math.random() > 0.5){
-				game.candySound1.play();
-			}else{
-				game.candySound2.play();
+			if(localStorage.getItem("sound"){
+				if(Math.random() > 0.5){
+					game.candySound1.play();
+				}else{
+					game.candySound2.play();
+				}
 			}
+			
 			deleteArray.push(shape2.GetBody());
 			stage.removeChild(shape2.GetBody().bitmap);
 			isCandy = true;
