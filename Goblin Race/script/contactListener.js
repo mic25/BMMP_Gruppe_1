@@ -57,7 +57,7 @@ function ContactListener(){
 			}
 			//rauf
 			else if(shape1.GetBody().GetLinearVelocity().y < 0){
-				player.setFly(0,+300);
+				player.setFly(0,+30);
 			//nach vorn/hinten	
 			}
 			else if (shape1.GetBody().GetLinearVelocity().y == 0){
