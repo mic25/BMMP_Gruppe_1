@@ -1,5 +1,6 @@
 ﻿function preload() {
     var manifest = [
+        {id:"laughing", src:"sounds/laughing.m4a"},
         //{id:"bg", src:"img/Himmel.png"},
         {id:"fg", src:"img/Wiese.png"},
         { id: "player", src: "img/player/player.png" },

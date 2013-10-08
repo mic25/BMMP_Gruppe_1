@@ -49,6 +49,9 @@
 	this.gameOver_text = new createjs.Text("You lost!", "150px Arial", "#FB5519");
     this.gameOver_text.x = 400;
     this.gameOver_text.y = 250;
+    this.hitGameOver = new createjs.Shape();
+    this.hitGameOver.graphics.beginFill("#000").drawRect(0, 0, this.gameOver_text.getMeasuredWidth(), this.gameOver_text.getMeasuredHeight());
+    this.gameOver_text.hitArea = this.hitGameOver;
 
     this.reached_text = new createjs.Text("Your score: " + this.distance, "60px  'Voltaire', sans-serif", "#FB5519");
     this.reached_text.x = 520;
@@ -148,6 +151,7 @@ Game.prototype.handleTick = function () {
             this.reached_text.text = "Your score: " + this.distanceScore;
             stage.addChild(this.overlay);
             stage.addChild(this.gameOver_text);
+            this.gameOver_text.addEventListener("mouseover", menu.handleClick);
             stage.addChild(this.reached_text);
             stage.addChild(this.gameOverExplanation_text);
         }

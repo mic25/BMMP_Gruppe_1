@@ -233,6 +233,14 @@ Menu.prototype.handleClick = function (evt){
     else if(evt.target.text == "<esc> Back to Menu"){
         menu.showMenu();
     }
+    else if(evt.target.text == "You lost!"){
+        console.log("click");
+        menu.playSound("laughing");
+    }
+}
+
+Menu.prototype.playSound = function(id){
+    return createjs.Sound.play(id);
 }
 
 
