@@ -10,12 +10,12 @@ function ContactListener(){
 		if(shape1.GetBody().GetUserData() =="coin"){
 			deleteArray.push(shape1.GetBody());
 			stage.removeChild(shape1.GetBody().bitmap);
-			counter++;
+			level.count();
 		}
 		else if(shape2.GetBody().GetUserData() == "coin"){
 			deleteArray.push(shape2.GetBody());
 			stage.removeChild(shape2.GetBody().bitmap);
-			counter++;
+			level.count();
 		}
 
 		else if(shape1.GetBody().GetUserData() =="bubble"){
@@ -31,6 +31,17 @@ function ContactListener(){
 			isFlying = true;
 			player.setFly();
 			console.log(isFlying);
+		}
+
+		else if(shape1.GetBody().GetUserData() =="candy"){
+			deleteArray.push(shape1.GetBody());
+			stage.removeChild(shape1.GetBody().bitmap);
+			isCandy = true;
+		}
+		else if(shape2.GetBody().GetUserData() == "candy"){
+			deleteArray.push(shape2.GetBody());
+			stage.removeChild(shape2.GetBody().bitmap);
+			isCandy = true;
 		}
 
 		else if(isFlying && shape1.GetBody().GetUserData() == "platform"){

@@ -48,6 +48,7 @@
         { id: "coin", src: "img/coin.png" },
         { id: "goldPot", src: "img/goldPot.png" },
         { id: "bubble", src: "img/bubble.png"},
+        { id: "candyCane", src: "img/candyCane.png"},
 
         { id: "bg_wiese", src: "img/bg/bg_wiese.png" },
         { id: "mg_wiese", src: "img/bg/mg_wiese.png" },
