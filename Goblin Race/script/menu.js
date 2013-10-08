@@ -126,8 +126,6 @@
     this.hitSoundOff.graphics.beginFill("#000").drawRect(0, 0, this.soundOff.image.width, this.soundOff.image.height);
     this.soundOff.hitArea = this.hitSoundOff;
 
-    //Soundsteuerung
-    this.sound = true;
 }
 
 Menu.prototype.showMenu = function () {
@@ -145,9 +143,17 @@ Menu.prototype.showMenu = function () {
     menu.help_text.addEventListener("click", menu.handleClick);
     stage.addChild(menu.newGame_text);
     menu.newGame_text.addEventListener("click", menu.handleClick);
-    stage.addChild(menu.soundOn);
     menu.soundOn.addEventListener("click", menu.handleClick);
     menu.soundOff.addEventListener("click", menu.handleClick);
+    console.log(localStorage.getItem("sound"));
+    if(localStorage.getItem("sound") == 1){
+        stage.addChild(menu.soundOn);
+    }else if(localStorage.getItem("sound") == 0){
+        stage.addChild(menu.soundOff);
+    }else{
+        localStorage.setItem("sound", 1);
+        stage.addChild(menu.soundOn);
+    }
 
 
     //For test purposes
@@ -256,19 +262,21 @@ Menu.prototype.handleClick = function (evt){
     else if(evt.target.text == "<esc> Back to Menu"){
         menu.showMenu();
     }
-    else if(evt.target.text == "You lost!"){
+    else if(evt.target.text == "Failed you have!"){
         //Bild noch einbinden
         game.playSound("laughing");
     }
     //soundOn-Image
     else if(evt.target.image.alpha == 0.95){
-        menu.sound = false;
+        localStorage.setItem("sound", 0);
+        console.log(localStorage.getItem("sound"));
         stage.removeChild(menu.soundOn);
         stage.addChild(menu.soundOff);
     }
     //soundOff-Image
     else if(evt.target.image.alpha == 0.94){
-        menu.sound = true;
+        localStorage.setItem("sound", 1);
+        console.log(localStorage.getItem("sound"));
         stage.removeChild(menu.soundOff);
         stage.addChild(menu.soundOn);
     }

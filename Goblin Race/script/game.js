@@ -223,7 +223,7 @@ Game.prototype.setupPhysics = function () {
 }
 
 Game.prototype.playSound = function(id){
-    if(menu.sound){
+    if(localStorage.getItem("sound") == 1){
         return createjs.Sound.play(id);
     }
     
