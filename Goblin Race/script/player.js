@@ -139,10 +139,10 @@ Player.prototype.createParticle= function () {
 Player.prototype.createCountParticle = function () {
     var particle;
     if (isCandy) {
-        particle = new createjs.Text("+3", "30px 'Voltaire', sans-serif", "#F33");
+        particle = new createjs.Text("+3", "40px 'Voltaire', sans-serif", "#F33");
     }
     else
-        particle = new createjs.Text("+1", "30px 'Voltaire', sans-serif", "#3C3");
+        particle = new createjs.Text("+1", "40px 'Voltaire', sans-serif", "#3A3");
     particle.x = this.x * SCALE;
     particle.y = this.y * SCALE - 50;
     particle.speedX = -10 + Math.random() * 5;
