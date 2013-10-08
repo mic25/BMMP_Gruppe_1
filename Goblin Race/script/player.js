@@ -218,7 +218,7 @@ Player.prototype.flyRight = function () {
 
 Player.prototype.flyDown = function(){
 	if(!this.onGround)
-	this.body.ApplyForce( new b2d.b2Vec2(0,120), this.body.GetWorldCenter() );		
+	this.body.ApplyForce( new b2d.b2Vec2(0,190), this.body.GetWorldCenter() );		
 }
 
 
