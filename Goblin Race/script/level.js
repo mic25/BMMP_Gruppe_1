@@ -33,15 +33,16 @@
     this.candyCane = null;
     this.candyTick = 0;
 
-    this.randomC = this.random();
+    this.randomC = this.random(5, 15);
     console.log("randomC" + this.randomC);
-    this.randomB = this.random();
+    this.randomB = this.random(5, 15);
     console.log("randomB" + this.randomB);
 
     this.initialize();
 }
-Level.prototype.random = function (){
-    return Math.floor(Math.random() * (15 - 5 + 1)) + 5;
+
+Level.prototype.random = function (min, max){
+    return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
 Level.prototype.initialize = function () {
@@ -70,11 +71,6 @@ Level.prototype.initialize = function () {
     //StartCoin
     this.coin = new Coin(700 / SCALE, 300 / SCALE); 
     this.coins.push(this.coin);
-
-    //this.candyCane = new CandyCane(900 / SCALE, 300 / SCALE); 
-
-    //this.bubble = new Bubble(352 / SCALE, 500 / SCALE); 
-    //this.bubbles.push(this.bubble);
 }
 
 Level.prototype.generateLevel = function () {
@@ -108,6 +104,10 @@ Level.prototype.generateLevel = function () {
         }
         this.plat = new Platform(newXPlat / SCALE, newYPlat / SCALE, tiles, this.getPlatStyleAt(newXPlat));
         this.platforms.push(this.plat);
+
+        this.generateCoins(newXPlat, newYPlat, tiles);
+
+
     }
 
      if(this.platformCounterBubble > this.randomB && this.bubble == null){
@@ -115,7 +115,7 @@ Level.prototype.generateLevel = function () {
         this.bubble = new Bubble(newXPlat / SCALE, newBubbleY / SCALE);
         this.bubble.update();
         this.platformCounterBubble = 0;
-        this.randomB = this.random();
+        this.randomB = this.random(5, 15);
         console.log(this.randomB);
         console.log("newBubble " + newYPlat);
         }
@@ -125,54 +125,40 @@ Level.prototype.generateLevel = function () {
         this.candyCane = new CandyCane(newXPlat / SCALE, newCandyY / SCALE);
         this.candyCane.update();
         this.platformCounterCandy = 0;
-        this.randomC = this.random();
+        this.randomC = this.random(5, 15);
         console.log(this.randomC);
         console.log("newCandy " + newYPlat);
         }
 
         //Coins
-        this.generateCoins();
-     
-    /*    //Bubbles
-        if(this.bubble == null){
-        this.generateBubble();
-        }
+        //this.generateCoins();
+}
+
+Level.prototype.generateCoins = function(x , y, anzahl) {
+   // while(this.coins.length < 20){
         
-
-        //CandyCane
-        if(this.candyCane == null){
-        this.generateCandyCane();
-        }
-        */
-     
-}
-
-Level.prototype.generateBubble = function() {      
-        this.bubble = new Bubble(9000 / SCALE, 500 / SCALE);
-}
-
-Level.prototype.generateCandyCane = function() {
-        this.candyCane = new CandyCane(9999 / SCALE, 450 / SCALE);
-    }
-
-Level.prototype.generateCoins = function() {
-    while(this.coins.length < 20){
-        var randomSign = Math.random();
-
-        var lastXCoin = this.coin.body.GetPosition().x * SCALE;
+       /* var lastXCoin = this.coin.body.GetPosition().x * SCALE;
         var lastYCoin = this.coin.body.GetPosition().y * SCALE;
         var newXCoin = lastXCoin + Math.floor(Math.random() * (game.HORIZONTAL_MAX - game.HORIZONTAL_MIN + 1)) + game.HORIZONTAL_MIN
             + (this.coin.segmentSize) / 2 + (this.coin.segmentSize) / 2;     
 
-        newYCoin = this.lastYPlat - 200;
+        newYCoin = this.lastYPlat - 200;*/
+        
+        var newYCoin = y;
+        var platformLength = anzahl * 200;
+        var randomSign = this.random(platformLength/2, platformLength/3);
 
-        var randomCoins = Math.floor(Math.random() * 6)+1;
+        var newXCoin = x - randomSign;
+
+        var randomCoins = Math.floor(Math.random() * anzahl*2)+ Math.floor(1*anzahl/2);
+        console.log(randomCoins);
         var newXCoinRand = newXCoin;
         for(var i = 0; i<randomCoins; i++){
         newXCoinRand +=80;
-        this.coin = new Coin(newXCoinRand / SCALE, newYCoin / SCALE);
+        var newY = this.random(100, 300);
+        this.coin = new Coin(newXCoinRand / SCALE, (newYCoin - newY) / SCALE);
         this.coins.push(this.coin);
-    }
+  //  }
 }
 }
 
@@ -189,7 +175,7 @@ Level.prototype.updatePlatforms = function () {
 Level.prototype.updateCoins = function () {
     for (var i = 0; i < this.coins.length; i++) {
         this.coins[i].update();
-        if (this.coins[i].body.bitmap.x < -100) {
+        if (this.coins[i].body.bitmap.x <= -1500) {
             this.coins.splice(i, 1);
             this.coins[i].remove();
         }

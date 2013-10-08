@@ -127,11 +127,11 @@ Game.prototype.handleTick = function () {
 
     //Coins
     level.updateCoins();
-
+/*
     if (Math.floor(this.distance) != Math.floor(this.distanceCheck)) {
         counter -= 0.5;
         this.distanceCheck = this.distance;
-    } 
+    } */
     this.counter_text.text = Math.floor(counter);
 
     //UpdateItems
