@@ -193,7 +193,7 @@ Menu.prototype.handleTick = function () {
             stage.removeChild(game.overlay);
             stage.removeChild(game.pause_text);
             stage.removeChild(game.pauseExplanation_text);
-            if(localStorage.getItem("sound"){
+            if(localStorage.getItem("sound") == 1){
                 game.resumeSound.play();
             }
             
@@ -279,7 +279,7 @@ Menu.prototype.handleClick = function (evt){
     }
     else if(evt.target.text == "Failed you have!"){
         //Bild noch einbinden
-        if(localStorage.getItem("sound"){
+        if(localStorage.getItem("sound") == 1){
             game.laughingSound.play();
         }
         

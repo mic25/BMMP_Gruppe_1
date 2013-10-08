@@ -9,7 +9,7 @@ function ContactListener(){
 
 		
 		if(shape1.GetBody().GetUserData() =="coin"){
-			if(localStorage.getItem("sound"){
+			if(localStorage.getItem("sound") == 1){
 				game.coinSound.play();
 			}
 			
@@ -19,7 +19,7 @@ function ContactListener(){
 			level.count();
 		}
 		else if(shape2.GetBody().GetUserData() == "coin"){
-			if(localStorage.getItem("sound"){
+			if(localStorage.getItem("sound") == 1){
 				game.coinSound.play();
 			}
 			
@@ -71,7 +71,7 @@ function ContactListener(){
 		}
 
 		else if(shape1.GetBody().GetUserData() =="candy"){
-			if(localStorage.getItem("sound"){
+			if(localStorage.getItem("sound") == 1){
 				if(Math.random() > 0.5){
 					game.candySound1.play();
 				}else{
@@ -85,7 +85,7 @@ function ContactListener(){
 			console.log("candy!!");
 		}
 		else if(shape2.GetBody().GetUserData() == "candy"){
-			if(localStorage.getItem("sound"){
+			if(localStorage.getItem("sound") == 1){
 				if(Math.random() > 0.5){
 					game.candySound1.play();
 				}else{

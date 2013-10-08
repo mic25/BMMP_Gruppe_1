@@ -243,7 +243,7 @@ Player.prototype.update = function() {
 	if (this.onGround != this.groundCheck) {
 	    if (this.onGround){
 	        this.image.gotoAndPlay("Run");
-	        if(localStorage.getItem("sound"){
+	        if(localStorage.getItem("sound") == 1){
 				game.floorSound.play();
 	        }
 	    	
@@ -251,14 +251,14 @@ Player.prototype.update = function() {
 	    else {
 	        if (Math.random() > 0.5){
 	        	this.image.gotoAndPlay("Jump");
-	        	if(localStorage.getItem("sound"){
+	        	if(localStorage.getItem("sound") == 1){
 	        		game.jumpSound.play();
 	        	}
 	        	
 	        } 
 	        else{
 	        	this.image.gotoAndPlay("Jump2");
-	        	if(localStorage.getItem("sound"){
+	        	if(localStorage.getItem("sound") == 1){
 	        		game.jumpSound.play();
 	        	}
 	        	
@@ -283,7 +283,7 @@ Player.prototype.update = function() {
 	else if(isFlying){
 	this.tick ++;
 	this.image.gotoAndPlay("Fliegen");
-	if(localStorage.getItem("sound"){
+	if(localStorage.getItem("sound") == 1){
 		game.flySound.play();
 	}
 	

@@ -155,7 +155,7 @@ Game.prototype.handleTick = function () {
             inGame = false;
             player.image.stop();
             this.runningSound.pause();
-            if(localStorage.getItem("sound"){
+            if(localStorage.getItem("sound") == 1){
                 this.pauseSound.play();
             }
             
