@@ -234,7 +234,7 @@ Menu.prototype.handleClick = function (evt){
         menu.showMenu();
     }
     else if(evt.target.text == "You lost!"){
-        console.log("click");
+        //Bild noch einbinden
         game.playSound("laughing");
     }
 }
