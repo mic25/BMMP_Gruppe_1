@@ -37,14 +37,17 @@ function ContactListener(){
 			isFlying = true;
 			//runter
 			if(shape2.GetBody().GetLinearVelocity().y > 0){
+				console.log("bubble2 - runter-----"+ shape2.GetBody().GetLinearVelocity().y);
 					player.setFly(0,-100);
 			}
 			//rauf
-			else if(shape2.GetBody().GetLinearVelocity().y <0){
+			else if(shape2.GetBody().GetLinearVelocity().y < 0){
+				console.log("bubble2 - rauf-----"+ shape2.GetBody().GetLinearVelocity().y);
 					player.setFly(0,+100);
 			//nach vorn/hinten	
 			}
 			else if (shape2.GetBody().GetLinearVelocity().y == 0){
+				console.log("bubble2 - normal-----"+ shape2.GetBody().GetLinearVelocity().y);
 				player.setFly(0,-20);
 			}
 
@@ -57,14 +60,17 @@ function ContactListener(){
 			isFlying = true;
 			//runter
 			if(shape1.GetBody().GetLinearVelocity().y > 0){
+				console.log("bubble1 - normal-----"+ shape1.GetBody().GetLinearVelocity().y);
 				player.setFly(0,-100);
 			}
 			//rauf
 			else if(shape1.GetBody().GetLinearVelocity().y < 0){
+				console.log("bubble1 - normal-----"+ shape1.GetBody().GetLinearVelocity().y);
 				player.setFly(0,+100);
 			//nach vorn/hinten	
 			}
 			else if (shape1.GetBody().GetLinearVelocity().y == 0){
+				console.log("bubble1 - normal-----"+ shape1.GetBody().GetLinearVelocity().y);
 				player.setFly(0,-20);
 			}
 

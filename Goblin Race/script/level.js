@@ -120,7 +120,7 @@ Level.prototype.generateLevel = function () {
         console.log("newBubble " + newYPlat);
         }
 
-    if(this.platformCounterCandy > this.randomC){
+    if(this.platformCounterCandy > this.randomC && this.candyCane == null){
         var newCandyY = newYPlat - 200;
         this.candyCane = new CandyCane(newXPlat / SCALE, newCandyY / SCALE);
         this.candyCane.update();
