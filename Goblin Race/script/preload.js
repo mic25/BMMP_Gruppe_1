@@ -44,6 +44,7 @@
 
         //IAMGES
         //{id:"bg", src:"img/Himmel.png"},
+        { id:"devil", src:"img/Teufel.png"},
         { id:"soundOn", src:"img/soundOn.png"},
         { id:"soundOff", src:"img/soundOff.png"},
         { id:"fg", src:"img/Wiese.png"},

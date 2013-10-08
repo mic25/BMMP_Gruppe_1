@@ -213,8 +213,10 @@ Game.prototype.handleTick = function () {
             stage.addChild(this.overlay);
             stage.addChild(this.gameOver_text);
             this.gameOver_text.addEventListener("mouseover", menu.handleClick);
+            this.gameOver_text.addEventListener("mouseout", menu.handleMouse);
             stage.addChild(this.reached_text);
             stage.addChild(this.gameOverExplanation_text);
+            //stage.addChild(menu.devil);
         }
     }
 

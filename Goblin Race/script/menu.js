@@ -129,6 +129,13 @@
     this.hitSoundOff.graphics.beginFill("#000").drawRect(0, 0, this.soundOff.image.width, this.soundOff.image.height);
     this.soundOff.hitArea = this.hitSoundOff;
 
+    //Game over
+    this.devil =  new createjs.Bitmap("img/Teufel.png");
+    this.devil.scaleX = 0.7;
+    this.devil.scaleY = 0.7;
+    this.devil.x = 450;
+    this.devil.y = 100;
+
 }
 
 Menu.prototype.showMenu = function () {
@@ -281,11 +288,10 @@ Menu.prototype.handleClick = function (evt){
         menu.showMenu();
     }
     else if(evt.target.text == "Failed you have!"){
-        //Bild noch einbinden
+        stage.addChild(menu.devil);
         if(localStorage.getItem("sound") == 1){
             game.laughingSound.play();
-        }
-        
+        }    
     }
     //soundOn-Image
     else if(evt.target.image.alpha == 0.95){
@@ -302,6 +308,10 @@ Menu.prototype.handleClick = function (evt){
         stage.addChild(menu.soundOn);
     }
 
+}
+
+Menu.prototype.handleMouse = function(){
+    stage.removeChild(menu.devil);
 }
 
 Menu.prototype.setScores = function(){
