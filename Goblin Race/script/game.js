@@ -75,6 +75,7 @@
         "40px 'Voltaire', sans-serif", "#F7F8E0");
     this.pauseExplanation_text.x = 73;
     this.pauseExplanation_text.y = 700;
+
 }
 
 Game.prototype.handleTick = function () {
@@ -89,14 +90,18 @@ Game.prototype.handleTick = function () {
 
     //Coins
     level.updateCoins();
+/*
     if (Math.floor(this.distance) != Math.floor(this.distanceCheck)) {
         counter -= 0.5;
         this.distanceCheck = this.distance;
-    }
-    this.counter_text.text = Math.floor(counter);
+    } 
+    this.counter_text.text = Math.floor(counter); */
 
-    //Bubbles
+    this.counter_text.text = counter;
+
+    //UpdateItems
     level.updateBubbles();
+    level.updateCandyCane();
 
     //Lets mak this stuff hard to do :D
     this.setControls();
@@ -114,7 +119,7 @@ Game.prototype.handleTick = function () {
         if (pPressed != pPressedCheck) {
             inGame = false;
             player.image.stop();
-
+            game.playSound("pause");
             stage.addChild(this.overlay);
             stage.addChild(this.pause_text);
             stage.addChild(this.pauseExplanation_text);
@@ -220,6 +225,9 @@ Game.prototype.setupPhysics = function () {
 }
 
 Game.prototype.playSound = function(id){
-    return createjs.Sound.play(id);
+    if(menu.sound){
+        return createjs.Sound.play(id);
+    }
+    
 }
 

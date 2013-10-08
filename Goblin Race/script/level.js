@@ -28,8 +28,10 @@
     this.coins = new Array();
     this.coin;
 
-    this.bubbles = new Array();
-    this.bubble;
+    this.bubble = null;
+
+    this.candyCane = null;
+    this.candyTick = 0;
 
 
     this.initialize();
@@ -59,6 +61,8 @@ Level.prototype.initialize = function () {
     //StartCoin
     this.coin = new Coin(700 / SCALE, 300 / SCALE); 
     this.coins.push(this.coin);
+
+    //this.candyCane = new CandyCane(900 / SCALE, 300 / SCALE); 
 
     //this.bubble = new Bubble(352 / SCALE, 500 / SCALE); 
     //this.bubbles.push(this.bubble);
@@ -95,29 +99,24 @@ Level.prototype.generateLevel = function () {
         this.generateCoins();
      
         //Bubbles
-
+        if(this.bubble == null){
         this.generateBubble();
+        }
 
+        //CandyCane
+        if(this.candyCane == null){
+        this.generateCandyCane();
+        }
      
 }
 
-Level.prototype.generateBubble = function() {
-            /*
-        var randomSign = Math.random();
-
-        var lastXBubble = this.bubble.body.GetPosition().x * SCALE;
-        var lastYBubble = this.bubble.body.GetPosition().y * SCALE;
-        var newXBubble = lastXBubble + Math.floor(Math.random() * (game.HORIZONTAL_MAX - game.HORIZONTAL_MIN + 1)) + game.HORIZONTAL_MIN
-            + (this.bubble.segmentSize) / 2 + (this.bubble.segmentSize) / 2;     
-
-        var newYBubble = lastYBubble; */
-        while(this.bubbles.length <= 1){        
-        
+Level.prototype.generateBubble = function() {      
         this.bubble = new Bubble(9000 / SCALE, 500 / SCALE);
-        this.bubbles.push(this.bubble);
-     
-    }
 }
+
+Level.prototype.generateCandyCane = function() {
+        this.candyCane = new CandyCane(9999 / SCALE, 450 / SCALE);
+    }
 
 Level.prototype.generateCoins = function() {
     while(this.coins.length < 20){
@@ -161,17 +160,33 @@ Level.prototype.updateCoins = function () {
 }
 
 Level.prototype.updateBubbles = function () {
-
-    for (var i = 0; i < this.bubbles.length; i++) {
-        this.bubbles[i].update();
-        if (this.bubbles[i].body.bitmap.x < -50) {        
-            stage.removeChild(this.bubbles[i]);            
-            deleteArray.push(this.bubbles[i]);
-            this.bubbles.splice(i,1);
-            
+    if(this.bubble !=null){
+        this.bubble.update();
+        if (this.bubble.body.bitmap.x < -50) {        
+            stage.removeChild(this.bubble);            
+            deleteArray.push(this.bubble);
+            this.bubble = null;           
         }
     }
 }
+
+Level.prototype.updateCandyCane = function () {
+    if(this.candyCane != null){
+        this.candyCane.update();
+        this.candyTick ++;
+        if(this.candyTick > 100){
+            isCandy = false;
+            this.candyTick = 0;
+        }
+        if (this.candyCane.body.bitmap.x < -50) {        
+            stage.removeChild(this.candyCane);            
+            deleteArray.push(this.candyCane);
+            this.candyCane = null;        
+        }
+    }
+    console.log(isCandy + " " + counter);
+}
+
 
 Level.prototype.generateBackground = function () {
 
@@ -375,4 +390,13 @@ Level.prototype.getPlatStyleAt = function (pos) {
         return "cave";
     else return "wiese";
     
+}
+
+Level.prototype.count = function (){
+    if(isCandy){
+        counter += 3;
+    }
+    else{
+        counter ++;
+    }
 }

@@ -1,4 +1,4 @@
-function Bubble(xPos,yPos,type){
+function CandyCane(xPos,yPos,type){
 	
 	this.x = xPos;
 	this.y = yPos;
@@ -23,23 +23,24 @@ function Bubble(xPos,yPos,type){
 	this.fix = this.body.CreateFixture(fixDef);
 	this.fix.SetSensor(true);
 
-	this.body.bitmap = new createjs.Bitmap(queue.getResult("bubble"));
+	this.body.bitmap = new createjs.Bitmap(queue.getResult("candyCane"));;
+
 	    
-	this.body.bitmap.y = yPos * SCALE - 0.5*this.segmentSize;
-	this.body.bitmap.x = xPos * SCALE - 0.5*this.segmentSize;
-	stage.addChild(this.body.bitmap);
-	this.body.SetUserData("bubble");
+	    this.body.bitmap.y = yPos * SCALE - 0.5*this.segmentSize;
+	    this.body.bitmap.x = xPos * SCALE - 0.5*this.segmentSize;
+	    stage.addChild(this.body.bitmap);
+	this.body.SetUserData("candy");
 }
 
 
 
-Bubble.prototype.update = function () {
+CandyCane.prototype.update = function () {
     this.body.SetAwake(true);
     this.body.SetPosition(new b2d.b2Vec2(this.body.GetPosition().x + game.platformSpeed / SCALE , this.body.GetPosition().y));	
 	this.body.bitmap.x = this.body.GetPosition().x * SCALE - 0.5*this.segmentSize;
 }
 
-Bubble.prototype.remove = function () {
+CandyCane.prototype.remove = function () {
     stage.removeChild(this.body.bitmap);
     deleteArray.push(this.fix.GetBody());
 }
