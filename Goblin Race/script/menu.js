@@ -312,10 +312,11 @@ Menu.prototype.setScores = function(){
         
         if(localStorage.getItem("lastScore") > localStorage.getItem("bestScore")){
             var newScore = localStorage.getItem("lastScore");
-            localStorage.setItem("bestScore", newScore);
+            
         }else{
-            //localStorage.setItem("bestScore", localStorage.getItem("bestScore"));
+            var newScore = localStorage.getItem("bestScore");
         }
+        localStorage.setItem("bestScore", newScore);
         
     }
     this.lastScore_text.text = "Your last score: " + localStorage.getItem("lastScore");

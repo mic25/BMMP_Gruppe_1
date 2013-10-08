@@ -207,7 +207,7 @@ Game.prototype.handleTick = function () {
             isCandy = false;
             player.image.stop();
             this.runningSound.stop();
-            this.distanceScore = Math.floor(this.distance);
+            this.distanceScore = Math.floor(this.distance + counter/2);
             localStorage.setItem("lastScore", this.distanceScore);
             this.reached_text.text = "Your score: " + this.distanceScore;
             stage.addChild(this.overlay);
