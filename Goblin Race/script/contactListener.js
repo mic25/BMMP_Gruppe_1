@@ -8,17 +8,20 @@ function ContactListener(){
 
 		
 		if(shape1.GetBody().GetUserData() =="coin"){
+			game.playSound("coin1");
 			deleteArray.push(shape1.GetBody());
 			stage.removeChild(shape1.GetBody().bitmap);
 			level.count();
 		}
 		else if(shape2.GetBody().GetUserData() == "coin"){
+			game.playSound("coin1");
 			deleteArray.push(shape2.GetBody());
 			stage.removeChild(shape2.GetBody().bitmap);
 			level.count();
 		}
 
 		else if(shape1.GetBody().GetUserData() =="bubble"){
+			game.playSound("fly1");
 			deleteArray.push(shape1.GetBody());
 			stage.removeChild(shape1.GetBody().bitmap);
 			isFlying = true;
@@ -26,6 +29,7 @@ function ContactListener(){
 			console.log(isFlying);
 		}
 		else if(shape2.GetBody().GetUserData() == "bubble"){
+			game.playSound("fly1");
 			deleteArray.push(shape2.GetBody());
 			stage.removeChild(shape2.GetBody().bitmap);
 			isFlying = true;

@@ -105,7 +105,29 @@
     this.hitEsc.graphics.beginFill("#000").drawRect(0, 0, this.escape_text.getMeasuredWidth(), this.escape_text.getMeasuredHeight());
     this.escape_text.hitArea = this.hitEsc;
 
+    //Sound on/off
+    this.soundOn = new createjs.Bitmap("img/soundOn.png");
+    this.soundOn.scaleX = 0.3;
+    this.soundOn.scaleY = 0.3;
+    this.soundOn.x = 1200;
+    this.soundOn.y = 0;
+    this.soundOn.image.alpha = 0.95;
+    this.hitSoundOn = new createjs.Shape();
+    this.hitSoundOn.graphics.beginFill("#000").drawRect(0, 0, this.soundOn.image.width, this.soundOn.image.height);
+    this.soundOn.hitArea = this.hitSoundOn;
 
+    this.soundOff = new createjs.Bitmap("img/soundOff.png");
+    this.soundOff.scaleX = 0.3;
+    this.soundOff.scaleY = 0.3;
+    this.soundOff.x = 1200;
+    this.soundOff.y = 0;
+    this.soundOff.image.alpha = 0.94;
+    this.hitSoundOff = new createjs.Shape();
+    this.hitSoundOff.graphics.beginFill("#000").drawRect(0, 0, this.soundOff.image.width, this.soundOff.image.height);
+    this.soundOff.hitArea = this.hitSoundOff;
+
+    //Soundsteuerung
+    this.sound = true;
 }
 
 Menu.prototype.showMenu = function () {
@@ -120,12 +142,12 @@ Menu.prototype.showMenu = function () {
     stage.addChild(menu.lastScore_text);
     stage.addChild(menu.bestScore_text);
     stage.addChild(menu.help_text);
-    
     menu.help_text.addEventListener("click", menu.handleClick);
     stage.addChild(menu.newGame_text);
-    
     menu.newGame_text.addEventListener("click", menu.handleClick);
-
+    stage.addChild(menu.soundOn);
+    menu.soundOn.addEventListener("click", menu.handleClick);
+    menu.soundOff.addEventListener("click", menu.handleClick);
 
 
     //For test purposes
@@ -162,6 +184,7 @@ Menu.prototype.handleTick = function () {
             stage.removeChild(game.overlay);
             stage.removeChild(game.pause_text);
             stage.removeChild(game.pauseExplanation_text);
+            game.playSound("continue");
             player.image.play();
             if (player != undefined && player.isOutOfBounds) inGame = false;
             pPressedCheck = pPressed;
@@ -237,6 +260,19 @@ Menu.prototype.handleClick = function (evt){
         //Bild noch einbinden
         game.playSound("laughing");
     }
+    //soundOn-Image
+    else if(evt.target.image.alpha == 0.95){
+        menu.sound = false;
+        stage.removeChild(menu.soundOn);
+        stage.addChild(menu.soundOff);
+    }
+    //soundOff-Image
+    else if(evt.target.image.alpha == 0.94){
+        menu.sound = true;
+        stage.removeChild(menu.soundOff);
+        stage.addChild(menu.soundOn);
+    }
+
 }
 
 Menu.prototype.setScores = function(){

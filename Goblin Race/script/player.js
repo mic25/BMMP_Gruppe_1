@@ -230,8 +230,14 @@ Player.prototype.update = function() {
 	    this.groundCheck = this.onGround;
 	}
 
-	if (Key.isDown(Key.UP)) player.jump();
-	if (Key.isDown(Key.SPACE)) player.jump();
+	if (Key.isDown(Key.UP)){
+		game.playSound("jump1");
+		player.jump();
+	} 
+	if (Key.isDown(Key.SPACE)){
+		game.playSound("jump1");
+		player.jump();
+	}
 	if (Key.isDown(Key.DOWN)) player.moveDown();
 	if (Key.isDown(Key.LEFT)) player.moveLeft();	
 	if (Key.isDown(Key.RIGHT)) player.moveRight();
@@ -241,8 +247,12 @@ Player.prototype.update = function() {
 	else if(isFlying){
 	this.tick ++;
 	this.image.gotoAndPlay("Fliegen");
-	if (Key.isDown(Key.UP)) player.flyUp();
-	if (Key.isDown(Key.SPACE)) player.flyUp();
+	if (Key.isDown(Key.UP)){
+		player.flyUp();
+	} 
+	if (Key.isDown(Key.SPACE)){
+		player.flyUp();
+	}
 	if (Key.isDown(Key.DOWN)) player.flyDown();
 	if (Key.isDown(Key.LEFT)) player.flyLeft();	
 	if (Key.isDown(Key.RIGHT)) player.flyRight();

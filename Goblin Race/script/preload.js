@@ -42,6 +42,8 @@
 
         //IAMGES
         //{id:"bg", src:"img/Himmel.png"},
+        { id:"soundOn", src:"img/soundOn.png"},
+        { id:"soundOff", src:"img/soundOff.png"},
         { id:"fg", src:"img/Wiese.png"},
         { id: "player", src: "img/player/player.png" },
         { id: "platform1", src: "img/platform.png" },

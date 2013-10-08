@@ -75,6 +75,7 @@
         "40px 'Voltaire', sans-serif", "#F7F8E0");
     this.pauseExplanation_text.x = 73;
     this.pauseExplanation_text.y = 700;
+
 }
 
 Game.prototype.handleTick = function () {
@@ -118,7 +119,7 @@ Game.prototype.handleTick = function () {
         if (pPressed != pPressedCheck) {
             inGame = false;
             player.image.stop();
-
+            game.playSound("pause");
             stage.addChild(this.overlay);
             stage.addChild(this.pause_text);
             stage.addChild(this.pauseExplanation_text);
@@ -224,6 +225,9 @@ Game.prototype.setupPhysics = function () {
 }
 
 Game.prototype.playSound = function(id){
-    return createjs.Sound.play(id);
+    if(menu.sound){
+        return createjs.Sound.play(id);
+    }
+    
 }
 
