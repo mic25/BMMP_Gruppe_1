@@ -32,17 +32,14 @@ function ContactListener(){
 			isFlying = true;
 			//runter
 			if(shape2.GetBody().GetLinearVelocity().y > 0){
-				console.log("runter------"+shape2.GetBody().GetLinearVelocity().y);
-				player.setFly(0,-200);
+					player.setFly(0,-100);
 			}
 			//rauf
 			else if(shape2.GetBody().GetLinearVelocity().y <0){
-				console.log("rauf------"+shape2.GetBody().GetLinearVelocity().y);
-				player.setFly(0,+300);
+					player.setFly(0,+300);
 			//nach vorn/hinten	
 			}
 			else if (shape2.GetBody().GetLinearVelocity().y == 0){
-				console.log("normal----"+ shape2.GetBody().GetLinearVelocity().y);
 				player.setFly(0,-20);
 			}
 
@@ -56,17 +53,14 @@ function ContactListener(){
 			isFlying = true;
 			//runter
 			if(shape1.GetBody().GetLinearVelocity().y > 0){
-				console.log("runter------"+shape1.GetBody().GetLinearVelocity().y);
-				player.setFly(0,-200);
+				player.setFly(0,-100);
 			}
 			//rauf
 			else if(shape1.GetBody().GetLinearVelocity().y < 0){
-				console.log("rauf-------"+shape1.GetBody().GetLinearVelocity().y);
 				player.setFly(0,+300);
 			//nach vorn/hinten	
 			}
 			else if (shape1.GetBody().GetLinearVelocity().y == 0){
-				console.log("normal---" + shape1.GetBody().GetLinearVelocity().y);
 				player.setFly(0,-20);
 			}
 
