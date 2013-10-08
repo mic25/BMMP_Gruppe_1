@@ -78,13 +78,13 @@
 
     this.runningSound = createjs.Sound.createInstance("running");
     this.runningSound.addEventListener("complete", this.playAgain);
-    this.runningSound.setVolume(1.2);
+    this.runningSound.setVolume(1.0);
 
     this.coinSound = createjs.Sound.createInstance("coin3");
-    this.coinSound.setVolume(0.7);
+    this.coinSound.setVolume(0.8);
 
     this.jumpSound = createjs.Sound.createInstance("jump2");
-    this.jumpSound.setVolume(0.8);
+    this.jumpSound.setVolume(0.6);
 
     this.floorSound = createjs.Sound.createInstance("floor");
     this.floorSound.setVolume(0.7);
@@ -93,13 +93,13 @@
     this.flySound.setVolume(1.2);
 
     this.candySound1 = createjs.Sound.createInstance("essen1");
-    this.candySound1.setVolume(0.8);
+    this.candySound1.setVolume(1.0);
 
     this.candySound2 = createjs.Sound.createInstance("essen1");
-    this.candySound2.setVolume(0.8);
+    this.candySound2.setVolume(1.0);
 
     this.pauseSound = createjs.Sound.createInstance("pause");
-    this.pauseSound.setVolume(1.2);
+    this.pauseSound.setVolume(1.6);
 
     this.resumeSound = createjs.Sound.createInstance("continue");
     this.resumeSound.setVolume(1.2);
