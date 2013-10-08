@@ -1,4 +1,7 @@
-﻿function Menu() {  
+﻿function Menu() { 
+
+    this.loading =  new createjs.Bitmap("img/loading.png"); 
+    stage.addChild(this.loading);
 
     // Menu Background
 	this.menuBg =  new createjs.Bitmap("img/menuBg.png");
