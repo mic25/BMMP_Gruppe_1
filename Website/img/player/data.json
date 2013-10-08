@@ -1,0 +1,23 @@
+{
+"images": ["data.png"],
+"frames": [
+
+    [2, 996, 633, 985], 
+    [591, 2, 678, 969], 
+    [2, 2, 587, 992], 
+    [1271, 880, 670, 961], 
+    [1271, 2, 718, 876]
+],
+"animations": {
+    
+        "KoboldTopf":[0], 
+        "Laufen1":[1], 
+        "Laufen2":[2], 
+        "Laufen3":[3], 
+        "Springen":[4]
+},
+"texturepacker": [
+        "SmartUpdateHash: $TexturePacker:SmartUpdate:94ecbfb92002fe6a570baa6b4a04001e:1/1$",
+        "Created with TexturePacker (http://www.texturepacker.com) for EaselJS"
+]
+}

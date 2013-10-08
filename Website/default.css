@@ -1,0 +1,100 @@
+@charset "UTF-8";
+/* CSS Document */
+
+body {
+	color: #0f2614;
+ 	background-color: #0f2614; 
+	font-family:Voltaire;
+	}
+h1 {
+  	color: #476025;
+ 	font-size: 7em;
+ 	line-height: 1.1;
+ 	margin: .5em 0;
+ 	text-align: center;
+	}
+h2 {
+	color:#2d4633;
+	font-size: 50px;
+	font-family:Voltaire;	}
+h3 {
+	color:#666;
+	text-align:center;
+	}
+h4 {
+	color:#666;
+	}
+p {
+	width: 100%;
+	top: 0px;
+	repeat: 
+	clear: both;
+	margin: 0px 0 0 0;
+	color:#989797;
+	text-align:center;
+	}
+div#content {
+	padding: 5; 
+	margin: 12; 
+	text-align: center;
+	}
+	
+div#footer {
+	color: #0f2614;
+	background-color: #2d4633;
+	padding: 24px 0;
+	font-size: .9em;
+	clear: both;
+	margin: 24px 0 0 0;
+	bottom:0px;
+	text-align:center;
+	}
+
+#footer p {
+	width: 932px;
+	margin: 0 auto;    
+	}
+	
+
+/*Links	*/
+	
+	
+	a:link {
+ 	 color: #f0df32;
+ 	 background-color: transparent;
+	}
+	a:visited {
+  	color: #cccccc;
+  	background-color: transparent;
+	}
+	a:hover, a:focus {
+  	color: #f0df32;
+  	background-color: transparent;
+	}
+	a:active {
+	color: f0df32;
+	background-color: transparent;
+	}
+	
+
+/* canvas */
+
+@font-face{
+    font-family: Voltaire;
+    src: url('fonts/Voltaire/Voltaire-Regular.ttf');
+    font-style: normal;
+    font-weight: normal;
+}
+canvas {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    border-color: #f2df33;
+    border-width: 8px;
+    border-style: groove;
+}	
+	
+	
+	
+	
+	

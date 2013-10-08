@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Goblin Race</title>
+    
+    <head profile="http://www.w3.org/2005/10/profile">
+   	<link rel="shortcut icon" href="zucker.ico">
+    
+    
+    <script src="http://code.createjs.com/createjs-2013.09.25.min.js"></script>
+    
+    <script src="script/preload.js"></script>
+    <script src="script/key.js"></script>
+    <script src="script/player.js"></script>
+    <script src="script/menu.js"></script>
+    <script src="script/controller.js"></script>
+    <script src="script/game.js"></script>
+    <script src="script/level.js"></script>
+    <script src ="script/platform.js"></script>
+    <script src ="script/event.js"></script>
+    <script src ="script/contactListener.js"></script>
+    <script src ="script/coins.js"></script>
+    <script src ="script/bubble.js"></script>
+    <script src ="script/Box2dWeb-2.1.a.3.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="default.css">
+    
+
+    <style>
+        
+    </style>
+
+    <script>
+        var stage, queue, ticker, controller, menu, game, controller,world,player, level,overlay;
+        var isFlying = false;
+        var inGame = false; var counter = 0; var time = Date.now();
+
+
+        var deleteArray = [];
+
+        var SCALE = 100.0;
+
+        var b2d = {
+            b2Vec2: Box2D.Common.Math.b2Vec2,
+            b2BodyDef: Box2D.Dynamics.b2BodyDef,
+            b2Body: Box2D.Dynamics.b2Body,
+            b2FixtureDef: Box2D.Dynamics.b2FixtureDef,
+            b2Fixture: Box2D.Dynamics.b2Fixture,
+            b2World: Box2D.Dynamics.b2World,
+            b2MassData: Box2D.Collision.Shapes.b2MassData,
+            b2PolygonShape: Box2D.Collision.Shapes.b2PolygonShape,
+            b2CircleShape: Box2D.Collision.Shapes.b2CircleShape,
+            b2DebugDraw: Box2D.Dynamics.b2DebugDraw,
+            b2ContactListener: Box2D.Dynamics.b2ContactListener,
+        };
+        
+
+        function init() {
+          
+            stage = new createjs.Stage("canvas");
+            menu = new Menu();
+            ticker = createjs.Ticker.setFPS(30);
+            createjs.Ticker.addEventListener("tick", tick);
+            preload();
+
+            window.addEventListener('keyup', function(event) { Key.onKeyup(event); }, false);
+            window.addEventListener('keydown', function(event) { Key.onKeydown(event); }, false);
+            createjs.Touch.enable(stage);        
+        }
+
+        function tick() {
+            if (inGame) {
+                game.handleTick();
+            }
+            else
+                menu.handleTick();
+            stage.update();
+        }   
+    </script>
+</head>
+
+<body onload="init()">
+   <p> <img src="img/Schrift.png" width="900" hight="300"></p>
+    <canvas width="1366" height="768" id="canvas">You no have canvas</canvas>
+
+	<div id="footer">
+   		   <p> © 2013 – <a href="impressum.html">Impressum</a></p>
+   		</div>
+
+</body>
+</html>
