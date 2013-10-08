@@ -174,7 +174,7 @@ Level.prototype.updateCandyCane = function () {
     if(this.candyCane != null){
         this.candyCane.update();
         this.candyTick ++;
-        if(this.candyTick > 100){
+        if(this.candyTick > 300){
             isCandy = false;
             this.candyTick = 0;
         }
@@ -184,7 +184,6 @@ Level.prototype.updateCandyCane = function () {
             this.candyCane = null;        
         }
     }
-    console.log(isCandy + " " + counter);
 }
 
 
