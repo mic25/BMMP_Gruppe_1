@@ -187,6 +187,7 @@ Menu.prototype.handleTick = function () {
         pPressed = true;
         if (pPressed != pPressedCheck) {
             inGame = true;
+            game.runningSound.resume();
             stage.removeChild(game.overlay);
             stage.removeChild(game.pause_text);
             stage.removeChild(game.pauseExplanation_text);
@@ -203,6 +204,7 @@ Menu.prototype.handleTick = function () {
     	menu.startGame();
     }
     if (Key.isDown(Key.ESCAPE)){
+        game.runningSound.stop();
     	menu.showMenu();
     }
     if (Key.isDown(Key.H)){
