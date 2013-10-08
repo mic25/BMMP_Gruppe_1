@@ -2,8 +2,8 @@ function CandyCane(xPos,yPos,type){
 	
 	this.x = xPos;
 	this.y = yPos;
-	this.segmentSize = 60; 
-	this.segmentHeight = 60;
+	this.segmentSize = 80; 
+	this.segmentHeight = 80;
 	this.type = type;
 
 	var bodyDef = new b2d.b2BodyDef();
