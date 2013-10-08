@@ -1,8 +1,48 @@
 ﻿function preload() {
     var manifest = [
-        {id:"laughing", src:"sounds/laughing.m4a"},
+        //SOUNDS
+        { id: "intro", src: "sound/intro.wav" },
+        { id: "laughing", src: "sound/laughing.m4a" },
+
+        { id: "coin1", src: "sound/coin1.wav" },
+        { id: "coin2", src: "sound/coin2.wav" },
+        { id: "coin3", src: "sound/coin3.wav" },
+        { id: "coin4", src: "sound/coin4.wav" },
+
+        { id: "pause", src: "sound/pause.wav" },
+        { id: "continue", src: "sound/continue.wav" },
+
+        { id: "distance", src: "sound/distance.wav" },
+        { id: "speed", src: "sound/speed.wav" },
+
+        { id: "ende1", src: "sound/ende1.wav" },
+        { id: "ende2", src: "sound/ende2.wav" },
+        { id: "ende3", src: "sound/ende3.wav" },
+        { id: "ende4", src: "sound/ende4.wav" },
+        { id: "ende5", src: "sound/ende5.wav" },
+        { id: "ende6", src: "sound/ende6.wav" },
+        { id: "ende7", src: "sound/ende7.wav" },
+        { id: "ende8", src: "sound/ende8.wav" },
+
+        { id: "escape1", src: "sound/escape1.wav" },
+        { id: "escape2", src: "sound/escape2.wav" },
+        { id: "escape3", src: "sound/escape3.wav" },
+
+        { id: "essen1", src: "sound/ssen1.wav" },
+        { id: "essen2", src: "sound/essen2.wav" },
+        { id: "essen3", src: "sound/essen3.wav" },
+
+        { id: "fly1", src: "sound/fly1.wav" },
+        { id: "fly2", src: "sound/fly2.wav" },
+
+        { id: "jump1", src: "sound/jump1.wav" },
+        { id: "jump2", src: "sound/jump2.wav" },
+        { id: "jump3", src: "sound/jump3.wav" },
+        { id: "floor", src: "sound/floor.wav" },
+
+        //IAMGES
         //{id:"bg", src:"img/Himmel.png"},
-        {id:"fg", src:"img/Wiese.png"},
+        { id:"fg", src:"img/Wiese.png"},
         { id: "player", src: "img/player/player.png" },
         { id: "platform1", src: "img/platform.png" },
         { id: "coin", src: "img/coin.png" },
