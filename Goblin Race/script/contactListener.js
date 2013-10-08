@@ -10,11 +10,13 @@ function ContactListener(){
 		if(shape1.GetBody().GetUserData() =="coin"){
 			deleteArray.push(shape1.GetBody());
 			stage.removeChild(shape1.GetBody().bitmap);
+			player.createCountParticle();
 			counter++;
 		}
 		else if(shape2.GetBody().GetUserData() == "coin"){
 			deleteArray.push(shape2.GetBody());
 			stage.removeChild(shape2.GetBody().bitmap);
+			player.createCountParticle();
 			counter++;
 		}
 

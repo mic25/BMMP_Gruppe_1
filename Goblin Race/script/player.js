@@ -97,7 +97,7 @@ function Player() {
 }
 
 Player.prototype.handleParticles = function () {
-    if(createjs.Ticker.getTicks()% 4 == 0)
+    if(createjs.Ticker.getTicks()% 8 == 0)
         this.createParticle();
     var now = Date.now();
     var elapsed = now - time;
@@ -117,15 +117,36 @@ Player.prototype.handleParticles = function () {
 }
 
 Player.prototype.createParticle= function () {
-    var particle = new createjs.Shape();
-    if (Math.random() > 0.5)
-        particle.graphics.beginFill("#DCBC1C").drawCircle(0, 0, 7);
-    else
-        particle.graphics.beginFill("#FCDF06").drawCircle(0, 0, 10);
+    var particle;
+    particle = new createjs.Bitmap(queue.getResult("coin"));
+    if (Math.random > 0.5) {
+        particle.scaleX = 0.4;
+        particle.scaleY = 0.4;
+    }
+    else {
+        particle.scaleX = 0.6;
+        particle.scaleY = 0.6;
+    }
     particle.x = this.x *SCALE - 50;
     particle.y = this.y * SCALE + 50;
     particle.speedX = -10 + Math.random() * 5;
     particle.speedY = -4 + Math.random() * 8;
+    particle.time = 0;
+    particle.alpha = 0.9;
+    stage.addChild(particle);
+}
+
+Player.prototype.createCountParticle = function () {
+    var particle;
+    if (isCandy) {
+        particle = new createjs.Text("+3", "30px 'Voltaire', sans-serif", "#F33");
+    }
+    else
+        particle = new createjs.Text("+1", "30px 'Voltaire', sans-serif", "#3C3");
+    particle.x = this.x * SCALE;
+    particle.y = this.y * SCALE - 50;
+    particle.speedX = -10 + Math.random() * 5;
+    particle.speedY = -10 + Math.random() * 5;
     particle.time = 0;
     particle.alpha = 0.9;
     stage.addChild(particle);
