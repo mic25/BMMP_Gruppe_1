@@ -6,6 +6,7 @@ function ContactListener(){
         var shape1 = contact.GetFixtureA();
 		var shape2 = contact.GetFixtureB();
 
+
 		
 		if(shape1.GetBody().GetUserData() =="coin"){
 			game.playSound("coin1");
@@ -22,21 +23,53 @@ function ContactListener(){
 			level.count();
 		}
 
-		else if(shape1.GetBody().GetUserData() =="bubble"){
-			game.playSound("fly1");
+
+		else if(shape1.GetBody().GetUserData() =="bubble"){	
+			game.playSound("fly1");		
+	
 			deleteArray.push(shape1.GetBody());
 			stage.removeChild(shape1.GetBody().bitmap);
 			isFlying = true;
-			player.setFly();
-			console.log(isFlying);
+			//runter
+			if(shape2.GetBody().GetLinearVelocity().y > 0){
+				console.log("runter------"+shape2.GetBody().GetLinearVelocity().y);
+				player.setFly(0,-200);
+			}
+			//rauf
+			else if(shape2.GetBody().GetLinearVelocity().y <0){
+				console.log("rauf------"+shape2.GetBody().GetLinearVelocity().y);
+				player.setFly(0,+300);
+			//nach vorn/hinten	
+			}
+			else if (shape2.GetBody().GetLinearVelocity().y == 0){
+				console.log("normal----"+ shape2.GetBody().GetLinearVelocity().y);
+				player.setFly(0,-20);
+			}
+
 		}
+
 		else if(shape2.GetBody().GetUserData() == "bubble"){
-			game.playSound("fly1");
+			game.playSound("fly1");	
+
 			deleteArray.push(shape2.GetBody());
 			stage.removeChild(shape2.GetBody().bitmap);
 			isFlying = true;
-			player.setFly();
-			console.log(isFlying);
+			//runter
+			if(shape1.GetBody().GetLinearVelocity().y > 0){
+				console.log("runter------"+shape1.GetBody().GetLinearVelocity().y);
+				player.setFly(0,-200);
+			}
+			//rauf
+			else if(shape1.GetBody().GetLinearVelocity().y < 0){
+				console.log("rauf-------"+shape1.GetBody().GetLinearVelocity().y);
+				player.setFly(0,+300);
+			//nach vorn/hinten	
+			}
+			else if (shape1.GetBody().GetLinearVelocity().y == 0){
+				console.log("normal---" + shape1.GetBody().GetLinearVelocity().y);
+				player.setFly(0,-20);
+			}
+
 		}
 
 		else if(shape1.GetBody().GetUserData() =="candy"){

@@ -194,16 +194,16 @@ Player.prototype.setRunning = function(){
 	this.fixDef.restitution = 0.0;
 }
 
-Player.prototype.setFly = function(){
-	player.body.ApplyImpulse(new b2d.b2Vec2(0, -20), this.body.GetWorldCenter());
-	world.SetGravity(new b2d.b2Vec2(0,4));
+Player.prototype.setFly = function(VecX,VecY){	
+	player.body.ApplyImpulse(new b2d.b2Vec2(VecX,VecY), this.body.GetWorldCenter());
+	world.SetGravity(new b2d.b2Vec2(0,1.5));
 	this.fixDef.density = 2;
 	this.fixDef.friction = 0.2;
 	this.fixDef.restitution = 0.0;
 }
 
 Player.prototype.flyUp = function(){
-		    player.body.ApplyForce( new b2d.b2Vec2(0,-150), this.body.GetWorldCenter() );
+		    player.body.ApplyForce( new b2d.b2Vec2(0,-200), this.body.GetWorldCenter() );
 }
 
 Player.prototype.flyLeft = function(){
@@ -218,7 +218,7 @@ Player.prototype.flyRight = function () {
 
 Player.prototype.flyDown = function(){
 	if(!this.onGround)
-	this.body.ApplyForce( new b2d.b2Vec2(0,50), this.body.GetWorldCenter() );		
+	this.body.ApplyForce( new b2d.b2Vec2(0,120), this.body.GetWorldCenter() );		
 }
 
 
