@@ -35,7 +35,7 @@ function ContactListener(){
 			}
 			//rauf
 			else if(shape2.GetBody().GetLinearVelocity().y <0){
-					player.setFly(0,+300);
+					player.setFly(0,+100);
 			//nach vorn/hinten	
 			}
 			else if (shape2.GetBody().GetLinearVelocity().y == 0){
@@ -55,7 +55,7 @@ function ContactListener(){
 			}
 			//rauf
 			else if(shape1.GetBody().GetLinearVelocity().y < 0){
-				player.setFly(0,+30);
+				player.setFly(0,+100);
 			//nach vorn/hinten	
 			}
 			else if (shape1.GetBody().GetLinearVelocity().y == 0){
