@@ -76,6 +76,10 @@
     this.pauseExplanation_text.x = 73;
     this.pauseExplanation_text.y = 700;
 
+    this.runningSound = createjs.Sound.createInstance("running");
+    this.runningSound.addEventListener("complete", this.playAgain);
+    this.runningSound.setVolume(1.5);
+
 }
 
 Game.prototype.handleTick = function () {
@@ -117,6 +121,7 @@ Game.prototype.handleTick = function () {
         if (pPressed != pPressedCheck) {
             inGame = false;
             player.image.stop();
+            this.runningSound.pause();
             game.playSound("pause");
             stage.addChild(this.overlay);
             stage.addChild(this.pause_text);
@@ -132,12 +137,14 @@ Game.prototype.handleTick = function () {
     //Escape
     if (Key.isDown(Key.ESCAPE)){
         console.log("escape");
+        this.runningSound.stop();
         menu.showMenu();
     }
 
     if (Key.isDown(Key.R)){
         console.log("restart");
         inGame = false;
+        this.runningSound.stop();
         menu.generateNew();
         menu.startGame();
     }
@@ -153,6 +160,7 @@ Game.prototype.handleTick = function () {
             isFlying = false;
             isCandy = false;
             player.image.stop();
+            this.runningSound.stop();
             this.distanceScore = Math.floor(this.distance);
             localStorage.setItem("lastScore", this.distanceScore);
             this.reached_text.text = "Your score: " + this.distanceScore;
@@ -191,6 +199,9 @@ Game.prototype.start = function(){
 	stage.addChild(this.counter_icon);
 	
 	stage.update();
+
+    this.runningSound.play();
+
 }
 
 Game.prototype.setControls = function(){
@@ -229,5 +240,9 @@ Game.prototype.playSound = function(id){
         return createjs.Sound.play(id);
     }
     
+}
+
+Game.prototype.playAgain = function(){
+    this.runningSound.play();
 }
 

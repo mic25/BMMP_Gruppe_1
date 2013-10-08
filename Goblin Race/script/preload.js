@@ -1,6 +1,8 @@
 ﻿function preload() {
     var manifest = [
         //SOUNDS
+        { id: "running", src: "sound/sabre_dance.mp3" },
+
         { id: "intro", src: "sound/intro.wav" },
         { id: "laughing", src: "sound/laughing.m4a" },
 
