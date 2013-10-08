@@ -52,8 +52,15 @@
         
 
         function init() {
-          
+
             stage = new createjs.Stage("canvas");
+
+            adjustSize();
+
+            window.onresize = function(){
+                adjustSize();
+            }
+
             menu = new Menu();
             ticker = createjs.Ticker.setFPS(30);
             createjs.Ticker.addEventListener("tick", tick);
@@ -72,7 +79,18 @@
             else
                 menu.handleTick();
             stage.update();
-        }   
+        } 
+
+        function adjustSize(){
+            var canvas = document.getElementById("canvas");
+            var oldWidth = stage.canvas.width;
+            var newWidth = 2*window.innerWidth/3;
+            var newHeight = stage.canvas.height*((2*window.innerWidth/3)/oldWidth);
+            stage.canvas.setAttribute('width', newWidth);
+            stage.canvas.setAttribute('height', newHeight);
+            stage.scaleX = (newWidth)/oldWidth;
+            stage.scaleY = (newWidth)/oldWidth;
+        }  
     </script>
 </head>
 
