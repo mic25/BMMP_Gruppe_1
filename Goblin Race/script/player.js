@@ -226,7 +226,7 @@ Player.prototype.update = function() {
 	
 	this.jumpTimeout --;
 
-	if (this.body.GetPosition().y * SCALE > stage.canvas.height + this.imageheight / 2 || this.body.GetPosition().x * SCALE < -this.imagewidth / 2) {
+	if (this.body.GetPosition().y * SCALE > oldCanvasHeight + this.imageheight / 2 || this.body.GetPosition().x * SCALE < -this.imagewidth / 2) {
 		this.isOutOfBounds =  true;
 	}
 
@@ -308,9 +308,9 @@ Player.prototype.update = function() {
 
 
 
-	if (this.body.GetPosition().x * SCALE > stage.canvas.width - this.imagewidth / 4) {
+	if (this.body.GetPosition().x * SCALE > oldCanvasWidth - this.imagewidth / 4) {
 	    var posY = this.body.GetPosition().y;
-	    var posX = stage.canvas.width - this.imagewidth / 4;
+	    var posX = oldCanvasWidth - this.imagewidth / 4;
 	    this.body.SetPosition(new b2d.b2Vec2(posX/SCALE, posY));
 	}
 

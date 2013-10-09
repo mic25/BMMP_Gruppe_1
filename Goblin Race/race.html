@@ -28,7 +28,7 @@
     </style>
 
     <script>
-        var stage, queue, ticker, controller, menu, game, controller,world,player, level,overlay;
+        var stage, queue, ticker, controller, menu, game, controller,world,player, level,overlay, oldCanvasWidth, oldCanvasHeight;
         var isFlying = false;
         var isCandy = false;
         var inGame = false; var counter = 0; var time = Date.now();
@@ -85,19 +85,20 @@
 
         function adjustSize(){
             var canvas = document.getElementById("canvas");
-            var oldWidth = stage.canvas.width;
+            oldCanvasWidth = stage.canvas.width;
+            oldCanvasHeight = stage.canvas.height;
             var newWidth = 2*window.innerWidth/3;
-            var newHeight = stage.canvas.height*((2*window.innerWidth/3)/oldWidth);
+            var newHeight = oldCanvasHeight*((2*window.innerWidth/3)/oldCanvasWidth);
             stage.canvas.setAttribute('width', newWidth);
             stage.canvas.setAttribute('height', newHeight);
-            stage.scaleX = (newWidth)/oldWidth;
-            stage.scaleY = (newWidth)/oldWidth;
+            stage.scaleX = (newWidth)/oldCanvasWidth;
+            stage.scaleY = (newWidth)/oldCanvasWidth;
         }  
     </script>
 </head>
 
 <body onload="init()">
-    <p> <img src="img/Schrift.png" width="900" hight="300"></p>
+    <p> <img src="img/Schrift.png" width="35%"></p>
     <canvas width="1366" height="768" id="canvas">You no have canvas</canvas>
 
 	<div id="footer">

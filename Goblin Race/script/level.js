@@ -89,14 +89,14 @@ Level.prototype.generateLevel = function () {
         newXPlat = lastXPlat + Math.floor(Math.random() * (game.horizontal_max - game.horizontal_min + 1)) + game.horizontal_min
             + (this.plat.tiles * this.plat.segmentSize) / 2 + (tiles * this.plat.segmentSize) / 2;
 
-        if (randomSign < this.lastYPlat / stage.canvas.height) {
+        if (randomSign < this.lastYPlat / oldCanvasHeight) {
             newYPlat = this.lastYPlat - Math.random() * game.vertical;
         }
         else {
             newYPlat = this.lastYPlat + Math.random() * game.vertical;
         }
 
-        if (newYPlat > stage.canvas.height - this.plat.segmentHeight) {
+        if (newYPlat > oldCanvasHeight - this.plat.segmentHeight) {
             newYPlat -= game.vertical;
         }
         else if (newYPlat < this.plat.segmentHeight + 4 * game.vertical) {
