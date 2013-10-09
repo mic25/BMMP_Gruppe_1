@@ -40,7 +40,8 @@ function Platform(xPos,yPos,tiles,style){
 	    visuals.y = yPos * SCALE - 0.5*this.segmentHeight -6;
 	    visuals.x = xPos * SCALE + (this.segmentSize * i) - this.tiles*this.segmentSize/2 ; // Faktor für die Tile-Länge
 	    plat_stage.addChild(visuals);
-	}   
+	}  
+	this.start = this.body.bitmaps[0].x; 
 	this.body.SetUserData("platform");
 }
 
