@@ -69,8 +69,8 @@
 
     //Menu Header
 	this.menu_text = new createjs.Text("Menu", "150px 'Voltaire', sans-serif", "#F7F8E0");
-    this.menu_text.x = 70;
-    this.menu_text.y = 70;
+    this.menu_text.x = 550;
+    this.menu_text.y = 250;
 
     //Scores
     this.lastScore_text = new createjs.Text("Your last score: 0", "60px 'Voltaire', sans-serif", "#F7F8E0");

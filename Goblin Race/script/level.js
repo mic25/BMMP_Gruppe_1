@@ -158,7 +158,7 @@ Level.prototype.generateCoins = function(x , y, anzahl) {
 Level.prototype.updatePlatforms = function () {
     for (var i = 0; i < this.platforms.length; i++) {
         this.platforms[i].update();
-        if (this.platforms[i].start < -this.plat.segmentSize * (game.tiles_max+3) ) {
+        if (this.platforms[i].body.bitmaps[0].x < -this.plat.segmentSize * (game.tiles_max+3) ) {
             this.platforms[i].remove();        
             this.platforms.splice(i, 1);
         }
@@ -384,7 +384,7 @@ Level.prototype.getStyleAt = function (pos) {
 Level.prototype.getPlatStyleAt = function (pos) {
     var offset = 100; var mg = this.mg_im;
     for (var i = 0; i < this.BG_ELEMENTS ; i++) {
-        if (this.mg[i].x < pos && this.mg[i].x + this.bg[0].image.width >= pos) {
+        if (this.mg[i].x < pos && this.mg[i].x + this.mg[i].image.width >= pos) {
             mg = this.mg[i];
         }
         }
