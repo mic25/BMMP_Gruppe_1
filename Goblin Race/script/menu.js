@@ -315,20 +315,17 @@ Menu.prototype.handleMouse = function(){
 }
 
 Menu.prototype.setScores = function(){
-    if(localStorage == null){
-        localStorage.setItem("lastScore", 0);
-        localStorage.setItem("bestScore", 0);
+    var oldBest = localStorage.getItem("bestScore");
+    var last = localStorage.getItem("lastScore");
+    var newBest;
+    localStorage.setItem("bestScore", 0);
+    if(last > oldBest){
+        newBest = last;
+        
     }else{
-        
-        if(localStorage.getItem("lastScore") > localStorage.getItem("bestScore")){
-            var newScore = localStorage.getItem("lastScore");
-            
-        }else{
-            var newScore = localStorage.getItem("bestScore");
-        }
-        localStorage.setItem("bestScore", newScore);
-        
+        newBest = oldBest;
     }
+    localStorage.setItem("bestScore", newBest);
     this.lastScore_text.text = "Your last score: " + localStorage.getItem("lastScore");
     this.bestScore_text.text = "Your best score: " + localStorage.getItem("bestScore");
 }
