@@ -247,6 +247,8 @@ Game.prototype.start = function(){
 	stage.addChild(this.counter_icon);
 	
 	stage.update();
+    bg_stage.update();
+    plat_stage.update();
 
     if(localStorage.getItem("sound") == 1){
         this.runningSound.play();

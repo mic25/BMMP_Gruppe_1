@@ -57,9 +57,9 @@ Level.prototype.initialize = function () {
     this.fg_im = new createjs.Bitmap(queue.getResult("fg_wiese"));
     this.fg_im.name = "fg_wiese";
     this.fg[0] = this.fg_im;
-    stage.addChildAt(this.bg[0], 0);
-    stage.addChildAt(this.mg[0], 1)
-    stage.addChildAt(this.fg[0],2);
+    bg_stage.addChildAt(this.bg[0], 0);
+    bg_stage.addChildAt(this.mg[0], 1)
+    bg_stage.addChildAt(this.fg[0],2);
     
 
     //Startplatform
@@ -234,7 +234,7 @@ Level.prototype.generateBackground = function () {
         this.bg_im.name = url;
         console.log(url);
         this.bg.push(this.bg_im);
-        stage.addChildAt(this.bg_im,0);
+        bg_stage.addChildAt(this.bg_im,0);
         this.bg_im.x = newX;
     }
 
@@ -283,7 +283,7 @@ Level.prototype.generateBackground = function () {
         this.mg_im = new createjs.Bitmap(queue.getResult(url));
         this.mg_im.name = url;
         this.mg.push(this.mg_im);
-        stage.addChildAt(this.mg_im, 2);
+        bg_stage.addChildAt(this.mg_im, 2);
         this.mg_im.x = newX;
     }
 
@@ -334,7 +334,7 @@ Level.prototype.generateBackground = function () {
         this.fg_im = new createjs.Bitmap(queue.getResult(url));
         this.fg_im.name = url;
         this.fg.push(this.fg_im);
-        stage.addChildAt(this.fg_im, 4); 
+        bg_stage.addChildAt(this.fg_im, 4); 
         this.fg_im.x = newX;
     }
 }
@@ -351,17 +351,17 @@ Level.prototype.updateBackground = function () {
     //remove images out of bounds
     for (var i = 0; i < this.BG_ELEMENTS ; i++) {
         if (this.bg[i] != undefined && this.bg[i].x < -(this.bg[0].image.width)) {
-            stage.removeChild(this.bg[i]);
+            bg_stage.removeChild(this.bg[i]);
             this.bg.splice(i, 1);
             deleteArray.push(this.bg[i]);
         }
         if (this.mg[i] != undefined && this.mg[i].x < -this.bg[0].image.width) {
-            stage.removeChild(this.mg[i]);
+            bg_stage.removeChild(this.mg[i]);
             this.mg.splice(i, 1);
             deleteArray.push(this.mg[i]);
         }
         if (this.fg[i] != undefined && this.fg[i].x < -(this.bg[0].image.width)) {
-            stage.removeChild(this.fg[i]);
+            bg_stage.removeChild(this.fg[i]);
             this.fg.splice(i, 1);
             deleteArray.push(this.fg[i]);
         }

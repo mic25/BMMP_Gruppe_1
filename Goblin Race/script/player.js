@@ -195,6 +195,9 @@ Player.prototype.setRunning = function(){
 }
 
 Player.prototype.setFly = function(VecX,VecY){	
+	if(localStorage.getItem("sound") == 1){
+		game.flySound.play();
+	}
 	world.SetGravity(new b2d.b2Vec2(0,3));
 	player.body.ApplyImpulse(new b2d.b2Vec2(VecX,VecY), this.body.GetWorldCenter());	
 	this.fixDef.density = 2;
@@ -233,78 +236,78 @@ Player.prototype.update = function() {
 
 	if(!isFlying){
 
-	this.moveDown();
+		this.moveDown();
 			
 		if(this.numFootContacts<1){
-		this.onGround = false;
-	}else{
-		this.onGround = true;
-	}
-	if (this.onGround != this.groundCheck) {
-	    if (this.onGround){
-	        this.image.gotoAndPlay("Run");
-	        if(localStorage.getItem("sound") == 1){
-				game.floorSound.play();
-	        }
-	    	
-	    }	
-	    else {
-	        if (Math.random() > 0.5){
-	        	this.image.gotoAndPlay("Jump");
-	        	if(localStorage.getItem("sound") == 1){
-	        		game.jumpSound.play();
-	        	}
-	        	
-	        } 
-	        else{
-	        	this.image.gotoAndPlay("Jump2");
-	        	if(localStorage.getItem("sound") == 1){
-	        		game.jumpSound.play();
-	        	}
-	        	
-	        } 
-	        
-	    }
-	    this.groundCheck = this.onGround;
-	}
+			this.onGround = false;
+		}else{
+			this.onGround = true;
+		}
+		if (this.onGround != this.groundCheck) {
+		    if (this.onGround){
+		        this.image.gotoAndPlay("Run");
+		        if(localStorage.getItem("sound") == 1){
+					game.floorSound.play();
+		        }
+		    	
+		    }	
+		    else {
+		        if (Math.random() > 0.5){
+		        	this.image.gotoAndPlay("Jump");
+		        	if(localStorage.getItem("sound") == 1){
+		        		game.jumpSound.play();
+		        	}
+		        	
+		        } 
+		        else{
+		        	this.image.gotoAndPlay("Jump2");
+		        	if(localStorage.getItem("sound") == 1){
+		        		game.jumpSound.play();
+		        	}
+		        	
+		        } 
+		        
+		    }
+		    this.groundCheck = this.onGround;
+		}
 
-	if (Key.isDown(Key.UP)){
-		player.jump();
-	} 
-	if (Key.isDown(Key.SPACE)){
-		player.jump();
+		if (Key.isDown(Key.UP)){
+			player.jump();
+		} 
+		if (Key.isDown(Key.SPACE)){
+			player.jump();
+		}
+		if (Key.isDown(Key.DOWN)) player.moveDown();
+		if (Key.isDown(Key.LEFT)) player.moveLeft();	
+		if (Key.isDown(Key.RIGHT)) player.moveRight();
+		if (Key.isEmpty() && !this.onGround) {
+		}
 	}
-	if (Key.isDown(Key.DOWN)) player.moveDown();
-	if (Key.isDown(Key.LEFT)) player.moveLeft();	
-	if (Key.isDown(Key.RIGHT)) player.moveRight();
-	if (Key.isEmpty() && !this.onGround) {
-	}}
 
 	else if(isFlying){
-	this.tick ++;
-	this.image.gotoAndPlay("Fliegen");
-	if(localStorage.getItem("sound") == 1){
-		game.flySound.play();
+		this.tick ++;
+		this.image.gotoAndPlay("Fliegen");
+		
+		
+		if (Key.isDown(Key.UP)){
+			player.flyUp();
+		} 
+		if (Key.isDown(Key.SPACE)){
+			player.flyUp();
+		}
+		if (Key.isDown(Key.DOWN)) player.flyDown();
+		if (Key.isDown(Key.LEFT)) player.flyLeft();	
+		if (Key.isDown(Key.RIGHT)) player.flyRight();
+		if (Key.isEmpty() && !this.onGround) {
+		}
+		
+		if(this.tick == 200){
+		isFlying = false;
+		this.image.gotoAndPlay("Jump");
+			this.setRunning();
+		this.tick = 0;
+		}
 	}
-	
-	if (Key.isDown(Key.UP)){
-		player.flyUp();
-	} 
-	if (Key.isDown(Key.SPACE)){
-		player.flyUp();
-	}
-	if (Key.isDown(Key.DOWN)) player.flyDown();
-	if (Key.isDown(Key.LEFT)) player.flyLeft();	
-	if (Key.isDown(Key.RIGHT)) player.flyRight();
-	if (Key.isEmpty() && !this.onGround) {
-	}
-	
-	if(this.tick == 200){
-	isFlying = false;
-	this.image.gotoAndPlay("Jump");
-		this.setRunning();
-	this.tick = 0;
-	}}
 
 
 

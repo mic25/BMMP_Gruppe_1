@@ -2,6 +2,7 @@
 /* CSS Document */
 
 body {
+        align: center;
 	color: #0f2614;
  	background-color: #0f2614; 
 	font-family:Voltaire;
@@ -40,8 +41,9 @@ div#content {
 	}
 	
 div#footer {
+    position: absolute;
+    right: 24px;
 	color: #0f2614;
-	background-color: #2d4633;
 	padding: 24px 0;
 	font-size: 20px;
 	clear: both;
@@ -85,14 +87,26 @@ div#footer {
     font-style: normal;
     font-weight: normal;
 }
-canvas {
-    margin-left: auto;
-    margin-right: auto;
+#container{
+    position: relative;
+    margin:0 auto;
+    width: 911px;
+    height: 0px;
     display: block;
+}
+canvas {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    display: inline-block;
     border-color: #f2df33;
     border-width: 8px;
     border-style: groove;
+    background-color: transparent;
 }	
+
+
+
 	
 	
 	

@@ -7,14 +7,22 @@ h1{
     font-style: normal;
     font-weight: normal;
 }
-canvas {
+#container{
+    position: relative;
     margin-left: auto;
     margin-right: auto;
+}
+canvas {
+    position: absolute;
+    left: 0px;
+    top: 0px;
     display: block;
     border-color: lightgray #898888;
     border-width: 8px;
     border-style: solid;
+    background-color: transparent;
 }
+
 body{
     font-family: 'Voltaire', sans-serif;
     background-color:black;
