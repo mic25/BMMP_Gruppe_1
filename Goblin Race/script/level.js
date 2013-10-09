@@ -129,20 +129,9 @@ Level.prototype.generateLevel = function () {
         console.log(this.randomC);
         console.log("newCandy " + newYPlat);
         }
-
-        //Coins
-        //this.generateCoins();
 }
 
 Level.prototype.generateCoins = function(x , y, anzahl) {
-   // while(this.coins.length < 20){
-        
-       /* var lastXCoin = this.coin.body.GetPosition().x * SCALE;
-        var lastYCoin = this.coin.body.GetPosition().y * SCALE;
-        var newXCoin = lastXCoin + Math.floor(Math.random() * (game.HORIZONTAL_MAX - game.HORIZONTAL_MIN + 1)) + game.HORIZONTAL_MIN
-            + (this.coin.segmentSize) / 2 + (this.coin.segmentSize) / 2;     
-
-        newYCoin = this.lastYPlat - 200;*/
         
         var newYCoin = y;
         var platformLength = anzahl * 200;
@@ -152,11 +141,15 @@ Level.prototype.generateCoins = function(x , y, anzahl) {
 
         var randomCoins = Math.floor(Math.random() * anzahl*2)+ Math.floor(1*anzahl/2);
         console.log(randomCoins);
-        var newXCoinRand = newXCoin;
+
+        if(randomCoins < anzahl){
+            newXCoin = x - platformLength/4
+        }
+
         for(var i = 0; i<randomCoins; i++){
-        newXCoinRand +=80;
+        newXCoin +=80;
         var newY = this.random(100, 300);
-        this.coin = new Coin(newXCoinRand / SCALE, (newYCoin - newY) / SCALE);
+        this.coin = new Coin(newXCoin / SCALE, (newYCoin - newY) / SCALE);
         this.coins.push(this.coin);
   //  }
 }

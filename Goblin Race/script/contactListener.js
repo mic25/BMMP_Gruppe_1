@@ -123,12 +123,14 @@ function ContactListener(){
 			isFlying = false;
 			player.numFootContacts++;
 			console.log(isFlying + "plattform");
+			player.tick = 0;
 		}
 		else if(isFlying && shape2.GetBody().GetUserData() == "platform"){
 			player.setRunning();
 			isFlying = false;
 			player.numFootContacts++;
 			console.log(isFlying + "plattform");
+			player.tick = 0;
 		}
 
 		else if(shape1.GetBody().GetUserData() == "platform"){
