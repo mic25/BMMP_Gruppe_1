@@ -40,7 +40,9 @@ function Platform(xPos,yPos,tiles,style){
 	    visuals.y = yPos * SCALE - 0.5*this.segmentHeight -6;
 	    visuals.x = xPos * SCALE + (this.segmentSize * i) - this.tiles*this.segmentSize/2 ; // Faktor für die Tile-Länge
 	    stage.addChild(visuals);
-	}   
+	}
+
+	this.start = this.body.bitmaps[0].x;
 	this.body.SetUserData("platform");
 }
 
@@ -52,6 +54,7 @@ Platform.prototype.update = function () {
 	for(var i=0;i<this.body.bitmaps.length;i++){		
 	    this.body.bitmaps[i].x = this.body.GetPosition().x * SCALE + (this.segmentSize * i) - (this.tiles * this.segmentSize/2) - 6;
 	};
+	this.start = this.body.bitmaps[0].x;
 }
 
 Platform.prototype.remove = function () {
