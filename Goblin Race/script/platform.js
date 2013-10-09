@@ -42,6 +42,7 @@ function Platform(xPos,yPos,tiles,style){
 	    plat_stage.addChild(visuals);
 	}   
 	this.body.SetUserData("platform");
+	this.start = this.body.bitmaps[0].x;
 }
 
 
@@ -52,6 +53,7 @@ Platform.prototype.update = function () {
 	for(var i=0;i<this.body.bitmaps.length;i++){		
 	    this.body.bitmaps[i].x = this.body.GetPosition().x * SCALE + (this.segmentSize * i) - (this.tiles * this.segmentSize/2) - 6;
 	};
+	this.start = this.body.bitmaps[0].x;
 }
 
 Platform.prototype.remove = function () {

@@ -74,9 +74,7 @@ Level.prototype.initialize = function () {
 }
 
 Level.prototype.generateLevel = function () {
-    var newXPlat;
-    var newYPlat;
-
+    var newXPlat, newYPlat;
 
     while (this.platforms.length <= this.PL_ELEMENTS) {
         this.platformCounterBubble ++;
@@ -106,8 +104,6 @@ Level.prototype.generateLevel = function () {
         this.platforms.push(this.plat);
 
         this.generateCoins(newXPlat, newYPlat, tiles);
-
-
     }
 
      if(this.platformCounterBubble > this.randomB && this.bubble == null){
@@ -158,7 +154,7 @@ Level.prototype.generateCoins = function(x , y, anzahl) {
 Level.prototype.updatePlatforms = function () {
     for (var i = 0; i < this.platforms.length; i++) {
         this.platforms[i].update();
-        if (this.platforms[i].body.bitmaps[0].x < -this.plat.segmentSize * (game.tiles_max+3) ) {
+        if (this.platforms[i].start < -this.plat.segmentSize * (game.tiles_max+3) ) {
             this.platforms[i].remove();        
             this.platforms.splice(i, 1);
         }
@@ -283,7 +279,7 @@ Level.prototype.generateBackground = function () {
         this.mg_im = new createjs.Bitmap(queue.getResult(url));
         this.mg_im.name = url;
         this.mg.push(this.mg_im);
-        mg_stage.addChildAt(this.mg_im, 2);
+        mg_stage.addChild(this.mg_im);
         this.mg_im.x = newX;
     }
 
@@ -334,7 +330,7 @@ Level.prototype.generateBackground = function () {
         this.fg_im = new createjs.Bitmap(queue.getResult(url));
         this.fg_im.name = url;
         this.fg.push(this.fg_im);
-        fg_stage.addChildAt(this.fg_im, 4); 
+        fg_stage.addChild(this.fg_im);
         this.fg_im.x = newX;
     }
 }
@@ -387,16 +383,16 @@ Level.prototype.getPlatStyleAt = function (pos) {
         if (this.mg[i].x < pos && this.mg[i].x + this.mg[i].image.width >= pos) {
             mg = this.mg[i];
         }
-        }
+    }
     var str = mg.image.src.split("/")[mg.image.src.split("/").length - 1]
     if (pos < mg.x + mg.image.width / 3) {
         if (str.indexOf("start") != -1)
             return "wiese";
     }
     else if (pos > mg.x + mg.image.width / 2) {
-    if (str.indexOf("end") != -1)
-        return "wiese";
-    }
+        if (str.indexOf("end") != -1)
+            return "wiese";
+        }
     if (str.indexOf("rainbow") != -1)
         return "rainbow";
     else if (str.indexOf("cloud") != -1)
@@ -408,10 +404,6 @@ Level.prototype.getPlatStyleAt = function (pos) {
 }
 
 Level.prototype.count = function (){
-    if(isCandy){
-        counter += 3;
-    }
-    else{
-        counter ++;
-    }
+    if(isCandy) counter += 3;
+    else counter ++;
 }

@@ -1,8 +1,7 @@
-@charset "UTF-8";
+﻿@charset "UTF-8";
 /* CSS Document */
 
 body {
-        align: center;
 	color: #0f2614;
  	background-color: #0f2614; 
 	font-family:Voltaire;
@@ -28,15 +27,12 @@ h4 {
 p {
 	width: 100%;
 	top: 0px;
-	repeat: 
 	clear: both;
 	margin: 0px 0 0 0;
 	color:#989797;
 	text-align:center;
 	}
 div#content {
-	padding: 5; 
-	margin: 12; 
 	text-align: center;
 	}
 	
@@ -54,7 +50,7 @@ div#footer {
 
 #footer p {
 	width: 100%;
-	margin: -1 auto;    
+	margin: 0 auto;    
 	}
 	
 
@@ -74,7 +70,6 @@ div#footer {
   	background-color: transparent;
 	}
 	a:active {
-	color: f0df32;
 	background-color: transparent;
 	}
 	
@@ -90,7 +85,7 @@ div#footer {
 #container{
     position: relative;
     margin:0 auto;
-    width: 911px;
+    width: 66%;
     height: 0px;
     display: block;
 }

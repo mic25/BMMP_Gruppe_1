@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <title>Goblin Race</title>
-    <head profile="http://www.w3.org/2005/10/profile">
+    <!--<meta profile="http://www.w3.org/2005/10/profile"> -->
    	<link rel="shortcut icon" href="zucker.ico">
     <script src="script/createjs-2013.09.25.min.js"></script>
     
@@ -28,7 +28,8 @@
     </style>
 
     <script>
-        var stage, queue, ticker, controller, menu, game, controller,world,player, level,overlay, oldCanvasWidth, oldCanvasHeight, bg_stage, mg_stage, fg_stage, plat_stage, coin_stage;
+        var stage, queue, ticker, controller, menu, game, controller, world, player, level, overlay, oldCanvasWidth, oldCanvasHeight,
+            bg_stage, mg_stage, fg_stage, plat_stage, coin_stage;
         var isFlying = false;
         var isCandy = false;
         var inGame = false; var counter = 0; var time = Date.now();
@@ -133,7 +134,7 @@
 
         }  
     </script>
-</head>
+</meta>
 
 <body onload="init()">
 
@@ -145,7 +146,6 @@
         <canvas width="1366" height="768" id="canvas3" style="z-index:4">You no have canvas</canvas>
         <canvas width="1366" height="768" id="canvas4" style="z-index:5">You no have canvas</canvas>
         <canvas width="1366" height="768" id="canvas" style="z-index:6">You no have canvas</canvas>
-
     </div>
 	<div id="footer">
    		   <p> © 2013 – <a href="impressum.html">Impressum</a></p>
