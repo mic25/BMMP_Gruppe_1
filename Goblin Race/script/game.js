@@ -182,13 +182,11 @@ Game.prototype.handleTick = function () {
 
     //Escape
     if (Key.isDown(Key.ESCAPE)){
-        console.log("escape");
         this.runningSound.stop();
         menu.showMenu();
     }
 
     if (Key.isDown(Key.R)){
-        console.log("restart");
         inGame = false;
         this.runningSound.stop();
         menu.generateNew();

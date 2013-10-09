@@ -34,9 +34,7 @@
     this.candyTick = 0;
 
     this.randomC = this.random(5, 15);
-    console.log("randomC" + this.randomC);
     this.randomB = this.random(5, 15);
-    console.log("randomB" + this.randomB);
 
     this.initialize();
 }
@@ -116,8 +114,6 @@ Level.prototype.generateLevel = function () {
         this.bubble.update();
         this.platformCounterBubble = 0;
         this.randomB = this.random(5, 15);
-        console.log(this.randomB);
-        console.log("newBubble " + newYPlat);
         }
 
     if(this.platformCounterCandy > this.randomC && this.candyCane == null){
@@ -126,8 +122,6 @@ Level.prototype.generateLevel = function () {
         this.candyCane.update();
         this.platformCounterCandy = 0;
         this.randomC = this.random(5, 15);
-        console.log(this.randomC);
-        console.log("newCandy " + newYPlat);
         }
 
         //Coins
@@ -151,7 +145,6 @@ Level.prototype.generateCoins = function(x , y, anzahl) {
         var newXCoin = x - randomSign;
 
         var randomCoins = Math.floor(Math.random() * anzahl*2)+ Math.floor(1*anzahl/2);
-        console.log(randomCoins);
         var newXCoinRand = newXCoin;
         for(var i = 0; i<randomCoins; i++){
         newXCoinRand +=80;
@@ -239,7 +232,7 @@ Level.prototype.generateBackground = function () {
         }
         this.bg_im = new createjs.Bitmap(queue.getResult(url));
         this.bg_im.name = url;
-        console.log(url);
+        //console.log(url);
         this.bg.push(this.bg_im);
         stage.addChildAt(this.bg_im,0);
         this.bg_im.x = newX;
@@ -286,7 +279,7 @@ Level.prototype.generateBackground = function () {
             url = "mg_" + lastStyle;
             this.last_mg = 1;
         }
-        console.log(url);
+       // console.log(url);
         this.mg_im = new createjs.Bitmap(queue.getResult(url));
         this.mg_im.name = url;
         this.mg.push(this.mg_im);
@@ -337,7 +330,7 @@ Level.prototype.generateBackground = function () {
             url = "fg_" + lastStyle;
             this.last_fg = 1;
         }
-        console.log(url);
+        //console.log(url);
         this.fg_im = new createjs.Bitmap(queue.getResult(url));
         this.fg_im.name = url;
         this.fg.push(this.fg_im);
