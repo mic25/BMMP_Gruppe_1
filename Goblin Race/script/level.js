@@ -57,9 +57,9 @@ Level.prototype.initialize = function () {
     this.fg_im = new createjs.Bitmap(queue.getResult("fg_wiese"));
     this.fg_im.name = "fg_wiese";
     this.fg[0] = this.fg_im;
-    bg_stage.addChildAt(this.bg[0], 0);
-    mg_stage.addChildAt(this.mg[0], 1)
-    fg_stage.addChildAt(this.fg[0],2);
+    bg_stage.addChild(this.bg[0]);
+    mg_stage.addChild(this.mg[0])
+    fg_stage.addChild(this.fg[0]);
     
 
     //Startplatform
