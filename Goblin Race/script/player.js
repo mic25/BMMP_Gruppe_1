@@ -195,8 +195,8 @@ Player.prototype.setRunning = function(){
 }
 
 Player.prototype.setFly = function(VecX,VecY){	
-	player.body.ApplyImpulse(new b2d.b2Vec2(VecX,VecY), this.body.GetWorldCenter());
-	world.SetGravity(new b2d.b2Vec2(0,1.5));
+	world.SetGravity(new b2d.b2Vec2(0,3));
+	player.body.ApplyImpulse(new b2d.b2Vec2(VecX,VecY), this.body.GetWorldCenter());	
 	this.fixDef.density = 2;
 	this.fixDef.friction = 0.2;
 	this.fixDef.restitution = 0.0;
