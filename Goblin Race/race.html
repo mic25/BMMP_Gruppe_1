@@ -28,7 +28,7 @@
     </style>
 
     <script>
-        var stage, queue, ticker, controller, menu, game, controller,world,player, level,overlay, oldCanvasWidth, oldCanvasHeight, bg_stage, plat_stage;
+        var stage, queue, ticker, controller, menu, game, controller,world,player, level,overlay, oldCanvasWidth, oldCanvasHeight, bg_stage, mg_stage, fg_stage, plat_stage, coin_stage;
         var isFlying = false;
         var isCandy = false;
         var inGame = false; var counter = 0; var time = Date.now();
@@ -56,8 +56,11 @@
         function init() {
 
             stage = new createjs.Stage("canvas");
-            bg_stage = new createjs.Stage("canvas2");
+            bg_stage = new createjs.Stage("canvas21");
+            mg_stage = new createjs.Stage("canvas22");
+            fg_stage = new createjs.Stage("canvas23");
             plat_stage = new createjs.Stage("canvas3");
+            coin_stage = new createjs.Stage("canvas4");
 
             adjustSize();
 
@@ -84,7 +87,10 @@
                 menu.handleTick();
             stage.update();
             bg_stage.update();
+            mg_stage.update();
+            fg_stage.update();
             plat_stage.update();
+            coin_stage.update();
         } 
 
         function adjustSize(){
@@ -105,13 +111,26 @@
             bg_stage.scaleX = (newWidth)/oldCanvasWidth;
             bg_stage.scaleY = (newWidth)/oldCanvasWidth;
 
+            mg_stage.canvas.setAttribute('width', newWidth);
+            mg_stage.canvas.setAttribute('height', newHeight);
+            mg_stage.scaleX = (newWidth)/oldCanvasWidth;
+            mg_stage.scaleY = (newWidth)/oldCanvasWidth;
+
+            fg_stage.canvas.setAttribute('width', newWidth);
+            fg_stage.canvas.setAttribute('height', newHeight);
+            fg_stage.scaleX = (newWidth)/oldCanvasWidth;
+            fg_stage.scaleY = (newWidth)/oldCanvasWidth;
+
             plat_stage.canvas.setAttribute('width', newWidth);
             plat_stage.canvas.setAttribute('height', newHeight);
             plat_stage.scaleX = (newWidth)/oldCanvasWidth;
             plat_stage.scaleY = (newWidth)/oldCanvasWidth;
 
-            div.setAttribute('width', newWidth);
-            div.setAttribute('height', newHeight);
+            coin_stage.canvas.setAttribute('width', newWidth);
+            coin_stage.canvas.setAttribute('height', newHeight);
+            coin_stage.scaleX = (newWidth)/oldCanvasWidth;
+            coin_stage.scaleY = (newWidth)/oldCanvasWidth;
+
         }  
     </script>
 </head>
@@ -120,9 +139,13 @@
 
     <p> <img src="img/Schrift.png" width="35%"></p>
     <div id="container">
-        <canvas width="1366" height="768" id="canvas2">You no have canvas</canvas>
-        <canvas width="1366" height="768" id="canvas3">You no have canvas</canvas>
-        <canvas width="1366" height="768" id="canvas">You no have canvas</canvas>
+        <canvas width="1366" height="768" id="canvas21" style="z-index:1">You no have canvas</canvas>
+        <canvas width="1366" height="768" id="canvas22" style="z-index:2">You no have canvas</canvas>
+        <canvas width="1366" height="768" id="canvas23" style="z-index:3">You no have canvas</canvas>
+        <canvas width="1366" height="768" id="canvas3" style="z-index:4">You no have canvas</canvas>
+        <canvas width="1366" height="768" id="canvas4" style="z-index:5">You no have canvas</canvas>
+        <canvas width="1366" height="768" id="canvas" style="z-index:6">You no have canvas</canvas>
+
     </div>
 	<div id="footer">
    		   <p> © 2013 – <a href="impressum.html">Impressum</a></p>

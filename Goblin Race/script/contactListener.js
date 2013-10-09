@@ -17,7 +17,7 @@ function ContactListener(){
 			}
 			
 			deleteArray.push(shape1.GetBody());
-			stage.removeChild(shape1.GetBody().bitmap);
+			coin_stage.removeChild(shape1.GetBody().bitmap);
 			player.createCountParticle();
 			level.count();
 		}
@@ -27,7 +27,7 @@ function ContactListener(){
 			}
 			
 			deleteArray.push(shape2.GetBody());
-			stage.removeChild(shape2.GetBody().bitmap);
+			coin_stage.removeChild(shape2.GetBody().bitmap);
 			player.createCountParticle();
 			level.count();
 		}
@@ -36,7 +36,7 @@ function ContactListener(){
 		else if(shape1.GetBody().GetUserData() =="bubble"){			
 	
 			deleteArray.push(shape1.GetBody());
-			stage.removeChild(shape1.GetBody().bitmap);
+			coin_stage.removeChild(shape1.GetBody().bitmap);
 			isFlying = true;
 			console.log("preBubble-----:"+ dir2);
 			//runter
@@ -64,7 +64,7 @@ function ContactListener(){
 		else if(shape2.GetBody().GetUserData() == "bubble"){
 
 			deleteArray.push(shape2.GetBody());
-			stage.removeChild(shape2.GetBody().bitmap);
+			coin_stage.removeChild(shape2.GetBody().bitmap);
 			isFlying = true;
 			console.log("preBubble-----:"+ dir1);
 			//runter
@@ -99,7 +99,7 @@ function ContactListener(){
 			}
 			
 			deleteArray.push(shape1.GetBody());
-			stage.removeChild(shape1.GetBody().bitmap);
+			coin_stage.removeChild(shape1.GetBody().bitmap);
 			isCandy = true;
 			console.log("candy!!");
 		}
@@ -113,7 +113,7 @@ function ContactListener(){
 			}
 			
 			deleteArray.push(shape2.GetBody());
-			stage.removeChild(shape2.GetBody().bitmap);
+			coin_stage.removeChild(shape2.GetBody().bitmap);
 			isCandy = true;
 			console.log("candy!!");
 		}

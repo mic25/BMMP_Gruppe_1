@@ -27,7 +27,7 @@ function Bubble(xPos,yPos,type){
 	    
 	this.body.bitmap.y = yPos * SCALE - 0.5*this.segmentSize;
 	this.body.bitmap.x = xPos * SCALE - 0.5*this.segmentSize;
-	stage.addChild(this.body.bitmap);
+	coin_stage.addChild(this.body.bitmap);
 	this.body.SetUserData("bubble");
 }
 
@@ -40,6 +40,6 @@ Bubble.prototype.update = function () {
 }
 
 Bubble.prototype.remove = function () {
-    stage.removeChild(this.body.bitmap);
+    coin_stage.removeChild(this.body.bitmap);
     deleteArray.push(this.fix.GetBody());
 }
