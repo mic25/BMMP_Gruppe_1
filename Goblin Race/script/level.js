@@ -57,9 +57,9 @@ Level.prototype.initialize = function () {
     this.fg_im = new createjs.Bitmap(queue.getResult("fg_wiese"));
     this.fg_im.name = "fg_wiese";
     this.fg[0] = this.fg_im;
-    bg_stage.addChild(this.bg[0]);
-    mg_stage.addChild(this.mg[0])
-    fg_stage.addChild(this.fg[0]);
+    bg_stage.addChildAt(this.bg[0],0);
+    bg_stage.addChildAt(this.mg[0],1);
+    bg_stage.addChildAt(this.fg[0],2);
     
 
     //Startplatform
@@ -279,7 +279,7 @@ Level.prototype.generateBackground = function () {
         this.mg_im = new createjs.Bitmap(queue.getResult(url));
         this.mg_im.name = url;
         this.mg.push(this.mg_im);
-        mg_stage.addChild(this.mg_im);
+        bg_stage.addChildAt(this.mg_im, 2);
         this.mg_im.x = newX;
     }
 
@@ -330,7 +330,7 @@ Level.prototype.generateBackground = function () {
         this.fg_im = new createjs.Bitmap(queue.getResult(url));
         this.fg_im.name = url;
         this.fg.push(this.fg_im);
-        fg_stage.addChild(this.fg_im);
+        bg_stage.addChildAt(this.fg_im,4);
         this.fg_im.x = newX;
     }
 }
@@ -352,12 +352,12 @@ Level.prototype.updateBackground = function () {
             deleteArray.push(this.bg[i]);
         }
         if (this.mg[i] != undefined && this.mg[i].x < -this.bg[0].image.width) {
-            mg_stage.removeChild(this.mg[i]);
+            bg_stage.removeChild(this.mg[i]);
             this.mg.splice(i, 1);
             deleteArray.push(this.mg[i]);
         }
         if (this.fg[i] != undefined && this.fg[i].x < -(this.bg[0].image.width)) {
-            fg_stage.removeChild(this.fg[i]);
+            bg_stage.removeChild(this.fg[i]);
             this.fg.splice(i, 1);
             deleteArray.push(this.fg[i]);
         }

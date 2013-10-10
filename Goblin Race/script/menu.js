@@ -144,14 +144,10 @@ Menu.prototype.showMenu = function () {
     inGame = false;
     stage.removeAllChildren();
     bg_stage.removeAllChildren();
-    mg_stage.removeAllChildren();
-    fg_stage.removeAllChildren();
     plat_stage.removeAllChildren();
     coin_stage.removeAllChildren();
     stage.update();
     bg_stage.update();
-    mg_stage.update();
-    fg_stage.update();
     plat_stage.update();
     coin_stage.update();
     stage.addChild(menu.menuBg);
@@ -188,14 +184,10 @@ Menu.prototype.startGame = function () {
 
     stage.removeAllChildren();
     bg_stage.removeAllChildren();
-    mg_stage.removeAllChildren();
-    fg_stage.removeAllChildren();
     plat_stage.removeAllChildren();
     coin_stage.removeAllChildren();
     stage.update();
     bg_stage.update();
-    mg_stage.update();
-    fg_stage.update();
     plat_stage.update();
     coin_stage.update();
 
@@ -261,14 +253,10 @@ Menu.prototype.handleTick = function () {
 Menu.prototype.generateNew = function (){
     stage.removeAllChildren();
     bg_stage.removeAllChildren();
-    mg_stage.removeAllChildren();
-    fg_stage.removeAllChildren();
     plat_stage.removeAllChildren();
     coin_stage.removeAllChildren();
     stage.update();
     bg_stage.update();
-    mg_stage.update();
-    fg_stage.update();
     plat_stage.update();
     coin_stage.update();
 

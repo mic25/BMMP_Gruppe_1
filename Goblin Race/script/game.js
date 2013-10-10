@@ -247,8 +247,6 @@ Game.prototype.start = function(){
 	
 	stage.update();
     bg_stage.update();
-    mg_stage.update();
-    fg_stage.update();
     plat_stage.update();
     coin_stage.update();
 
