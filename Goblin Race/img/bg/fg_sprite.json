@@ -1,0 +1,33 @@
+{
+"images": ["fg_sprite.png"],
+"frames": [
+
+    [2282, 2, 1138, 320], 
+    [1142, 646, 1138, 320], 
+    [1142, 324, 1138, 320], 
+    [1142, 2, 1138, 320], 
+    [2, 646, 1138, 320], 
+    [2, 324, 1138, 320], 
+    [1142, 2, 1138, 320], 
+    [2, 646, 1138, 320], 
+    [2, 324, 1138, 320], 
+    [2, 2, 1138, 320]
+],
+"animations": {
+    
+        "fg_cave":[0], 
+        "fg_cave_end":[1], 
+        "fg_cave_start":[2], 
+        "fg_cloud":[3], 
+        "fg_cloud_end":[4], 
+        "fg_cloud_start":[5], 
+        "fg_rainbow":[6], 
+        "fg_rainbow_end":[7], 
+        "fg_rainbow_start":[8], 
+        "fg_wiese":[9]
+},
+"texturepacker": [
+        "SmartUpdateHash: $TexturePacker:SmartUpdate:6e5e6d4bc923a0a8a2990812f8552b21:1/1$",
+        "Created with TexturePacker (http://www.texturepacker.com) for EaselJS"
+]
+}
