@@ -158,7 +158,6 @@ Menu.prototype.showMenu = function () {
     menu.newGame_text.addEventListener("click", menu.handleClick);
     menu.soundOn.addEventListener("click", menu.handleClick);
     menu.soundOff.addEventListener("click", menu.handleClick);
-    console.log(localStorage.getItem("sound"));
     if(localStorage.getItem("sound") == 1){
         stage.addChild(menu.soundOn);
     }else if(localStorage.getItem("sound") == 0){
@@ -277,14 +276,12 @@ Menu.prototype.handleClick = function (evt) {
         //soundOn-Image
     else if (evt.target.image.alpha == 0.95) {
         localStorage.setItem("sound", 0);
-        console.log(localStorage.getItem("sound"));
         stage.removeChild(menu.soundOn);
         stage.addChild(menu.soundOff);
     }
         //soundOff-Image
     else if (evt.target.image.alpha == 0.94) {
         localStorage.setItem("sound", 1);
-        console.log(localStorage.getItem("sound"));
         stage.removeChild(menu.soundOff);
         stage.addChild(menu.soundOn);
     }

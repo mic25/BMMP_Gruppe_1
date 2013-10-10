@@ -89,8 +89,8 @@ function ContactListener(){
 			deleteArray.push(shape1.GetBody());
 			coin_stage.removeChild(shape1.GetBody().bitmap);
 			isCandy = true;
-			console.log("candy!!");
 		}
+		
 		else if(shape2.GetBody().GetUserData() == "candy"){
 		    if (localStorage.getItem("sound") == 1) {
 		        var random = Math.random();
