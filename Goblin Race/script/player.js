@@ -30,30 +30,21 @@ function Player() {
 	this.fixture = this.body.CreateFixture(this.fixDef);
 
     //setup the graphics
-
 	this.data = {
 	    "images": [queue.getResult("player")],
-        "frames": [
-            
-
+        "frames": [           
             [819, 1408, 587, 992], //3 Laufen
             [1408, 996, 596, 992], //5
             [2, 3074, 678, 969], //2
-            [1408, 2, 604, 992], //6
-                      
+            [1408, 2, 604, 992], //6                     
             [1408, 996, 596, 992], //4
-
-            [2, 3074, 678, 969], //1 
-                       
+            [2, 3074, 678, 969], //1                        
             [2, 1408, 815, 786], //7 Rutschen
-
             [2, 2196, 718, 876], //8 Springen
             [682, 3074, 716, 802], //9
-
             [2, 2, 1404, 1404] //0 Fliegen
         ],
-        "animations": {
-    
+        "animations": {   
             "Run": [0, 4, true, 0.2],
             "Jump": [8],
             "Jump2": [7],
@@ -71,8 +62,6 @@ function Player() {
             "Springen1":[9]
         },
 	}
-
-
 	var spritesheet = new createjs.SpriteSheet(this.data);
 	this.image = new createjs.Sprite(spritesheet, "Jump");
 	this.image.scaleX = 0.2;
@@ -82,12 +71,6 @@ function Player() {
 	stage.addChild(this.image);
 	this.imagewidth = 450;
 	this.imageheight = 220;
-
-	/*this.image = new createjs.Bitmap(queue.getResult("figure"));
-	this.image.scaleX = 0.5;
-	this.image.scaleY = 0.5;*/
-	//this.image.graphics.beginFill("#0ff").rect(0,0,this.boxWidth*2*SCALE,this.boxHeight*2*SCALE);
-	//stage.addChild(this.image);
 
 	this.body.SetUserData("player");
 	this.body.SetBullet(true);
@@ -170,10 +153,8 @@ Player.prototype.moveLeft = function(){
 	player.body.ApplyForce( new b2d.b2Vec2(-100,0), this.body.GetWorldCenter() );
 }
 
-Player.prototype.moveRight = function () {
-    
+Player.prototype.moveRight = function () {  
     player.body.ApplyForce(new b2d.b2Vec2(100, 0), this.body.GetWorldCenter());
-
 }
 
 Player.prototype.moveDown = function(){
@@ -209,18 +190,16 @@ Player.prototype.setFly = function(VecX,VecY){
 	this.fixDef.restitution = 0.0;
 }
 
-Player.prototype.flyUp = function(){
-		    player.body.ApplyForce( new b2d.b2Vec2(0,-200), this.body.GetWorldCenter() );
+Player.prototype.flyUp = function () {
+    player.body.ApplyForce(new b2d.b2Vec2(0, -200), this.body.GetWorldCenter());
 }
 
 Player.prototype.flyLeft = function(){
 	player.body.ApplyForce( new b2d.b2Vec2(-50,0), this.body.GetWorldCenter() );
 }
 
-Player.prototype.flyRight = function () {
-    
+Player.prototype.flyRight = function () {    
     player.body.ApplyForce(new b2d.b2Vec2(50, 0), this.body.GetWorldCenter());
-
 }
 
 Player.prototype.flyDown = function(){
@@ -229,19 +208,13 @@ Player.prototype.flyDown = function(){
 }
 
 
-Player.prototype.update = function() {
-	
+Player.prototype.update = function() {	
 	this.jumpTimeout --;
-
 	if (this.body.GetPosition().y * SCALE > oldCanvasHeight + this.imageheight / 2 || this.body.GetPosition().x * SCALE < -this.imagewidth / 2) {
 		this.isOutOfBounds =  true;
 	}
-
-
 	if(!isFlying){
-
-		this.moveDown();
-			
+		this.moveDown();			
 		if(this.numFootContacts<1){
 			this.onGround = false;
 		}else{
@@ -252,8 +225,7 @@ Player.prototype.update = function() {
 		        this.image.gotoAndPlay("Run");
 		        if(localStorage.getItem("sound") == 1){
 					game.floorSound.play();
-		        }
-		    	
+		        }		    	
 		    }	
 		    else {
 		        if (Math.random() > 0.5){
@@ -290,9 +262,7 @@ Player.prototype.update = function() {
 
 	else if(isFlying){
 		this.tick ++;
-		this.image.gotoAndPlay("Fliegen");
-		
-		
+		this.image.gotoAndPlay("Fliegen");		
 		if (Key.isDown(Key.UP)){
 			player.flyUp();
 		} 
@@ -302,9 +272,7 @@ Player.prototype.update = function() {
 		if (Key.isDown(Key.DOWN)) player.flyDown();
 		if (Key.isDown(Key.LEFT)) player.flyLeft();	
 		if (Key.isDown(Key.RIGHT)) player.flyRight();
-		if (Key.isEmpty() && !this.onGround) {
-		}
-		
+
 		if(this.tick == 200){
 		isFlying = false;
 		this.image.gotoAndPlay("Jump");
@@ -312,21 +280,16 @@ Player.prototype.update = function() {
 		this.tick = 0;
 		}
 	}
-
-
-
 	if (this.body.GetPosition().x * SCALE > oldCanvasWidth - this.imagewidth / 4) {
 	    var posY = this.body.GetPosition().y;
 	    var posX = oldCanvasWidth - this.imagewidth / 4;
 	    this.body.SetPosition(new b2d.b2Vec2(posX/SCALE, posY));
 	}
-
   	this.x = this.body.GetPosition().x;
     this.y = this.body.GetPosition().y;
 
   	this.image.x = this.body.GetPosition().x;
   	this.image.y = this.body.GetPosition().y;
-
 };
 
 
