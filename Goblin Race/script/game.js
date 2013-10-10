@@ -173,7 +173,7 @@ Game.prototype.handleTick = function () {
 
     //kopiert aus Blatt05 was auch immer das hier macht..
     world.Step(1 / 60,  10,  10);
-    world.DrawDebugData();
+   // world.DrawDebugData();
     //+++++++++++++Debug!!!+++++++++++++++++++++
     //stage.autoClear = false;
     world.ClearForces();   
