@@ -333,17 +333,6 @@ Menu.prototype.handleMouse = function(){
 }
 
 Menu.prototype.setScores = function(){
-    var oldBest = localStorage.getItem("bestScore");
-    var last = localStorage.getItem("lastScore");
-    var newBest;
-    localStorage.setItem("bestScore", 0);
-    if(last > oldBest){
-        newBest = last;
-        
-    }else{
-        newBest = oldBest;
-    }
-    localStorage.setItem("bestScore", newBest);
     this.lastScore_text.text = "Your last score: " + localStorage.getItem("lastScore");
     this.bestScore_text.text = "Your best score: " + localStorage.getItem("bestScore");
 }

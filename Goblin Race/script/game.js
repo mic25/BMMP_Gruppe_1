@@ -208,6 +208,9 @@ Game.prototype.handleTick = function () {
             this.runningSound.stop();
             this.distanceScore = Math.floor(this.distance + counter/2);
             localStorage.setItem("lastScore", this.distanceScore);
+            if(this.distanceScore > localStorage.getItem("bestScore")){
+                localStorage.setItem("bestScore", this.distanceScore);
+            }
             this.reached_text.text = "Your score: " + this.distanceScore;
             stage.addChild(this.overlay);
             stage.addChild(this.gameOver_text);
