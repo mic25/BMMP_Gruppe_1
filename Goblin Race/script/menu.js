@@ -333,19 +333,14 @@ Menu.prototype.handleMouse = function(){
 }
 
 Menu.prototype.setScores = function(){
-    var oldBest = localStorage.getItem("bestScore");
-    var last = localStorage.getItem("lastScore");
-    var newBest;
-    localStorage.setItem("bestScore", 0);
-    if(last > oldBest){
-        newBest = last;
-        
+    if(localStorage.getItem("bestScore") == null){
+        this.bestScore_text.text = "Your best score: 0";
+    }else if(localStorage.getItem("lastScore") == null){
+        this.lastScore_text.text = "Your last score: 0";
     }else{
-        newBest = oldBest;
+        this.lastScore_text.text = "Your last score: " + localStorage.getItem("lastScore");
+        this.bestScore_text.text = "Your best score: " + localStorage.getItem("bestScore");
     }
-    localStorage.setItem("bestScore", newBest);
-    this.lastScore_text.text = "Your last score: " + localStorage.getItem("lastScore");
-    this.bestScore_text.text = "Your best score: " + localStorage.getItem("bestScore");
 }
 
 }
