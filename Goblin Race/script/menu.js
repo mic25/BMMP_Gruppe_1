@@ -333,8 +333,14 @@ Menu.prototype.handleMouse = function(){
 }
 
 Menu.prototype.setScores = function(){
-    this.lastScore_text.text = "Your last score: " + localStorage.getItem("lastScore");
-    this.bestScore_text.text = "Your best score: " + localStorage.getItem("bestScore");
+    if(localStorage.getItem("bestScore") == null){
+        this.bestScore_text.text = "Your best score: 0";
+    }else if(localStorage.getItem("lastScore") == null){
+        this.lastScore_text.text = "Your last score: 0";
+    }else{
+        this.lastScore_text.text = "Your last score: " + localStorage.getItem("lastScore");
+        this.bestScore_text.text = "Your best score: " + localStorage.getItem("bestScore");
+    }
 }
 
 }
