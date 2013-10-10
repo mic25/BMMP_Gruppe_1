@@ -1,0 +1,33 @@
+{
+"images": ["mg_sprite.png"],
+"frames": [
+
+    [2, 3477, 1366, 384], 
+    [2, 3091, 1366, 384], 
+    [2, 2705, 1366, 384], 
+    [2, 2, 1366, 385], 
+    [2, 2319, 1366, 384], 
+    [2, 1933, 1366, 384], 
+    [2, 1547, 1366, 384], 
+    [2, 1161, 1366, 384], 
+    [2, 775, 1366, 384], 
+    [2, 389, 1366, 384]
+],
+"animations": {
+    
+        "mg_cave":[0], 
+        "mg_cave_end":[1], 
+        "mg_cave_start":[2], 
+        "mg_cloud":[3], 
+        "mg_cloud_end":[4], 
+        "mg_cloud_start":[5], 
+        "mg_rainbow":[6], 
+        "mg_rainbow_end":[7], 
+        "mg_rainbow_start":[8], 
+        "mg_wiese":[9]
+},
+"texturepacker": [
+        "SmartUpdateHash: $TexturePacker:SmartUpdate:2fabac7391efc858cf68fa2e03a48b0c:1/1$",
+        "Created with TexturePacker (http://www.texturepacker.com) for EaselJS"
+]
+}

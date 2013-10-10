@@ -32,6 +32,33 @@
     this.randomB = this.random(5, 15);
     console.log("randomB" + this.randomB);
 
+    var mg_data = {
+        "images": [queue.getResult("mg_sprite")],
+        "frames": [
+            [2, 3477, 1366, 384],
+            [2, 3091, 1366, 384],
+            [2, 2705, 1366, 384],
+            [2, 2, 1366, 385],
+            [2, 2319, 1366, 384],
+            [2, 1933, 1366, 384],
+            [2, 1547, 1366, 384],
+            [2, 1161, 1366, 384],
+            [2, 775, 1366, 384],
+            [2, 389, 1366, 384]
+        ],
+        "animations": {
+            "mg_cave": [0],
+            "mg_cave_end": [1],
+            "mg_cave_start": [2],
+            "mg_cloud": [3],
+            "mg_cloud_end": [4],
+            "mg_cloud_start": [5],
+            "mg_rainbow": [6],
+            "mg_rainbow_end": [7],
+            "mg_rainbow_start": [8],
+            "mg_wiese": [9]
+        }
+    }
     var fg_data = {
         "images": [queue.getResult("fg_sprite")],
         "frames": [
@@ -59,6 +86,7 @@
             "fg_wiese": [9]
         }
     }
+    this.mg_sprite = new createjs.SpriteSheet(mg_data);
     this.fg_sprite = new createjs.SpriteSheet(fg_data);
     this.initialize();
 }
@@ -73,9 +101,12 @@ Level.prototype.initialize = function () {
     this.bg_im = new createjs.Bitmap(queue.getResult("bg_wiese"));
     this.bg[0] = this.bg_im;
     this.bg_im.name = "bg_wiese";
-    this.mg_im = new createjs.Bitmap(queue.getResult("mg_wiese"));
-    this.mg[0] = this.mg_im;
-    this.mg_im.name = "mg_wiese";
+
+    this.mg[0] = new createjs.Sprite(this.mg_sprite, "mg_wiese");
+    this.mg[0].play();
+    this.mg[0].name = "mg_wiese";
+    this.mg[0].scaleX = 2;
+    this.mg[0].scaleY = 2;
 
     this.fg[0] = new createjs.Sprite(this.fg_sprite, "fg_wiese");
     this.fg[0].play();
@@ -84,12 +115,62 @@ Level.prototype.initialize = function () {
     this.fg[0].scaleY = 1 / 0.41667;
     bg_stage.addChildAt(this.bg[0],0);
     bg_stage.addChildAt(this.mg[0],1);
-    fg_stage.addChild(this.fg[0]);
+    bg_stage.addChildAt(this.fg[0],2);
 
     this.generateBackground();
 
+    //Add MG
+    var newX = this.mg[0].x + this.bg[0].image.width - 2;
+    var lastStyle;
+    if (this.mg[0].name.indexOf("end") != -1)
+        lastStyle = "wiese";
+    else if (this.mg[0].name.indexOf("rainbow") != -1)
+        lastStyle = "rainbow";
+    else if (this.mg[0].name.indexOf("cloud") != -1)
+        lastStyle = "cloud";
+    else if (this.mg[0].name.indexOf("cave") != -1)
+        lastStyle = "cave";
+    else
+        lastStyle = "wiese"; //more to come
+    var url;
+
+    if (lastStyle != this.getStyleAt(newX)) {
+        if (lastStyle == "wiese") {
+            url = "mg_" + this.getStyleAt(newX) + "_start";
+            this.last_mg = 0;
+        }
+        else {
+            if (this.last_mg == 0) {
+                url = "mg_" + this.getStyleAt(newX) + "_start";
+                this.last_mg = 0;
+            }
+            else {
+                if (this.getStyleAt(newX) == "wiese") {
+                    url = "mg_" + lastStyle + "_end";
+                    this.last_mg = 2;
+                }
+                else {
+                    url = "mg_" + this.getStyleAt(newX) + "_start";
+                    this.last_mg = 0;
+                }
+            }
+        }
+    }
+    else {
+        url = "mg_" + lastStyle;
+        this.last_mg = 1;
+    }
+    console.log(url);
+    this.mg[1] = new createjs.Sprite(this.mg_sprite, url);
+    this.mg[1].play();
+    this.mg[1].name = url;
+    this.mg[1].scaleX = 2;
+    this.mg[1].scaleY = 2;
+    bg_stage.addChildAt(this.mg[1],2);
+    this.mg[1].x = newX;
+
     //Add FG
-    var newX = this.fg[0].x + this.bg[0].image.width - 1;
+    var newX = this.fg[0].x + this.bg[0].image.width - 2;
     var lastStyle;
     if (this.fg[0].name.indexOf("end") != -1)
         lastStyle = "wiese";
@@ -135,9 +216,9 @@ Level.prototype.initialize = function () {
     this.fg[1].name = url;
     this.fg[1].scaleX = 1 / 0.41667;
     this.fg[1].scaleY = 1 / 0.41667;
-    fg_stage.addChild(this.fg[1]);
+    bg_stage.addChildAt(this.fg[1],4);
     this.fg[1].x = newX;
-    
+
     //Startplatform
     this.plat = new Platform(352 / SCALE, 500 / SCALE, 10,"wiese"); 
     this.platforms.push(this.plat);
@@ -309,56 +390,6 @@ Level.prototype.generateBackground = function () {
         bg_stage.addChildAt(this.bg_im,0);
         this.bg_im.x = newX;
     }
-
-    //add new midground
-    while (this.mg.length < this.BG_ELEMENTS) {
-        var newX = this.mg_im.x + this.mg_im.image.width - 9;
-        var lastStyle;
-        if (this.mg_im.name.indexOf("end") != -1)
-            lastStyle = "wiese";
-        else if (this.mg_im.name.indexOf("rainbow") != -1)
-            lastStyle = "rainbow";
-        else if (this.mg_im.name.indexOf("cloud") != -1)
-            lastStyle = "cloud";
-        else if (this.mg_im.name.indexOf("cave") != -1)
-            lastStyle = "cave";
-        else 
-            lastStyle = "wiese"; //more to come
-        var url;
-        if (lastStyle != this.getStyleAt(newX)) {
-            if (lastStyle == "wiese") {
-                url = "mg_" + this.getStyleAt(newX) + "_start";
-                this.last_mg = 0;
-            }
-            else {
-                if (this.last_mg == 0) {
-                    url = "mg_" + this.getStyleAt(newX) + "_start"; //Cahnged
-                    this.last_mg = 0;
-                }
-                else {
-                    if (this.getStyleAt(newX) == "wiese") {
-                        url = "mg_" + lastStyle + "_end";
-                        this.last_mg = 2
-                    }
-                    else {
-                        url = "mg_" + this.getStyleAt(newX) + "_start";
-                        this.last_mg = 0;
-                    }
-                }
-            }
-        }
-        else {
-            url = "mg_" + lastStyle;
-            this.last_mg = 1;
-        }
-        console.log(url);
-        this.mg_im = new createjs.Bitmap(queue.getResult(url));
-        this.mg_im.name = url;
-        this.mg.push(this.mg_im);
-        bg_stage.addChildAt(this.mg_im, 2);
-        this.mg_im.x = newX;
-    }
-
 }
 
 Level.prototype.updateBackground = function () {
@@ -377,11 +408,10 @@ Level.prototype.updateBackground = function () {
             this.bg.splice(i, 1);
             deleteArray.push(this.bg[i]);
         }
-        if (this.mg[i] != undefined && this.mg[i].x < -this.bg[0].image.width) {
-            bg_stage.removeChild(this.mg[i]);
-            this.mg.splice(i, 1);
-            deleteArray.push(this.mg[i]);
-        }
+    }
+    if (this.mg[0] != undefined && this.mg[0].x < -this.bg[0].image.width) {
+        this.mg.reverse();
+        this.generateNewMG();
     }
     if (this.fg[0] != undefined && this.fg[0].x < -(this.bg[0].image.width)) {
         this.fg.reverse();
@@ -403,18 +433,19 @@ Level.prototype.getStyleAt = function (pos) {
 }
 
 Level.prototype.getPlatStyleAt = function (pos) {
-    var offset = 100; var mg = this.mg_im;
+    var offset = 100; var mg = this.mg[1];
     for (var i = 0; i < this.BG_ELEMENTS ; i++) {
-        if (this.mg[i].x < pos && this.mg[i].x + this.mg[i].image.width >= pos) {
+        if (this.mg[i].x < pos && this.mg[i].x + this.bg[0].image.width >= pos) {
             mg = this.mg[i];
         }
     }
-    var str = mg.image.src.split("/")[mg.image.src.split("/").length - 1]
-    if (pos < mg.x + mg.image.width / 3) {
+    //var str = mg.image.src.split("/")[mg.image.src.split("/").length - 1]
+    var str = mg.name;
+    if (pos < mg.x + this.bg[0].image.width / 3) {
         if (str.indexOf("start") != -1)
             return "wiese";
     }
-    else if (pos > mg.x + mg.image.width / 2) {
+    else if (pos > mg.x + this.bg[0].image.width / 2) {
         if (str.indexOf("end") != -1)
             return "wiese";
         }
@@ -434,7 +465,7 @@ Level.prototype.count = function (){
 }
 
 Level.prototype.generateNewFG = function () {
-    var newX = this.fg[0].x + this.bg[0].image.width - 1;
+    var newX = this.fg[0].x + this.bg[0].image.width - 2;
     var lastStyle
     if (this.fg[0].name.indexOf("end") != -1)
         lastStyle = "wiese";
@@ -477,4 +508,51 @@ Level.prototype.generateNewFG = function () {
     this.fg[1].gotoAndPlay(url);
     this.fg[1].name = url;
     this.fg[1].x = newX;
+}
+
+Level.prototype.generateNewMG = function () {
+    var newX = this.mg[0].x + this.bg[0].image.width - 2;
+    var lastStyle
+    if (this.mg[0].name.indexOf("end") != -1)
+        lastStyle = "wiese";
+    else if (this.mg[0].name.indexOf("rainbow") != -1)
+        lastStyle = "rainbow";
+    else if (this.mg[0].name.indexOf("cloud") != -1)
+        lastStyle = "cloud";
+    else if (this.mg[0].name.indexOf("cave") != -1)
+        lastStyle = "cave";
+    else
+        lastStyle = "wiese"; //more to come
+    var url;
+
+    if (lastStyle != this.getStyleAt(newX)) {
+        if (lastStyle == "wiese") {
+            url = "mg_" + this.getStyleAt(newX) + "_start";
+            this.last_mg = 0;
+        }
+        else {
+            if (this.last_mg == 0) {
+                url = "mg_" + this.getStyleAt(newX) + "_start";
+                this.last_mg = 0;
+            }
+            else {
+                if (this.getStyleAt(newX) == "wiese") {
+                    url = "mg_" + lastStyle + "_end";
+                    this.last_mg = 2;
+                }
+                else {
+                    url = "mg_" + this.getStyleAt(newX) + "_start";
+                    this.last_mg = 0;
+                }
+            }
+        }
+    }
+    else {
+        url = "mg_" + lastStyle;
+        this.last_mg = 1;
+    }
+    console.log("url = " +url)
+    this.mg[1].gotoAndPlay(url);
+    this.mg[1].name = url;
+    this.mg[1].x = newX;
 }

@@ -110,6 +110,7 @@
         { id: "plat_cave_m", src: "img/plat/plat_cave_m.png" },
 
         { id: "fg_sprite", src: "img/bg/fg_sprite.png" },
+        { id: "mg_sprite", src: "img/bg/mg_sprite.png" },
 
         { id: "overlay", src: "img/overlay.png" }
     ];
