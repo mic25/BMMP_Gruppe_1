@@ -5,8 +5,6 @@
     this.last_mg = 2; // 0 = start, 1 = middle, 2 = end
     this.last_fg = 2; // 0 = start, 1 = middle, 2 = end
     this.bg_im; //last added image
-    this.mg_im;
-    this.fg_im;
 
     this.bg = new Array();
     this.mg = new Array();
@@ -19,11 +17,10 @@
     this.plat;
     this.lastYPlat;
 
+    //Items
     this.coins = new Array();
     this.coin;
-
     this.bubble = null;
-
     this.candyCane = null;
     this.candyTick = 0;
 
@@ -96,7 +93,6 @@ Level.prototype.random = function (min, max){
 }
 
 Level.prototype.initialize = function () {
-
     //setup Background
     this.bg_im = new createjs.Bitmap(queue.getResult("bg_wiese"));
     this.bg[0] = this.bg_im;
@@ -233,6 +229,7 @@ Level.prototype.initialize = function () {
 Level.prototype.generateLevel = function () {
     var newXPlat, newYPlat;
 
+    //Background
     while (this.platforms.length <= this.PL_ELEMENTS) {
         this.platformCounterBubble ++;
         this.platformCounterCandy ++;
@@ -263,7 +260,8 @@ Level.prototype.generateLevel = function () {
         this.generateCoins(newXPlat, newYPlat, tiles);
     }
 
-     if(this.platformCounterBubble > this.randomB && this.bubble == null){
+    //Bubble
+    if(this.platformCounterBubble > this.randomB && this.bubble == null){
         var newBubbleY = newYPlat - 200;
         this.bubble = new Bubble(newXPlat / SCALE, newBubbleY / SCALE);
         this.bubble.update();
@@ -273,6 +271,7 @@ Level.prototype.generateLevel = function () {
         console.log("newBubble " + newYPlat);
         }
 
+    //Candy
     if(this.platformCounterCandy > this.randomC && this.candyCane == null){
         var newCandyY = newYPlat - 200;
         this.candyCane = new CandyCane(newXPlat / SCALE, newCandyY / SCALE);
@@ -284,28 +283,22 @@ Level.prototype.generateLevel = function () {
         }
 }
 
-Level.prototype.generateCoins = function(x , y, anzahl) {
-        
-        var newYCoin = y;
-        var platformLength = anzahl * 200;
-        var randomSign = this.random(platformLength/2, platformLength/3);
+Level.prototype.generateCoins = function (x, y, anzahl) {
 
-        var newXCoin = x - randomSign;
+    var newYCoin = y;
+    var platformLength = anzahl * 200;
+    var randomSign = this.random(platformLength / 2, platformLength / 3);
+    var newXCoin = x - randomSign;
+    var randomCoins = Math.floor(Math.random() * anzahl * 2) + Math.floor(1 * anzahl / 2);
 
-        var randomCoins = Math.floor(Math.random() * anzahl*2)+ Math.floor(1*anzahl/2);
-        console.log(randomCoins);
-
-        if(randomCoins < anzahl){
-            newXCoin = x - platformLength/4
-        }
-
-        for(var i = 0; i<randomCoins; i++){
-        newXCoin +=80;
+    if (randomCoins < anzahl)
+        newXCoin = x - platformLength / 4
+    for (var i = 0; i < randomCoins; i++) {
+        newXCoin += 80;
         var newY = this.random(100, 300);
         this.coin = new Coin(newXCoin / SCALE, (newYCoin - newY) / SCALE);
         this.coins.push(this.coin);
-  //  }
-}
+    }
 }
 
 Level.prototype.updatePlatforms = function () {
@@ -358,7 +351,6 @@ Level.prototype.updateCandyCane = function () {
 
 Level.prototype.generateBackground = function () {
 
-    //add new Background
     while (this.bg.length < this.BG_ELEMENTS) { 
         var newX = this.bg_im.x + this.bg_im.image.width - 1;
         if (this.last_bg == 1 || this.last_bg == 3) {
@@ -371,7 +363,6 @@ Level.prototype.generateBackground = function () {
         }
         else if (this.last_bg == 0) {
             var random = Math.random();
-            //Sobald alle stile verfügbar !
             if (random > 0.66) this.style = "cloud";
             else if (random > 0.33) this.style = "rainbow";
             else this.style = "cave"; 
@@ -401,7 +392,7 @@ Level.prototype.updateBackground = function () {
         this.fg[i].x += game.fg_speed;
     }
 
-    //remove images out of bounds
+    //remove/reset images out of bounds
     for (var i = 0; i < this.BG_ELEMENTS ; i++) {
         if (this.bg[i] != undefined && this.bg[i].x < -(this.bg[0].image.width)) {
             bg_stage.removeChild(this.bg[i]);
@@ -439,7 +430,6 @@ Level.prototype.getPlatStyleAt = function (pos) {
             mg = this.mg[i];
         }
     }
-    //var str = mg.image.src.split("/")[mg.image.src.split("/").length - 1]
     var str = mg.name;
     if (pos < mg.x + this.bg[0].image.width / 3) {
         if (str.indexOf("start") != -1)
@@ -455,8 +445,7 @@ Level.prototype.getPlatStyleAt = function (pos) {
         return "cloud";
     else if (str.indexOf("cave") != -1)
         return "cave";
-    else return "wiese";
-    
+    else return "wiese";   
 }
 
 Level.prototype.count = function (){
@@ -476,7 +465,7 @@ Level.prototype.generateNewFG = function () {
     else if (this.fg[0].name.indexOf("cave") != -1)
         lastStyle = "cave";
     else
-        lastStyle = "wiese"; //more to come
+        lastStyle = "wiese";
     var url;
 
     if (lastStyle != this.getStyleAt(newX)) {
@@ -522,7 +511,7 @@ Level.prototype.generateNewMG = function () {
     else if (this.mg[0].name.indexOf("cave") != -1)
         lastStyle = "cave";
     else
-        lastStyle = "wiese"; //more to come
+        lastStyle = "wiese";
     var url;
 
     if (lastStyle != this.getStyleAt(newX)) {

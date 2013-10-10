@@ -91,7 +91,6 @@
     this.hitHelp.graphics.beginFill("#000").drawRect(0, 0, this.help_text.getMeasuredWidth(), this.help_text.getMeasuredHeight());
     this.help_text.hitArea = this.hitHelp;
 
-
     //Start
     this.newGame_text = new createjs.Text("<enter> Start", "60px 'Voltaire', sans-serif", "#F7F8E0");
     this.newGame_text.x = 950;
@@ -135,12 +134,10 @@
     this.devil.scaleY = 0.7;
     this.devil.x = 450;
     this.devil.y = 100;
-
 }
 
 Menu.prototype.showMenu = function () {
 
-    // show the Menu
     inGame = false;
     stage.removeAllChildren();
     bg_stage.removeAllChildren();
@@ -170,12 +167,6 @@ Menu.prototype.showMenu = function () {
         localStorage.setItem("sound", 1);
         stage.addChild(menu.soundOn);
     }
-
-
-    //For test purposes
- 	/*stage.removeAllChildren();
-    stage.update();*/
-    //menu.startGame();
 }
 
 Menu.prototype.startGame = function () {
@@ -187,45 +178,35 @@ Menu.prototype.startGame = function () {
     plat_stage.removeAllChildren();
     coin_stage.removeAllChildren();
     fg_stage.removeAllChildren();
-    stage.update();
-    bg_stage.update();
-    plat_stage.update();
-    coin_stage.update();
-
-    /*level.coins.length = 0;
-    level.platforms.length = 0;
-    level.bg.length = 0;
-    level.fg.length = 0;*/
 
     game.counter = 0;
 
     game.start();
-
     inGame = true;
 
 }
 
 Menu.prototype.handleTick = function () {
+    //Pause
     if (Key.isDown(Key.P)) {
         pPressed = true;
         if (pPressed != pPressedCheck) {
             inGame = true;
-            if(localStorage.getItem("sound") == 1){
+            if (localStorage.getItem("sound") == 1) {
                 game.runningSound.resume();
             }
             stage.removeChild(game.overlay);
             stage.removeChild(game.pause_text);
             stage.removeChild(game.pauseExplanation_text);
-            if(localStorage.getItem("sound") == 1){
+            if (localStorage.getItem("sound") == 1) {
                 game.resumeSound.play();
             }
-            
             player.image.play();
-            if(localStorage.getItem("sound") == 1){
+            if (localStorage.getItem("sound") == 1) {
                 stage.removeChild(menu.soundOn);
-            }else if(localStorage.getItem("sound") == 0){
+            } else if (localStorage.getItem("sound") == 0) {
                 stage.removeChild(menu.soundOff);
-            }else{
+            } else {
                 localStorage.setItem("sound", 1);
                 stage.removeChild(menu.soundOn);
             }
@@ -233,45 +214,25 @@ Menu.prototype.handleTick = function () {
             pPressedCheck = pPressed;
         }
     }
-    else {pPressed = false; pPressedCheck = false;}
+    else { pPressed = false; pPressedCheck = false; }
 
+    //Keyhandling
     if (Key.isDown(Key.R)) {
-    	//menu.generateNew();
-    	menu.startGame();
+        menu.startGame();
     }
-    if (Key.isDown(Key.ESCAPE)){
+    if (Key.isDown(Key.ESCAPE)) {
         game.runningSound.stop();
-    	menu.showMenu();
+        menu.showMenu();
     }
-    if (Key.isDown(Key.H)){
-    	menu.getHelp();
+    if (Key.isDown(Key.H)) {
+        menu.getHelp();
     }
-    if (Key.isDown(Key.ENTER)){
-    	//menu.generateNew();
-    	menu.startGame();
+    if (Key.isDown(Key.ENTER)) {
+        menu.startGame();
     }
+}
 
-    //probably depreciated
-Menu.prototype.generateNew = function (){
-    stage.removeAllChildren();
-    bg_stage.removeAllChildren();
-    plat_stage.removeAllChildren();
-    coin_stage.removeAllChildren();
-    fg_stage.removeAllChildren();
-    stage.update();
-    bg_stage.update();
-    plat_stage.update();
-    coin_stage.update();
-
-    level.coins.length = 0;
-    level.platforms.length = 0;
-    level.bg.length = 0;
-    level.fg.length = 0;
-
-    game.counter = 0;
-}    
-
-Menu.prototype.getHelp = function (){
+Menu.prototype.getHelp = function () {
     stage.removeAllChildren;
     stage.update();
     stage.addChild(this.menuBg);
@@ -288,41 +249,41 @@ Menu.prototype.getHelp = function (){
     stage.addChild(this.pause_text);
     this.newGame_text.x = 1000;
     stage.addChild(this.newGame_text);
-    
+
     this.newGame_text.addEventListener("click", menu.handleClick);
     stage.addChild(this.escape_text);
-    
+
     this.escape_text.addEventListener("click", menu.handleClick);
-}    
+}
 
 
-Menu.prototype.handleClick = function (evt){
-    
-    if(evt.target.text == "<h> Tutorial"){
+Menu.prototype.handleClick = function (evt) {
+
+    if (evt.target.text == "<h> Tutorial") {
         menu.getHelp();
     }
-    else if(evt.target.text == "<enter> Start"){
+    else if (evt.target.text == "<enter> Start") {
         //menu.generateNew();
         menu.startGame();
     }
-    else if(evt.target.text == "<esc> Back to Menu"){
+    else if (evt.target.text == "<esc> Back to Menu") {
         menu.showMenu();
     }
-    else if(evt.target.text == "Failed you have!"){
+    else if (evt.target.text == "Failed you have!") {
         stage.addChild(menu.devil);
-        if(localStorage.getItem("sound") == 1){
+        if (localStorage.getItem("sound") == 1) {
             game.laughingSound.play();
-        }    
+        }
     }
-    //soundOn-Image
-    else if(evt.target.image.alpha == 0.95){
+        //soundOn-Image
+    else if (evt.target.image.alpha == 0.95) {
         localStorage.setItem("sound", 0);
         console.log(localStorage.getItem("sound"));
         stage.removeChild(menu.soundOn);
         stage.addChild(menu.soundOff);
     }
-    //soundOff-Image
-    else if(evt.target.image.alpha == 0.94){
+        //soundOff-Image
+    else if (evt.target.image.alpha == 0.94) {
         localStorage.setItem("sound", 1);
         console.log(localStorage.getItem("sound"));
         stage.removeChild(menu.soundOff);
@@ -331,20 +292,20 @@ Menu.prototype.handleClick = function (evt){
 
 }
 
-Menu.prototype.handleMouse = function(){
+Menu.prototype.handleMouse = function () {
     stage.removeChild(menu.devil);
 }
 
-Menu.prototype.setScores = function(){
-    if(localStorage.getItem("bestScore") == null){
+Menu.prototype.setScores = function () {
+    if (localStorage.getItem("bestScore") == null)
         this.bestScore_text.text = "Your best score: 0";
-    }else if(localStorage.getItem("lastScore") == null){
+    else if (localStorage.getItem("lastScore") == null)
         this.lastScore_text.text = "Your last score: 0";
-    }else{
+    else {
         this.lastScore_text.text = "Your last score: " + localStorage.getItem("lastScore");
         this.bestScore_text.text = "Your best score: " + localStorage.getItem("bestScore");
     }
 }
 
-}
+
 
