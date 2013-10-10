@@ -287,7 +287,7 @@ Game.prototype.start = function(){
     fg_stage.update();
 
     if(localStorage.getItem("sound") == 1){
-        this.runningSound.play();
+        this.runningSound.play({loop:-1});
     }
 
 }
@@ -331,6 +331,7 @@ Game.prototype.playSound = function(id){
 }
 
 Game.prototype.playAgain = function(){
+    this.runningSound.stop();
     this.runningSound.play();
 }
 
