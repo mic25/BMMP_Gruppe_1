@@ -23,12 +23,10 @@ function Coin(xPos,yPos,type){
 	this.fix = this.body.CreateFixture(fixDef);
 	this.fix.SetSensor(true);
 
-	this.body.bitmap = new createjs.Bitmap(queue.getResult("coin"));;
-
-	    
-	    this.body.bitmap.y = yPos * SCALE - 0.5*this.segmentSize;
-	    this.body.bitmap.x = xPos * SCALE - 0.5*this.segmentSize;
-	    coin_stage.addChild(this.body.bitmap);
+	this.body.bitmap = new createjs.Bitmap(queue.getResult("coin"));;	    
+	this.body.bitmap.y = yPos * SCALE - 0.5*this.segmentSize;
+	this.body.bitmap.x = xPos * SCALE - 0.5*this.segmentSize;
+    coin_stage.addChild(this.body.bitmap);
 	this.body.SetUserData("coin");
 }
 

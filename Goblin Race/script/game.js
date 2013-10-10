@@ -257,6 +257,7 @@ Game.prototype.handleTick = function () {
     //deleteArray  
     for(var i =0; i<deleteArray.length; i++){
         world.DestroyBody(deleteArray[i]);
+        delete deleteArray[i];
     }
     deleteArray.length = 0;
 }
