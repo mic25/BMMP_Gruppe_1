@@ -104,12 +104,14 @@ function ContactListener(){
 			console.log("candy!!");
 		}
 		else if(shape2.GetBody().GetUserData() == "candy"){
-			if(localStorage.getItem("sound") == 1){
-				if(Math.random() > 0.5){
-					game.candySound1.play();
-				}else{
-					game.candySound2.play();
-				}
+		    if (localStorage.getItem("sound") == 1) {
+		        var random = Math.random();
+		        if (random > 0.66) 
+		            game.candySound1.play();
+		        else if (random > 0.33) 
+		            game.candySound2.play();
+		        else
+		            game.candySound3.play();
 			}
 			
 			deleteArray.push(shape2.GetBody());

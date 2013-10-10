@@ -196,7 +196,11 @@ Player.prototype.setRunning = function(){
 
 Player.prototype.setFly = function(VecX,VecY){	
 	if(localStorage.getItem("sound") == 1){
-		game.flySound.play();
+	    if (Math.random() > 0.5) {
+	        game.flySound1.play();
+	    } else {
+	        game.flySound2.play();
+	    }
 	}
 	world.SetGravity(new b2d.b2Vec2(0,3));
 	player.body.ApplyImpulse(new b2d.b2Vec2(VecX,VecY), this.body.GetWorldCenter());	

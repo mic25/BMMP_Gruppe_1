@@ -8,12 +8,6 @@
     this.mg_im;
     this.fg_im;
 
-    /* The old way to do it
-    this.bg = new createjs.Bitmap(queue.getResult("bg"));
-    //this.mg = new createjs.Bitmap(queue.getResult("mg"));
-    this.fg = new createjs.Bitmap(queue.getResult("fg"));
-    */
-
     this.bg = new Array();
     this.mg = new Array();
     this.fg = new Array();

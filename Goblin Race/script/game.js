@@ -33,7 +33,7 @@
 	this.speedControl = 1;
 	this.tileControl = 1;
 	this.distanceControl = 1;
-	counter = 10;
+	counter = 25;
 
     //Score Output
 	this.distance_text = new createjs.Text("Score : " + this.distance, "40px  'Voltaire', sans-serif", "#000");
@@ -84,25 +84,31 @@
     this.coinSound.setVolume(0.7);
 
     this.jumpSound = createjs.Sound.createInstance("jump2");
-    this.jumpSound.setVolume(0.5);
+    this.jumpSound.setVolume(0.3);
 
     this.floorSound = createjs.Sound.createInstance("floor");
-    this.floorSound.setVolume(0.8);
+    this.floorSound.setVolume(0.6);
 
-    this.flySound = createjs.Sound.createInstance("fly1");
-    this.flySound.setVolume(1.2);
+    this.flySound1 = createjs.Sound.createInstance("fly1");
+    this.flySound1.setVolume(1.2);
+
+    this.flySound2 = createjs.Sound.createInstance("fly2");
+    this.flySound2.setVolume(1.2);
 
     this.candySound1 = createjs.Sound.createInstance("essen1");
-    this.candySound1.setVolume(1.0);
+    this.candySound1.setVolume(1.6);
 
-    this.candySound2 = createjs.Sound.createInstance("essen1");
-    this.candySound2.setVolume(1.0);
+    this.candySound2 = createjs.Sound.createInstance("essen2");
+    this.candySound2.setVolume(1.6);
+
+    this.candySound3 = createjs.Sound.createInstance("essen3");
+    this.candySound3.setVolume(1.6);
 
     this.pauseSound = createjs.Sound.createInstance("pause");
     this.pauseSound.setVolume(1.6);
 
     this.resumeSound = createjs.Sound.createInstance("continue");
-    this.resumeSound.setVolume(1.4);
+    this.resumeSound.setVolume(1.6);
 
     this.laughingSound = createjs.Sound.createInstance("laughing");
     this.laughingSound.setVolume(3.0);
@@ -113,6 +119,31 @@
     this.distanceSound = createjs.Sound.createInstance("distance");
     this.distanceSound.setVolume(1.2);
 
+    //Ende-Sounds
+
+    this.ende1Sound = createjs.Sound.createInstance("ende1");
+    this.ende1Sound.setVolume(1.6);
+
+    this.ende2Sound = createjs.Sound.createInstance("ende2");
+    this.ende2Sound.setVolume(1.6);
+
+    this.ende3Sound = createjs.Sound.createInstance("ende3");
+    this.ende3Sound.setVolume(1.6);
+
+    this.ende4Sound = createjs.Sound.createInstance("ende4");
+    this.ende4Sound.setVolume(1.6);
+
+    this.ende5Sound = createjs.Sound.createInstance("ende5");
+    this.ende5Sound.setVolume(1.6);
+
+    this.ende6Sound = createjs.Sound.createInstance("ende6");
+    this.ende6Sound.setVolume(1.6);
+
+    this.ende7Sound = createjs.Sound.createInstance("ende7");
+    this.ende7Sound.setVolume(1.6);
+
+    this.ende8Sound = createjs.Sound.createInstance("ende8");
+    this.ende8Sound.setVolume(1.6);
 }
 
 Game.prototype.handleTick = function () {
@@ -128,7 +159,7 @@ Game.prototype.handleTick = function () {
     //Coins
     level.updateCoins();
     if (Math.floor(this.distance) != Math.floor(this.distanceCheck)) {
-        counter -= 0.5 * Math.max(1,this.distance/600);
+        counter -= 0.5 * Math.max(1,this.distance/300);
         this.distanceCheck = this.distance;
     } 
     this.counter_text.text = Math.floor(counter);
@@ -200,7 +231,8 @@ Game.prototype.handleTick = function () {
         player.update();
         player.draw();
 
-        if(player.isOutOfBounds || counter <= 0){
+        if (player.isOutOfBounds || counter <= 0) {
+            this.playEndSound();
             inGame = false;
             isFlying = false;
             isCandy = false;
@@ -296,5 +328,31 @@ Game.prototype.playSound = function(id){
 
 Game.prototype.playAgain = function(){
     this.runningSound.play();
+}
+
+Game.prototype.playEndSound = function () {
+    if (localStorage.getItem("sound") == 1) {
+        var random = Math.random();
+        if (counter <= 0) {
+            if (random > 0.5)
+                this.ende1Sound.play();
+            else
+                this.ende8Sound.play();
+        }
+        else {
+            if (random > 0.84)
+                this.ende2Sound.play();
+            else if (random > 0.66)
+                this.ende3Sound.play();
+            else if (random > 0.5)
+                this.ende4Sound.play();
+            else if (random > 0.33)
+                this.ende5Sound.play();
+            else if (random > 0.16)
+                this.ende6Sound.play();
+            else
+                this.ende7Sound.play();
+        }
+    }
 }
 
