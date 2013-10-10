@@ -7,6 +7,7 @@
     <script src="script/createjs-2013.09.25.min.js"></script>
     
     <script src="script/preload.js"></script>
+    <script src="script/intro.js"></script>
     <script src="script/key.js"></script>
     <script src="script/player.js"></script>
     <script src="script/menu.js"></script>
@@ -55,7 +56,7 @@
         
 
         function init() {
-
+          
             stage = new createjs.Stage("canvas");
             bg_stage = new createjs.Stage("canvas21");
             plat_stage = new createjs.Stage("canvas3");
@@ -86,7 +87,8 @@
             coin_stage.update();          
         } 
 
-        function adjustSize(){
+        function adjustSize() {
+
             var canvas = document.getElementById("canvas");
             var div = document.getElementById("container");
             oldCanvasWidth = stage.canvas.width;
@@ -112,7 +114,7 @@
             coin_stage.canvas.setAttribute('width', newWidth);
             coin_stage.canvas.setAttribute('height', newHeight);
             coin_stage.scaleX = (newWidth)/oldCanvasWidth;
-            coin_stage.scaleY = (newWidth)/oldCanvasWidth;
+            coin_stage.scaleY = (newWidth) / oldCanvasWidth;
 
         }  
     </script>
@@ -122,6 +124,17 @@
 
     <p> <img src="img/Schrift.png" width="35%"></p>
     <div id="container">
+
+        <!--
+        <object id="introVideo" classid="CLSID:D27CDB6E-AE6D-11cf-96B8-444553540000" 
+            width="1366" height="768" >
+            <param name="movie" value="intro.swf">
+            <embed src="intro.swf" width="1366" height="768" 
+                type="application/x-shockwave-flash"
+                pluginspage="http://www.macromedia.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash">
+            </embed>
+        </object> -->
+
         <canvas width="1366" height="768" id="canvas21" style="z-index:1">You no have canvas</canvas>
         <canvas width="1366" height="768" id="canvas3" style="z-index:2">You no have canvas</canvas>
         <canvas width="1366" height="768" id="canvas4" style="z-index:3">You no have canvas</canvas>

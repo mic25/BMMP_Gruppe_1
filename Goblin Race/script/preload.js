@@ -42,6 +42,9 @@
         { id: "jump_3", src: "sound/jump3.wav" },
         { id: "ground", src: "sound/floor.wav" },
 
+        { id: "intro1", src: "sound/intro1.wav" },
+        { id: "intro2", src: "sound/intro2.wav" },
+
         //IAMGES
         //{id:"bg", src:"img/Himmel.png"},
         { id:"devil", src:"img/Teufel.png"},
@@ -92,10 +95,13 @@
         { id: "fg_sprite", src: "img/bg/fg_sprite.png" },
         { id: "mg_sprite", src: "img/bg/mg_sprite.png" },
 
+        { id: "bild1", src: "img/Bild1.png" },
+        { id: "bild2", src: "img/Bild2.png" },
+
         { id: "overlay", src: "img/overlay.png" }
     ];
     queue = new createjs.LoadQueue(false);
     queue.installPlugin(createjs.Sound);
-    queue.addEventListener("complete", menu.showMenu);
+    queue.addEventListener("complete", showIntro);
     queue.loadManifest(manifest);
 }
