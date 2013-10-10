@@ -80,69 +80,69 @@
     this.runningSound.addEventListener("complete", this.playAgain);
     this.runningSound.setVolume(0.8);
 
-    this.coinSound = createjs.Sound.createInstance("coin3");
+    this.coinSound = createjs.Sound.createInstance("coin_3");
     this.coinSound.setVolume(0.7);
 
-    this.jumpSound = createjs.Sound.createInstance("jump2");
+    this.jumpSound = createjs.Sound.createInstance("jump_2");
     this.jumpSound.setVolume(0.3);
 
-    this.floorSound = createjs.Sound.createInstance("floor");
+    this.floorSound = createjs.Sound.createInstance("ground");
     this.floorSound.setVolume(0.6);
 
-    this.flySound1 = createjs.Sound.createInstance("fly1");
+    this.flySound1 = createjs.Sound.createInstance("fly_1");
     this.flySound1.setVolume(1.2);
 
-    this.flySound2 = createjs.Sound.createInstance("fly2");
+    this.flySound2 = createjs.Sound.createInstance("fly_2");
     this.flySound2.setVolume(1.2);
 
-    this.candySound1 = createjs.Sound.createInstance("essen1");
+    this.candySound1 = createjs.Sound.createInstance("eat_1");
     this.candySound1.setVolume(1.6);
 
-    this.candySound2 = createjs.Sound.createInstance("essen2");
+    this.candySound2 = createjs.Sound.createInstance("eat_2");
     this.candySound2.setVolume(1.6);
 
-    this.candySound3 = createjs.Sound.createInstance("essen3");
+    this.candySound3 = createjs.Sound.createInstance("eat_3");
     this.candySound3.setVolume(1.6);
 
-    this.pauseSound = createjs.Sound.createInstance("pause");
+    this.pauseSound = createjs.Sound.createInstance("stop");
     this.pauseSound.setVolume(1.6);
 
-    this.resumeSound = createjs.Sound.createInstance("continue");
+    this.resumeSound = createjs.Sound.createInstance("further");
     this.resumeSound.setVolume(1.6);
 
-    this.laughingSound = createjs.Sound.createInstance("laughing");
+    this.laughingSound = createjs.Sound.createInstance("laughingDevil");
     this.laughingSound.setVolume(3.0);
 
-    this.speedSound = createjs.Sound.createInstance("speed");
+    this.speedSound = createjs.Sound.createInstance("speedy");
     this.speedSound.setVolume(1.2);
 
-    this.distanceSound = createjs.Sound.createInstance("distance");
+    this.distanceSound = createjs.Sound.createInstance("distant");
     this.distanceSound.setVolume(1.2);
 
     //Ende-Sounds
 
-    this.ende1Sound = createjs.Sound.createInstance("ende1");
+    this.ende1Sound = createjs.Sound.createInstance("ende_1");
     this.ende1Sound.setVolume(1.6);
 
-    this.ende2Sound = createjs.Sound.createInstance("ende2");
+    this.ende2Sound = createjs.Sound.createInstance("ende_2");
     this.ende2Sound.setVolume(1.6);
 
-    this.ende3Sound = createjs.Sound.createInstance("ende3");
+    this.ende3Sound = createjs.Sound.createInstance("ende_3");
     this.ende3Sound.setVolume(1.6);
 
-    this.ende4Sound = createjs.Sound.createInstance("ende4");
+    this.ende4Sound = createjs.Sound.createInstance("ende_4");
     this.ende4Sound.setVolume(1.6);
 
-    this.ende5Sound = createjs.Sound.createInstance("ende5");
+    this.ende5Sound = createjs.Sound.createInstance("ende_5");
     this.ende5Sound.setVolume(1.6);
 
-    this.ende6Sound = createjs.Sound.createInstance("ende6");
+    this.ende6Sound = createjs.Sound.createInstance("ende_6");
     this.ende6Sound.setVolume(1.6);
 
-    this.ende7Sound = createjs.Sound.createInstance("ende7");
+    this.ende7Sound = createjs.Sound.createInstance("ende_7");
     this.ende7Sound.setVolume(1.6);
 
-    this.ende8Sound = createjs.Sound.createInstance("ende8");
+    this.ende8Sound = createjs.Sound.createInstance("ende_8");
     this.ende8Sound.setVolume(1.6);
 }
 
