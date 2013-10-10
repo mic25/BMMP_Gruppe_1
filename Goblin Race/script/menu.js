@@ -186,6 +186,7 @@ Menu.prototype.startGame = function () {
     bg_stage.removeAllChildren();
     plat_stage.removeAllChildren();
     coin_stage.removeAllChildren();
+    fg_stage.removeAllChildren();
     stage.update();
     bg_stage.update();
     plat_stage.update();
@@ -250,11 +251,13 @@ Menu.prototype.handleTick = function () {
     	menu.startGame();
     }
 
+    //probably depreciated
 Menu.prototype.generateNew = function (){
     stage.removeAllChildren();
     bg_stage.removeAllChildren();
     plat_stage.removeAllChildren();
     coin_stage.removeAllChildren();
+    fg_stage.removeAllChildren();
     stage.update();
     bg_stage.update();
     plat_stage.update();

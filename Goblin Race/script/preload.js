@@ -109,6 +109,8 @@
         { id: "plat_cave_r", src: "img/plat/plat_cave_r.png" },
         { id: "plat_cave_m", src: "img/plat/plat_cave_m.png" },
 
+        { id: "fg_sprite", src: "img/bg/fg_sprite.png" },
+
         { id: "overlay", src: "img/overlay.png" }
     ];
     queue = new createjs.LoadQueue(false);
