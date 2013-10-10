@@ -32,8 +32,6 @@ function CandyCane(xPos,yPos,type){
 	this.body.SetUserData("candy");
 }
 
-
-
 CandyCane.prototype.update = function () {
     this.body.SetAwake(true);
     this.body.SetPosition(new b2d.b2Vec2(this.body.GetPosition().x + game.platformSpeed / SCALE , this.body.GetPosition().y));	

@@ -285,7 +285,6 @@ Game.prototype.start = function(){
     bg_stage.update();
     plat_stage.update();
     coin_stage.update();
-    fg_stage.update();
 
     if(localStorage.getItem("sound") == 1){
         this.runningSound.play({loop:-1});

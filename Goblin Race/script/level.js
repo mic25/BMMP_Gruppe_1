@@ -25,9 +25,7 @@
     this.candyTick = 0;
 
     this.randomC = this.random(5, 15);
-    console.log("randomC" + this.randomC);
     this.randomB = this.random(5, 15);
-    console.log("randomB" + this.randomB);
 
     var mg_data = {
         "images": [queue.getResult("mg_sprite")],
@@ -156,7 +154,7 @@ Level.prototype.initialize = function () {
         url = "mg_" + lastStyle;
         this.last_mg = 1;
     }
-    console.log(url);
+    //console.log(url);
     this.mg[1] = new createjs.Sprite(this.mg_sprite, url);
     this.mg[1].play();
     this.mg[1].name = url;
@@ -206,7 +204,7 @@ Level.prototype.initialize = function () {
         url = "fg_" + lastStyle;
         this.last_fg = 1;
     }
-    console.log(url);
+    //console.log(url);
     this.fg[1] = new createjs.Sprite(this.fg_sprite, url);
     this.fg[1].play();
     this.fg[1].name = url;
@@ -267,8 +265,6 @@ Level.prototype.generateLevel = function () {
         this.bubble.update();
         this.platformCounterBubble = 0;
         this.randomB = this.random(5, 15);
-        console.log(this.randomB);
-        console.log("newBubble " + newYPlat);
         }
 
     //Candy
@@ -278,8 +274,6 @@ Level.prototype.generateLevel = function () {
         this.candyCane.update();
         this.platformCounterCandy = 0;
         this.randomC = this.random(5, 15);
-        console.log(this.randomC);
-        console.log("newCandy " + newYPlat);
         }
 }
 
@@ -376,7 +370,7 @@ Level.prototype.generateBackground = function () {
         }
         this.bg_im = new createjs.Bitmap(queue.getResult(url));
         this.bg_im.name = url;
-        console.log(url);
+        //console.log(url);
         this.bg.push(this.bg_im);
         bg_stage.addChildAt(this.bg_im,0);
         this.bg_im.x = newX;
@@ -540,7 +534,6 @@ Level.prototype.generateNewMG = function () {
         url = "mg_" + lastStyle;
         this.last_mg = 1;
     }
-    console.log("url = " +url)
     this.mg[1].gotoAndPlay(url);
     this.mg[1].name = url;
     this.mg[1].x = newX;

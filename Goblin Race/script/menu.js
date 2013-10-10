@@ -177,7 +177,6 @@ Menu.prototype.startGame = function () {
     bg_stage.removeAllChildren();
     plat_stage.removeAllChildren();
     coin_stage.removeAllChildren();
-    fg_stage.removeAllChildren();
 
     game.counter = 0;
 
